@@ -1,0 +1,48 @@
+name: eos freshness
+
+# Separate from ci.yml on purpose. This is the one job in the repository that
+# needs the network, and ci.yml gates every merge: a check that fails when
+# somebody else's API has an outage would block work for reasons that have
+# nothing to do with the change being merged.
+#
+# What it guards is the thing a capture date implies and cannot enforce. Every
+# row in the end-of-support dataset says where it came from and when. If the
+# upstream answer moves and nobody re-reads it, that row is a wrong date
+# carrying a provenance stamp, and it fails silently in every other respect: the
+# file parses, the tests pass, the report renders.
+#
+# An end-of-support date is quoted in a regulatory submission. Being quietly
+# wrong is the specific failure worth paying a weekly job to avoid.
+
+on:
+  schedule:
+    # Mondays, 06:00 UTC. Weekly because endoflife.date moves slowly and a job
+    # that fires daily on a stable dataset is a job people filter out of their
+    # inbox.
+    - cron: "0 6 * * 1"
+  workflow_dispatch: {}
+
+jobs:
+  freshness:
+    name: every cited source still says the same thing
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Re-fetch every source the dataset cites
+        run: python3 scripts/eos-freshness.py
+
+      # A failure here is not a broken build, it is data that has moved. The
+      # issue carries the specific products and cycles so the fix is a diff to
+      # read rather than an investigation to start.
+      - name: Say what to do about it
+        if: failure()
+        run: |
+          echo "::warning::The end-of-support dataset no longer matches its sources."
+          echo "Run: python3 scripts/eos-build.py --refresh"
+          echo "Then read the diff before committing it. A date that moved is the"
+          echo "point of this job; a date that moved unnoticed is what it prevents."

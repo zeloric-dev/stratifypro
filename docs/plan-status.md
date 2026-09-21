@@ -33,6 +33,23 @@ It exists because of a specific mistake, recorded below.
 `resolve` is not yet a CLI subcommand, though step 1.10 lists it. The library and
 the web app both use it; the command is missing.
 
+## Phase 2, started
+
+| # | Step | Status |
+|---|---|---|
+| 2.1 | `packages/mirror` + `apps/sync`: local advisory index | not started |
+| 2.2 | `packages/vulnmatch` with `SourceStatus` per run | not started |
+| 2.3 | `packages/eos` plus the freshness check | done |
+
+2.3 first, out of order, because it is free and public like the crosswalk
+rather than part of the paid layer, and because both packs already fire on the
+gap it fills: FDA-SUP-001 and FDA-SUP-002 are the two largest finding groups in
+the corpus.
+
+Its coverage is 2.5 percent of component instances and that figure is published
+with the data rather than buried. The only public source tracks products;
+bills of material are made of packages.
+
 ## Phase 1 is complete
 
 The repository is public at github.com/zeloric-dev/stratifypro and the site is
