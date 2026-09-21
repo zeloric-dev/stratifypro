@@ -6,12 +6,25 @@
   "description": "Cross-references resolved components against the local advisory mirror.",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
-  "exports": { ".": { "types": "./dist/index.d.ts", "default": "./dist/index.js" } },
-  "files": ["dist"],
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    }
+  },
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "build": "tsc -p tsconfig.json",
     "typecheck": "tsc -p tsconfig.json --noEmit",
     "test": "node --test dist/**/*.test.js"
   },
-  "dependencies": { "@stratifypro/engine": "workspace:*", "@stratifypro/mirror": "workspace:*" }
+  "dependencies": {
+    "@stratifypro/engine": "workspace:*",
+    "@stratifypro/mirror": "workspace:*"
+  },
+  "devDependencies": {
+    "@types/node": "22.9.0"
+  }
 }

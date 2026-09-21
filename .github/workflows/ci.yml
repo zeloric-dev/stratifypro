@@ -85,6 +85,18 @@ jobs:
       - name: The published benchmark reproduces, ours included
         run: python3 scripts/bench-publish.py --check
 
+      # Doc 6 step 2.1 accepts on one sentence: the matcher makes zero outbound
+      # calls in a full corpus run. verify.sh plants against the static scan;
+      # this is the runtime half, which replaces fetch, XMLHttpRequest, and the
+      # node http, https, net, tls and dns entry points with something that
+      # throws, then pushes all 5,088 corpus components through the matcher.
+      # It needs built TypeScript, which is why it is here and not in verify.sh.
+      #
+      # This runner has a network. That is the point: the test proves the code
+      # does not reach for it even when it is there.
+      - name: The advisory matcher makes no outbound call, and the scan proves it
+        run: python3 scripts/mirror-mutation-test.py
+
       # "Zero runtime dependencies" is the answer to "what is in your tool".
       # It is a sales claim and a security claim, so it is enforced rather
       # than intended.

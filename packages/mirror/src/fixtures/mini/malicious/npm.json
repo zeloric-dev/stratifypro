@@ -1,0 +1,116 @@
+{
+ "advisories": {
+  "--hiljson": [
+   {
+    "affected": [
+     {
+      "ecosystem": "npm",
+      "name": "--hiljson",
+      "ranges": [
+       {
+        "events": [
+         {
+          "introduced": "0"
+         }
+        ],
+        "type": "SEMVER"
+       }
+      ]
+     }
+    ],
+    "aliases": [
+     "GHSA-qqfx-rpxc-ghp4"
+    ],
+    "id": "MAL-2022-2",
+    "modified": "2023-11-08T04:22:21.210324Z",
+    "summary": "Malicious code in --hiljson (npm)"
+   }
+  ],
+  "--legacy-peer-deps": [
+   {
+    "affected": [
+     {
+      "ecosystem": "npm",
+      "name": "--legacy-peer-deps",
+      "ranges": [
+       {
+        "events": [
+         {
+          "introduced": "0"
+         }
+        ],
+        "type": "SEMVER"
+       }
+      ]
+     }
+    ],
+    "aliases": [
+     "GHSA-w947-rqr8-vxgg"
+    ],
+    "id": "MAL-2022-3",
+    "modified": "2023-11-08T04:23:43.975016Z",
+    "summary": "Malicious code in --legacy-peer-deps (npm)"
+   }
+  ],
+  "--no-audit": [
+   {
+    "affected": [
+     {
+      "ecosystem": "npm",
+      "name": "--no-audit",
+      "ranges": [
+       {
+        "events": [
+         {
+          "introduced": "0"
+         }
+        ],
+        "type": "SEMVER"
+       }
+      ]
+     }
+    ],
+    "aliases": [
+     "GHSA-3q9g-vxqx-5cg3"
+    ],
+    "id": "MAL-2022-4",
+    "modified": "2023-11-08T04:14:45.655380Z",
+    "summary": "Malicious code in --no-audit (npm)"
+   }
+  ],
+  "-accion-pelicula-john-wick-4-keanu-reeves-peliculas-completa-varindo-allah-varindo-en-casa-lliena-": [
+   {
+    "affected": [
+     {
+      "ecosystem": "npm",
+      "name": "-accion-pelicula-john-wick-4-keanu-reeves-peliculas-completa-varindo-allah-varindo-en-casa-lliena-",
+      "versions": [
+       "1.0.0"
+      ]
+     }
+    ],
+    "id": "MAL-2024-1677",
+    "modified": "2024-06-25T12:23:49Z",
+    "summary": "Malicious code in -accion-pelicula-john-wick-4-keanu-reeves-peliculas-completa-varindo-allah-varindo-en-casa-lliena- (npm)"
+   }
+  ],
+  "-accion-pelicula-john-wick-4-keanu-reeves-peliculas-completa-varindo-h-d-varindo-en-casa-lliena-": [
+   {
+    "affected": [
+     {
+      "ecosystem": "npm",
+      "name": "-accion-pelicula-john-wick-4-keanu-reeves-peliculas-completa-varindo-h-d-varindo-en-casa-lliena-",
+      "versions": [
+       "1.0.0"
+      ]
+     }
+    ],
+    "id": "MAL-2024-1678",
+    "modified": "2024-06-25T12:23:50Z",
+    "summary": "Malicious code in -accion-pelicula-john-wick-4-keanu-reeves-peliculas-completa-varindo-h-d-varindo-en-casa-lliena- (npm)"
+   }
+  ]
+ },
+ "ecosystem": "npm",
+ "kind": "malicious"
+}

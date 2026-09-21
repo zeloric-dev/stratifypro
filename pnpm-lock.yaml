@@ -194,6 +194,10 @@ importers:
       '@stratifypro/mirror':
         specifier: workspace:*
         version: link:../../packages/mirror
+    devDependencies:
+      '@types/node':
+        specifier: 22.9.0
+        version: 22.9.0
 
   apps/web:
     dependencies:
@@ -256,6 +260,10 @@ importers:
       '@stratifypro/engine':
         specifier: workspace:*
         version: link:../engine
+    devDependencies:
+      '@types/node':
+        specifier: 22.9.0
+        version: 22.9.0
 
   packages/report:
     dependencies:
@@ -287,6 +295,10 @@ importers:
       '@stratifypro/mirror':
         specifier: workspace:*
         version: link:../mirror
+    devDependencies:
+      '@types/node':
+        specifier: 22.9.0
+        version: 22.9.0
 
 packages:
 

@@ -1,0 +1,5843 @@
+{
+ "advisories": {
+  "github.com/hashicorp/consul": [
+   {
+    "affected": [
+     {
+      "ecosystem": "Go",
+      "name": "github.com/hashicorp/consul",
+      "ranges": [
+       {
+        "events": [
+         {
+          "introduced": "0"
+         },
+         {
+          "fixed": "1.6.3"
+         }
+        ],
+        "type": "SEMVER"
+       }
+      ]
+     }
+    ],
+    "aliases": [
+     "BIT-consul-2020-7219",
+     "CVE-2020-7219",
+     "GO-2022-0776"
+    ],
+    "id": "GHSA-23jv-v6qj-3fhh",
+    "modified": "2026-09-10T03:49:26.885066499Z",
+    "severity": [
+     {
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+      "type": "CVSS_V3"
+     }
+    ],
+    "summary": "Denial of Service (DoS) in HashiCorp Consul"
+   },
+   {
+    "affected": [
+     {
+      "ecosystem": "Go",
+      "name": "github.com/hashicorp/consul",
+      "ranges": [
+       {
+        "events": [
+         {
+          "introduced": "0"
+         },
+         {
+          "fixed": "1.10.1"
+         }
+        ],
+        "type": "SEMVER"
+       }
+      ]
+     }
+    ],
+    "aliases": [
+     "BIT-consul-2021-32574",
+     "CVE-2021-32574",
+     "GO-2022-0894"
+    ],
+    "id": "GHSA-25gf-8qrr-g78r",
+    "modified": "2026-09-10T03:49:15.385322274Z",
+    "severity": [
+     {
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:H/A:N",
+      "type": "CVSS_V3"
+     }
+    ],
+    "summary": "Hashicorp Consul Missing SSL Certificate Validation"
+   },
+   {
+    "affected": [
+     {
+      "ecosystem": "Go",
+      "name": "github.com/hashicorp/consul",
+      "ranges": [
+       {
+        "events": [
+         {
+          "introduced": "1.7.0"
+         },
+         {
+          "fixed": "1.7.9"
+         }
+        ],
+        "type": "SEMVER"
+       }
+      ]
+     },
+     {
+      "ecosystem": "Go",
+      "name": "github.com/hashicorp/consul",
+      "ranges": [
+       {
+        "events": [
+         {
+          "introduced": "1.8.0"
+         },
+         {
+          "fixed": "1.8.5"
+         }
+        ],
+        "type": "SEMVER"
+       }
+      ]
+     }
+    ],
+    "aliases": [
+     "BIT-consul-2020-25201",
+     "CVE-2020-25201",
+     "GO-2024-2501"
+    ],
+    "id": "GHSA-496g-fr33-whrf",
+    "modified": "2024-06-28T15:58:43.348611Z",
+    "severity": [
+     {
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+      "type": "CVSS_V3"
+     }
+    ],
+    "summary": "Denial of service in HashiCorp Consul"
+   },
+   {
+    "affected": [
+     {
+      "ecosystem": "Go",
+      "name": "github.com/hashicorp/consul",
+      "ranges": [
+       {
+        "events": [
+         {
+          "introduced": "0.5.1"
+         },
+         {
+          "fixed": "1.4.1"
+         }
+        ],
+        "type": "SEMVER"
+       }
+      ]
+     }
+    ],
+    "aliases": [
+     "CVE-2018-19653",
+     "GO-2023-1850"
+    ],
+    "id": "GHSA-4qvx-qq5w-695p",
+    "modified": "2026-09-10T03:49:37.495348649Z",
+    "severity": [
+     {
+      "score": "CVSS:3.0/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:N/A:N",
+      "type": "CVSS_V3"
+     }
+    ],
+    "summary": "HashiCorp Consul can use cleartext agent-to-agent RPC communication"
+   },
+   {
+    "affected": [
+     {
+      "ecosystem": "Go",
+      "name": "github.com/hashicorp/consul",
+      "ranges": [
+       {
+        "events": [
+         {
+          "introduced": "1.9.0"
+         },
+         {
+          "fixed": "1.20.1"
+         }
+        ],
+        "type": "SEMVER"
+       }
+      ]
+     }
+    ],
+    "aliases": [
+     "BIT-consul-2024-10006",
+     "CVE-2024-10006",
+     "GO-2024-3241"
+    ],
+    "id": "GHSA-5c4w-8hhh-3c3h",
+    "modified": "2026-09-10T03:50:19.278291680Z",
+    "severity": [
+     {
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:L/I:L/A:L",
+      "type": "CVSS_V3"
+     },
+     {
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:N/VI:N/VA:N/SC:L/SI:L/SA:L",
+      "type": "CVSS_V4"
+     }
+    ],
+    "summary": "Hashicorp Consul Improper Neutralization of HTTP Headers for Scripting Syntax vulnerability"
+   },
+   {
+    "affected": [
+     {
+      "ecosystem": "Go",
+      "name": "github.com/hashicorp/consul",
+      "ranges": [
+       {
+        "events": [
+         {
+          "introduced": "1.10.1"
+         },
+         {
+          "fixed": "1.10.2"
+         }
+        ],
+        "type": "SEMVER"
+       }
+      ],
+      "versions": [
+       "1.10.1"
+      ]
+     },
+     {
+      "ecosystem": "Go",
+      "name": "github.com/hashicorp/consul",
+      "ranges": [
+       {
+        "events": [
+         {
+          "introduced": "1.9.0"
+         },
+         {
+          "fixed": "1.9.9"
+         }
+        ],
+        "type": "SEMVER"
+       }
+      ]
+     },
+     {
+      "ecosystem": "Go",
+      "name": "github.com/hashicorp/consul",
+      "ranges": [
+       {
+        "events": [
+         {
+          "introduced": "0"
+         },
+         {
+          "fixed": "1.8.15"
+         }
+        ],
+        "type": "SEMVER"
+       }
+      ]
+     }
+    ],
+    "aliases": [
+     "BIT-consul-2021-38698",
+     "CVE-2021-38698",
+     "GO-2022-0559"
+    ],
+    "id": "GHSA-6hw5-6gcx-phmw",
+    "modified": "2026-09-10T03:49:08.568208801Z",
+    "severity": [
+     {
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:N",
+      "type": "CVSS_V3"
+     }
+    ],
+    "summary": "HashiCorp Consul and Consul Enterprise 1.10.1 Txn.Apply endpoint allowed services to register proxies for other services, enabling access to service traffic."
+   },
+   {
+    "affected": [
+     {
+      "ecosystem": "Go",
+      "name": "github.com/hashicorp/consul",
+      "ranges": [
+       {
+        "events": [
+         {
+          "introduced": "1.2.0"
+         },
+         {
+          "fixed": "1.6.10"
+         }
+        ],
+        "type": "SEMVER"
+       }
+      ]
+     },
+     {
+      "ecosystem": "Go",
+      "name": "github.com/hashicorp/consul",
+      "ranges": [
+       {
+        "events": [
+         {
+          "introduced": "1.7.0"
+         },
+         {
+          "fixed": "1.7.10"
+         }
+        ],
+        "type": "SEMVER"
+       }
+      ]
+     },
+     {
+      "ecosystem": "Go",
+      "name": "github.com/hashicorp/consul",
+      "ranges": [
+       {
+        "events": [
+         {
+          "introduced": "1.8.0"
+         },
+         {
+          "fixed": "1.8.6"
+         }
+        ],
+        "type": "SEMVER"
+       }
+      ]
+     }
+    ],
+    "aliases": [
+     "BIT-consul-2020-28053",
+     "CVE-2020-28053",
+     "GO-2024-2505"
+    ],
+    "id": "GHSA-6m72-467w-94rh",
+    "modified": "2024-06-28T15:58:44.521738Z",
+    "severity": [
+     {
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:N",
+      "type": "CVSS_V3"
+     }
+    ],
+    "summary": "Privilege Escalation in HashiCorp Consul"
+   },
+   {
+    "affected": [
+     {
+      "ecosystem": "Go",
+      "name": "github.com/hashicorp/consul",
+      "ranges": [
+       {
+        "events": [
+         {
+          "introduced": "0"
+         },
+         {
+          "fixed": "1.22.0"
+         }
+        ],
+        "type": "SEMVER"
+       }
+      ]
+     }
+    ],
+    "aliases": [
+     "BIT-consul-2025-11374",
+     "CVE-2025-11374",
+     "GO-2025-4081"
+    ],
+    "id": "GHSA-7g3r-8c6v-hfmr",
+    "modified": "2026-09-10T03:50:29.408091600Z",
+    "severity": [
+     {
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H",
+      "type": "CVSS_V3"
+     }
+    ],
+    "summary": "Consul key/value endpoint is vulnerable to denial of service"
+   },
+   {
+    "affected": [
+     {
+      "ecosystem": "Go",
+      "name": "github.com/hashicorp/consul",
+      "ranges": [
+       {
+        "events": [
+         {
+          "introduced": "0"
+         },
+         {
+          "fixed": "1.10.1"
+         }
+        ],
+        "type": "SEMVER"
+       }
+      ]
+     }
+    ],
+    "aliases": [
+     "BIT-consul-2021-36213",
+     "CVE-2021-36213",
+     "GO-2022-0895"
+    ],
+    "id": "GHSA-8h2g-r292-j8xh",
+    "modified": "2026-09-10T03:49:06.398225282Z",
+    "severity": [
+     {
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:H/A:N",
+      "type": "CVSS_V3"
+     }
+    ],
+    "summary": "HashiCorp Consul L7 deny intention results in an allow action"
+   },
+   {
+    "affected": [
+     {
+      "ecosystem": "Go",
+      "name": "github.com/hashicorp/consul",
+      "ranges": [
+       {
+        "events": [
+         {
+          "introduced": "1.9.0"
+         },
+         {
+          "fixed": "1.9.5"
+         }
+        ],
+        "type": "SEMVER"
+       }
+      ]
+     },
+     {
+      "ecosystem": "Go",
+      "name": "github.com/hashicorp/consul",
+      "ranges": [
+       {
+        "events": [
+         {
+          "introduced": "1.8.0"
+         },
+         {
+          "fixed": "1.8.10"
+         }
+        ],
+        "type": "SEMVER"
+       }
+      ]
+     },
+     {
+      "ecosystem": "Go",
+      "name": "github.com/hashicorp/consul",
+      "ranges": [
+       {
+        "events": [
+         {
+          "introduced": "0"
+         },
+         {
+          "fixed": "1.7.14"
+         }
+        ],
+        "type": "SEMVER"
+       }
+      ]
+     }
+    ],
+    "aliases": [
+     "BIT-consul-2020-25864",
+     "CVE-2020-25864",
+     "GO-2023-1851"
+    ],
+    "id": "GHSA-8xmx-h8rq-h94j",
+    "modified": "2026-09-10T03:49:21.348592089Z",
+    "severity": [
+     {
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N",
+      "type": "CVSS_V3"
+     }
+    ],
+    "summary": "HashiCorp Consul Cross-site Scripting vulnerability"
+   },
+   {
+    "affected": [
+     {
+      "ecosystem": "Go",
+      "name": "github.com/hashicorp/consul",
+      "ranges": [
+       {
+        "events": [
+         {
+          "introduced": "1.4.1"
+         },
+         {
+          "fixed": "1.20.0"
+         }
+        ],
+        "type": "SEMVER"
+       }
+      ]
+     }
+    ],
+    "aliases": [
+     "BIT-consul-2024-10086",
+     "CVE-2024-10086",
+     "GO-2024-3242"
+    ],
+    "id": "GHSA-99wr-c2px-grmh",
+    "modified": "2026-09-10T03:50:19.464937752Z",
+    "severity": [
+     {
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N",
+      "type": "CVSS_V3"
+     },
+     {
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:P/VC:N/VI:N/VA:N/SC:L/SI:L/SA:N",
+      "type": "CVSS_V4"
+     }
+    ],
+    "summary": "Hashicorp Consul Cross-site Scripting vulnerability"
+   },
+   {
+    "affected": [
+     {
+      "ecosystem": "Go",
+      "name": "github.com/hashicorp/consul",
+      "ranges": [
+       {
+        "events": [
+         {
+          "introduced": "1.16.0"
+         },
+         {
+          "fixed": "1.16.1"
+         }
+        ],
+        "type": "SEMVER"
+       }
+      ],
+      "versions": [
+       "1.16.0"
+      ]
+     }
+    ],
+    "aliases": [
+     "BIT-consul-2023-3518",
+     "CVE-2023-3518",
+     "GO-2024-2704"
+    ],
+    "id": "GHSA-9rhf-q362-77mx",
+    "modified": "2026-08-07T08:12:09.409683553Z",
+    "severity": [
+     {
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:L/I:L/A:L",
+      "type": "CVSS_V3"
+     }
+    ],
+    "summary": "Consul JWT Auth in L7 Intentions Allow for Mismatched Service Identity and JWT Providers"
+   },
+   {
+    "affected": [
+     {
+      "ecosystem": "Go",
+      "name": "github.com/hashicorp/consul",
+      "ranges": [
+       {
+        "events": [
+         {
+          "introduced": "0"
+         },
+         {
+          "fixed": "1.14.5"
+         }
+        ],
+        "type": "SEMVER"
+       }
+      ]
+     },
+     {
+      "ecosystem": "Go",
+      "name": "github.com/hashicorp/consul",
+      "ranges": [
+       {
+        "events": [
+         {
+          "introduced": "1.15.0"
+         },
+         {
+          "fixed": "1.15.3"
+         }
+        ],
+        "type": "SEMVER"
+       }
+      ]
+     }
+    ],
+    "aliases": [
+     "BIT-consul-2023-1297",
+     "CVE-2023-1297",
+     "GO-2023-1827"
+    ],
+    "id": "GHSA-c57c-7hrj-6q6v",
+    "modified": "2026-09-10T03:50:02.243899042Z",
+    "severity": [
+     {
+      "score": "CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:U/C:N/I:N/A:H",
+      "type": "CVSS_V3"
+     }
+    ],
+    "summary": "Hashicorp Consul vulnerable to denial of service"
+   },
+   {
+    "affected": [
+     {
+      "ecosystem": "Go",
+      "name": "github.com/hashicorp/consul",
+      "ranges": [
+       {
+        "events": [
+         {
+          "introduced": "1.10.1"
+         },
+         {
+          "fixed": "1.10.2"
+         }
+        ],
+        "type": "SEMVER"
+       }
+      ],
+      "versions": [
+       "1.10.1"
+      ]
+     },
+     {
+      "ecosystem": "Go",
+      "name": "github.com/hashicorp/consul",
+      "ranges": [
+       {
+        "events": [
+         {
+          "introduced": "1.9.0"
+         },
+         {
+          "fixed": "1.9.9"
+         }
+        ],
+        "type": "SEMVER"
+       }
+      ]
+     },
+     {
+      "ecosystem": "Go",
+      "name": "github.com/hashicorp/consul",
+      "ranges": [
+       {
+        "events": [
+         {
+          "introduced": "0"
+         },
+         {
+          "fixed": "1.8.15"
+         }
+        ],
+        "type": "SEMVER"
+       }
+      ]
+     }
+    ],
+    "aliases": [
+     "BIT-consul-2021-37219",
+     "CVE-2021-37219",
+     "GO-2022-0593"
+    ],
+    "id": "GHSA-ccw8-7688-vqx4",
+    "modified": "2026-09-10T03:49:08.760839466Z",
+    "severity": [
+     {
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
+      "type": "CVSS_V3"
+     }
+    ],
+    "summary": "HashiCorp Consul Privilege Escalation Vulnerability"
+   },
+   {
+    "affected": [
+     {
+      "ecosystem": "Go",
+      "name": "github.com/hashicorp/consul",
+      "ranges": [
+       {
+        "events": [
+         {
+          "introduced": "1.9.0"
+         },
+         {
+          "fixed": "1.20.1"
+         }
+        ],
+        "type": "SEMVER"
+       }
+      ]
+     }
+    ],
+    "aliases": [
+     "BIT-consul-2024-10005",
+     "CVE-2024-10005",
+     "GO-2024-3243"
+    ],
+    "id": "GHSA-chgm-7r52-whjj",
+    "modified": "2026-09-10T03:50:55.946759058Z",
+    "severity": [
+     {
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:N",
+      "type": "CVSS_V3"
+     },
+     {
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:H/VI:H/VA:N/SC:N/SI:N/SA:N",
+      "type": "CVSS_V4"
+     }
+    ],
+    "summary": "Hashicorp Consul Path Traversal vulnerability"
+   },
+   {
+    "affected": [
+     {
+      "ecosystem": "Go",
+      "name": "github.com/hashicorp/consul",
+      "ranges": [
+       {
+        "events": [
+         {
+          "introduced": "0"
+         },
+         {
+          "fixed": "1.18.21"
+         }
+        ],
+        "type": "SEMVER"
+       }
+      ]
+     },
+     {
+      "ecosystem": "Go",
+      "name": "github.com/hashicorp/consul",
+      "ranges": [
+       {
+        "events": [
+         {
+          "introduced": "1.22.0-rc1"
+         },
+         {
+          "fixed": "1.22.5"
+         }
+        ],
+        "type": "SEMVER"
+       }
+      ]
+     },
+     {
+      "ecosystem": "Go",
+      "name": "github.com/hashicorp/consul",
+      "ranges": [
+       {
+        "events": [
+         {
+          "introduced": "1.19.0"
+         },
+         {
+          "fixed": "1.21.11"
+         }
+        ],
+        "type": "SEMVER"
+       }
+      ]
+     }
+    ],
+    "aliases": [
+     "BIT-consul-2026-2808",
+     "CVE-2026-2808",
+     "GO-2026-4690"
+    ],
+    "id": "GHSA-cpfq-66p2-336j",
+    "modified": "2026-03-24T21:17:32.117903Z",
+    "severity": [
+     {
+      "score": "CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:C/C:H/I:N/A:N",
+      "type": "CVSS_V3"
+     }
+    ],
+    "summary": "Consul is vulnerable to arbitrary file read when configured with Kubernetes authentication"
+   },
+   {
+    "affected": [
+     {
+      "ecosystem": "Go",
+      "name": "github.com/hashicorp/consul",
+      "ranges": [
+       {
+        "events": [
+         {
+          "introduced": "1.4.0"
+         },
+         {
+          "fixed": "1.4.3"
+         }
+        ],
+        "type": "SEMVER"
+       }
+      ]
+     }
+    ],
+    "aliases": [
+     "CVE-2019-8336",
+     "GO-2023-1945"
+    ],
+    "id": "GHSA-fhm8-cxcv-pwvc",
+    "modified": "2024-08-20T20:58:39.904794Z",
+    "severity": [
+     {
+      "score": "CVSS:3.0/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:H",
+      "type": "CVSS_V3"
+     }
+    ],
+    "summary": "HashiCorp Consul Access Restriction Bypass"
+   },
+   {
+    "affected": [
+     {
+      "ecosystem": "Go",
+      "name": "github.com/hashicorp/consul",
+      "ranges": [
+       {
+        "events": [
+         {
+          "introduced": "1.13.0"
+         },
+         {
+          "fixed": "1.14.0"
+         }
+        ],
+        "type": "SEMVER"
+       }
+      ]
+     }
+    ],
+    "aliases": [
+     "BIT-consul-2022-3920",
+     "CVE-2022-3920",
+     "GO-2022-1121"
+    ],
+    "id": "GHSA-gw2g-hhc9-wgjh",
+    "modified": "2026-08-07T08:12:08.909249277Z",
+    "severity": [
+     {
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N",
+      "type": "CVSS_V3"
+     }
+    ],
+    "summary": "Missing Authorization in HashiCorp Consul"
+   },
+   {
+    "affected": [
+     {
+      "ecosystem": "Go",
+      "name": "github.com/hashicorp/consul",
+      "ranges": [
+       {
+        "events": [
+         {
+          "introduced": "1.4.0"
+         },
+         {
+          "fixed": "1.5.1"
+         }
+        ],
+        "type": "SEMVER"
+       }
+      ]
+     }
+    ],
+    "aliases": [
+     "CVE-2019-12291",
+     "GO-2023-1852"
+    ],
+    "id": "GHSA-h65h-v7fw-4p38",
+    "modified": "2024-08-20T20:58:45.320689Z",
+    "severity": [
+     {
+      "score": "CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:H/A:N",
+      "type": "CVSS_V3"
+     }
+    ],
+    "summary": "HashiCorp Consul Incorrect Access Control vulnerability"
+   },
+   {
+    "affected": [
+     {
+      "ecosystem": "Go",
+      "name": "github.com/hashicorp/consul",
+      "ranges": [
+       {
+        "events": [
+         {
+          "introduced": "1.8.0"
+         },
+         {
+          "fixed": "1.9.15"
+         }
+        ],
+        "type": "SEMVER"
+       }
+      ]
+     },
+     {
+      "ecosystem": "Go",
+      "name": "github.com/hashicorp/consul",
+      "ranges": [
+       {
+        "events": [
+         {
+          "introduced": "1.10.0"
+         },
+         {
+          "fixed": "1.10.8"
+         }
+        ],
+        "type": "SEMVER"
+       }
+      ]
+     },
+     {
+      "ecosystem": "Go",
+      "name": "github.com/hashicorp/consul",
+      "ranges": [
+       {
+        "events": [
+         {
+          "introduced": "1.11.0"
+         },
+         {
+          "fixed": "1.11.3"
+         }
+        ],
+        "type": "SEMVER"
+       }
+      ]
+     }
+    ],
+    "aliases": [
+     "BIT-consul-2022-24687",
+     "CVE-2022-24687",
+     "GO-2022-0953"
+    ],
+    "id": "GHSA-hj93-5fg3-3chr",
+    "modified": "2024-08-21T16:28:32.475852Z",
+    "severity": [
+     {
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H",
+      "type": "CVSS_V3"
+     }
+    ],
+    "summary": "HashiCorp Consul Ingress Gateway Panic Can Shutdown Servers"
+   },
+   {
+    "affected": [
+     {
+      "ecosystem": "Go",
+      "name": "github.com/hashicorp/consul",
+      "ranges": [
+       {
+        "events": [
+         {
+          "introduced": "1.8.1"
+         },
+         {
+          "fixed": "1.11.9"
+         }
+        ],
+        "type": "SEMVER"
+       }
+      ]
+     },
+     {
+      "ecosystem": "Go",
+      "name": "github.com/hashicorp/consul",
+      "ranges": [
+       {
+        "events": [
+         {
+          "introduced": "1.12.0"
+         },
+         {
+          "fixed": "1.12.5"
+         }
+        ],
+        "type": "SEMVER"
+       }
+      ]
+     },
+     {
+      "ecosystem": "Go",
+      "name": "github.com/hashicorp/consul",
+      "ranges": [
+       {
+        "events": [
+         {
+          "introduced": "1.13.0"
+         },
+         {
+          "fixed": "1.13.2"
+         }
+        ],
+        "type": "SEMVER"
+       }
+      ]
+     }
+    ],
+    "aliases": [
+     "BIT-consul-2021-41803",
+     "CVE-2021-41803",
+     "GO-2024-2683"
+    ],
+    "id": "GHSA-hr3v-8cp3-68rf",
+    "modified": "2026-08-07T08:12:08.554184271Z",
+    "severity": [
+     {
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:N/A:H",
+      "type": "CVSS_V3"
+     }
+    ],
+    "summary": "HashiCorp Consul does not properly validate node or segment names prior to usage in JWT claim assertions"
+   },
+   {
+    "affected": [
+     {
+      "ecosystem": "Go",
+      "name": "github.com/hashicorp/consul",
+      "ranges": [
+       {
+        "events": [
+         {
+          "introduced": "1.6.0"
+         },
+         {
+          "fixed": "1.6.6"
+         }
+        ],
+        "type": "SEMVER"
+       }
+      ]
+     },
+     {
+      "ecosystem": "Go",
+      "name": "github.com/hashicorp/consul",
+      "ranges": [
+       {
+        "events": [
+         {
+          "introduced": "1.7.0"
+         },
+         {
+          "fixed": "1.7.4"
+         }
+        ],
+        "type": "SEMVER"
+       }
+      ]
+     }
+    ],
+    "aliases": [
+     "BIT-consul-2020-12797",
+     "CVE-2020-12797",
+     "GO-2022-0847"
+    ],
+    "id": "GHSA-hwqm-x785-qh8p",
+    "modified": "2024-08-21T15:58:47.260202Z",
+    "severity": [
+     {
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:L/A:N",
+      "type": "CVSS_V3"
+     }
+    ],
+    "summary": "Incorrect Permission Assignment for Critical Resource\tin Hashicorp Consul"
+   },
+   {
+    "affected": [
+     {
+      "ecosystem": "Go",
+      "name": "github.com/hashicorp/consul",
+      "ranges": [
+       {
+        "events": [
+         {
+          "introduced": "0"
+         },
+         {
+          "fixed": "1.11.9"
+         }
+        ],
+        "type": "SEMVER"
+       }
+      ]
+     },
+     {
+      "ecosystem": "Go",
+      "name": "github.com/hashicorp/consul",
+      "ranges": [
+       {
+        "events": [
+         {
+          "introduced": "1.12.0"
+         },
+         {
+          "fixed": "1.12.5"
+         }
+        ],
+        "type": "SEMVER"
+       }
+      ]
+     },
+     {
+      "ecosystem": "Go",
+      "name": "github.com/hashicorp/consul",
+      "ranges": [
+       {
+        "events": [
+         {
+          "introduced": "1.13.0"
+         },
+         {
+          "fixed": "1.13.2"
+         }
+        ],
+        "type": "SEMVER"
+       }
+      ]
+     }
+    ],
+    "aliases": [
+     "BIT-consul-2022-40716",
+     "CVE-2022-40716",
+     "GO-2022-1029"
+    ],
+    "id": "GHSA-m69r-9g56-7mv8",
+    "modified": "2026-09-10T03:49:45.765196342Z",
+    "severity": [
+     {
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:H/A:N",
+      "type": "CVSS_V3"
+     }
+    ],
+    "summary": "HashiCorp Consul vulnerable to authorization bypass"
+   },
+   {
+    "affected": [
+     {
+      "ecosystem": "Go",
+      "name": "github.com/hashicorp/consul",
+      "ranges": [
+       {
+        "events": [
+         {
+          "introduced": "1.6.0-beta1"
+         },
+         {
+          "fixed": "1.6.6"
+         }
+        ],
+        "type": "SEMVER"
+       }
+      ]
+     },
+     {
+      "ecosystem": "Go",
+      "name": "github.com/hashicorp/consul",
+      "ranges": [
+       {
+        "events": [
+         {
+          "introduced": "1.7.0"
+         },
+         {
+          "fixed": "1.7.4"
+         }
+        ],
+        "type": "SEMVER"
+       }
+      ]
+     }
+    ],
+    "aliases": [
+     "BIT-consul-2020-13170",
+     "CVE-2020-13170",
+     "GO-2022-0859"
+    ],
+    "id": "GHSA-p2j5-3f4c-224r",
+    "modified": "2024-08-21T15:58:32.402283Z",
+    "severity": [
+     {
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N",
+      "type": "CVSS_V3"
+     }
+    ],
+    "summary": "Improper Input Validation in HashiCorp Consul"
+   },
+   {
+    "affected": [
+     {
+      "ecosystem": "Go",
+      "name": "github.com/hashicorp/consul",
+      "ranges": [
+       {
+        "events": [
+         {
+          "introduced": "1.6.0-beta1"
+         },
+         {
+          "fixed": "1.6.6"
+         }
+        ],
+        "type": "SEMVER"
+       }
+      ]
+     },
+     {
+      "ecosystem": "Go",
+      "name": "github.com/hashicorp/consul",
+      "ranges": [
+       {
+        "events": [
+         {
+          "introduced": "1.7.0"
+         },
+         {
+          "fixed": "1.7.4"
+         }
+        ],
+        "type": "SEMVER"
+       }
+      ]
+     }
+    ],
+    "aliases": [
+     "BIT-consul-2020-12758",
+     "CVE-2020-12758",
+     "GO-2022-0861"
+    ],
+    "id": "GHSA-q2qr-3c2p-9235",
+    "modified": "2024-08-21T15:58:57.876325Z",
+    "severity": [
+     {
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:L",
+      "type": "CVSS_V3"
+     }
+    ],
+    "summary": "Denial of Service (DoS) in HashiCorp Consul"
+   },
+   {
+    "affected": [
+     {
+      "ecosystem": "Go",
+      "name": "github.com/hashicorp/consul",
+      "ranges": [
+       {
+        "events": [
+         {
+          "introduced": "0"
+         },
+         {
+          "fixed": "1.9.17"
+         }
+        ],
+        "type": "SEMVER"
+       }
+      ]
+     },
+     {
+      "ecosystem": "Go",
+      "name": "github.com/hashicorp/consul",
+      "ranges": [
+       {
+        "events": [
+         {
+          "introduced": "1.10.0"
+         },
+         {
+          "fixed": "1.10.10"
+         }
+        ],
+        "type": "SEMVER"
+       }
+      ]
+     },
+     {
+      "ecosystem": "Go",
+      "name": "github.com/hashicorp/consul",
+      "ranges": [
+       {
+        "events": [
+         {
+          "introduced": "1.11.0"
+         },
+         {
+          "fixed": "1.11.5"
+         }
+        ],
+        "type": "SEMVER"
+       }
+      ]
+     }
+    ],
+    "aliases": [
+     "BIT-consul-2022-29153",
+     "CVE-2022-29153",
+     "GO-2022-0615"
+    ],
+    "id": "GHSA-q6h7-4qgw-2j9p",
+    "modified": "2026-09-10T03:49:36.686114722Z",
+    "severity": [
+     {
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:H/A:N",
+      "type": "CVSS_V3"
+     }
+    ],
+    "summary": "Hashicorp Consul HTTP health check endpoints returning an HTTP redirect may be abused as SSRF vector"
+   },
+   {
+    "affected": [
+     {
+      "ecosystem": "Go",
+      "name": "github.com/hashicorp/consul",
+      "ranges": [
+       {
+        "events": [
+         {
+          "introduced": "0"
+         },
+         {
+          "fixed": "1.4.4"
+         }
+        ],
+        "type": "SEMVER"
+       }
+      ]
+     }
+    ],
+    "aliases": [
+     "CVE-2019-9764",
+     "GO-2023-1853"
+    ],
+    "id": "GHSA-q7fx-wm2p-qfj8",
+    "modified": "2026-09-10T03:49:36.486855299Z",
+    "severity": [
+     {
+      "score": "CVSS:3.0/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:N",
+      "type": "CVSS_V3"
+     }
+    ],
+    "summary": "HashiCorp Consul vulnerable to Origin Validation Error"
+   },
+   {
+    "affected": [
+     {
+      "ecosystem": "Go",
+      "name": "github.com/hashicorp/consul",
+      "ranges": [
+       {
+        "events": [
+         {
+          "introduced": "0"
+         },
+         {
+          "fixed": "1.22.0"
+         }
+        ],
+        "type": "SEMVER"
+       }
+      ]
+     }
+    ],
+    "aliases": [
+     "BIT-consul-2025-11375",
+     "CVE-2025-11375",
+     "GO-2025-4082"
+    ],
+    "id": "GHSA-qh7p-pfq3-677h",
+    "modified": "2026-09-10T03:50:30.281632858Z",
+    "severity": [
+     {
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H",
+      "type": "CVSS_V3"
+     }
+    ],
+    "summary": "Consul event endpoint is vulnerable to denial of service"
+   },
+   {
+    "affected": [
+     {
+      "ecosystem": "Go",
+      "name": "github.com/hashicorp/consul",
+      "ranges": [
+       {
+        "events": [
+         {
+          "introduced": "1.4.1"
+         },
+         {
+          "fixed": "1.6.3"
+         }
+        ],
+        "type": "SEMVER"
+       }
+      ]
+     }
+    ],
+    "aliases": [
+     "BIT-consul-2020-7955",
+     "CVE-2020-7955",
+     "GO-2022-0874"
+    ],
+    "id": "GHSA-r9w6-rhh9-7v53",
+    "modified": "2024-08-21T15:58:41.292197Z",
+    "severity": [
+     {
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N",
+      "type": "CVSS_V3"
+     }
+    ],
+    "summary": "Incorrect Authorization in HashiCorp Consul"
+   },
+   {
+    "affected": [
+     {
+      "ecosystem": "Go",
+      "name": "github.com/hashicorp/consul",
+      "ranges": [
+       {
+        "events": [
+         {
+          "introduced": "1.2.0"
+         },
+         {
+          "fixed": "1.6.6"
+         }
+        ],
+        "type": "SEMVER"
+       }
+      ]
+     },
+     {
+      "ecosystem": "Go",
+      "name": "github.com/hashicorp/consul",
+      "ranges": [
+       {
+        "events": [
+         {
+          "introduced": "1.7.0"
+         },
+         {
+          "fixed": "1.7.4"
+         }
+        ],
+        "type": "SEMVER"
+       }
+      ]
+     }
+    ],
+    "aliases": [
+     "BIT-consul-2020-13250",
+     "CVE-2020-13250",
+     "GO-2022-0879"
+    ],
+    "id": "GHSA-rqjq-mrgx-85hp",
+    "modified": "2024-08-21T15:58:49.598835Z",
+    "severity": [
+     {
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+      "type": "CVSS_V3"
+     }
+    ],
+    "summary": "Allocation of Resources Without Limits or Throttling in Hashicorp Consul"
+   },
+   {
+    "affected": [
+     {
+      "ecosystem": "Go",
+      "name": "github.com/hashicorp/consul",
+      "ranges": [
+       {
+        "events": [
+         {
+          "introduced": "1.15.0"
+         },
+         {
+          "fixed": "1.15.3"
+         }
+        ],
+        "type": "SEMVER"
+       }
+      ]
+     }
+    ],
+    "aliases": [
+     "BIT-consul-2023-2816",
+     "CVE-2023-2816",
+     "GO-2023-1828"
+    ],
+    "id": "GHSA-rqjq-ww83-wv5c",
+    "modified": "2024-08-20T20:58:57.420734Z",
+    "severity": [
+     {
+      "score": "CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:C/C:H/I:H/A:N",
+      "type": "CVSS_V3"
+     }
+    ],
+    "summary": "Hashicorp Consul allows user with service:write permissions to patch remote proxy instances"
+   },
+   {
+    "affected": [
+     {
+      "ecosystem": "Go",
+      "name": "github.com/hashicorp/consul",
+      "ranges": [
+       {
+        "events": [
+         {
+          "introduced": "1.14.0"
+         },
+         {
+          "fixed": "1.14.5"
+         }
+        ],
+        "type": "SEMVER"
+       }
+      ]
+     }
+    ],
+    "aliases": [
+     "BIT-consul-2023-0845",
+     "CVE-2023-0845",
+     "GO-2023-1639"
+    ],
+    "id": "GHSA-wj6x-hcc2-f32j",
+    "modified": "2026-08-07T08:12:25.423441938Z",
+    "severity": [
+     {
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H",
+      "type": "CVSS_V3"
+     }
+    ],
+    "summary": "Consul Server Panic when Ingress and API Gateways Configured with Peering Connections"
+   },
+   {
+    "affected": [
+     {
+      "ecosystem": "Go",
+      "name": "github.com/hashicorp/consul",
+      "ranges": [
+       {
+        "events": [
+         {
+          "introduced": "0"
+         },
+         {
+          "fixed": "1.8.15"
+         },
+         {
+          "introduced": "1.9.0"
+         },
+         {
+          "fixed": "1.9.9"
+         },
+         {
+          "introduced": "1.10.1"
+         },
+         {
+          "fixed": "1.10.2"
+         }
+        ],
+        "type": "SEMVER"
+       }
+      ]
+     }
+    ],
+    "aliases": [
+     "BIT-consul-2021-38698",
+     "CVE-2021-38698",
+     "GHSA-6hw5-6gcx-phmw"
+    ],
+    "id": "GO-2022-0559",
+    "modified": "2026-02-04T03:16:50.718507Z",
+    "summary": "HashiCorp Consul and Consul Enterprise 1.10.1 Txn.Apply endpoint allowed services to register proxies for other services, enabling access to service traffic. in github.com/hashicorp/consul"
+   },
+   {
+    "affected": [
+     {
+      "ecosystem": "Go",
+      "name": "github.com/hashicorp/consul",
+      "ranges": [
+       {
+        "events": [
+         {
+          "introduced": "0"
+         },
+         {
+          "fixed": "1.8.15"
+         },
+         {
+          "introduced": "1.9.0"
+         },
+         {
+          "fixed": "1.9.9"
+         },
+         {
+          "introduced": "1.10.1"
+         },
+         {
+          "fixed": "1.10.2"
+         }
+        ],
+        "type": "SEMVER"
+       }
+      ]
+     }
+    ],
+    "aliases": [
+     "BIT-consul-2021-37219",
+     "CVE-2021-37219",
+     "GHSA-ccw8-7688-vqx4"
+    ],
+    "id": "GO-2022-0593",
+    "modified": "2026-02-04T03:38:36.473324Z",
+    "summary": "HashiCorp Consul Privilege Escalation Vulnerability in github.com/hashicorp/consul"
+   },
+   {
+    "affected": [
+     {
+      "ecosystem": "Go",
+      "name": "github.com/hashicorp/consul",
+      "ranges": [
+       {
+        "events": [
+         {
+          "introduced": "0"
+         },
+         {
+          "fixed": "1.9.17"
+         },
+         {
+          "introduced": "1.10.0"
+         },
+         {
+          "fixed": "1.10.10"
+         },
+         {
+          "introduced": "1.11.0"
+         },
+         {
+          "fixed": "1.11.5"
+         }
+        ],
+        "type": "SEMVER"
+       }
+      ]
+     }
+    ],
+    "aliases": [
+     "BIT-consul-2022-29153",
+     "CVE-2022-29153",
+     "GHSA-q6h7-4qgw-2j9p"
+    ],
+    "id": "GO-2022-0615",
+    "modified": "2026-02-04T03:41:28.299846Z",
+    "summary": "Hashicorp Consul HTTP health check endpoints returning an HTTP redirect may be abused as SSRF vector in github.com/hashicorp/consul"
+   },
+   {
+    "affected": [
+     {
+      "ecosystem": "Go",
+      "name": "github.com/hashicorp/consul",
+      "ranges": [
+       {
+        "events": [
+         {
+          "introduced": "0"
+         },
+         {
+          "fixed": "1.6.3"
+         }
+        ],
+        "type": "SEMVER"
+       }
+      ]
+     }
+    ],
+    "aliases": [
+     "BIT-consul-2020-7219",
+     "CVE-2020-7219",
+     "GHSA-23jv-v6qj-3fhh"
+    ],
+    "id": "GO-2022-0776",
+    "modified": "2026-02-04T03:16:16.585796Z",
+    "summary": "Denial of Service (DoS) in HashiCorp Consul in github.com/hashicorp/consul"
+   },
+   {
+    "affected": [
+     {
+      "ecosystem": "Go",
+      "name": "github.com/hashicorp/consul",
+      "ranges": [
+       {
+        "events": [
+         {
+          "introduced": "1.6.0"
+         },
+         {
+          "fixed": "1.6.6"
+         },
+         {
+          "introduced": "1.7.0"
+         },
+         {
+          "fixed": "1.7.4"
+         }
+        ],
+        "type": "SEMVER"
+       }
+      ]
+     }
+    ],
+    "aliases": [
+     "BIT-consul-2020-12797",
+     "CVE-2020-12797",
+     "GHSA-hwqm-x785-qh8p"
+    ],
+    "id": "GO-2022-0847",
+    "modified": "2026-03-03T04:52:20.507297Z",
+    "summary": "Incorrect Permission Assignment for Critical Resource in Hashicorp Consul in github.com/hashicorp/consul"
+   },
+   {
+    "affected": [
+     {
+      "ecosystem": "Go",
+      "name": "github.com/hashicorp/consul",
+      "ranges": [
+       {
+        "events": [
+         {
+          "introduced": "1.6.0-beta1"
+         },
+         {
+          "fixed": "1.6.6"
+         },
+         {
+          "introduced": "1.7.0"
+         },
+         {
+          "fixed": "1.7.4"
+         }
+        ],
+        "type": "SEMVER"
+       }
+      ]
+     }
+    ],
+    "aliases": [
+     "BIT-consul-2020-13170",
+     "CVE-2020-13170",
+     "GHSA-p2j5-3f4c-224r"
+    ],
+    "id": "GO-2022-0859",
+    "modified": "2026-03-03T04:52:20.456876Z",
+    "summary": "Improper Input Validation in HashiCorp Consul in github.com/hashicorp/consul"
+   },
+   {
+    "affected": [
+     {
+      "ecosystem": "Go",
+      "name": "github.com/hashicorp/consul",
+      "ranges": [
+       {
+        "events": [
+         {
+          "introduced": "1.6.0-beta1"
+         },
+         {
+          "fixed": "1.6.6"
+         },
+         {
+          "introduced": "1.7.0"
+         },
+         {
+          "fixed": "1.7.4"
+         }
+        ],
+        "type": "SEMVER"
+       }
+      ]
+     }
+    ],
+    "aliases": [
+     "BIT-consul-2020-12758",
+     "CVE-2020-12758",
+     "GHSA-q2qr-3c2p-9235"
+    ],
+    "id": "GO-2022-0861",
+    "modified": "2026-03-03T04:52:22.058982Z",
+    "summary": "Denial of Service (DoS) in HashiCorp Consul in github.com/hashicorp/consul"
+   },
+   {
+    "affected": [
+     {
+      "ecosystem": "Go",
+      "name": "github.com/hashicorp/consul",
+      "ranges": [
+       {
+        "events": [
+         {
+          "introduced": "1.4.1"
+         },
+         {
+          "fixed": "1.6.3"
+         }
+        ],
+        "type": "SEMVER"
+       }
+      ]
+     }
+    ],
+    "aliases": [
+     "BIT-consul-2020-7955",
+     "CVE-2020-7955",
+     "GHSA-r9w6-rhh9-7v53"
+    ],
+    "id": "GO-2022-0874",
+    "modified": "2026-03-03T04:52:21.555582Z",
+    "summary": "Incorrect Authorization in HashiCorp Consul in github.com/hashicorp/consul"
+   },
+   {
+    "affected": [
+     {
+      "ecosystem": "Go",
+      "name": "github.com/hashicorp/consul",
+      "ranges": [
+       {
+        "events": [
+         {
+          "introduced": "1.2.0"
+         },
+         {
+          "fixed": "1.6.6"
+         },
+         {
+          "introduced": "1.7.0"
+         },
+         {
+          "fixed": "1.7.4"
+         }
+        ],
+        "type": "SEMVER"
+       }
+      ]
+     }
+    ],
+    "aliases": [
+     "BIT-consul-2020-13250",
+     "CVE-2020-13250",
+     "GHSA-rqjq-mrgx-85hp"
+    ],
+    "id": "GO-2022-0879",
+    "modified": "2026-03-03T04:52:21.585199Z",
+    "summary": "Allocation of Resources Without Limits or Throttling in Hashicorp Consul in github.com/hashicorp/consul"
+   },
+   {
+    "affected": [
+     {
+      "ecosystem": "Go",
+      "name": "github.com/hashicorp/consul",
+      "ranges": [
+       {
+        "events": [
+         {
+          "introduced": "0"
+         },
+         {
+          "fixed": "1.10.1"
+         }
+        ],
+        "type": "SEMVER"
+       }
+      ]
+     }
+    ],
+    "aliases": [
+     "BIT-consul-2021-32574",
+     "CVE-2021-32574",
+     "GHSA-25gf-8qrr-g78r"
+    ],
+    "id": "GO-2022-0894",
+    "modified": "2026-02-04T02:58:22.308389Z",
+    "summary": "Hashicorp Consul Missing SSL Certificate Validation in github.com/hashicorp/consul"
+   },
+   {
+    "affected": [
+     {
+      "ecosystem": "Go",
+      "name": "github.com/hashicorp/consul",
+      "ranges": [
+       {
+        "events": [
+         {
+          "introduced": "0"
+         },
+         {
+          "fixed": "1.10.1"
+         }
+        ],
+        "type": "SEMVER"
+       }
+      ]
+     }
+    ],
+    "aliases": [
+     "BIT-consul-2021-36213",
+     "CVE-2021-36213",
+     "GHSA-8h2g-r292-j8xh"
+    ],
+    "id": "GO-2022-0895",
+    "modified": "2026-02-04T03:52:00.669102Z",
+    "summary": "HashiCorp Consul L7 deny intention results in an allow action in github.com/hashicorp/consul"
+   },
+   {
+    "affected": [
+     {
+      "ecosystem": "Go",
+      "name": "github.com/hashicorp/consul",
+      "ranges": [
+       {
+        "events": [
+         {
+          "introduced": "1.8.0"
+         },
+         {
+          "fixed": "1.9.15"
+         },
+         {
+          "introduced": "1.10.0"
+         },
+         {
+          "fixed": "1.10.8"
+         },
+         {
+          "introduced": "1.11.0"
+         },
+         {
+          "fixed": "1.11.3"
+         }
+        ],
+        "type": "SEMVER"
+       }
+      ]
+     }
+    ],
+    "aliases": [
+     "BIT-consul-2022-24687",
+     "CVE-2022-24687",
+     "GHSA-hj93-5fg3-3chr"
+    ],
+    "id": "GO-2022-0953",
+    "modified": "2026-03-03T04:52:30.757384Z",
+    "summary": "HashiCorp Consul Ingress Gateway Panic Can Shutdown Servers in github.com/hashicorp/consul"
+   },
+   {
+    "affected": [
+     {
+      "ecosystem": "Go",
+      "name": "github.com/hashicorp/consul",
+      "ranges": [
+       {
+        "events": [
+         {
+          "introduced": "0"
+         },
+         {
+          "fixed": "1.11.9"
+         },
+         {
+          "introduced": "1.12.0"
+         },
+         {
+          "fixed": "1.12.5"
+         },
+         {
+          "introduced": "1.13.0"
+         },
+         {
+          "fixed": "1.13.2"
+         }
+        ],
+        "type": "SEMVER"
+       }
+      ]
+     }
+    ],
+    "aliases": [
+     "BIT-consul-2022-40716",
+     "CVE-2022-40716",
+     "GHSA-m69r-9g56-7mv8"
+    ],
+    "id": "GO-2022-1029",
+    "modified": "2026-02-04T02:57:33.057332Z",
+    "summary": "HashiCorp Consul vulnerable to authorization bypass in github.com/hashicorp/consul"
+   },
+   {
+    "affected": [
+     {
+      "ecosystem": "Go",
+      "name": "github.com/hashicorp/consul",
+      "ranges": [
+       {
+        "events": [
+         {
+          "introduced": "1.13.0"
+         },
+         {
+          "fixed": "1.14.0"
+         }
+        ],
+        "type": "SEMVER"
+       }
+      ]
+     }
+    ],
+    "aliases": [
+     "BIT-consul-2022-3920",
+     "CVE-2022-3920",
+     "GHSA-gw2g-hhc9-wgjh"
+    ],
+    "id": "GO-2022-1121",
+    "modified": "2026-08-07T08:12:23.772786087Z",
+    "summary": "Missing Authorization in HashiCorp Consul in github.com/hashicorp/consul"
+   },
+   {
+    "affected": [
+     {
+      "ecosystem": "Go",
+      "name": "github.com/hashicorp/consul",
+      "ranges": [
+       {
+        "events": [
+         {
+          "introduced": "1.14.0"
+         },
+         {
+          "fixed": "1.14.5"
+         }
+        ],
+        "type": "SEMVER"
+       }
+      ]
+     }
+    ],
+    "aliases": [
+     "BIT-consul-2023-0845",
+     "CVE-2023-0845",
+     "GHSA-wj6x-hcc2-f32j"
+    ],
+    "id": "GO-2023-1639",
+    "modified": "2026-08-07T08:12:26.513171999Z",
+    "summary": "Consul Server Panic when Ingress and API Gateways Configured with Peering Connections in github.com/hashicorp/consul"
+   },
+   {
+    "affected": [
+     {
+      "ecosystem": "Go",
+      "name": "github.com/hashicorp/consul",
+      "ranges": [
+       {
+        "events": [
+         {
+          "introduced": "0"
+         },
+         {
+          "fixed": "1.14.5"
+         },
+         {
+          "introduced": "1.15.0"
+         },
+         {
+          "fixed": "1.15.3"
+         }
+        ],
+        "type": "SEMVER"
+       }
+      ]
+     }
+    ],
+    "aliases": [
+     "BIT-consul-2023-1297",
+     "CVE-2023-1297",
+     "GHSA-c57c-7hrj-6q6v"
+    ],
+    "id": "GO-2023-1827",
+    "modified": "2026-02-04T04:35:40.981453Z",
+    "summary": "Hashicorp Consul vulnerable to denial of service in github.com/hashicorp/consul"
+   },
+   {
+    "affected": [
+     {
+      "ecosystem": "Go",
+      "name": "github.com/hashicorp/consul",
+      "ranges": [
+       {
+        "events": [
+         {
+          "introduced": "1.15.0"
+         },
+         {
+          "fixed": "1.15.3"
+         }
+        ],
+        "type": "SEMVER"
+       }
+      ]
+     }
+    ],
+    "aliases": [
+     "BIT-consul-2023-2816",
+     "CVE-2023-2816",
+     "GHSA-rqjq-ww83-wv5c"
+    ],
+    "id": "GO-2023-1828",
+    "modified": "2026-03-03T04:53:48.219284Z",
+    "summary": "Hashicorp Consul allows user with service:write permissions to patch remote proxy instances in github.com/hashicorp/consul"
+   },
+   {
+    "affected": [
+     {
+      "ecosystem": "Go",
+      "name": "github.com/hashicorp/consul",
+      "ranges": [
+       {
+        "events": [
+         {
+          "introduced": "0.5.1"
+         },
+         {
+          "fixed": "1.4.1"
+         }
+        ],
+        "type": "SEMVER"
+       }
+      ]
+     }
+    ],
+    "aliases": [
+     "CVE-2018-19653",
+     "GHSA-4qvx-qq5w-695p"
+    ],
+    "id": "GO-2023-1850",
+    "modified": "2026-02-04T02:26:39.232910Z",
+    "summary": "HashiCorp Consul can use cleartext agent-to-agent RPC communication in github.com/hashicorp/consul"
+   },
+   {
+    "affected": [
+     {
+      "ecosystem": "Go",
+      "name": "github.com/hashicorp/consul",
+      "ranges": [
+       {
+        "events": [
+         {
+          "introduced": "0"
+         },
+         {
+          "fixed": "1.7.14"
+         },
+         {
+          "introduced": "1.8.0"
+         },
+         {
+          "fixed": "1.8.10"
+         },
+         {
+          "introduced": "1.9.0"
+         },
+         {
+          "fixed": "1.9.5"
+         }
+        ],
+        "type": "SEMVER"
+       }
+      ]
+     }
+    ],
+    "aliases": [
+     "BIT-consul-2020-25864",
+     "CVE-2020-25864",
+     "GHSA-8xmx-h8rq-h94j"
+    ],
+    "id": "GO-2023-1851",
+    "modified": "2026-02-04T03:19:43.866533Z",
+    "summary": "HashiCorp Consul Cross-site Scripting vulnerability in github.com/hashicorp/consul"
+   },
+   {
+    "affected": [
+     {
+      "ecosystem": "Go",
+      "name": "github.com/hashicorp/consul",
+      "ranges": [
+       {
+        "events": [
+         {
+          "introduced": "1.4.0"
+         },
+         {
+          "fixed": "1.5.1"
+         }
+        ],
+        "type": "SEMVER"
+       }
+      ]
+     }
+    ],
+    "aliases": [
+     "CVE-2019-12291",
+     "GHSA-h65h-v7fw-4p38"
+    ],
+    "id": "GO-2023-1852",
+    "modified": "2026-03-03T04:53:50.179609Z",
+    "summary": "HashiCorp Consul Incorrect Access Control vulnerability in github.com/hashicorp/consul"
+   },
+   {
+    "affected": [
+     {
+      "ecosystem": "Go",
+      "name": "github.com/hashicorp/consul",
+      "ranges": [
+       {
+        "events": [
+         {
+          "introduced": "0"
+         },
+         {
+          "fixed": "1.4.4"
+         }
+        ],
+        "type": "SEMVER"
+       }
+      ]
+     }
+    ],
+    "aliases": [
+     "CVE-2019-9764",
+     "GHSA-q7fx-wm2p-qfj8"
+    ],
+    "id": "GO-2023-1853",
+    "modified": "2026-02-04T02:41:18.274848Z",
+    "summary": "HashiCorp Consul vulnerable to Origin Validation Error in github.com/hashicorp/consul"
+   },
+   {
+    "affected": [
+     {
+      "ecosystem": "Go",
+      "name": "github.com/hashicorp/consul",
+      "ranges": [
+       {
+        "events": [
+         {
+          "introduced": "1.4.0"
+         },
+         {
+          "fixed": "1.4.3"
+         }
+        ],
+        "type": "SEMVER"
+       }
+      ]
+     }
+    ],
+    "aliases": [
+     "CVE-2019-8336",
+     "GHSA-fhm8-cxcv-pwvc"
+    ],
+    "id": "GO-2023-1945",
+    "modified": "2026-03-03T04:54:00.841383Z",
+    "summary": "HashiCorp Consul Access Restriction Bypass in github.com/hashicorp/consul"
+   },
+   {
+    "affected": [
+     {
+      "ecosystem": "Go",
+      "name": "github.com/hashicorp/consul",
+      "ranges": [
+       {
+        "events": [
+         {
+          "introduced": "1.7.0"
+         },
+         {
+          "fixed": "1.7.9"
+         },
+         {
+          "introduced": "1.8.0"
+         },
+         {
+          "fixed": "1.8.5"
+         }
+        ],
+        "type": "SEMVER"
+       }
+      ]
+     }
+    ],
+    "aliases": [
+     "BIT-consul-2020-25201",
+     "CVE-2020-25201",
+     "GHSA-496g-fr33-whrf"
+    ],
+    "id": "GO-2024-2501",
+    "modified": "2026-03-03T04:54:35.679386Z",
+    "summary": "Denial of service in HashiCorp Consul in github.com/hashicorp/consul"
+   },
+   {
+    "affected": [
+     {
+      "ecosystem": "Go",
+      "name": "github.com/hashicorp/consul",
+      "ranges": [
+       {
+        "events": [
+         {
+          "introduced": "1.2.0"
+         },
+         {
+          "fixed": "1.6.10"
+         },
+         {
+          "introduced": "1.7.0"
+         },
+         {
+          "fixed": "1.7.10"
+         },
+         {
+          "introduced": "1.8.0"
+         },
+         {
+          "fixed": "1.8.6"
+         }
+        ],
+        "type": "SEMVER"
+       }
+      ]
+     }
+    ],
+    "aliases": [
+     "BIT-consul-2020-28053",
+     "CVE-2020-28053",
+     "GHSA-6m72-467w-94rh"
+    ],
+    "id": "GO-2024-2505",
+    "modified": "2026-03-03T04:54:34.923488Z",
+    "summary": "Privilege Escalation in HashiCorp Consul in github.com/hashicorp/consul"
+   },
+   {
+    "affected": [
+     {
+      "ecosystem": "Go",
+      "name": "github.com/hashicorp/consul",
+      "ranges": [
+       {
+        "events": [
+         {
+          "introduced": "1.8.1"
+         },
+         {
+          "fixed": "1.11.9"
+         },
+         {
+          "introduced": "1.12.0"
+         },
+         {
+          "fixed": "1.12.5"
+         },
+         {
+          "introduced": "1.13.0"
+         },
+         {
+          "fixed": "1.13.2"
+         }
+        ],
+        "type": "SEMVER"
+       }
+      ]
+     }
+    ],
+    "aliases": [
+     "BIT-consul-2021-41803",
+     "CVE-2021-41803",
+     "GHSA-hr3v-8cp3-68rf"
+    ],
+    "id": "GO-2024-2683",
+    "modified": "2026-08-07T08:12:27.004083333Z",
+    "summary": "Improper handling of node names in JWT claims assertions in github.com/hashicorp/consul"
+   },
+   {
+    "affected": [
+     {
+      "ecosystem": "Go",
+      "name": "github.com/hashicorp/consul",
+      "ranges": [
+       {
+        "events": [
+         {
+          "introduced": "1.16.0"
+         },
+         {
+          "fixed": "1.16.1"
+         }
+        ],
+        "type": "SEMVER"
+       }
+      ]
+     }
+    ],
+    "aliases": [
+     "BIT-consul-2023-3518",
+     "CVE-2023-3518",
+     "GHSA-9rhf-q362-77mx"
+    ],
+    "id": "GO-2024-2704",
+    "modified": "2026-08-07T08:12:22.803337028Z",
+    "summary": "Consul JWT Auth in L7 Intentions Allow for Mismatched Service Identity and JWT Providers in github.com/hashicorp/consul"
+   },
+   {
+    "affected": [
+     {
+      "ecosystem": "Go",
+      "name": "github.com/hashicorp/consul",
+      "ranges": [
+       {
+        "events": [
+         {
+          "introduced": "1.9.0"
+         },
+         {
+          "fixed": "1.20.1"
+         }
+        ],
+        "type": "SEMVER"
+       }
+      ]
+     }
+    ],
+    "aliases": [
+     "BIT-consul-2024-10006",
+     "CVE-2024-10006",
+     "GHSA-5c4w-8hhh-3c3h"
+    ],
+    "id": "GO-2024-3241",
+    "modified": "2026-02-04T02:46:22.816688Z",
+    "summary": "Hashicorp Consul Improper Neutralization of HTTP Headers for Scripting Syntax vulnerability in github.com/hashicorp/consul"
+   },
+   {
+    "affected": [
+     {
+      "ecosystem": "Go",
+      "name": "github.com/hashicorp/consul",
+      "ranges": [
+       {
+        "events": [
+         {
+          "introduced": "1.4.1"
+         },
+         {
+          "fixed": "1.20.0"
+         }
+        ],
+        "type": "SEMVER"
+       }
+      ]
+     }
+    ],
+    "aliases": [
+     "BIT-consul-2024-10086",
+     "CVE-2024-10086",
+     "GHSA-99wr-c2px-grmh"
+    ],
+    "id": "GO-2024-3242",
+    "modified": "2026-02-04T04:24:06.158136Z",
+    "summary": "Hashicorp Consul Cross-site Scripting vulnerability in github.com/hashicorp/consul"
+   },
+   {
+    "affected": [
+     {
+      "ecosystem": "Go",
+      "name": "github.com/hashicorp/consul",
+      "ranges": [
+       {
+        "events": [
+         {
+          "introduced": "1.9.0"
+         },
+         {
+          "fixed": "1.20.1"
+         }
+        ],
+        "type": "SEMVER"
+       }
+      ]
+     }
+    ],
+    "aliases": [
+     "BIT-consul-2024-10005",
+     "CVE-2024-10005",
+     "GHSA-chgm-7r52-whjj"
+    ],
+    "id": "GO-2024-3243",
+    "modified": "2026-02-04T03:00:13.789758Z",
+    "summary": "Hashicorp Consul Path Traversal vulnerability in github.com/hashicorp/consul"
+   },
+   {
+    "affected": [
+     {
+      "ecosystem": "Go",
+      "name": "github.com/hashicorp/consul",
+      "ranges": [
+       {
+        "events": [
+         {
+          "introduced": "0"
+         },
+         {
+          "fixed": "1.22.0"
+         }
+        ],
+        "type": "SEMVER"
+       }
+      ]
+     }
+    ],
+    "aliases": [
+     "BIT-consul-2025-11374",
+     "CVE-2025-11374",
+     "GHSA-7g3r-8c6v-hfmr"
+    ],
+    "id": "GO-2025-4081",
+    "modified": "2026-02-04T03:41:09.688360Z",
+    "summary": "Consul key/value endpoint is vulnerable to denial of service in github.com/hashicorp/consul"
+   },
+   {
+    "affected": [
+     {
+      "ecosystem": "Go",
+      "name": "github.com/hashicorp/consul",
+      "ranges": [
+       {
+        "events": [
+         {
+          "introduced": "0"
+         },
+         {
+          "fixed": "1.22.0"
+         }
+        ],
+        "type": "SEMVER"
+       }
+      ]
+     }
+    ],
+    "aliases": [
+     "BIT-consul-2025-11375",
+     "CVE-2025-11375",
+     "GHSA-qh7p-pfq3-677h"
+    ],
+    "id": "GO-2025-4082",
+    "modified": "2026-02-04T02:37:28.484333Z",
+    "summary": "Consul event endpoint is vulnerable to denial of service in github.com/hashicorp/consul"
+   },
+   {
+    "affected": [
+     {
+      "ecosystem": "Go",
+      "name": "github.com/hashicorp/consul",
+      "ranges": [
+       {
+        "events": [
+         {
+          "introduced": "0"
+         },
+         {
+          "fixed": "1.22.5"
+         }
+        ],
+        "type": "SEMVER"
+       }
+      ]
+     }
+    ],
+    "aliases": [
+     "BIT-consul-2026-2808",
+     "CVE-2026-2808",
+     "GHSA-cpfq-66p2-336j"
+    ],
+    "id": "GO-2026-4690",
+    "modified": "2026-03-16T18:56:06.482800Z",
+    "summary": "Consul is vulnerable to arbitrary file read when configured with Kubernetes authentication in github.com/hashicorp/consul"
+   }
+  ],
+  "github.com/opencontainers/runc": [
+   {
+    "affected": [
+     {
+      "ecosystem": "Go",
+      "name": "github.com/opencontainers/runc",
+      "ranges": [
+       {
+        "events": [
+         {
+          "introduced": "0"
+         },
+         {
+          "fixed": "1.2.8"
+         }
+        ],
+        "type": "SEMVER"
+       }
+      ]
+     },
+     {
+      "ecosystem": "Go",
+      "name": "github.com/opencontainers/runc",
+      "ranges": [
+       {
+        "events": [
+         {
+          "introduced": "1.3.0-rc.1"
+         },
+         {
+          "fixed": "1.3.3"
+         }
+        ],
+        "type": "SEMVER"
+       }
+      ]
+     },
+     {
+      "ecosystem": "Go",
+      "name": "github.com/opencontainers/runc",
+      "ranges": [
+       {
+        "events": [
+         {
+          "introduced": "1.4.0-rc.1"
+         },
+         {
+          "fixed": "1.4.0-rc.3"
+         }
+        ],
+        "type": "SEMVER"
+       }
+      ]
+     }
+    ],
+    "aliases": [
+     "CVE-2025-31133",
+     "GO-2025-4096"
+    ],
+    "id": "GHSA-9493-h29p-rfm2",
+    "modified": "2026-09-10T03:50:30.785749905Z",
+    "severity": [
+     {
+      "score": "CVSS:4.0/AV:L/AC:L/AT:P/PR:L/UI:A/VC:H/VI:H/VA:H/SC:H/SI:H/SA:H",
+      "type": "CVSS_V4"
+     }
+    ],
+    "summary": "runc container escape via \"masked path\" abuse due to mount race conditions"
+   },
+   {
+    "affected": [
+     {
+      "ecosystem": "Go",
+      "name": "github.com/opencontainers/runc",
+      "ranges": [
+       {
+        "events": [
+         {
+          "introduced": "0"
+         },
+         {
+          "fixed": "1.0.0-rc95"
+         }
+        ],
+        "type": "SEMVER"
+       }
+      ]
+     }
+    ],
+    "aliases": [
+     "CVE-2021-30465",
+     "GO-2022-0914"
+    ],
+    "id": "GHSA-c3xm-pvg7-gh7r",
+    "modified": "2026-09-10T03:49:14.427758087Z",
+    "severity": [
+     {
+      "score": "CVSS:3.1/AV:A/AC:L/PR:L/UI:N/S:C/C:H/I:L/A:N",
+      "type": "CVSS_V3"
+     }
+    ],
+    "summary": "mount destinations can be swapped via symlink-exchange to cause mounts outside the rootfs"
+   },
+   {
+    "affected": [
+     {
+      "ecosystem": "Go",
+      "name": "github.com/opencontainers/runc",
+      "ranges": [
+       {
+        "events": [
+         {
+          "introduced": "0"
+         },
+         {
+          "fixed": "1.2.0-rc.1"
+         }
+        ],
+        "type": "SEMVER"
+       }
+      ]
+     }
+    ],
+    "id": "GHSA-c5pj-mqfh-rvc3",
+    "modified": "2026-09-10T03:50:00.236459560Z",
+    "severity": [
+     {
+      "score": "CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:U/C:H/I:H/A:H",
+      "type": "CVSS_V3"
+     }
+    ],
+    "summary": "Withdrawn: Runc allows an arbitrary systemd property to be injected"
+   },
+   {
+    "affected": [
+     {
+      "ecosystem": "Go",
+      "name": "github.com/opencontainers/runc",
+      "ranges": [
+       {
+        "events": [
+         {
+          "introduced": "0"
+         },
+         {
+          "fixed": "1.2.8"
+         }
+        ],
+        "type": "SEMVER"
+       }
+      ]
+     },
+     {
+      "ecosystem": "Go",
+      "name": "github.com/opencontainers/selinux",
+      "ranges": [
+       {
+        "events": [
+         {
+          "introduced": "0"
+         },
+         {
+          "fixed": "1.13.0"
+         }
+        ],
+        "type": "SEMVER"
+       }
+      ]
+     },
+     {
+      "ecosystem": "Go",
+      "name": "github.com/opencontainers/runc",
+      "ranges": [
+       {
+        "events": [
+         {
+          "introduced": "1.3.0-rc.1"
+         },
+         {
+          "fixed": "1.3.3"
+         }
+        ],
+        "type": "SEMVER"
+       }
+      ]
+     },
+     {
+      "ecosystem": "Go",
+      "name": "github.com/opencontainers/runc",
+      "ranges": [
+       {
+        "events": [
+         {
+          "introduced": "1.4.0-rc.1"
+         },
+         {
+          "fixed": "1.4.0-rc.3"
+         }
+        ],
+        "type": "SEMVER"
+       }
+      ]
+     }
+    ],
+    "aliases": [
+     "CVE-2025-52881",
+     "GO-2025-4098"
+    ],
+    "id": "GHSA-cgrx-mc8f-2prm",
+    "modified": "2026-09-10T03:50:30.902557357Z",
+    "severity": [
+     {
+      "score": "CVSS:4.0/AV:L/AC:L/AT:P/PR:L/UI:A/VC:H/VI:H/VA:H/SC:H/SI:H/SA:H",
+      "type": "CVSS_V4"
+     }
+    ],
+    "summary": "runc container escape and denial of service due to arbitrary write gadgets and procfs write redirects"
+   },
+   {
+    "affected": [
+     {
+      "ecosystem": "Go",
+      "name": "github.com/opencontainers/runc",
+      "ranges": [
+       {
+        "events": [
+         {
+          "introduced": "0"
+         },
+         {
+          "fixed": "1.1.2"
+         }
+        ],
+        "type": "SEMVER"
+       }
+      ]
+     }
+    ],
+    "aliases": [
+     "CVE-2022-29162",
+     "GO-2022-0452"
+    ],
+    "id": "GHSA-f3fp-gc8g-vw66",
+    "modified": "2026-09-10T03:49:33.065857528Z",
+    "severity": [
+     {
+      "score": "CVSS:3.1/AV:L/AC:L/PR:N/UI:N/S:U/C:L/I:L/A:L",
+      "type": "CVSS_V3"
+     }
+    ],
+    "summary": "Default inheritable capabilities for linux container should be empty"
+   },
+   {
+    "affected": [
+     {
+      "ecosystem": "Go",
+      "name": "github.com/opencontainers/runc",
+      "ranges": [
+       {
+        "events": [
+         {
+          "introduced": "0"
+         },
+         {
+          "fixed": "1.0.0-rc8.0.20190930145003-cad42f6e0932"
+         }
+        ],
+        "type": "SEMVER"
+       }
+      ]
+     },
+     {
+      "ecosystem": "Go",
+      "name": "github.com/opencontainers/selinux",
+      "ranges": [
+       {
+        "events": [
+         {
+          "introduced": "0"
+         },
+         {
+          "fixed": "1.3.1-0.20190929122143-5215b1806f52"
+         }
+        ],
+        "type": "SEMVER"
+       }
+      ]
+     }
+    ],
+    "aliases": [
+     "CVE-2019-16884",
+     "GO-2021-0085"
+    ],
+    "id": "GHSA-fgv8-vj5c-2ppq",
+    "modified": "2026-09-10T03:48:32.085889707Z",
+    "severity": [
+     {
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:H/A:N",
+      "type": "CVSS_V3"
+     }
+    ],
+    "summary": "Incorrect Authorization in runc"
+   },
+   {
+    "affected": [
+     {
+      "ecosystem": "Go",
+      "name": "github.com/opencontainers/runc",
+      "ranges": [
+       {
+        "events": [
+         {
+          "introduced": "0"
+         },
+         {
+          "fixed": "1.0.0-rc9.0.20200122160610-2fc03cc11c77"
+         }
+        ],
+        "type": "SEMVER"
+       }
+      ]
+     }
+    ],
+    "aliases": [
+     "CVE-2019-19921",
+     "GO-2021-0087"
+    ],
+    "id": "GHSA-fh74-hm69-rqjw",
+    "modified": "2026-09-10T03:49:14.632691018Z",
+    "severity": [
+     {
+      "score": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:N/A:N/E:U/RL:U/RC:U",
+      "type": "CVSS_V3"
+     }
+    ],
+    "summary": "opencontainers runc contains procfs race condition with a shared volume mount"
+   },
+   {
+    "affected": [
+     {
+      "ecosystem": "Go",
+      "name": "github.com/opencontainers/runc",
+      "ranges": [
+       {
+        "events": [
+         {
+          "introduced": "0"
+         },
+         {
+          "fixed": "1.1.5"
+         }
+        ],
+        "type": "SEMVER"
+       }
+      ]
+     }
+    ],
+    "aliases": [
+     "CVE-2023-28642",
+     "GO-2023-1683"
+    ],
+    "id": "GHSA-g2j6-57v7-gm8c",
+    "modified": "2026-09-10T03:50:08.149376848Z",
+    "severity": [
+     {
+      "score": "CVSS:3.1/AV:L/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:L",
+      "type": "CVSS_V3"
+     }
+    ],
+    "summary": "runc AppArmor bypass with symlinked /proc"
+   },
+   {
+    "affected": [
+     {
+      "ecosystem": "Go",
+      "name": "github.com/opencontainers/runc",
+      "ranges": [
+       {
+        "events": [
+         {
+          "introduced": "0"
+         },
+         {
+          "fixed": "1.0.0-rc91"
+         }
+        ],
+        "type": "SEMVER"
+       }
+      ]
+     }
+    ],
+    "aliases": [
+     "GO-2022-0396"
+    ],
+    "id": "GHSA-g54h-m393-cpwq",
+    "modified": "2026-09-10T03:49:10.219360882Z",
+    "summary": "devices resource list treated as a blacklist by default"
+   },
+   {
+    "affected": [
+     {
+      "ecosystem": "Go",
+      "name": "github.com/opencontainers/runc",
+      "ranges": [
+       {
+        "events": [
+         {
+          "introduced": "0"
+         },
+         {
+          "fixed": "1.0.0-rc3"
+         }
+        ],
+        "type": "SEMVER"
+       }
+      ]
+     }
+    ],
+    "aliases": [
+     "CVE-2016-9962",
+     "GO-2022-0835"
+    ],
+    "id": "GHSA-gp4j-w3vj-7299",
+    "modified": "2026-09-10T03:49:10.210723729Z",
+    "severity": [
+     {
+      "score": "CVSS:3.0/AV:L/AC:H/PR:H/UI:N/S:U/C:H/I:H/A:H",
+      "type": "CVSS_V3"
+     }
+    ],
+    "summary": "Information Exposure in RunC"
+   },
+   {
+    "affected": [
+     {
+      "ecosystem": "Go",
+      "name": "github.com/opencontainers/runc",
+      "ranges": [
+       {
+        "events": [
+         {
+          "introduced": "0"
+         },
+         {
+          "fixed": "1.1.14"
+         }
+        ],
+        "type": "SEMVER"
+       }
+      ]
+     },
+     {
+      "ecosystem": "Go",
+      "name": "github.com/opencontainers/runc",
+      "ranges": [
+       {
+        "events": [
+         {
+          "introduced": "1.2.0-rc.1"
+         },
+         {
+          "fixed": "1.2.0-rc.3"
+         }
+        ],
+        "type": "SEMVER"
+       }
+      ]
+     }
+    ],
+    "aliases": [
+     "CVE-2024-45310",
+     "GO-2024-3110"
+    ],
+    "id": "GHSA-jfvp-7x6p-h2pv",
+    "modified": "2026-09-10T03:50:18.280094459Z",
+    "severity": [
+     {
+      "score": "CVSS:3.1/AV:L/AC:L/PR:N/UI:R/S:C/C:N/I:L/A:N",
+      "type": "CVSS_V3"
+     },
+     {
+      "score": "CVSS:4.0/AV:L/AC:L/AT:N/PR:N/UI:P/VC:N/VI:N/VA:N/SC:N/SI:L/SA:N/U:Green",
+      "type": "CVSS_V4"
+     }
+    ],
+    "summary": "runc can be confused to create empty files/directories on the host"
+   },
+   {
+    "affected": [
+     {
+      "ecosystem": "Go",
+      "name": "github.com/opencontainers/runc",
+      "ranges": [
+       {
+        "events": [
+         {
+          "introduced": "0"
+         },
+         {
+          "fixed": "1.1.5"
+         }
+        ],
+        "type": "SEMVER"
+       }
+      ]
+     }
+    ],
+    "aliases": [
+     "CVE-2023-25809",
+     "GO-2023-1682"
+    ],
+    "id": "GHSA-m8cg-xc2p-r3fc",
+    "modified": "2026-09-10T03:49:53.094083638Z",
+    "severity": [
+     {
+      "score": "CVSS:3.1/AV:L/AC:H/PR:H/UI:N/S:C/C:N/I:N/A:L",
+      "type": "CVSS_V3"
+     }
+    ],
+    "summary": "rootless: `/sys/fs/cgroup` is writable when cgroupns isn't unshared in runc"
+   },
+   {
+    "affected": [
+     {
+      "ecosystem": "Go",
+      "name": "github.com/opencontainers/runc",
+      "ranges": [
+       {
+        "events": [
+         {
+          "introduced": "0"
+         },
+         {
+          "fixed": "0.1.0"
+         }
+        ],
+        "type": "SEMVER"
+       }
+      ]
+     }
+    ],
+    "aliases": [
+     "CVE-2016-3697",
+     "GO-2021-0070"
+    ],
+    "id": "GHSA-q3j5-32m5-58c2",
+    "modified": "2026-09-10T03:49:10.275806429Z",
+    "severity": [
+     {
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
+      "type": "CVSS_V3"
+     }
+    ],
+    "summary": "Privilege Elevation in runc"
+   },
+   {
+    "affected": [
+     {
+      "ecosystem": "Go",
+      "name": "github.com/opencontainers/runc",
+      "ranges": [
+       {
+        "events": [
+         {
+          "introduced": "1.0.0-rc3"
+         },
+         {
+          "fixed": "1.2.8"
+         }
+        ],
+        "type": "SEMVER"
+       }
+      ]
+     },
+     {
+      "ecosystem": "Go",
+      "name": "github.com/opencontainers/runc",
+      "ranges": [
+       {
+        "events": [
+         {
+          "introduced": "1.3.0-rc.1"
+         },
+         {
+          "fixed": "1.3.3"
+         }
+        ],
+        "type": "SEMVER"
+       }
+      ]
+     },
+     {
+      "ecosystem": "Go",
+      "name": "github.com/opencontainers/runc",
+      "ranges": [
+       {
+        "events": [
+         {
+          "introduced": "1.4.0-rc.1"
+         },
+         {
+          "fixed": "1.4.0-rc.3"
+         }
+        ],
+        "type": "SEMVER"
+       }
+      ]
+     }
+    ],
+    "aliases": [
+     "CVE-2025-52565",
+     "GO-2025-4097"
+    ],
+    "id": "GHSA-qw9x-cqr3-wc7r",
+    "modified": "2026-09-10T03:50:58.358973597Z",
+    "severity": [
+     {
+      "score": "CVSS:4.0/AV:L/AC:L/AT:P/PR:L/UI:A/VC:H/VI:H/VA:H/SC:H/SI:H/SA:H",
+      "type": "CVSS_V4"
+     }
+    ],
+    "summary": "runc container escape with malicious config due to /dev/console mount and related races"
+   },
+   {
+    "affected": [
+     {
+      "ecosystem": "Go",
+      "name": "github.com/opencontainers/runc",
+      "ranges": [
+       {
+        "events": [
+         {
+          "introduced": "0"
+         },
+         {
+          "fixed": "1.0.3"
+         }
+        ],
+        "type": "SEMVER"
+       }
+      ]
+     }
+    ],
+    "aliases": [
+     "CVE-2021-43784",
+     "GO-2022-0274"
+    ],
+    "id": "GHSA-v95c-p5hm-xq8f",
+    "modified": "2026-09-10T03:49:10.478071172Z",
+    "severity": [
+     {
+      "score": "CVSS:3.1/AV:N/AC:H/PR:L/UI:N/S:C/C:L/I:L/A:L",
+      "type": "CVSS_V3"
+     }
+    ],
+    "summary": "Overflow in netlink bytemsg length field allows attacker to override netlink-based container configuration in RunC"
+   },
+   {
+    "affected": [
+     {
+      "ecosystem": "Go",
+      "name": "github.com/opencontainers/runc",
+      "ranges": [
+       {
+        "events": [
+         {
+          "introduced": "1.0.0-rc95"
+         },
+         {
+          "fixed": "1.1.5"
+         }
+        ],
+        "type": "SEMVER"
+       }
+      ]
+     }
+    ],
+    "aliases": [
+     "CVE-2023-27561",
+     "GO-2023-1627"
+    ],
+    "id": "GHSA-vpvm-3wq2-2wvm",
+    "modified": "2026-09-10T03:49:57.004964556Z",
+    "severity": [
+     {
+      "score": "CVSS:3.1/AV:L/AC:H/PR:L/UI:N/S:U/C:H/I:H/A:H",
+      "type": "CVSS_V3"
+     }
+    ],
+    "summary": "Opencontainers runc Incorrect Authorization vulnerability"
+   },
+   {
+    "affected": [
+     {
+      "ecosystem": "Go",
+      "name": "github.com/opencontainers/runc",
+      "ranges": [
+       {
+        "events": [
+         {
+          "introduced": "0"
+         },
+         {
+          "fixed": "1.3.6"
+         }
+        ],
+        "type": "SEMVER"
+       }
+      ]
+     },
+     {
+      "ecosystem": "Go",
+      "name": "github.com/opencontainers/runc",
+      "ranges": [
+       {
+        "events": [
+         {
+          "introduced": "1.4.0"
+         },
+         {
+          "fixed": "1.4.3"
+         }
+        ],
+        "type": "SEMVER"
+       }
+      ]
+     },
+     {
+      "ecosystem": "Go",
+      "name": "github.com/opencontainers/runc",
+      "ranges": [
+       {
+        "events": [
+         {
+          "introduced": "1.5.0-rc.1"
+         },
+         {
+          "fixed": "1.5.0-rc.3"
+         }
+        ],
+        "type": "SEMVER"
+       }
+      ]
+     }
+    ],
+    "aliases": [
+     "CVE-2026-41579",
+     "GO-2026-5761"
+    ],
+    "id": "GHSA-xjvp-4fhw-gc47",
+    "modified": "2026-09-10T03:51:09.778120218Z",
+    "severity": [
+     {
+      "score": "CVSS:3.1/AV:L/AC:L/PR:N/UI:R/S:U/C:N/I:L/A:N",
+      "type": "CVSS_V3"
+     },
+     {
+      "score": "CVSS:4.0/AV:L/AC:L/AT:N/PR:N/UI:P/VC:N/VI:L/VA:N/SC:N/SI:L/SA:N",
+      "type": "CVSS_V4"
+     }
+    ],
+    "summary": "runc: Malicious image with /dev symlink can trigger limited host filesystem integrity violations "
+   },
+   {
+    "affected": [
+     {
+      "ecosystem": "Go",
+      "name": "github.com/opencontainers/runc",
+      "ranges": [
+       {
+        "events": [
+         {
+          "introduced": "1.0.0-rc93"
+         },
+         {
+          "fixed": "1.1.12"
+         }
+        ],
+        "type": "SEMVER"
+       }
+      ]
+     }
+    ],
+    "aliases": [
+     "CVE-2024-21626",
+     "GO-2024-2491"
+    ],
+    "id": "GHSA-xr7r-f8xq-vfvv",
+    "modified": "2026-09-10T03:50:05.196975581Z",
+    "severity": [
+     {
+      "score": "CVSS:3.1/AV:L/AC:L/PR:N/UI:R/S:C/C:H/I:H/A:H",
+      "type": "CVSS_V3"
+     }
+    ],
+    "summary": "runc vulnerable to container breakout through process.cwd trickery and leaked fds"
+   },
+   {
+    "affected": [
+     {
+      "ecosystem": "Go",
+      "name": "github.com/opencontainers/runc",
+      "ranges": [
+       {
+        "events": [
+         {
+          "introduced": "0"
+         },
+         {
+          "fixed": "0.1.0"
+         }
+        ],
+        "type": "SEMVER"
+       }
+      ]
+     }
+    ],
+    "aliases": [
+     "CVE-2016-3697",
+     "GHSA-q3j5-32m5-58c2"
+    ],
+    "id": "GO-2021-0070",
+    "modified": "2026-02-04T03:29:04.449729Z",
+    "summary": "Privilege escalation in github.com/opencontainers/runc"
+   },
+   {
+    "affected": [
+     {
+      "ecosystem": "Go",
+      "name": "github.com/opencontainers/runc",
+      "ranges": [
+       {
+        "events": [
+         {
+          "introduced": "0"
+         },
+         {
+          "fixed": "1.0.0-rc8.0.20190930145003-cad42f6e0932"
+         }
+        ],
+        "type": "SEMVER"
+       }
+      ]
+     },
+     {
+      "ecosystem": "Go",
+      "name": "github.com/opencontainers/selinux",
+      "ranges": [
+       {
+        "events": [
+         {
+          "introduced": "0"
+         },
+         {
+          "fixed": "1.3.1-0.20190929122143-5215b1806f52"
+         }
+        ],
+        "type": "SEMVER"
+       }
+      ]
+     }
+    ],
+    "aliases": [
+     "CVE-2019-16884",
+     "GHSA-fgv8-vj5c-2ppq"
+    ],
+    "id": "GO-2021-0085",
+    "modified": "2026-02-04T02:43:28.254816Z",
+    "summary": "Authorization bypass in github.com/opencontainers/runc"
+   },
+   {
+    "affected": [
+     {
+      "ecosystem": "Go",
+      "name": "github.com/opencontainers/runc",
+      "ranges": [
+       {
+        "events": [
+         {
+          "introduced": "0"
+         },
+         {
+          "fixed": "1.0.0-rc9.0.20200122160610-2fc03cc11c77"
+         }
+        ],
+        "type": "SEMVER"
+       }
+      ]
+     }
+    ],
+    "aliases": [
+     "CVE-2019-19921",
+     "GHSA-fh74-hm69-rqjw"
+    ],
+    "id": "GO-2021-0087",
+    "modified": "2026-02-04T03:07:02.484214Z",
+    "summary": "Race condition in github.com/opencontainers/runc"
+   },
+   {
+    "affected": [
+     {
+      "ecosystem": "Go",
+      "name": "github.com/opencontainers/runc",
+      "ranges": [
+       {
+        "events": [
+         {
+          "introduced": "1.0.1-0.20211012131345-9c444070ec7b"
+         },
+         {
+          "fixed": "1.1.0"
+         }
+        ],
+        "type": "SEMVER"
+       }
+      ]
+     }
+    ],
+    "aliases": [
+     "CVE-2021-43784",
+     "GHSA-v95c-p5hm-xq8f"
+    ],
+    "id": "GO-2022-0274",
+    "modified": "2026-02-04T02:26:28.343240Z",
+    "summary": "Namespace restriction bypass in github.com/opencontainers/runc"
+   },
+   {
+    "affected": [
+     {
+      "ecosystem": "Go",
+      "name": "github.com/opencontainers/runc",
+      "ranges": [
+       {
+        "events": [
+         {
+          "introduced": "0"
+         },
+         {
+          "fixed": "1.0.0-rc91"
+         }
+        ],
+        "type": "SEMVER"
+       }
+      ]
+     }
+    ],
+    "aliases": [
+     "GHSA-g54h-m393-cpwq"
+    ],
+    "id": "GO-2022-0396",
+    "modified": "2026-02-04T04:28:03.072246Z",
+    "summary": "Devices resource list treated as a blacklist by default in github.com/opencontainers/runc"
+   },
+   {
+    "affected": [
+     {
+      "ecosystem": "Go",
+      "name": "github.com/opencontainers/runc",
+      "ranges": [
+       {
+        "events": [
+         {
+          "introduced": "0"
+         },
+         {
+          "fixed": "1.1.2"
+         }
+        ],
+        "type": "SEMVER"
+       }
+      ]
+     }
+    ],
+    "aliases": [
+     "CVE-2022-29162",
+     "GHSA-f3fp-gc8g-vw66"
+    ],
+    "id": "GO-2022-0452",
+    "modified": "2026-02-04T03:17:02.340230Z",
+    "summary": "Default inheritable capabilities for linux container should be empty in github.com/opencontainers/runc"
+   },
+   {
+    "affected": [
+     {
+      "ecosystem": "Go",
+      "name": "github.com/opencontainers/runc",
+      "ranges": [
+       {
+        "events": [
+         {
+          "introduced": "0"
+         },
+         {
+          "fixed": "1.0.0-rc3"
+         }
+        ],
+        "type": "SEMVER"
+       }
+      ]
+     }
+    ],
+    "aliases": [
+     "CVE-2016-9962",
+     "GHSA-gp4j-w3vj-7299"
+    ],
+    "id": "GO-2022-0835",
+    "modified": "2026-02-04T03:16:51.913407Z",
+    "summary": "Information Exposure in RunC in github.com/opencontainers/runc"
+   },
+   {
+    "affected": [
+     {
+      "ecosystem": "Go",
+      "name": "github.com/opencontainers/runc",
+      "ranges": [
+       {
+        "events": [
+         {
+          "introduced": "0"
+         },
+         {
+          "fixed": "1.0.0-rc95"
+         }
+        ],
+        "type": "SEMVER"
+       }
+      ]
+     }
+    ],
+    "aliases": [
+     "CVE-2021-30465",
+     "GHSA-c3xm-pvg7-gh7r"
+    ],
+    "id": "GO-2022-0914",
+    "modified": "2026-02-04T02:21:49.205668Z",
+    "summary": "Mount destinations can be swapped via symlink-exchange to cause mounts outside the rootfs in github.com/opencontainers/runc"
+   },
+   {
+    "affected": [
+     {
+      "ecosystem": "Go",
+      "name": "github.com/opencontainers/runc",
+      "ranges": [
+       {
+        "events": [
+         {
+          "introduced": "1.0.0-rc95"
+         },
+         {
+          "fixed": "1.1.5"
+         }
+        ],
+        "type": "SEMVER"
+       }
+      ]
+     }
+    ],
+    "aliases": [
+     "CVE-2023-27561",
+     "GHSA-vpvm-3wq2-2wvm"
+    ],
+    "id": "GO-2023-1627",
+    "modified": "2026-02-04T03:58:42.107712Z",
+    "summary": "Opencontainers runc Incorrect Authorization vulnerability in github.com/opencontainers/runc"
+   },
+   {
+    "affected": [
+     {
+      "ecosystem": "Go",
+      "name": "github.com/opencontainers/runc",
+      "ranges": [
+       {
+        "events": [
+         {
+          "introduced": "0"
+         },
+         {
+          "fixed": "1.1.5"
+         }
+        ],
+        "type": "SEMVER"
+       }
+      ]
+     }
+    ],
+    "aliases": [
+     "CVE-2023-25809",
+     "GHSA-m8cg-xc2p-r3fc"
+    ],
+    "id": "GO-2023-1682",
+    "modified": "2026-02-04T02:59:23.815900Z",
+    "summary": "Rootless: /sys/fs/cgroup is writable when cgroupns isn't unshared in github.com/opencontainers/runc"
+   },
+   {
+    "affected": [
+     {
+      "ecosystem": "Go",
+      "name": "github.com/opencontainers/runc",
+      "ranges": [
+       {
+        "events": [
+         {
+          "introduced": "0"
+         },
+         {
+          "fixed": "1.1.5"
+         }
+        ],
+        "type": "SEMVER"
+       }
+      ]
+     }
+    ],
+    "aliases": [
+     "CVE-2023-28642",
+     "GHSA-g2j6-57v7-gm8c"
+    ],
+    "id": "GO-2023-1683",
+    "modified": "2026-02-04T04:01:58.343687Z",
+    "summary": "AppArmor bypass with symlinked /proc in github.com/opencontainers/runc"
+   },
+   {
+    "affected": [
+     {
+      "ecosystem": "Go",
+      "name": "github.com/opencontainers/runc",
+      "ranges": [
+       {
+        "events": [
+         {
+          "introduced": "1.0.0-rc93"
+         },
+         {
+          "fixed": "1.1.12"
+         }
+        ],
+        "type": "SEMVER"
+       }
+      ]
+     }
+    ],
+    "aliases": [
+     "CVE-2024-21626",
+     "GHSA-xr7r-f8xq-vfvv"
+    ],
+    "id": "GO-2024-2491",
+    "modified": "2026-02-04T02:39:00.262696Z",
+    "summary": "Container breakout through process.cwd trickery and leaked fds in github.com/opencontainers/runc"
+   },
+   {
+    "affected": [
+     {
+      "ecosystem": "Go",
+      "name": "github.com/opencontainers/runc",
+      "ranges": [
+       {
+        "events": [
+         {
+          "introduced": "0"
+         },
+         {
+          "fixed": "1.1.14"
+         },
+         {
+          "introduced": "1.2.0-rc.1"
+         },
+         {
+          "fixed": "1.2.0-rc.3"
+         }
+        ],
+        "type": "SEMVER"
+       }
+      ]
+     }
+    ],
+    "aliases": [
+     "CVE-2024-45310",
+     "GHSA-jfvp-7x6p-h2pv"
+    ],
+    "id": "GO-2024-3110",
+    "modified": "2026-02-04T02:23:26.560077Z",
+    "summary": "Can be confused to create empty files/directories on the host in github.com/opencontainers/runc"
+   },
+   {
+    "affected": [
+     {
+      "ecosystem": "Go",
+      "name": "github.com/opencontainers/runc",
+      "ranges": [
+       {
+        "events": [
+         {
+          "introduced": "0"
+         }
+        ],
+        "type": "SEMVER"
+       }
+      ]
+     }
+    ],
+    "aliases": [
+     "CVE-2025-27612"
+    ],
+    "id": "GO-2025-3543",
+    "modified": "2025-03-26T20:15:20Z",
+    "summary": "WITHDRAWN: Libcontainer is affected by capabilities elevation in github.com/opencontainers/runc"
+   },
+   {
+    "affected": [
+     {
+      "ecosystem": "Go",
+      "name": "github.com/opencontainers/runc",
+      "ranges": [
+       {
+        "events": [
+         {
+          "introduced": "0"
+         },
+         {
+          "fixed": "1.2.8"
+         },
+         {
+          "introduced": "1.3.0-rc.1"
+         },
+         {
+          "fixed": "1.3.3"
+         },
+         {
+          "introduced": "1.4.0-rc.1"
+         },
+         {
+          "fixed": "1.4.0-rc.3"
+         }
+        ],
+        "type": "SEMVER"
+       }
+      ]
+     }
+    ],
+    "aliases": [
+     "CVE-2025-31133",
+     "GHSA-9493-h29p-rfm2"
+    ],
+    "id": "GO-2025-4096",
+    "modified": "2026-02-04T03:11:33.546218Z",
+    "summary": "Container escape via \"masked path\" abuse due to mount race conditions in github.com/opencontainers/runc"
+   },
+   {
+    "affected": [
+     {
+      "ecosystem": "Go",
+      "name": "github.com/opencontainers/runc",
+      "ranges": [
+       {
+        "events": [
+         {
+          "introduced": "1.0.0-rc3"
+         },
+         {
+          "fixed": "1.2.8"
+         },
+         {
+          "introduced": "1.3.0-rc.1"
+         },
+         {
+          "fixed": "1.3.3"
+         },
+         {
+          "introduced": "1.4.0-rc.1"
+         },
+         {
+          "fixed": "1.4.0-rc.3"
+         }
+        ],
+        "type": "SEMVER"
+       }
+      ]
+     }
+    ],
+    "aliases": [
+     "CVE-2025-52565",
+     "GHSA-qw9x-cqr3-wc7r"
+    ],
+    "id": "GO-2025-4097",
+    "modified": "2026-02-04T03:00:55.376695Z",
+    "summary": "Container escape with malicious config due to /dev/console mount and related races in github.com/opencontainers/runc"
+   },
+   {
+    "affected": [
+     {
+      "ecosystem": "Go",
+      "name": "github.com/opencontainers/runc",
+      "ranges": [
+       {
+        "events": [
+         {
+          "introduced": "0"
+         },
+         {
+          "fixed": "1.2.8"
+         },
+         {
+          "introduced": "1.3.0-rc.1"
+         },
+         {
+          "fixed": "1.3.3"
+         },
+         {
+          "introduced": "1.4.0-rc.1"
+         },
+         {
+          "fixed": "1.4.0-rc.3"
+         }
+        ],
+        "type": "SEMVER"
+       }
+      ]
+     },
+     {
+      "ecosystem": "Go",
+      "name": "github.com/opencontainers/selinux",
+      "ranges": [
+       {
+        "events": [
+         {
+          "introduced": "0"
+         },
+         {
+          "fixed": "1.13.0"
+         }
+        ],
+        "type": "SEMVER"
+       }
+      ]
+     }
+    ],
+    "aliases": [
+     "CVE-2025-52881",
+     "GHSA-cgrx-mc8f-2prm"
+    ],
+    "id": "GO-2025-4098",
+    "modified": "2026-02-04T02:52:46.004719Z",
+    "summary": "Container escape and DDoS due to arbitrary write gadgets and procfs write redirects in github.com/opencontainers/runc"
+   },
+   {
+    "affected": [
+     {
+      "ecosystem": "Go",
+      "name": "github.com/opencontainers/runc",
+      "ranges": [
+       {
+        "events": [
+         {
+          "introduced": "0"
+         },
+         {
+          "fixed": "1.3.6"
+         },
+         {
+          "introduced": "1.4.0"
+         },
+         {
+          "fixed": "1.4.3"
+         },
+         {
+          "introduced": "1.5.0-rc.1"
+         },
+         {
+          "fixed": "1.5.0-rc.3"
+         }
+        ],
+        "type": "SEMVER"
+       }
+      ]
+     }
+    ],
+    "aliases": [
+     "CVE-2026-41579",
+     "GHSA-xjvp-4fhw-gc47"
+    ],
+    "id": "GO-2026-5761",
+    "modified": "2026-07-08T15:29:23.485432274Z",
+    "summary": "Malicious image with /dev symlink can trigger limited host filesystem integrity violations in github.com/opencontainers/runc"
+   }
+  ],
+  "golang.org/x/crypto": [
+   {
+    "affected": [
+     {
+      "ecosystem": "Go",
+      "name": "golang.org/x/crypto",
+      "ranges": [
+       {
+        "events": [
+         {
+          "introduced": "0"
+         },
+         {
+          "fixed": "0.0.0-20201216223049-8b5274cf687f"
+         }
+        ],
+        "type": "SEMVER"
+       }
+      ]
+     }
+    ],
+    "aliases": [
+     "CVE-2020-29652",
+     "GO-2021-0227"
+    ],
+    "id": "GHSA-3vm4-22fp-5rfm",
+    "modified": "2026-09-10T03:49:29.811762044Z",
+    "severity": [
+     {
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+      "type": "CVSS_V3"
+     }
+    ],
+    "summary": "golang.org/x/crypto/ssh NULL Pointer Dereference vulnerability"
+   },
+   {
+    "affected": [
+     {
+      "ecosystem": "Go",
+      "name": "golang.org/x/crypto",
+      "ranges": [
+       {
+        "events": [
+         {
+          "introduced": "0"
+         },
+         {
+          "fixed": "0.52.0"
+         }
+        ],
+        "type": "SEMVER"
+       }
+      ]
+     }
+    ],
+    "aliases": [
+     "CVE-2026-39828",
+     "GO-2026-5014"
+    ],
+    "id": "GHSA-45gg-vh54-h5m9",
+    "modified": "2026-09-10T03:51:07.761861882Z",
+    "severity": [
+     {
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:L/A:L",
+      "type": "CVSS_V3"
+     }
+    ],
+    "summary": "golang.org/x/crypto vulnerable to invoking bypass of certificate restrictions"
+   },
+   {
+    "affected": [
+     {
+      "ecosystem": "Go",
+      "name": "golang.org/x/crypto",
+      "ranges": [
+       {
+        "events": [
+         {
+          "introduced": "0.1.0"
+         },
+         {
+          "fixed": "0.17.0"
+         }
+        ],
+        "type": "SEMVER"
+       }
+      ]
+     },
+     {
+      "ecosystem": "Go",
+      "name": "golang.org/x/crypto",
+      "ranges": [
+       {
+        "events": [
+         {
+          "introduced": "0"
+         },
+         {
+          "fixed": "0.0.0-20231218163308-9d2ee975ef9f"
+         }
+        ],
+        "type": "SEMVER"
+       }
+      ]
+     }
+    ],
+    "aliases": [
+     "CVE-2023-48795",
+     "GO-2023-2402",
+     "PYSEC-2026-1758"
+    ],
+    "id": "GHSA-45x7-px36-x8w8",
+    "modified": "2026-09-10T03:49:59.287342396Z",
+    "severity": [
+     {
+      "score": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:H/A:N",
+      "type": "CVSS_V3"
+     }
+    ],
+    "summary": "Prefix Truncation Attack against ChaCha20-Poly1305 and Encrypt-then-MAC aka Terrapin"
+   },
+   {
+    "affected": [
+     {
+      "ecosystem": "Go",
+      "name": "golang.org/x/crypto",
+      "ranges": [
+       {
+        "events": [
+         {
+          "introduced": "0"
+         },
+         {
+          "fixed": "0.52.0"
+         }
+        ],
+        "type": "SEMVER"
+       }
+      ]
+     }
+    ],
+    "aliases": [
+     "CVE-2026-42508",
+     "GO-2026-5021"
+    ],
+    "id": "GHSA-5cgq-3rg8-m6cv",
+    "modified": "2026-09-10T03:50:48.271021372Z",
+    "severity": [
+     {
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:N",
+      "type": "CVSS_V3"
+     }
+    ],
+    "summary": "golang.org/x/crypto vulnerable to auth bypass via unenforced @revoked status"
+   },
+   {
+    "affected": [
+     {
+      "ecosystem": "Go",
+      "name": "golang.org/x/crypto",
+      "ranges": [
+       {
+        "events": [
+         {
+          "introduced": "0"
+         },
+         {
+          "fixed": "0.52.0"
+         }
+        ],
+        "type": "SEMVER"
+       }
+      ]
+     }
+    ],
+    "aliases": [
+     "CVE-2026-39835",
+     "GO-2026-5015"
+    ],
+    "id": "GHSA-78mq-xcr3-xm33",
+    "modified": "2026-09-11T15:45:36.488635295Z",
+    "severity": [
+     {
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:L",
+      "type": "CVSS_V3"
+     }
+    ],
+    "summary": "golang.org/x/crypto is vulnerable to invoking server panic during CheckHostKey/Authenticate flow"
+   },
+   {
+    "affected": [
+     {
+      "ecosystem": "Go",
+      "name": "golang.org/x/crypto",
+      "ranges": [
+       {
+        "events": [
+         {
+          "introduced": "0"
+         },
+         {
+          "fixed": "0.52.0"
+         }
+        ],
+        "type": "SEMVER"
+       }
+      ]
+     }
+    ],
+    "aliases": [
+     "CVE-2026-39831",
+     "GO-2026-5019"
+    ],
+    "id": "GHSA-89gr-r52h-f8rx",
+    "modified": "2026-09-10T03:50:48.773810556Z",
+    "severity": [
+     {
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:N",
+      "type": "CVSS_V3"
+     }
+    ],
+    "summary": "golang.org/x/crypto: FIDO/U2F security key physical presence check can be bypassed"
+   },
+   {
+    "affected": [
+     {
+      "ecosystem": "Go",
+      "name": "golang.org/x/crypto",
+      "ranges": [
+       {
+        "events": [
+         {
+          "introduced": "0"
+         },
+         {
+          "fixed": "0.0.0-20220314234659-1baeb1ce4c0b"
+         }
+        ],
+        "type": "SEMVER"
+       }
+      ]
+     }
+    ],
+    "aliases": [
+     "CVE-2022-27191",
+     "GO-2021-0356"
+    ],
+    "id": "GHSA-8c26-wmh5-6g9v",
+    "modified": "2026-09-10T03:49:17.302487297Z",
+    "severity": [
+     {
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+      "type": "CVSS_V3"
+     }
+    ],
+    "summary": "golang.org/x/crypto/ssh Denial of service via crafted Signer"
+   },
+   {
+    "affected": [
+     {
+      "ecosystem": "Go",
+      "name": "golang.org/x/crypto",
+      "ranges": [
+       {
+        "events": [
+         {
+          "introduced": "0"
+         },
+         {
+          "fixed": "0.52.0"
+         }
+        ],
+        "type": "SEMVER"
+       }
+      ]
+     }
+    ],
+    "aliases": [
+     "CVE-2026-46598",
+     "GO-2026-5033"
+    ],
+    "id": "GHSA-9m57-25v3-79x9",
+    "modified": "2026-09-10T03:50:55.369516615Z",
+    "severity": [
+     {
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:L",
+      "type": "CVSS_V3"
+     }
+    ],
+    "summary": "golang.org/x/crypto: Invoking pathological inputs can lead to client panic"
+   },
+   {
+    "affected": [
+     {
+      "ecosystem": "Go",
+      "name": "github.com/helm/helm",
+      "ranges": [
+       {
+        "events": [
+         {
+          "introduced": "2.0.0"
+         },
+         {
+          "fixed": "2.16.8"
+         }
+        ],
+        "type": "SEMVER"
+       }
+      ]
+     },
+     {
+      "ecosystem": "Go",
+      "name": "helm.sh/helm/v3",
+      "ranges": [
+       {
+        "events": [
+         {
+          "introduced": "3.0.0"
+         },
+         {
+          "fixed": "3.1.0"
+         }
+        ],
+        "type": "SEMVER"
+       }
+      ]
+     },
+     {
+      "ecosystem": "Go",
+      "name": "golang.org/x/crypto",
+      "ranges": [
+       {
+        "events": [
+         {
+          "introduced": "0"
+         },
+         {
+          "fixed": "0.0.0-20200124225646-8b5121be2f68"
+         }
+        ],
+        "type": "SEMVER"
+       }
+      ]
+     }
+    ],
+    "aliases": [
+     "BIT-golang-2020-7919",
+     "CVE-2020-7919",
+     "GO-2022-0229"
+    ],
+    "id": "GHSA-cjjc-xp8v-855w",
+    "modified": "2026-09-10T03:49:05.755494596Z",
+    "severity": [
+     {
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+      "type": "CVSS_V3"
+     }
+    ],
+    "summary": "Helm uses crypto package vulnerable to panic from malformed X.509 certificate"
+   },
+   {
+    "affected": [
+     {
+      "ecosystem": "Go",
+      "name": "golang.org/x/crypto",
+      "ranges": [
+       {
+        "events": [
+         {
+          "introduced": "0"
+         },
+         {
+          "fixed": "0.52.0"
+         }
+        ],
+        "type": "SEMVER"
+       }
+      ]
+     }
+    ],
+    "aliases": [
+     "CVE-2026-39832",
+     "GO-2026-5006"
+    ],
+    "id": "GHSA-f5wc-c3c7-36mc",
+    "modified": "2026-09-10T03:50:49.274413517Z",
+    "severity": [
+     {
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:N",
+      "type": "CVSS_V3"
+     }
+    ],
+    "summary": "golang.org/x/crypto doesn't drop invoking agent constraints when forwarding keys"
+   },
+   {
+    "affected": [
+     {
+      "ecosystem": "Go",
+      "name": "golang.org/x/crypto",
+      "ranges": [
+       {
+        "events": [
+         {
+          "introduced": "0"
+         },
+         {
+          "fixed": "0.45.0"
+         }
+        ],
+        "type": "SEMVER"
+       }
+      ]
+     }
+    ],
+    "aliases": [
+     "CVE-2025-47914",
+     "GO-2025-4135"
+    ],
+    "id": "GHSA-f6x5-jh6r-wrfv",
+    "modified": "2026-09-10T03:50:30.884151926Z",
+    "severity": [
+     {
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:L",
+      "type": "CVSS_V3"
+     }
+    ],
+    "summary": "golang.org/x/crypto/ssh/agent vulnerable to panic if message is malformed due to out of bounds read"
+   },
+   {
+    "affected": [
+     {
+      "ecosystem": "Go",
+      "name": "golang.org/x/crypto",
+      "ranges": [
+       {
+        "events": [
+         {
+          "introduced": "0"
+         },
+         {
+          "fixed": "0.0.0-20200220183623-bac4c82f6975"
+         }
+        ],
+        "type": "SEMVER"
+       }
+      ]
+     }
+    ],
+    "aliases": [
+     "CVE-2020-9283",
+     "GO-2020-0012"
+    ],
+    "id": "GHSA-ffhg-7mh4-33c4",
+    "modified": "2026-09-10T03:49:14.643258279Z",
+    "severity": [
+     {
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+      "type": "CVSS_V3"
+     }
+    ],
+    "summary": "Improper Verification of Cryptographic Signature in golang.org/x/crypto"
+   },
+   {
+    "affected": [
+     {
+      "ecosystem": "Go",
+      "name": "golang.org/x/crypto",
+      "ranges": [
+       {
+        "events": [
+         {
+          "introduced": "0"
+         },
+         {
+          "fixed": "0.0.0-20211202192323-5770296d904e"
+         }
+        ],
+        "type": "SEMVER"
+       }
+      ]
+     }
+    ],
+    "aliases": [
+     "CVE-2021-43565",
+     "GO-2022-0968"
+    ],
+    "id": "GHSA-gwc9-m7rh-j2ww",
+    "modified": "2026-09-10T03:49:45.727312449Z",
+    "severity": [
+     {
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+      "type": "CVSS_V3"
+     }
+    ],
+    "summary": "x/crypto/ssh vulnerable to panic via malformed packets"
+   },
+   {
+    "affected": [
+     {
+      "ecosystem": "Go",
+      "name": "golang.org/x/crypto",
+      "ranges": [
+       {
+        "events": [
+         {
+          "introduced": "0"
+         },
+         {
+          "fixed": "0.35.0"
+         }
+        ],
+        "type": "SEMVER"
+       }
+      ]
+     }
+    ],
+    "aliases": [
+     "CVE-2025-22869",
+     "GO-2025-3487"
+    ],
+    "id": "GHSA-hcg3-q754-cr77",
+    "modified": "2026-09-10T03:50:23.913440018Z",
+    "severity": [
+     {
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+      "type": "CVSS_V3"
+     }
+    ],
+    "summary": "golang.org/x/crypto Vulnerable to Denial of Service (DoS) via Slow or Incomplete Key Exchange"
+   },
+   {
+    "affected": [
+     {
+      "ecosystem": "Go",
+      "name": "golang.org/x/crypto",
+      "ranges": [
+       {
+        "events": [
+         {
+          "introduced": "0"
+         },
+         {
+          "fixed": "0.45.0"
+         }
+        ],
+        "type": "SEMVER"
+       }
+      ]
+     }
+    ],
+    "aliases": [
+     "CVE-2025-58181",
+     "GO-2025-4134"
+    ],
+    "id": "GHSA-j5w8-q4qc-rx2x",
+    "modified": "2026-09-10T03:50:30.983878807Z",
+    "severity": [
+     {
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:L",
+      "type": "CVSS_V3"
+     }
+    ],
+    "summary": "golang.org/x/crypto/ssh allows an attacker to cause unbounded memory consumption"
+   },
+   {
+    "affected": [
+     {
+      "ecosystem": "Go",
+      "name": "golang.org/x/crypto",
+      "ranges": [
+       {
+        "events": [
+         {
+          "introduced": "0"
+         },
+         {
+          "fixed": "0.52.0"
+         }
+        ],
+        "type": "SEMVER"
+       }
+      ]
+     }
+    ],
+    "aliases": [
+     "CVE-2026-39833",
+     "GO-2026-5005"
+    ],
+    "id": "GHSA-jppx-rxg9-jmrx",
+    "modified": "2026-09-10T03:50:50.029914620Z",
+    "severity": [
+     {
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:N",
+      "type": "CVSS_V3"
+     }
+    ],
+    "summary": "golang.org/x/crypto doesn't enforce invoking key constraints"
+   },
+   {
+    "affected": [
+     {
+      "ecosystem": "Go",
+      "name": "golang.org/x/crypto",
+      "ranges": [
+       {
+        "events": [
+         {
+          "introduced": "0"
+         },
+         {
+          "fixed": "0.52.0"
+         }
+        ],
+        "type": "SEMVER"
+       }
+      ]
+     }
+    ],
+    "aliases": [
+     "CVE-2026-46597",
+     "GO-2026-5013"
+    ],
+    "id": "GHSA-q4h4-gmj2-qvw2",
+    "modified": "2026-09-10T03:50:50.202568323Z",
+    "severity": [
+     {
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+      "type": "CVSS_V3"
+     }
+    ],
+    "summary": "golang.org/x/crypto: Invoking byte arithmetic causes underflow and panic"
+   },
+   {
+    "affected": [
+     {
+      "ecosystem": "Go",
+      "name": "golang.org/x/crypto",
+      "ranges": [
+       {
+        "events": [
+         {
+          "introduced": "0"
+         },
+         {
+          "fixed": "0.52.0"
+         }
+        ],
+        "type": "SEMVER"
+       }
+      ]
+     }
+    ],
+    "aliases": [
+     "CVE-2026-39827",
+     "GO-2026-5016"
+    ],
+    "id": "GHSA-qpw4-5x99-6vjp",
+    "modified": "2026-09-10T03:50:50.295705701Z",
+    "severity": [
+     {
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H",
+      "type": "CVSS_V3"
+     }
+    ],
+    "summary": "golang.org/x/crypto: Invoking memory leak when rejecting channels can lead to DoS"
+   },
+   {
+    "affected": [
+     {
+      "ecosystem": "Go",
+      "name": "golang.org/x/crypto",
+      "ranges": [
+       {
+        "events": [
+         {
+          "introduced": "0"
+         },
+         {
+          "fixed": "0.0.0-20190320223903-b7391e95e576"
+         }
+        ],
+        "type": "SEMVER"
+       }
+      ]
+     }
+    ],
+    "aliases": [
+     "CVE-2019-11840",
+     "GO-2022-0209"
+    ],
+    "id": "GHSA-r5c5-pr8j-pfp7",
+    "modified": "2026-09-10T03:49:36.602783909Z",
+    "severity": [
+     {
+      "score": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:N/A:N",
+      "type": "CVSS_V3"
+     }
+    ],
+    "summary": "golang.org/x/crypto/salsa20/salsa uses insufficiently random values"
+   },
+   {
+    "affected": [
+     {
+      "ecosystem": "Go",
+      "name": "golang.org/x/crypto",
+      "ranges": [
+       {
+        "events": [
+         {
+          "introduced": "0"
+         },
+         {
+          "fixed": "0.52.0"
+         }
+        ],
+        "type": "SEMVER"
+       }
+      ]
+     }
+    ],
+    "aliases": [
+     "CVE-2026-39834",
+     "GO-2026-5020"
+    ],
+    "id": "GHSA-rm3j-f69w-wqmq",
+    "modified": "2026-09-10T03:50:50.499928973Z",
+    "severity": [
+     {
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:H/A:H",
+      "type": "CVSS_V3"
+     }
+    ],
+    "summary": "golang.org/x/crypto vulnerable to infinite loop on large channel writes"
+   },
+   {
+    "affected": [
+     {
+      "ecosystem": "Go",
+      "name": "golang.org/x/crypto",
+      "ranges": [
+       {
+        "events": [
+         {
+          "introduced": "0"
+         },
+         {
+          "fixed": "0.31.0"
+         }
+        ],
+        "type": "SEMVER"
+       }
+      ]
+     }
+    ],
+    "aliases": [
+     "CVE-2024-45337",
+     "GO-2024-3321"
+    ],
+    "id": "GHSA-v778-237x-gjrc",
+    "modified": "2026-09-10T03:50:56.265546165Z",
+    "severity": [
+     {
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:N",
+      "type": "CVSS_V3"
+     }
+    ],
+    "summary": "Misuse of ServerConfig.PublicKeyCallback may cause authorization bypass in golang.org/x/crypto"
+   },
+   {
+    "affected": [
+     {
+      "ecosystem": "Go",
+      "name": "golang.org/x/crypto",
+      "ranges": [
+       {
+        "events": [
+         {
+          "introduced": "0"
+         },
+         {
+          "fixed": "0.52.0"
+         }
+        ],
+        "type": "SEMVER"
+       }
+      ]
+     }
+    ],
+    "aliases": [
+     "CVE-2026-39830",
+     "GO-2026-5017"
+    ],
+    "id": "GHSA-vgwf-h737-ff37",
+    "modified": "2026-09-15T12:45:34.863978347Z",
+    "severity": [
+     {
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:H",
+      "type": "CVSS_V3"
+     }
+    ],
+    "summary": "golang.org/x/crypto: Invoking client can cause server deadlock on unexpected responses"
+   },
+   {
+    "affected": [
+     {
+      "ecosystem": "Go",
+      "name": "golang.org/x/crypto",
+      "ranges": [
+       {
+        "events": [
+         {
+          "introduced": "0"
+         },
+         {
+          "fixed": "0.52.0"
+         }
+        ],
+        "type": "SEMVER"
+       }
+      ]
+     }
+    ],
+    "aliases": [
+     "CVE-2026-39829",
+     "GO-2026-5018"
+    ],
+    "id": "GHSA-w879-237q-wc7r",
+    "modified": "2026-09-10T03:50:50.833802829Z",
+    "severity": [
+     {
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+      "type": "CVSS_V3"
+     }
+    ],
+    "summary": "golang.org/x/crypto: Invoking pathological RSA/DSA parameters may cause DoS"
+   },
+   {
+    "affected": [
+     {
+      "ecosystem": "Go",
+      "name": "golang.org/x/crypto",
+      "ranges": [
+       {
+        "events": [
+         {
+          "introduced": "0"
+         },
+         {
+          "fixed": "0.0.0-20190424203555-c05e17bb3b2d"
+         }
+        ],
+        "type": "SEMVER"
+       }
+      ]
+     }
+    ],
+    "aliases": [
+     "CVE-2019-11841",
+     "GO-2023-1992"
+    ],
+    "id": "GHSA-x3jr-pf6g-c48f",
+    "modified": "2026-09-10T03:49:55.084265638Z",
+    "severity": [
+     {
+      "score": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:H/A:N",
+      "type": "CVSS_V3"
+     }
+    ],
+    "summary": "Golang/x/crypto message forgery vulnerability"
+   },
+   {
+    "affected": [
+     {
+      "ecosystem": "Go",
+      "name": "golang.org/x/crypto",
+      "ranges": [
+       {
+        "events": [
+         {
+          "introduced": "0"
+         },
+         {
+          "fixed": "0.52.0"
+         }
+        ],
+        "type": "SEMVER"
+       }
+      ]
+     }
+    ],
+    "aliases": [
+     "CVE-2026-46595",
+     "GO-2026-5023"
+    ],
+    "id": "GHSA-x527-x647-q7gg",
+    "modified": "2026-09-10T03:50:51.157351033Z",
+    "severity": [
+     {
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:L",
+      "type": "CVSS_V3"
+     }
+    ],
+    "summary": "golang.org/x/crypto: Invoking VerifiedPublicKeyCallback permissions skip enforcement"
+   },
+   {
+    "affected": [
+     {
+      "ecosystem": "Go",
+      "name": "golang.org/x/crypto",
+      "ranges": [
+       {
+        "events": [
+         {
+          "introduced": "0"
+         },
+         {
+          "fixed": "0.0.0-20170330155735-e4e2799dd7aa"
+         }
+        ],
+        "type": "SEMVER"
+       }
+      ]
+     }
+    ],
+    "aliases": [
+     "CVE-2017-3204",
+     "GO-2020-0013"
+    ],
+    "id": "GHSA-xhjq-w7xm-p8qj",
+    "modified": "2024-04-19T21:43:20Z",
+    "severity": [
+     {
+      "score": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:H",
+      "type": "CVSS_V3"
+     }
+    ],
+    "summary": "golang.org/x/crypto/ssh Man-in-the-Middle attack"
+   },
+   {
+    "affected": [
+     {
+      "ecosystem": "Go",
+      "name": "golang.org/x/crypto",
+      "ranges": [
+       {
+        "events": [
+         {
+          "introduced": "0"
+         },
+         {
+          "fixed": "0.0.0-20200220183623-bac4c82f6975"
+         }
+        ],
+        "type": "SEMVER"
+       }
+      ]
+     }
+    ],
+    "aliases": [
+     "CVE-2020-9283",
+     "GHSA-ffhg-7mh4-33c4"
+    ],
+    "id": "GO-2020-0012",
+    "modified": "2026-02-04T03:36:34.306120Z",
+    "summary": "Panic due to improper verification of cryptographic signatures in golang.org/x/crypto/ssh"
+   },
+   {
+    "affected": [
+     {
+      "ecosystem": "Go",
+      "name": "golang.org/x/crypto",
+      "ranges": [
+       {
+        "events": [
+         {
+          "introduced": "0"
+         },
+         {
+          "fixed": "0.0.0-20170330155735-e4e2799dd7aa"
+         }
+        ],
+        "type": "SEMVER"
+       }
+      ]
+     }
+    ],
+    "aliases": [
+     "CVE-2017-3204",
+     "GHSA-xhjq-w7xm-p8qj"
+    ],
+    "id": "GO-2020-0013",
+    "modified": "2024-05-20T16:03:47Z",
+    "summary": "Man-in-the-middle attack in golang.org/x/crypto/ssh"
+   },
+   {
+    "affected": [
+     {
+      "ecosystem": "Go",
+      "name": "golang.org/x/crypto",
+      "ranges": [
+       {
+        "events": [
+         {
+          "introduced": "0"
+         },
+         {
+          "fixed": "0.0.0-20201216223049-8b5274cf687f"
+         }
+        ],
+        "type": "SEMVER"
+       }
+      ]
+     }
+    ],
+    "aliases": [
+     "CVE-2020-29652",
+     "GHSA-3vm4-22fp-5rfm"
+    ],
+    "id": "GO-2021-0227",
+    "modified": "2026-02-04T03:17:50.287206Z",
+    "summary": "Panic on crafted authentication request message in golang.org/x/crypto/ssh"
+   },
+   {
+    "affected": [
+     {
+      "ecosystem": "Go",
+      "name": "golang.org/x/crypto",
+      "ranges": [
+       {
+        "events": [
+         {
+          "introduced": "0"
+         },
+         {
+          "fixed": "0.0.0-20220314234659-1baeb1ce4c0b"
+         }
+        ],
+        "type": "SEMVER"
+       }
+      ]
+     }
+    ],
+    "aliases": [
+     "CVE-2022-27191",
+     "GHSA-8c26-wmh5-6g9v"
+    ],
+    "id": "GO-2021-0356",
+    "modified": "2026-02-04T02:54:42.180263Z",
+    "summary": "Denial of service via crafted Signer in golang.org/x/crypto/ssh"
+   },
+   {
+    "affected": [
+     {
+      "ecosystem": "Go",
+      "name": "golang.org/x/crypto",
+      "ranges": [
+       {
+        "events": [
+         {
+          "introduced": "0"
+         },
+         {
+          "fixed": "0.0.0-20190320223903-b7391e95e576"
+         }
+        ],
+        "type": "SEMVER"
+       }
+      ]
+     }
+    ],
+    "aliases": [
+     "CVE-2019-11840",
+     "GHSA-r5c5-pr8j-pfp7"
+    ],
+    "id": "GO-2022-0209",
+    "modified": "2026-02-04T04:34:27.332878Z",
+    "summary": "Insufficiently random values in golang.org/x/crypto/salsa20"
+   },
+   {
+    "affected": [
+     {
+      "ecosystem": "Go",
+      "name": "stdlib",
+      "ranges": [
+       {
+        "events": [
+         {
+          "introduced": "0"
+         },
+         {
+          "fixed": "1.12.16"
+         },
+         {
+          "introduced": "1.13.0-0"
+         },
+         {
+          "fixed": "1.13.7"
+         }
+        ],
+        "type": "SEMVER"
+       }
+      ]
+     },
+     {
+      "ecosystem": "Go",
+      "name": "golang.org/x/crypto",
+      "ranges": [
+       {
+        "events": [
+         {
+          "introduced": "0"
+         },
+         {
+          "fixed": "0.0.0-20200124225646-8b5121be2f68"
+         }
+        ],
+        "type": "SEMVER"
+       }
+      ]
+     }
+    ],
+    "aliases": [
+     "BIT-golang-2020-7919",
+     "CVE-2020-7919",
+     "GHSA-cjjc-xp8v-855w"
+    ],
+    "id": "GO-2022-0229",
+    "modified": "2026-02-04T04:21:33.144646Z",
+    "summary": "Panic in certificate parsing in crypto/x509 and golang.org/x/crypto/cryptobyte"
+   },
+   {
+    "affected": [
+     {
+      "ecosystem": "Go",
+      "name": "golang.org/x/crypto",
+      "ranges": [
+       {
+        "events": [
+         {
+          "introduced": "0"
+         },
+         {
+          "fixed": "0.0.0-20211202192323-5770296d904e"
+         }
+        ],
+        "type": "SEMVER"
+       }
+      ]
+     }
+    ],
+    "aliases": [
+     "CVE-2021-43565",
+     "GHSA-gwc9-m7rh-j2ww"
+    ],
+    "id": "GO-2022-0968",
+    "modified": "2026-02-04T04:04:49.626588Z",
+    "summary": "Panic on malformed packets in golang.org/x/crypto/ssh"
+   },
+   {
+    "affected": [
+     {
+      "ecosystem": "Go",
+      "name": "golang.org/x/crypto",
+      "ranges": [
+       {
+        "events": [
+         {
+          "introduced": "0"
+         },
+         {
+          "fixed": "0.0.0-20190424203555-c05e17bb3b2d"
+         }
+        ],
+        "type": "SEMVER"
+       }
+      ]
+     }
+    ],
+    "aliases": [
+     "CVE-2019-11841",
+     "GHSA-x3jr-pf6g-c48f"
+    ],
+    "id": "GO-2023-1992",
+    "modified": "2026-02-04T03:17:37.933184Z",
+    "summary": "Misleading message verification in golang.org/x/crypto/openpgp/clearsign"
+   },
+   {
+    "affected": [
+     {
+      "ecosystem": "Go",
+      "name": "golang.org/x/crypto",
+      "ranges": [
+       {
+        "events": [
+         {
+          "introduced": "0"
+         },
+         {
+          "fixed": "0.17.0"
+         }
+        ],
+        "type": "SEMVER"
+       }
+      ]
+     }
+    ],
+    "aliases": [
+     "CVE-2023-48795",
+     "GHSA-45x7-px36-x8w8",
+     "PYSEC-2026-1758"
+    ],
+    "id": "GO-2023-2402",
+    "modified": "2026-07-07T17:57:21.107610647Z",
+    "summary": "Man-in-the-middle attacker can compromise integrity of secure channel in golang.org/x/crypto"
+   },
+   {
+    "affected": [
+     {
+      "ecosystem": "Go",
+      "name": "golang.org/x/crypto",
+      "ranges": [
+       {
+        "events": [
+         {
+          "introduced": "0"
+         },
+         {
+          "fixed": "0.0.0-20220525230936-793ad666bf5e"
+         }
+        ],
+        "type": "SEMVER"
+       }
+      ]
+     }
+    ],
+    "aliases": [
+     "CVE-2022-30636"
+    ],
+    "id": "GO-2024-2961",
+    "modified": "2026-06-16T12:29:17.908083296Z",
+    "summary": "Limited directory traversal vulnerability on Windows in golang.org/x/crypto"
+   },
+   {
+    "affected": [
+     {
+      "ecosystem": "Go",
+      "name": "golang.org/x/crypto",
+      "ranges": [
+       {
+        "events": [
+         {
+          "introduced": "0"
+         },
+         {
+          "fixed": "0.31.0"
+         }
+        ],
+        "type": "SEMVER"
+       }
+      ]
+     }
+    ],
+    "aliases": [
+     "CVE-2024-45337",
+     "GHSA-v778-237x-gjrc"
+    ],
+    "id": "GO-2024-3321",
+    "modified": "2026-08-08T10:26:52.108556744Z",
+    "summary": "Misuse of connection.serverAuthenticate may cause authorization bypass in golang.org/x/crypto"
+   },
+   {
+    "affected": [
+     {
+      "ecosystem": "Go",
+      "name": "golang.org/x/crypto",
+      "ranges": [
+       {
+        "events": [
+         {
+          "introduced": "0"
+         },
+         {
+          "fixed": "0.35.0"
+         }
+        ],
+        "type": "SEMVER"
+       }
+      ]
+     }
+    ],
+    "aliases": [
+     "CVE-2025-22869",
+     "GHSA-hcg3-q754-cr77"
+    ],
+    "id": "GO-2025-3487",
+    "modified": "2026-02-05T01:28:49.657684Z",
+    "summary": "Potential denial of service in golang.org/x/crypto"
+   },
+   {
+    "affected": [
+     {
+      "ecosystem": "Go",
+      "name": "golang.org/x/crypto",
+      "ranges": [
+       {
+        "events": [
+         {
+          "introduced": "0"
+         },
+         {
+          "fixed": "0.43.0"
+         }
+        ],
+        "type": "SEMVER"
+       }
+      ]
+     }
+    ],
+    "aliases": [
+     "CVE-2025-47913",
+     "GHSA-56w8-48fp-6mgv"
+    ],
+    "id": "GO-2025-4116",
+    "modified": "2026-05-21T10:29:29.799885348Z",
+    "summary": "Potential denial of service in golang.org/x/crypto/ssh/agent"
+   },
+   {
+    "affected": [
+     {
+      "ecosystem": "Go",
+      "name": "golang.org/x/crypto",
+      "ranges": [
+       {
+        "events": [
+         {
+          "introduced": "0"
+         },
+         {
+          "fixed": "0.45.0"
+         }
+        ],
+        "type": "SEMVER"
+       }
+      ]
+     }
+    ],
+    "aliases": [
+     "CVE-2025-58181",
+     "GHSA-j5w8-q4qc-rx2x"
+    ],
+    "id": "GO-2025-4134",
+    "modified": "2026-05-15T10:59:24.784913658Z",
+    "summary": "Unbounded memory consumption in golang.org/x/crypto/ssh"
+   },
+   {
+    "affected": [
+     {
+      "ecosystem": "Go",
+      "name": "golang.org/x/crypto",
+      "ranges": [
+       {
+        "events": [
+         {
+          "introduced": "0"
+         },
+         {
+          "fixed": "0.45.0"
+         }
+        ],
+        "type": "SEMVER"
+       }
+      ]
+     }
+    ],
+    "aliases": [
+     "CVE-2025-47914",
+     "GHSA-f6x5-jh6r-wrfv"
+    ],
+    "id": "GO-2025-4135",
+    "modified": "2026-05-15T10:59:23.314668850Z",
+    "summary": "Malformed constraint may cause denial of service in golang.org/x/crypto/ssh/agent"
+   },
+   {
+    "affected": [
+     {
+      "ecosystem": "Go",
+      "name": "golang.org/x/crypto",
+      "ranges": [
+       {
+        "events": [
+         {
+          "introduced": "0"
+         },
+         {
+          "fixed": "0.52.0"
+         }
+        ],
+        "type": "SEMVER"
+       }
+      ]
+     }
+    ],
+    "aliases": [
+     "CVE-2026-39833",
+     "GHSA-jppx-rxg9-jmrx"
+    ],
+    "id": "GO-2026-5005",
+    "modified": "2026-08-11T21:30:12.082532165Z",
+    "summary": "Invoking key constraints not enforced in golang.org/x/crypto/ssh/agent"
+   },
+   {
+    "affected": [
+     {
+      "ecosystem": "Go",
+      "name": "golang.org/x/crypto",
+      "ranges": [
+       {
+        "events": [
+         {
+          "introduced": "0"
+         },
+         {
+          "fixed": "0.52.0"
+         }
+        ],
+        "type": "SEMVER"
+       }
+      ]
+     }
+    ],
+    "aliases": [
+     "CVE-2026-39832",
+     "GHSA-f5wc-c3c7-36mc"
+    ],
+    "id": "GO-2026-5006",
+    "modified": "2026-09-15T10:41:37.126500086Z",
+    "summary": "Invoking agent constraints dropped when forwarding keys in golang.org/x/crypto/ssh/agent"
+   },
+   {
+    "affected": [
+     {
+      "ecosystem": "Go",
+      "name": "golang.org/x/crypto",
+      "ranges": [
+       {
+        "events": [
+         {
+          "introduced": "0"
+         },
+         {
+          "fixed": "0.52.0"
+         }
+        ],
+        "type": "SEMVER"
+       }
+      ]
+     }
+    ],
+    "aliases": [
+     "CVE-2026-46597",
+     "GHSA-q4h4-gmj2-qvw2"
+    ],
+    "id": "GO-2026-5013",
+    "modified": "2026-09-17T10:41:36.216580513Z",
+    "summary": "Invoking byte arithmetic causes underflow and panic in golang.org/x/crypto/ssh"
+   },
+   {
+    "affected": [
+     {
+      "ecosystem": "Go",
+      "name": "golang.org/x/crypto",
+      "ranges": [
+       {
+        "events": [
+         {
+          "introduced": "0"
+         },
+         {
+          "fixed": "0.52.0"
+         }
+        ],
+        "type": "SEMVER"
+       }
+      ]
+     }
+    ],
+    "aliases": [
+     "CVE-2026-39828",
+     "GHSA-45gg-vh54-h5m9"
+    ],
+    "id": "GO-2026-5014",
+    "modified": "2026-07-17T10:29:28.281906633Z",
+    "summary": "Invoking bypass of certificate restrictions in golang.org/x/crypto/ssh"
+   },
+   {
+    "affected": [
+     {
+      "ecosystem": "Go",
+      "name": "golang.org/x/crypto",
+      "ranges": [
+       {
+        "events": [
+         {
+          "introduced": "0"
+         },
+         {
+          "fixed": "0.52.0"
+         }
+        ],
+        "type": "SEMVER"
+       }
+      ]
+     }
+    ],
+    "aliases": [
+     "CVE-2026-39835",
+     "GHSA-78mq-xcr3-xm33"
+    ],
+    "id": "GO-2026-5015",
+    "modified": "2026-08-12T10:41:54.683446432Z",
+    "summary": "Invoking server panic during CheckHostKey/Authenticate in golang.org/x/crypto/ssh"
+   },
+   {
+    "affected": [
+     {
+      "ecosystem": "Go",
+      "name": "golang.org/x/crypto",
+      "ranges": [
+       {
+        "events": [
+         {
+          "introduced": "0"
+         },
+         {
+          "fixed": "0.52.0"
+         }
+        ],
+        "type": "SEMVER"
+       }
+      ]
+     }
+    ],
+    "aliases": [
+     "CVE-2026-39827",
+     "GHSA-qpw4-5x99-6vjp"
+    ],
+    "id": "GO-2026-5016",
+    "modified": "2026-06-25T22:41:21.649831068Z",
+    "summary": "Invoking memory leak when rejecting channels can lead to DoS in golang.org/x/crypto/ssh"
+   },
+   {
+    "affected": [
+     {
+      "ecosystem": "Go",
+      "name": "golang.org/x/crypto",
+      "ranges": [
+       {
+        "events": [
+         {
+          "introduced": "0"
+         },
+         {
+          "fixed": "0.52.0"
+         }
+        ],
+        "type": "SEMVER"
+       }
+      ]
+     }
+    ],
+    "aliases": [
+     "CVE-2026-39830",
+     "GHSA-vgwf-h737-ff37"
+    ],
+    "id": "GO-2026-5017",
+    "modified": "2026-09-15T10:41:37.026644124Z",
+    "summary": "Invoking client can cause server deadlock on unexpected responses in golang.org/x/crypto/ssh"
+   },
+   {
+    "affected": [
+     {
+      "ecosystem": "Go",
+      "name": "golang.org/x/crypto",
+      "ranges": [
+       {
+        "events": [
+         {
+          "introduced": "0"
+         },
+         {
+          "fixed": "0.52.0"
+         }
+        ],
+        "type": "SEMVER"
+       }
+      ]
+     }
+    ],
+    "aliases": [
+     "CVE-2026-39829",
+     "GHSA-w879-237q-wc7r"
+    ],
+    "id": "GO-2026-5018",
+    "modified": "2026-09-15T10:41:37.191404367Z",
+    "summary": "Invoking pathological RSA/DSA parameters may cause DoS in golang.org/x/crypto/ssh"
+   },
+   {
+    "affected": [
+     {
+      "ecosystem": "Go",
+      "name": "golang.org/x/crypto",
+      "ranges": [
+       {
+        "events": [
+         {
+          "introduced": "0"
+         },
+         {
+          "fixed": "0.52.0"
+         }
+        ],
+        "type": "SEMVER"
+       }
+      ]
+     }
+    ],
+    "aliases": [
+     "CVE-2026-39831",
+     "GHSA-89gr-r52h-f8rx"
+    ],
+    "id": "GO-2026-5019",
+    "modified": "2026-09-17T10:41:36.871169141Z",
+    "summary": "Invoking bypass of FIDO/U2F security keys physical interaction in golang.org/x/crypto/ssh"
+   },
+   {
+    "affected": [
+     {
+      "ecosystem": "Go",
+      "name": "golang.org/x/crypto",
+      "ranges": [
+       {
+        "events": [
+         {
+          "introduced": "0"
+         },
+         {
+          "fixed": "0.52.0"
+         }
+        ],
+        "type": "SEMVER"
+       }
+      ]
+     }
+    ],
+    "aliases": [
+     "CVE-2026-39834",
+     "GHSA-rm3j-f69w-wqmq"
+    ],
+    "id": "GO-2026-5020",
+    "modified": "2026-06-25T22:41:19.576879953Z",
+    "summary": "Invoking infinite loop on large channel writes in golang.org/x/crypto/ssh"
+   },
+   {
+    "affected": [
+     {
+      "ecosystem": "Go",
+      "name": "golang.org/x/crypto",
+      "ranges": [
+       {
+        "events": [
+         {
+          "introduced": "0"
+         },
+         {
+          "fixed": "0.52.0"
+         }
+        ],
+        "type": "SEMVER"
+       }
+      ]
+     }
+    ],
+    "aliases": [
+     "CVE-2026-42508",
+     "GHSA-5cgq-3rg8-m6cv"
+    ],
+    "id": "GO-2026-5021",
+    "modified": "2026-09-15T10:41:37.077781877Z",
+    "summary": "Invoking auth bypass via unenforced @revoked status in golang.org/x/crypto/ssh/knownhosts"
+   },
+   {
+    "affected": [
+     {
+      "ecosystem": "Go",
+      "name": "golang.org/x/crypto",
+      "ranges": [
+       {
+        "events": [
+         {
+          "introduced": "0"
+         },
+         {
+          "fixed": "0.52.0"
+         }
+        ],
+        "type": "SEMVER"
+       }
+      ]
+     }
+    ],
+    "aliases": [
+     "CVE-2026-46595",
+     "GHSA-x527-x647-q7gg"
+    ],
+    "id": "GO-2026-5023",
+    "modified": "2026-07-17T10:29:28.571176407Z",
+    "summary": "Invoking VerifiedPublicKeyCallback permissions skip enforcement in golang.org/x/crypto/ssh"
+   },
+   {
+    "affected": [
+     {
+      "ecosystem": "Go",
+      "name": "golang.org/x/crypto",
+      "ranges": [
+       {
+        "events": [
+         {
+          "introduced": "0"
+         },
+         {
+          "fixed": "0.52.0"
+         }
+        ],
+        "type": "SEMVER"
+       }
+      ]
+     }
+    ],
+    "aliases": [
+     "CVE-2026-46598",
+     "GHSA-9m57-25v3-79x9"
+    ],
+    "id": "GO-2026-5033",
+    "modified": "2026-06-25T22:26:14.868825397Z",
+    "summary": "Invoking pathological inputs can lead to client panic in golang.org/x/crypto/ssh/agent"
+   },
+   {
+    "affected": [
+     {
+      "ecosystem": "Go",
+      "name": "golang.org/x/crypto",
+      "ranges": [
+       {
+        "events": [
+         {
+          "introduced": "0"
+         }
+        ],
+        "type": "SEMVER"
+       }
+      ]
+     }
+    ],
+    "id": "GO-2026-5932",
+    "modified": "2026-07-10T05:44:31.101996029Z",
+    "summary": "The golang.org/x/crypto/openpgp package is unmaintained, unsafe by design, and has known security issues"
+   },
+   {
+    "affected": [
+     {
+      "ecosystem": "Go",
+      "name": "golang.org/x/crypto",
+      "ranges": [
+       {
+        "events": [
+         {
+          "introduced": "0"
+         },
+         {
+          "fixed": "0.55.0"
+         }
+        ],
+        "type": "SEMVER"
+       }
+      ]
+     }
+    ],
+    "aliases": [
+     "CVE-2026-56854"
+    ],
+    "id": "GO-2026-6303",
+    "modified": "2026-08-29T10:10:52.440319762Z",
+    "summary": "Source-address critical option not enforced for non-public-key auth callbacks in golang.org/x/crypto/ssh"
+   },
+   {
+    "affected": [
+     {
+      "ecosystem": "Go",
+      "name": "golang.org/x/crypto",
+      "ranges": [
+       {
+        "events": [
+         {
+          "introduced": "0"
+         },
+         {
+          "fixed": "0.56.0"
+         }
+        ],
+        "type": "SEMVER"
+       }
+      ]
+     }
+    ],
+    "aliases": [
+     "CVE-2026-78662"
+    ],
+    "id": "GO-2026-6354",
+    "modified": "2026-09-03T10:10:55.147673102Z",
+    "summary": "Prevent DoS on deadlocked undecided channel in golang.org/x/crypto/ssh"
+   },
+   {
+    "affected": [
+     {
+      "ecosystem": "Go",
+      "name": "golang.org/x/crypto",
+      "ranges": [
+       {
+        "events": [
+         {
+          "introduced": "0"
+         },
+         {
+          "fixed": "0.56.0"
+         }
+        ],
+        "type": "SEMVER"
+       }
+      ]
+     }
+    ],
+    "aliases": [
+     "CVE-2026-56855"
+    ],
+    "id": "GO-2026-6355",
+    "modified": "2026-09-03T10:10:55.101133330Z",
+    "summary": "Prevent DoS on deadlocked established channel in golang.org/x/crypto/ssh"
+   }
+  ]
+ },
+ "ecosystem": "Go",
+ "kind": "vulnerability"
+}

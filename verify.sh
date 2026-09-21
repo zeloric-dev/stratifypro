@@ -62,22 +62,32 @@ echo "--- the file checker cannot upload anything"
 # sentence is a lie while every test still passes. CLAUDE.md names the exact
 # temptation: storing the uploaded SBOM "temporarily, for debugging".
 #
-# THIS CHECK HAS BEEN WRONG THREE TIMES AND EACH TIME IT REPORTED CLEAN.
+# THIS CHECK HAS BEEN WRONG FOUR TIMES AND EACH TIME IT REPORTED CLEAN.
 #   1. A malformed sed printed errors and matched nothing.
 #   2. A \b written into the file as a literal backspace byte matched nothing.
 #   3. It scanned only apps/web/app and matched only the literal `fetch(`.
 #      apps/web/next.config.mjs sets transpilePackages for @stratifypro/engine
 #      and @stratifypro/resolve, and check.worker.ts imports both, so a fetch in
 #      packages/engine SHIPS INTO THE WORKER. A POST of the parsed SBOM planted
-#      in packages/engine/src/coverage.ts was reported clean. So was an aliased
-#      call inside the scanned directory: `const send = globalThis.fetch` then
-#      `send (url, ...)`, which `fetch\(` does not match.
+#      in packages/engine/src/coverage.ts was reported clean.
+#   4. The fix for 3 did not do what its own comment claimed. It excluded a
+#      preceding dot, as `[^A-Za-z0-9_$.]`, to avoid matching property access.
+#      But property access IS how an alias is written. `const send =
+#      globalThis.fetch` followed by `send(url, {method:"POST"})` was planted in
+#      apps/web/app/site-url.ts and REPORTED CLEAN, while the comment three
+#      lines above asserted that exact case was covered. Found by writing the
+#      mutation test for the Phase 2 matcher and running it against this
+#      pattern; nothing else would have found it, because the check had never
+#      been watched failing.
 #
 # So: scan everything that can reach the bundle, and match the bare identifiers
-# rather than a call shape. An alias still has to name the function once.
+# rather than a call shape. An alias still has to name the function once, and
+# naming it through a property access now counts.
 #
-# Coarse, and it knows it. A computed property access would slip through. It
+# Coarse, and it knows it. `globalThis["fetch"]` would still slip through. It
 # catches the blatant cases, which are the ones that actually happen.
+# scripts/mirror-mutation-test.py plants against this pattern and is the reason
+# failure 4 is in the past tense.
 # The scan list is DERIVED from next.config.mjs rather than written out, so a
 # package added to the bundle is scanned automatically. Scanning every package
 # instead would be wrong in the other direction: packages/mirror and apps/sync
@@ -91,7 +101,7 @@ if [ -f apps/web/next.config.mjs ]; then
   done
 fi
 if [ -n "$NET_PATHS" ]; then
-  NET=$(grep -rnE '(^|[^A-Za-z0-9_$.])(fetch|XMLHttpRequest|sendBeacon|WebSocket|EventSource|importScripts)([^A-Za-z0-9_]|$)' \
+  NET=$(grep -rnE '(^|[^A-Za-z0-9_$])(fetch|XMLHttpRequest|sendBeacon|WebSocket|EventSource|importScripts)([^A-Za-z0-9_]|$)' \
           --include='*.ts' --include='*.tsx' $NET_PATHS 2>/dev/null \
         | grep -vE '\.test\.ts' \
         | grep -vE ':[0-9]+:[[:space:]]*(\*|//)')
@@ -102,6 +112,42 @@ if [ -n "$NET_PATHS" ]; then
 else
   echo "    skipped: no client source yet"
 fi
+
+echo "--- the advisory matcher cannot call anything"
+# Doc 6 step 2.1 accepts this phase on one sentence: vulnmatch makes zero
+# outbound per-query calls in a full corpus run. This is the static half.
+#
+# WHY IT IS A SEPARATE CHECK FROM THE BROWSER ONE ABOVE. That one guards a
+# promise to the person using the free checker: your file is not uploaded.
+# This one guards a promise to a paying customer: the components in your
+# submission are not sent to a third party, one HTTP request at a time, before
+# you have filed. Different promise, different code, and the browser scan
+# deliberately does not cover these packages because apps/sync next door EXISTS
+# to fetch advisory data and must keep being allowed to.
+#
+# So the rule is architectural rather than blanket: every outbound call lives in
+# apps/sync, which a customer runs deliberately against public data. Nothing
+# that reads a bill of materials may contain a network primitive at all.
+#
+# Matching bare identifiers rather than a call shape, for the reason the scan
+# above learned the hard way: `const send = globalThis.fetch` then `send(...)`
+# does not match `fetch\(`. Tests are excluded because offline.test.ts has to
+# name every one of these to disable them.
+MATCH_PATHS="packages/mirror/src packages/vulnmatch/src"
+MATCHNET=$(grep -rnE '(^|[^A-Za-z0-9_$])(fetch|XMLHttpRequest|sendBeacon|WebSocket|EventSource|importScripts|node:http|node:https|node:net|node:dgram|node:dns|node:tls)([^A-Za-z0-9_]|$)' \
+             --include='*.ts' $MATCH_PATHS 2>/dev/null \
+           | grep -vE '\.test\.ts' \
+           | grep -vE ':[0-9]+:[[:space:]]*(\*|//)')
+if [ -n "$MATCHNET" ]; then
+  echo "$MATCHNET"
+  echo "    FAILED: a network primitive reached the code that reads a customer's SBOM"; fail=1
+else echo "    no network primitive in:$MATCH_PATHS"; fi
+
+# The other half of the same claim: the fixture the offline test runs against
+# has to actually exercise the paths it says it does, including the ones that
+# must abstain. Offline; the fixture is committed.
+run "the advisory fixture exercises every matcher path, abstentions included" \
+    python3 scripts/mirror-fixture.py --check
 
 echo "--- banned words in product copy"
 # SCOPE MATTERS. This scans where CLAIMS ABOUT STRATIFYPRO'S OUTPUT live: application
@@ -229,8 +275,12 @@ echo "--- em dashes"
 # messages, and without these exclusions the check goes red the moment anyone
 # runs pnpm install. A check that fires on something the developer cannot fix
 # gets muted, and a muted check is worse than an absent one.
+#
+# .mirror is on that list for the same reason and it is worth naming: it holds
+# OSV advisory summaries written by thousands of other people, and the em dashes
+# in them are theirs. It is a build output, gitignored, rebuilt by apps/sync.
 if grep -rl '—' --include='*.md' --include='*.json' . 2>/dev/null \
-     | grep -vE '^\./(\.git|node_modules|dist|build|\.next)/' \
+     | grep -vE '^\./(\.git|node_modules|dist|build|\.next|\.mirror)/' \
      | grep -vE '/node_modules/'; then
   echo "    FAILED: em dash found"; fail=1
 else echo "    clean"; fi
