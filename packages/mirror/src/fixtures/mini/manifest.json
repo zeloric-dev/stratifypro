@@ -1,0 +1,68 @@
+{
+  "$comment": "A small real subset of a full mirror, for offline tests. Rebuild with scripts/mirror-fixture.py --from .mirror. Not a mirror to check anything real against: it holds 11 packages.",
+  "builtAt": "2026-09-21T23:13:20.947Z",
+  "kev": {
+    "catalogVersion": "2026.09.21",
+    "count": 2,
+    "fetchedAt": "2026-09-21",
+    "url": "https://www.cisa.gov/sites/default/files/feeds/known_exploited_vulnerabilities.json"
+  },
+  "schema": 1,
+  "sources": [
+    {
+      "ecosystems": [
+        "Debian:11"
+      ],
+      "fetchedAt": "2026-09-21",
+      "maliciousPackageReports": 0,
+      "name": "OSV Debian",
+      "sha256": "65993134177d1c0e9245f5938311d7b07d9f9c84416b506219acb7630524fd83",
+      "url": "https://osv-vulnerabilities.storage.googleapis.com/Debian/all.zip",
+      "vulnerabilities": 105
+    },
+    {
+      "ecosystems": [
+        "Go"
+      ],
+      "fetchedAt": "2026-09-21",
+      "maliciousPackageReports": 0,
+      "name": "OSV npm",
+      "sha256": "39909ce8a62707f8a325b401659ef8c8119531013023ce55c9d0c6c5359cfdce",
+      "url": "https://osv-vulnerabilities.storage.googleapis.com/npm/all.zip",
+      "vulnerabilities": 158
+    },
+    {
+      "ecosystems": [
+        "Maven"
+      ],
+      "fetchedAt": "2026-09-21",
+      "maliciousPackageReports": 0,
+      "name": "OSV npm",
+      "sha256": "39909ce8a62707f8a325b401659ef8c8119531013023ce55c9d0c6c5359cfdce",
+      "url": "https://osv-vulnerabilities.storage.googleapis.com/npm/all.zip",
+      "vulnerabilities": 37
+    },
+    {
+      "ecosystems": [
+        "NuGet"
+      ],
+      "fetchedAt": "2026-09-21",
+      "maliciousPackageReports": 0,
+      "name": "OSV npm",
+      "sha256": "39909ce8a62707f8a325b401659ef8c8119531013023ce55c9d0c6c5359cfdce",
+      "url": "https://osv-vulnerabilities.storage.googleapis.com/npm/all.zip",
+      "vulnerabilities": 2
+    },
+    {
+      "ecosystems": [
+        "npm"
+      ],
+      "fetchedAt": "2026-09-21",
+      "maliciousPackageReports": 5,
+      "name": "OSV npm",
+      "sha256": "39909ce8a62707f8a325b401659ef8c8119531013023ce55c9d0c6c5359cfdce",
+      "url": "https://osv-vulnerabilities.storage.googleapis.com/npm/all.zip",
+      "vulnerabilities": 13
+    }
+  ]
+}

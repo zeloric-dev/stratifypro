@@ -34,3 +34,4 @@ coverage/
 # Generated reports, never the source of truth
 /tmp/
 scratch/
+.mirror/

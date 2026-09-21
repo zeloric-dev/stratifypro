@@ -37,8 +37,8 @@ the web app both use it; the command is missing.
 
 | # | Step | Status |
 |---|---|---|
-| 2.1 | `packages/mirror` + `apps/sync`: local advisory index | not started |
-| 2.2 | `packages/vulnmatch` with `SourceStatus` per run | not started |
+| 2.1 | `packages/mirror` + `apps/sync`: local advisory index | done |
+| 2.2 | `packages/vulnmatch` with `SourceStatus` per run | done |
 | 2.3 | `packages/eos` plus the freshness check | done |
 
 2.3 first, out of order, because it is free and public like the crosswalk
@@ -49,6 +49,64 @@ the corpus.
 Its coverage is 2.5 percent of component instances and that figure is published
 with the data rather than buried. The only public source tracks products;
 bills of material are made of packages.
+
+2.1 and 2.2 landed together because 2.1's acceptance test is a sentence about
+2.2: "vulnmatch makes zero outbound per-query calls in a full corpus run".
+Building the index without the thing that queries it would have left that
+sentence unprovable, which is the state this file exists to prevent.
+
+It is proved twice. verify.sh greps `packages/mirror` and `packages/vulnmatch`
+for network primitives, and `scripts/mirror-mutation-test.py` plants four kinds
+of outbound call and watches each one caught. Then `offline.test.ts` replaces
+fetch, XMLHttpRequest and the node http, https, net, tls and dns entry points
+with something that throws, and runs all 5,088 corpus components through the
+matcher: 0 attempts, 87 ms.
+
+### What the measurements said before any of it was built
+
+| | |
+|---|---|
+| Corpus covered by five ecosystems | 4,815 of 5,088 instances, 94.6% |
+| Raw OSV exports for those five | 297 MB |
+| Compacted and gzipped | 12.8 MB |
+| npm records that are actually vulnerabilities | 7,429 of 229,185, **3.2%** |
+| Go affected-entries with an enumerated version list | 271 of 14,432, **1.9%** |
+
+Each one changed the design. 297 MB rebuilt weekly cannot live in git, so the
+mirror is built into a gitignored directory and the tests run against a 286 KB
+committed fixture cut from a real one. The other 221,756 npm records are `MAL-`
+malicious-package reports, so they are mirrored into separate files: a
+malicious package in a device is worse news than a CVE, not lesser news, but
+"checked against 229,000 npm advisories" would be true and would mislead every
+reader of it. And Go, half the corpus, is unreachable by exact version
+matching, which is why there is a real semver comparator written against the
+specification clause by clause rather than a string compare.
+
+### The third answer
+
+`affected`, `clear`, `unknown`. Almost every scanner in this space collapses
+the third into the second, and the collapse is invisible: a component with
+nothing beside it looks identical whether it was examined and found fine or
+never examined at all. `clear` is only returned when a comparison actually ran.
+On the corpus that is 838 affected, 3,952 clear, 298 unknown, and the 298 are
+mostly the 265 components that carry no package URL at all.
+
+Maven and NuGet are answered by exact version lists, Go and npm by semver
+ranges, and dpkg ordering is not implemented, so a Debian package whose
+advisories carry only ranges abstains rather than being declared clean. 332
+Go components were answered through their parent module, because OSV files Go
+advisories by module and 72 percent of the corpus's golang purls do not say
+whether they name a module or a package.
+
+### What writing the mutation test found
+
+The browser scan that guards "Your file is checked in this browser. It is never
+uploaded." did not do what its own comment claimed. It excluded a preceding dot
+to avoid matching property access, but property access is how an alias is
+written: `const send = globalThis.fetch` planted in `apps/web/app/site-url.ts`
+was **reported clean**, three lines under a comment asserting that exact case
+was covered. Fourth time that check has been wrong, fourth time it reported
+clean. It had never been watched failing.
 
 ## Phase 1 is complete
 

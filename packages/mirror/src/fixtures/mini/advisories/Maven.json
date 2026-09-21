@@ -1,0 +1,4251 @@
+{
+ "advisories": {
+  "com.google.guava:guava": [
+   {
+    "affected": [
+     {
+      "ecosystem": "Maven",
+      "name": "com.google.guava:guava",
+      "ranges": [
+       {
+        "events": [
+         {
+          "introduced": "0"
+         },
+         {
+          "fixed": "32.0.0-android"
+         }
+        ],
+        "type": "ECOSYSTEM"
+       }
+      ],
+      "versions": [
+       "10.0",
+       "10.0-rc1",
+       "10.0-rc2",
+       "10.0-rc3",
+       "10.0.1",
+       "11.0",
+       "11.0-rc1",
+       "11.0.1",
+       "11.0.2",
+       "12.0",
+       "12.0-rc1",
+       "12.0-rc2",
+       "12.0.1",
+       "13.0",
+       "13.0-rc1",
+       "13.0-rc2",
+       "13.0.1",
+       "14.0",
+       "14.0-rc1",
+       "14.0-rc2",
+       "14.0-rc3",
+       "14.0.1",
+       "15.0",
+       "15.0-rc1",
+       "16.0",
+       "16.0-rc1",
+       "16.0.1",
+       "17.0",
+       "17.0-rc1",
+       "17.0-rc2",
+       "18.0",
+       "18.0-rc1",
+       "18.0-rc2",
+       "19.0",
+       "19.0-rc1",
+       "19.0-rc2",
+       "19.0-rc3",
+       "20.0",
+       "20.0-rc1",
+       "21.0",
+       "21.0-rc1",
+       "21.0-rc2",
+       "22.0",
+       "22.0-android",
+       "22.0-rc1",
+       "22.0-rc1-android",
+       "23.0",
+       "23.0-android",
+       "23.0-rc1",
+       "23.0-rc1-android",
+       "23.1-android",
+       "23.1-jre",
+       "23.2-android",
+       "23.2-jre",
+       "23.3-android",
+       "23.3-jre",
+       "23.4-android",
+       "23.4-jre",
+       "23.5-android",
+       "23.5-jre",
+       "23.6-android",
+       "23.6-jre",
+       "23.6.1-android",
+       "23.6.1-jre",
+       "24.0-android",
+       "24.0-jre",
+       "24.1-android",
+       "24.1-jre",
+       "24.1.1-android",
+       "24.1.1-jre",
+       "25.0-android",
+       "25.0-jre",
+       "25.1-android",
+       "25.1-jre",
+       "26.0-android",
+       "26.0-jre",
+       "27.0-android",
+       "27.0-jre",
+       "27.0.1-android",
+       "27.0.1-jre",
+       "27.1-android",
+       "27.1-jre",
+       "28.0-android",
+       "28.0-jre",
+       "28.1-android",
+       "28.1-jre",
+       "28.2-android",
+       "28.2-jre",
+       "29.0-android",
+       "29.0-jre",
+       "30.0-android",
+       "30.0-jre",
+       "30.1-android",
+       "30.1-jre",
+       "30.1.1-android",
+       "30.1.1-jre",
+       "31.0-android",
+       "31.0-jre",
+       "31.0.1-android",
+       "31.0.1-jre",
+       "31.1-android",
+       "31.1-jre",
+       "r03",
+       "r05",
+       "r06",
+       "r07",
+       "r08",
+       "r09"
+      ]
+     }
+    ],
+    "aliases": [
+     "CVE-2020-8908",
+     "SNYK-JAVA-COMGOOGLEGUAVA-1015415"
+    ],
+    "id": "GHSA-5mg8-w23w-74h3",
+    "modified": "2026-09-10T03:49:26.651391253Z",
+    "severity": [
+     {
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:L/I:N/A:N",
+      "type": "CVSS_V3"
+     }
+    ],
+    "summary": "Information Disclosure in Guava"
+   },
+   {
+    "affected": [
+     {
+      "ecosystem": "Maven",
+      "name": "com.google.guava:guava",
+      "ranges": [
+       {
+        "events": [
+         {
+          "introduced": "1.0"
+         },
+         {
+          "fixed": "32.0.0-android"
+         }
+        ],
+        "type": "ECOSYSTEM"
+       }
+      ],
+      "versions": [
+       "10.0",
+       "10.0-rc1",
+       "10.0-rc2",
+       "10.0-rc3",
+       "10.0.1",
+       "11.0",
+       "11.0-rc1",
+       "11.0.1",
+       "11.0.2",
+       "12.0",
+       "12.0-rc1",
+       "12.0-rc2",
+       "12.0.1",
+       "13.0",
+       "13.0-rc1",
+       "13.0-rc2",
+       "13.0.1",
+       "14.0",
+       "14.0-rc1",
+       "14.0-rc2",
+       "14.0-rc3",
+       "14.0.1",
+       "15.0",
+       "15.0-rc1",
+       "16.0",
+       "16.0-rc1",
+       "16.0.1",
+       "17.0",
+       "17.0-rc1",
+       "17.0-rc2",
+       "18.0",
+       "18.0-rc1",
+       "18.0-rc2",
+       "19.0",
+       "19.0-rc1",
+       "19.0-rc2",
+       "19.0-rc3",
+       "20.0",
+       "20.0-rc1",
+       "21.0",
+       "21.0-rc1",
+       "21.0-rc2",
+       "22.0",
+       "22.0-android",
+       "22.0-rc1",
+       "22.0-rc1-android",
+       "23.0",
+       "23.0-android",
+       "23.0-rc1",
+       "23.0-rc1-android",
+       "23.1-android",
+       "23.1-jre",
+       "23.2-android",
+       "23.2-jre",
+       "23.3-android",
+       "23.3-jre",
+       "23.4-android",
+       "23.4-jre",
+       "23.5-android",
+       "23.5-jre",
+       "23.6-android",
+       "23.6-jre",
+       "23.6.1-android",
+       "23.6.1-jre",
+       "24.0-android",
+       "24.0-jre",
+       "24.1-android",
+       "24.1-jre",
+       "24.1.1-android",
+       "24.1.1-jre",
+       "25.0-android",
+       "25.0-jre",
+       "25.1-android",
+       "25.1-jre",
+       "26.0-android",
+       "26.0-jre",
+       "27.0-android",
+       "27.0-jre",
+       "27.0.1-android",
+       "27.0.1-jre",
+       "27.1-android",
+       "27.1-jre",
+       "28.0-android",
+       "28.0-jre",
+       "28.1-android",
+       "28.1-jre",
+       "28.2-android",
+       "28.2-jre",
+       "29.0-android",
+       "29.0-jre",
+       "30.0-android",
+       "30.0-jre",
+       "30.1-android",
+       "30.1-jre",
+       "30.1.1-android",
+       "30.1.1-jre",
+       "31.0-android",
+       "31.0-jre",
+       "31.0.1-android",
+       "31.0.1-jre",
+       "31.1-android",
+       "31.1-jre"
+      ]
+     }
+    ],
+    "aliases": [
+     "CVE-2023-2976"
+    ],
+    "id": "GHSA-7g45-4rm6-3mm3",
+    "modified": "2026-09-10T03:49:53.859811124Z",
+    "severity": [
+     {
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:N",
+      "type": "CVSS_V3"
+     }
+    ],
+    "summary": "Guava vulnerable to insecure use of temporary directory"
+   },
+   {
+    "affected": [
+     {
+      "ecosystem": "Maven",
+      "name": "com.google.guava:guava",
+      "ranges": [
+       {
+        "events": [
+         {
+          "introduced": "11.0"
+         },
+         {
+          "fixed": "24.1.1-android"
+         }
+        ],
+        "type": "ECOSYSTEM"
+       }
+      ],
+      "versions": [
+       "11.0",
+       "11.0.1",
+       "11.0.2",
+       "12.0",
+       "12.0-rc1",
+       "12.0-rc2",
+       "12.0.1",
+       "13.0",
+       "13.0-rc1",
+       "13.0-rc2",
+       "13.0.1",
+       "14.0",
+       "14.0-rc1",
+       "14.0-rc2",
+       "14.0-rc3",
+       "14.0.1",
+       "15.0",
+       "15.0-rc1",
+       "16.0",
+       "16.0-rc1",
+       "16.0.1",
+       "17.0",
+       "17.0-rc1",
+       "17.0-rc2",
+       "18.0",
+       "18.0-rc1",
+       "18.0-rc2",
+       "19.0",
+       "19.0-rc1",
+       "19.0-rc2",
+       "19.0-rc3",
+       "20.0",
+       "20.0-rc1",
+       "21.0",
+       "21.0-rc1",
+       "21.0-rc2",
+       "22.0",
+       "22.0-android",
+       "22.0-rc1",
+       "22.0-rc1-android",
+       "23.0",
+       "23.0-android",
+       "23.0-rc1",
+       "23.0-rc1-android",
+       "23.1-android",
+       "23.1-jre",
+       "23.2-android",
+       "23.2-jre",
+       "23.3-android",
+       "23.3-jre",
+       "23.4-android",
+       "23.4-jre",
+       "23.5-android",
+       "23.5-jre",
+       "23.6-android",
+       "23.6-jre",
+       "23.6.1-android",
+       "23.6.1-jre",
+       "24.0-android",
+       "24.0-jre",
+       "24.1-android",
+       "24.1-jre"
+      ]
+     },
+     {
+      "ecosystem": "Maven",
+      "name": "com.google.guava:guava-jdk5",
+      "ranges": [
+       {
+        "events": [
+         {
+          "introduced": "0"
+         },
+         {
+          "last_affected": "17.0"
+         }
+        ],
+        "type": "ECOSYSTEM"
+       }
+      ],
+      "versions": [
+       "13.0",
+       "14.0.1",
+       "14.0.1-rc1",
+       "16.0",
+       "16.0-rc1",
+       "17.0",
+       "17.0-rc1",
+       "17.0-rc2"
+      ]
+     },
+     {
+      "ecosystem": "Maven",
+      "name": "com.googlecode.guava-osgi:guava-osgi",
+      "ranges": [
+       {
+        "events": [
+         {
+          "introduced": "0"
+         },
+         {
+          "last_affected": "11.0.1"
+         }
+        ],
+        "type": "ECOSYSTEM"
+       }
+      ],
+      "versions": [
+       "10.0.0",
+       "10.0.1",
+       "11.0.0",
+       "11.0.1",
+       "3.0.0",
+       "4.0.0",
+       "5.0.0",
+       "6.0.0",
+       "7.0.0",
+       "8.0.0",
+       "9.0.0"
+      ]
+     },
+     {
+      "ecosystem": "Maven",
+      "name": "de.mhus.ports:vaadin-shared-deps",
+      "ranges": [
+       {
+        "events": [
+         {
+          "introduced": "0"
+         },
+         {
+          "last_affected": "7.4.0"
+         }
+        ],
+        "type": "ECOSYSTEM"
+       }
+      ],
+      "versions": [
+       "1.3.1",
+       "1.3.4",
+       "1.3.6",
+       "1.3.7",
+       "1.6.0",
+       "1.6.1",
+       "6.2.0",
+       "7.0.0",
+       "7.1.0",
+       "7.2.0",
+       "7.4.0"
+      ]
+     },
+     {
+      "ecosystem": "Maven",
+      "name": "org.hudsonci.lib.guava:guava",
+      "ranges": [
+       {
+        "events": [
+         {
+          "introduced": "0"
+         },
+         {
+          "last_affected": "14.0.1-h-3"
+         }
+        ],
+        "type": "ECOSYSTEM"
+       }
+      ],
+      "versions": [
+       "14.0.1-h-1",
+       "14.0.1-h-2",
+       "14.0.1-h-3"
+      ]
+     },
+     {
+      "ecosystem": "Maven",
+      "name": "org.sonatype.sisu:sisu-guava",
+      "versions": [
+       "0.11.1"
+      ]
+     }
+    ],
+    "aliases": [
+     "CVE-2018-10237"
+    ],
+    "id": "GHSA-mvr2-9pj6-7w5j",
+    "modified": "2026-09-10T03:49:25.526232914Z",
+    "severity": [
+     {
+      "score": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:N/A:H",
+      "type": "CVSS_V3"
+     }
+    ],
+    "summary": "Denial of Service in Google Guava"
+   }
+  ],
+  "org.apache.logging.log4j:log4j-core": [
+   {
+    "affected": [
+     {
+      "ecosystem": "Maven",
+      "name": "org.apache.logging.log4j:log4j-core",
+      "ranges": [
+       {
+        "events": [
+         {
+          "introduced": "2.0-alpha1"
+         },
+         {
+          "fixed": "2.25.4"
+         }
+        ],
+        "type": "ECOSYSTEM"
+       }
+      ],
+      "versions": [
+       "2.0",
+       "2.0-alpha1",
+       "2.0-alpha2",
+       "2.0-beta1",
+       "2.0-beta2",
+       "2.0-beta3",
+       "2.0-beta4",
+       "2.0-beta5",
+       "2.0-beta6",
+       "2.0-beta7",
+       "2.0-beta8",
+       "2.0-beta9",
+       "2.0-rc1",
+       "2.0-rc2",
+       "2.0.1",
+       "2.0.2",
+       "2.1",
+       "2.10.0",
+       "2.11.0",
+       "2.11.1",
+       "2.11.2",
+       "2.12.0",
+       "2.12.1",
+       "2.12.2",
+       "2.12.3",
+       "2.12.4",
+       "2.13.0",
+       "2.13.1",
+       "2.13.2",
+       "2.13.3",
+       "2.14.0",
+       "2.14.1",
+       "2.15.0",
+       "2.16.0",
+       "2.17.0",
+       "2.17.1",
+       "2.17.2",
+       "2.18.0",
+       "2.19.0",
+       "2.2",
+       "2.20.0",
+       "2.21.0",
+       "2.21.1",
+       "2.22.0",
+       "2.22.1",
+       "2.23.0",
+       "2.23.1",
+       "2.24.0",
+       "2.24.1",
+       "2.24.2",
+       "2.24.3",
+       "2.25.0",
+       "2.25.1",
+       "2.25.2",
+       "2.25.3",
+       "2.3",
+       "2.3.1",
+       "2.3.2",
+       "2.4",
+       "2.4.1",
+       "2.5",
+       "2.6",
+       "2.6.1",
+       "2.6.2",
+       "2.7",
+       "2.8",
+       "2.8.1",
+       "2.8.2",
+       "2.9.0",
+       "2.9.1"
+      ]
+     },
+     {
+      "ecosystem": "Maven",
+      "name": "org.apache.logging.log4j:log4j-core",
+      "ranges": [
+       {
+        "events": [
+         {
+          "introduced": "3.0.0-alpha1"
+         },
+         {
+          "last_affected": "3.0.0-beta3"
+         }
+        ],
+        "type": "ECOSYSTEM"
+       }
+      ],
+      "versions": [
+       "3.0.0-alpha1",
+       "3.0.0-beta1",
+       "3.0.0-beta2",
+       "3.0.0-beta3"
+      ]
+     }
+    ],
+    "aliases": [
+     "CVE-2026-34480"
+    ],
+    "id": "GHSA-3pxv-7cmr-fjr4",
+    "modified": "2026-09-10T03:50:42.492278990Z",
+    "severity": [
+     {
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:N/VI:N/VA:N/SC:N/SI:L/SA:N",
+      "type": "CVSS_V4"
+     }
+    ],
+    "summary": "Apache Log4j Core: Silent log event loss in XmlLayout due to unescaped XML 1.0 forbidden characters"
+   },
+   {
+    "affected": [
+     {
+      "ecosystem": "Maven",
+      "name": "org.apache.logging.log4j:log4j-core",
+      "ranges": [
+       {
+        "events": [
+         {
+          "introduced": "2.21.0"
+         },
+         {
+          "fixed": "2.25.4"
+         }
+        ],
+        "type": "ECOSYSTEM"
+       }
+      ],
+      "versions": [
+       "2.21.0",
+       "2.21.1",
+       "2.22.0",
+       "2.22.1",
+       "2.23.0",
+       "2.23.1",
+       "2.24.0",
+       "2.24.1",
+       "2.24.2",
+       "2.24.3",
+       "2.25.0",
+       "2.25.1",
+       "2.25.2",
+       "2.25.3"
+      ]
+     },
+     {
+      "ecosystem": "Maven",
+      "name": "org.apache.logging.log4j:log4j-core",
+      "ranges": [
+       {
+        "events": [
+         {
+          "introduced": "3.0.0-beta1"
+         },
+         {
+          "last_affected": "3.0.0-beta3"
+         }
+        ],
+        "type": "ECOSYSTEM"
+       }
+      ],
+      "versions": [
+       "3.0.0-beta1",
+       "3.0.0-beta2",
+       "3.0.0-beta3"
+      ]
+     }
+    ],
+    "aliases": [
+     "CVE-2026-34478"
+    ],
+    "id": "GHSA-445c-vh5m-36rj",
+    "modified": "2026-09-10T03:50:42.646598813Z",
+    "severity": [
+     {
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:N/VI:N/VA:N/SC:N/SI:L/SA:N",
+      "type": "CVSS_V4"
+     }
+    ],
+    "summary": "Apache Log4j Core: log injection in `Rfc5424Layout` due to silent configuration incompatibility"
+   },
+   {
+    "affected": [
+     {
+      "ecosystem": "Maven",
+      "name": "org.apache.logging.log4j:log4j-core",
+      "ranges": [
+       {
+        "events": [
+         {
+          "introduced": "2.12.0"
+         },
+         {
+          "fixed": "2.25.4"
+         }
+        ],
+        "type": "ECOSYSTEM"
+       }
+      ],
+      "versions": [
+       "2.12.0",
+       "2.12.1",
+       "2.12.2",
+       "2.12.3",
+       "2.12.4",
+       "2.13.0",
+       "2.13.1",
+       "2.13.2",
+       "2.13.3",
+       "2.14.0",
+       "2.14.1",
+       "2.15.0",
+       "2.16.0",
+       "2.17.0",
+       "2.17.1",
+       "2.17.2",
+       "2.18.0",
+       "2.19.0",
+       "2.20.0",
+       "2.21.0",
+       "2.21.1",
+       "2.22.0",
+       "2.22.1",
+       "2.23.0",
+       "2.23.1",
+       "2.24.0",
+       "2.24.1",
+       "2.24.2",
+       "2.24.3",
+       "2.25.0",
+       "2.25.1",
+       "2.25.2",
+       "2.25.3"
+      ]
+     },
+     {
+      "ecosystem": "Maven",
+      "name": "org.apache.logging.log4j:log4j-core",
+      "ranges": [
+       {
+        "events": [
+         {
+          "introduced": "3.0.0-alpha1"
+         },
+         {
+          "last_affected": "3.0.0-beta3"
+         }
+        ],
+        "type": "ECOSYSTEM"
+       }
+      ],
+      "versions": [
+       "3.0.0-alpha1",
+       "3.0.0-beta1",
+       "3.0.0-beta2",
+       "3.0.0-beta3"
+      ]
+     }
+    ],
+    "aliases": [
+     "CVE-2026-34477"
+    ],
+    "id": "GHSA-6hg6-v5c8-fphq",
+    "modified": "2026-09-10T03:50:43.570169134Z",
+    "severity": [
+     {
+      "score": "CVSS:4.0/AV:N/AC:H/AT:N/PR:N/UI:N/VC:L/VI:N/VA:N/SC:N/SI:L/SA:N",
+      "type": "CVSS_V4"
+     }
+    ],
+    "summary": "Apache Log4j Core: `verifyHostName` attribute silently ignored in TLS configuration"
+   },
+   {
+    "affected": [
+     {
+      "ecosystem": "Maven",
+      "name": "org.apache.logging.log4j:log4j-core",
+      "ranges": [
+       {
+        "events": [
+         {
+          "introduced": "2.13.0"
+         },
+         {
+          "fixed": "2.16.0"
+         }
+        ],
+        "type": "ECOSYSTEM"
+       }
+      ],
+      "versions": [
+       "2.13.0",
+       "2.13.1",
+       "2.13.2",
+       "2.13.3",
+       "2.14.0",
+       "2.14.1",
+       "2.15.0"
+      ]
+     },
+     {
+      "ecosystem": "Maven",
+      "name": "org.apache.logging.log4j:log4j-core",
+      "ranges": [
+       {
+        "events": [
+         {
+          "introduced": "0"
+         },
+         {
+          "fixed": "2.12.2"
+         }
+        ],
+        "type": "ECOSYSTEM"
+       }
+      ],
+      "versions": [
+       "2.0",
+       "2.0-alpha1",
+       "2.0-alpha2",
+       "2.0-beta1",
+       "2.0-beta2",
+       "2.0-beta3",
+       "2.0-beta4",
+       "2.0-beta5",
+       "2.0-beta6",
+       "2.0-beta7",
+       "2.0-beta8",
+       "2.0-beta9",
+       "2.0-rc1",
+       "2.0-rc2",
+       "2.0.1",
+       "2.0.2",
+       "2.1",
+       "2.10.0",
+       "2.11.0",
+       "2.11.1",
+       "2.11.2",
+       "2.12.0",
+       "2.12.1",
+       "2.2",
+       "2.3",
+       "2.3.1",
+       "2.3.2",
+       "2.4",
+       "2.4.1",
+       "2.5",
+       "2.6",
+       "2.6.1",
+       "2.6.2",
+       "2.7",
+       "2.8",
+       "2.8.1",
+       "2.8.2",
+       "2.9.0",
+       "2.9.1"
+      ]
+     },
+     {
+      "ecosystem": "Maven",
+      "name": "org.ops4j.pax.logging:pax-logging-log4j2",
+      "ranges": [
+       {
+        "events": [
+         {
+          "introduced": "1.8.0"
+         },
+         {
+          "fixed": "1.9.2"
+         }
+        ],
+        "type": "ECOSYSTEM"
+       }
+      ],
+      "versions": [
+       "1.8.0",
+       "1.8.1",
+       "1.8.2",
+       "1.8.3",
+       "1.8.4",
+       "1.8.5",
+       "1.8.6",
+       "1.8.7",
+       "1.9.0",
+       "1.9.1"
+      ]
+     },
+     {
+      "ecosystem": "Maven",
+      "name": "org.ops4j.pax.logging:pax-logging-log4j2",
+      "ranges": [
+       {
+        "events": [
+         {
+          "introduced": "1.10.0"
+         },
+         {
+          "fixed": "1.10.8"
+         }
+        ],
+        "type": "ECOSYSTEM"
+       }
+      ],
+      "versions": [
+       "1.10.0",
+       "1.10.1",
+       "1.10.2",
+       "1.10.3",
+       "1.10.4",
+       "1.10.5",
+       "1.10.6",
+       "1.10.7"
+      ]
+     },
+     {
+      "ecosystem": "Maven",
+      "name": "org.ops4j.pax.logging:pax-logging-log4j2",
+      "ranges": [
+       {
+        "events": [
+         {
+          "introduced": "1.11.0"
+         },
+         {
+          "fixed": "1.11.11"
+         }
+        ],
+        "type": "ECOSYSTEM"
+       }
+      ],
+      "versions": [
+       "1.11.0",
+       "1.11.1",
+       "1.11.10",
+       "1.11.2",
+       "1.11.3",
+       "1.11.4",
+       "1.11.5",
+       "1.11.6",
+       "1.11.7",
+       "1.11.8",
+       "1.11.9"
+      ]
+     },
+     {
+      "ecosystem": "Maven",
+      "name": "org.ops4j.pax.logging:pax-logging-log4j2",
+      "ranges": [
+       {
+        "events": [
+         {
+          "introduced": "2.0.0"
+         },
+         {
+          "fixed": "2.0.12"
+         }
+        ],
+        "type": "ECOSYSTEM"
+       }
+      ],
+      "versions": [
+       "2.0.0",
+       "2.0.1",
+       "2.0.10",
+       "2.0.11",
+       "2.0.2",
+       "2.0.3",
+       "2.0.4",
+       "2.0.5",
+       "2.0.6",
+       "2.0.7",
+       "2.0.8",
+       "2.0.9"
+      ]
+     }
+    ],
+    "aliases": [
+     "CVE-2021-45046"
+    ],
+    "id": "GHSA-7rjr-3q55-vv33",
+    "modified": "2025-10-22T19:37:53.742023Z",
+    "severity": [
+     {
+      "score": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:C/C:H/I:H/A:H/E:H",
+      "type": "CVSS_V3"
+     }
+    ],
+    "summary": "Incomplete fix for Apache Log4j vulnerability"
+   },
+   {
+    "affected": [
+     {
+      "ecosystem": "Maven",
+      "name": "org.apache.logging.log4j:log4j-core",
+      "ranges": [
+       {
+        "events": [
+         {
+          "introduced": "2.0-beta7"
+         },
+         {
+          "fixed": "2.3.2"
+         }
+        ],
+        "type": "ECOSYSTEM"
+       }
+      ],
+      "versions": [
+       "2.0",
+       "2.0-beta7",
+       "2.0-beta8",
+       "2.0-beta9",
+       "2.0-rc1",
+       "2.0-rc2",
+       "2.0.1",
+       "2.0.2",
+       "2.1",
+       "2.2",
+       "2.3",
+       "2.3.1"
+      ]
+     },
+     {
+      "ecosystem": "Maven",
+      "name": "org.apache.logging.log4j:log4j-core",
+      "ranges": [
+       {
+        "events": [
+         {
+          "introduced": "2.4"
+         },
+         {
+          "fixed": "2.12.4"
+         }
+        ],
+        "type": "ECOSYSTEM"
+       }
+      ],
+      "versions": [
+       "2.10.0",
+       "2.11.0",
+       "2.11.1",
+       "2.11.2",
+       "2.12.0",
+       "2.12.1",
+       "2.12.2",
+       "2.12.3",
+       "2.4",
+       "2.4.1",
+       "2.5",
+       "2.6",
+       "2.6.1",
+       "2.6.2",
+       "2.7",
+       "2.8",
+       "2.8.1",
+       "2.8.2",
+       "2.9.0",
+       "2.9.1"
+      ]
+     },
+     {
+      "ecosystem": "Maven",
+      "name": "org.apache.logging.log4j:log4j-core",
+      "ranges": [
+       {
+        "events": [
+         {
+          "introduced": "2.13.0"
+         },
+         {
+          "fixed": "2.17.1"
+         }
+        ],
+        "type": "ECOSYSTEM"
+       }
+      ],
+      "versions": [
+       "2.13.0",
+       "2.13.1",
+       "2.13.2",
+       "2.13.3",
+       "2.14.0",
+       "2.14.1",
+       "2.15.0",
+       "2.16.0",
+       "2.17.0"
+      ]
+     },
+     {
+      "ecosystem": "Maven",
+      "name": "org.ops4j.pax.logging:pax-logging-log4j2",
+      "ranges": [
+       {
+        "events": [
+         {
+          "introduced": "1.8.0"
+         },
+         {
+          "fixed": "1.9.2"
+         }
+        ],
+        "type": "ECOSYSTEM"
+       }
+      ],
+      "versions": [
+       "1.8.0",
+       "1.8.1",
+       "1.8.2",
+       "1.8.3",
+       "1.8.4",
+       "1.8.5",
+       "1.8.6",
+       "1.8.7",
+       "1.9.0",
+       "1.9.1"
+      ]
+     },
+     {
+      "ecosystem": "Maven",
+      "name": "org.ops4j.pax.logging:pax-logging-log4j2",
+      "ranges": [
+       {
+        "events": [
+         {
+          "introduced": "1.10.0"
+         },
+         {
+          "fixed": "1.10.9"
+         }
+        ],
+        "type": "ECOSYSTEM"
+       }
+      ],
+      "versions": [
+       "1.10.0",
+       "1.10.1",
+       "1.10.2",
+       "1.10.3",
+       "1.10.4",
+       "1.10.5",
+       "1.10.6",
+       "1.10.7",
+       "1.10.8"
+      ]
+     },
+     {
+      "ecosystem": "Maven",
+      "name": "org.ops4j.pax.logging:pax-logging-log4j2",
+      "ranges": [
+       {
+        "events": [
+         {
+          "introduced": "1.11.0"
+         },
+         {
+          "fixed": "1.11.13"
+         }
+        ],
+        "type": "ECOSYSTEM"
+       }
+      ],
+      "versions": [
+       "1.11.0",
+       "1.11.1",
+       "1.11.10",
+       "1.11.11",
+       "1.11.12",
+       "1.11.2",
+       "1.11.3",
+       "1.11.4",
+       "1.11.5",
+       "1.11.6",
+       "1.11.7",
+       "1.11.8",
+       "1.11.9"
+      ]
+     },
+     {
+      "ecosystem": "Maven",
+      "name": "org.ops4j.pax.logging:pax-logging-log4j2",
+      "ranges": [
+       {
+        "events": [
+         {
+          "introduced": "2.0.0"
+         },
+         {
+          "fixed": "2.0.14"
+         }
+        ],
+        "type": "ECOSYSTEM"
+       }
+      ],
+      "versions": [
+       "2.0.0",
+       "2.0.1",
+       "2.0.10",
+       "2.0.11",
+       "2.0.12",
+       "2.0.13",
+       "2.0.2",
+       "2.0.3",
+       "2.0.4",
+       "2.0.5",
+       "2.0.6",
+       "2.0.7",
+       "2.0.8",
+       "2.0.9"
+      ]
+     }
+    ],
+    "aliases": [
+     "CVE-2021-44832"
+    ],
+    "id": "GHSA-8489-44mv-ggj8",
+    "modified": "2026-06-09T10:45:14.253296471Z",
+    "severity": [
+     {
+      "score": "CVSS:3.1/AV:N/AC:H/PR:H/UI:N/S:U/C:H/I:H/A:H",
+      "type": "CVSS_V3"
+     }
+    ],
+    "summary": "Improper Input Validation and Injection in Apache Log4j2"
+   },
+   {
+    "affected": [
+     {
+      "ecosystem": "Maven",
+      "name": "org.apache.logging.log4j:log4j",
+      "ranges": [
+       {
+        "events": [
+         {
+          "introduced": "2.0"
+         },
+         {
+          "fixed": "2.8.2"
+         }
+        ],
+        "type": "ECOSYSTEM"
+       }
+      ],
+      "versions": [
+       "2.0",
+       "2.0.1",
+       "2.0.2",
+       "2.1",
+       "2.2",
+       "2.3",
+       "2.3.1",
+       "2.3.2",
+       "2.4",
+       "2.4.1",
+       "2.5",
+       "2.6",
+       "2.6.1",
+       "2.6.2",
+       "2.7",
+       "2.8",
+       "2.8.1"
+      ]
+     },
+     {
+      "ecosystem": "Maven",
+      "name": "org.apache.logging.log4j:log4j-core",
+      "ranges": [
+       {
+        "events": [
+         {
+          "introduced": "2.0"
+         },
+         {
+          "fixed": "2.8.2"
+         }
+        ],
+        "type": "ECOSYSTEM"
+       }
+      ],
+      "versions": [
+       "2.0",
+       "2.0.1",
+       "2.0.2",
+       "2.1",
+       "2.2",
+       "2.3",
+       "2.3.1",
+       "2.3.2",
+       "2.4",
+       "2.4.1",
+       "2.5",
+       "2.6",
+       "2.6.1",
+       "2.6.2",
+       "2.7",
+       "2.8",
+       "2.8.1"
+      ]
+     }
+    ],
+    "aliases": [
+     "CVE-2017-5645"
+    ],
+    "id": "GHSA-fxph-q3j8-mv87",
+    "modified": "2024-03-14T05:19:26.806656Z",
+    "severity": [
+     {
+      "score": "CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+      "type": "CVSS_V3"
+     }
+    ],
+    "summary": "Deserialization of Untrusted Data in Log4j"
+   },
+   {
+    "affected": [
+     {
+      "ecosystem": "Maven",
+      "name": "org.apache.logging.log4j:log4j-core",
+      "ranges": [
+       {
+        "events": [
+         {
+          "introduced": "2.13.0"
+         },
+         {
+          "fixed": "2.15.0"
+         }
+        ],
+        "type": "ECOSYSTEM"
+       }
+      ],
+      "versions": [
+       "2.13.0",
+       "2.13.1",
+       "2.13.2",
+       "2.13.3",
+       "2.14.0",
+       "2.14.1"
+      ]
+     },
+     {
+      "ecosystem": "Maven",
+      "name": "org.apache.logging.log4j:log4j-core",
+      "ranges": [
+       {
+        "events": [
+         {
+          "introduced": "2.0-beta9"
+         },
+         {
+          "fixed": "2.3.1"
+         }
+        ],
+        "type": "ECOSYSTEM"
+       }
+      ],
+      "versions": [
+       "2.0",
+       "2.0-beta9",
+       "2.0-rc1",
+       "2.0-rc2",
+       "2.0.1",
+       "2.0.2",
+       "2.1",
+       "2.2",
+       "2.3"
+      ]
+     },
+     {
+      "ecosystem": "Maven",
+      "name": "org.apache.logging.log4j:log4j-core",
+      "ranges": [
+       {
+        "events": [
+         {
+          "introduced": "2.4"
+         },
+         {
+          "fixed": "2.12.2"
+         }
+        ],
+        "type": "ECOSYSTEM"
+       }
+      ],
+      "versions": [
+       "2.10.0",
+       "2.11.0",
+       "2.11.1",
+       "2.11.2",
+       "2.12.0",
+       "2.12.1",
+       "2.4",
+       "2.4.1",
+       "2.5",
+       "2.6",
+       "2.6.1",
+       "2.6.2",
+       "2.7",
+       "2.8",
+       "2.8.1",
+       "2.8.2",
+       "2.9.0",
+       "2.9.1"
+      ]
+     },
+     {
+      "ecosystem": "Maven",
+      "name": "com.guicedee.services:log4j-core",
+      "ranges": [
+       {
+        "events": [
+         {
+          "introduced": "0"
+         },
+         {
+          "last_affected": "1.2.1.2-jre17"
+         }
+        ],
+        "type": "ECOSYSTEM"
+       }
+      ],
+      "versions": [
+       "1.0.10.0",
+       "1.0.10.0-jre13",
+       "1.0.10.0-jre14",
+       "1.0.10.1",
+       "1.0.10.1-jre14",
+       "1.0.10.3",
+       "1.0.10.3-jre14",
+       "1.0.10.4",
+       "1.0.10.4-jre12",
+       "1.0.10.4-jre13",
+       "1.0.10.4-jre14",
+       "1.0.11.0-jre14",
+       "1.0.11.2-jre14",
+       "1.0.11.5",
+       "1.0.11.5-jre12",
+       "1.0.11.5-jre14",
+       "1.0.11.6-jre14",
+       "1.0.11.7",
+       "1.0.11.7-jre12",
+       "1.0.11.7-jre14",
+       "1.0.12.0",
+       "1.0.12.0-jre12",
+       "1.0.12.0-jre13",
+       "1.0.12.0-jre14",
+       "1.0.12.0-jre8",
+       "1.0.12.1",
+       "1.0.12.1-jre12",
+       "1.0.12.1-jre14",
+       "1.0.12.2",
+       "1.0.12.2-jre12",
+       "1.0.12.2-jre14",
+       "1.0.12.3",
+       "1.0.12.3-jre12",
+       "1.0.12.3-jre13",
+       "1.0.12.3-jre14",
+       "1.0.12.4",
+       "1.0.12.4-jre12",
+       "1.0.12.4-jre13",
+       "1.0.12.4-jre14",
+       "1.0.12.4-jre8",
+       "1.0.12.5",
+       "1.0.12.5-jre14",
+       "1.0.13.0",
+       "1.0.13.0-jre12",
+       "1.0.13.0-jre13",
+       "1.0.13.0-jre14",
+       "1.0.13.0-jre8",
+       "1.0.13.1",
+       "1.0.13.1-jre13",
+       "1.0.13.1-jre14",
+       "1.0.13.1-jre8",
+       "1.0.13.2",
+       "1.0.13.2-jre12",
+       "1.0.13.2-jre13",
+       "1.0.13.2-jre14",
+       "1.0.13.2-jre8",
+       "1.0.13.3",
+       "1.0.13.3-jre14",
+       "1.0.13.4",
+       "1.0.13.4-jre12",
+       "1.0.13.4-jre13",
+       "1.0.13.4-jre14",
+       "1.0.13.5",
+       "1.0.13.5-jre12",
+       "1.0.13.5-jre14",
+       "1.0.13.5-jre8",
+       "1.0.14.0-RC1-jre14",
+       "1.0.14.0-RC1-jre8",
+       "1.0.14.1",
+       "1.0.14.1-jre12",
+       "1.0.14.1-jre13",
+       "1.0.14.1-jre14",
+       "1.0.14.1-jre8",
+       "1.0.14.3-jre8",
+       "1.0.14.4-jre14",
+       "1.0.14.4-jre8",
+       "1.0.15.1",
+       "1.0.15.1-jre12",
+       "1.0.15.1-jre13",
+       "1.0.15.1-jre14",
+       "1.0.15.1-jre8",
+       "1.0.15.2",
+       "1.0.15.2-jre12",
+       "1.0.15.2-jre14",
+       "1.0.15.2-jre8",
+       "1.0.15.3-jre14",
+       "1.0.15.3-jre8",
+       "1.0.15.4",
+       "1.0.15.4-jre14",
+       "1.0.15.4-jre8",
+       "1.0.15.5",
+       "1.0.15.5-jre14",
+       "1.0.15.5-jre8",
+       "1.0.16.0",
+       "1.0.16.0-jre14",
+       "1.0.16.0-jre8",
+       "1.0.17.0",
+       "1.0.17.0-jre14",
+       "1.0.17.1",
+       "1.0.17.1-jre14",
+       "1.0.17.1-jre8",
+       "1.0.18.0",
+       "1.0.18.0-jre14",
+       "1.0.18.0-jre15",
+       "1.0.18.0-jre8",
+       "1.0.18.1",
+       "1.0.18.1-jre14",
+       "1.0.18.1-jre15",
+       "1.0.18.1-jre8",
+       "1.0.19.0",
+       "1.0.19.0-jre14",
+       "1.0.19.0-jre15",
+       "1.0.19.1",
+       "1.0.19.1-jre12",
+       "1.0.19.1-jre13",
+       "1.0.19.1-jre14",
+       "1.0.19.1-jre15",
+       "1.0.19.1-jre8",
+       "1.0.19.10",
+       "1.0.19.10-jre12",
+       "1.0.19.10-jre14",
+       "1.0.19.10-jre15",
+       "1.0.19.10-jre8",
+       "1.0.19.11",
+       "1.0.19.11-jre14",
+       "1.0.19.11-jre8",
+       "1.0.19.12-jre14",
+       "1.0.19.12-jre8",
+       "1.0.19.13",
+       "1.0.19.13-jre14",
+       "1.0.19.13-jre15",
+       "1.0.19.13-jre8",
+       "1.0.19.2",
+       "1.0.19.2-jre13",
+       "1.0.19.2-jre14",
+       "1.0.19.2-jre15",
+       "1.0.19.2-jre8",
+       "1.0.19.3",
+       "1.0.19.3-jre13",
+       "1.0.19.3-jre14",
+       "1.0.19.3-jre15",
+       "1.0.19.3-jre8",
+       "1.0.19.4",
+       "1.0.19.4-jre14",
+       "1.0.19.4-jre15",
+       "1.0.19.4-jre8",
+       "1.0.19.5",
+       "1.0.19.5-jre14",
+       "1.0.19.5-jre15",
+       "1.0.19.5-jre8",
+       "1.0.19.6",
+       "1.0.19.6-jre14",
+       "1.0.19.6-jre8",
+       "1.0.19.7-jre14",
+       "1.0.19.7-jre8",
+       "1.0.19.8-jre8",
+       "1.0.19.9",
+       "1.0.19.9-jre13",
+       "1.0.19.9-jre14",
+       "1.0.19.9-jre15",
+       "1.0.19.9-jre8",
+       "1.0.2.15",
+       "1.0.2.15-jre13",
+       "1.0.2.16-jre13",
+       "1.0.2.17-jre13",
+       "1.0.2.18",
+       "1.0.2.18-jre12",
+       "1.0.2.18-jre13",
+       "1.0.20.0",
+       "1.0.20.0-jre14",
+       "1.0.20.0-jre15",
+       "1.0.20.0-jre8",
+       "1.0.20.1",
+       "1.0.20.1-jre14",
+       "1.0.20.1-jre15",
+       "1.0.20.1-jre8",
+       "1.0.20.2",
+       "1.0.20.2-jre14",
+       "1.0.20.2-jre15",
+       "1.0.20.2-jre8",
+       "1.0.3.1-jre13",
+       "1.0.3.2",
+       "1.0.3.2-jre13",
+       "1.0.3.3",
+       "1.0.3.3-jre12",
+       "1.0.3.3-jre13",
+       "1.0.4.1-jre13",
+       "1.0.4.2",
+       "1.0.4.2-jre13",
+       "1.0.4.3-jre13",
+       "1.0.4.4",
+       "1.0.4.4-jre13",
+       "1.0.5.0",
+       "1.0.5.0-jre13",
+       "1.0.5.1",
+       "1.0.5.1-jre12",
+       "1.0.5.1-jre13",
+       "1.0.5.2",
+       "1.0.5.2-jre12",
+       "1.0.5.2-jre13",
+       "1.0.5.3",
+       "1.0.5.3-jre12",
+       "1.0.5.3-jre13",
+       "1.0.5.4-jre13",
+       "1.0.5.4-jre14",
+       "1.0.5.5",
+       "1.0.5.5-jre12",
+       "1.0.5.5-jre13",
+       "1.0.5.5-jre14",
+       "1.0.6.1",
+       "1.0.6.1-jre12",
+       "1.0.6.1-jre13",
+       "1.0.6.1-jre14",
+       "1.0.6.2",
+       "1.0.6.2-jre12",
+       "1.0.6.2-jre13",
+       "1.0.6.2-jre14",
+       "1.0.6.3",
+       "1.0.6.3-jre12",
+       "1.0.6.3-jre13",
+       "1.0.6.3-jre14",
+       "1.0.6.4-jre14",
+       "1.0.6.5",
+       "1.0.6.5-jre12",
+       "1.0.6.5-jre13",
+       "1.0.6.5-jre14",
+       "1.0.6.7",
+       "1.0.6.7-jre14",
+       "1.0.7.0",
+       "1.0.7.0-jre12",
+       "1.0.7.0-jre13",
+       "1.0.7.0-jre14",
+       "1.0.7.1",
+       "1.0.7.1-jre13",
+       "1.0.7.1-jre14",
+       "1.0.7.10",
+       "1.0.7.10-jre13",
+       "1.0.7.10-jre14",
+       "1.0.7.11",
+       "1.0.7.11-jre14",
+       "1.0.7.12",
+       "1.0.7.12-jre12",
+       "1.0.7.12-jre13",
+       "1.0.7.12-jre14",
+       "1.0.7.2-jre14",
+       "1.0.7.3",
+       "1.0.7.3-jre13",
+       "1.0.7.3-jre14",
+       "1.0.7.4",
+       "1.0.7.4-jre14",
+       "1.0.7.5",
+       "1.0.7.5-jre14",
+       "1.0.7.6",
+       "1.0.7.6-jre14",
+       "1.0.7.9",
+       "1.0.7.9-jre14",
+       "1.0.8.1",
+       "1.0.8.1-jre14",
+       "1.0.8.12",
+       "1.0.8.12-jre12",
+       "1.0.8.12-jre14",
+       "1.0.8.16",
+       "1.0.8.16-jre14",
+       "1.0.8.18",
+       "1.0.8.18-jre14",
+       "1.0.8.2",
+       "1.0.8.2-jre13",
+       "1.0.8.2-jre14",
+       "1.0.8.3",
+       "1.0.8.3-jre13",
+       "1.0.8.3-jre14",
+       "1.0.8.4",
+       "1.0.8.4-jre12",
+       "1.0.8.4-jre13",
+       "1.0.8.4-jre14",
+       "1.0.8.5",
+       "1.0.8.5-jre12",
+       "1.0.8.5-jre13",
+       "1.0.8.5-jre14",
+       "1.0.8.6-jre14",
+       "1.0.9.0",
+       "1.0.9.0-jre14",
+       "1.0.9.1",
+       "1.0.9.1-jre14",
+       "1.0.9.10",
+       "1.0.9.10-jre14",
+       "1.0.9.11",
+       "1.0.9.11-jre14",
+       "1.0.9.13",
+       "1.0.9.13-jre14",
+       "1.0.9.14",
+       "1.0.9.14-jre14",
+       "1.0.9.2",
+       "1.0.9.2-jre14",
+       "1.0.9.3-jre14",
+       "1.0.9.4-jre14",
+       "1.0.9.5-jre14",
+       "1.0.9.7-jre14",
+       "1.1.0.0-jre15",
+       "1.1.0.1",
+       "1.1.0.1-jre14",
+       "1.1.0.1-jre15",
+       "1.1.0.2",
+       "1.1.0.2-jre14",
+       "1.1.0.2-jre15",
+       "1.1.0.3",
+       "1.1.0.3-jre14",
+       "1.1.0.3-jre15",
+       "1.1.0.3-jre8",
+       "1.1.0.4-jre14",
+       "1.1.0.4-jre15",
+       "1.1.0.4-jre8",
+       "1.1.0.5-jre14",
+       "1.1.0.5-jre15",
+       "1.1.0.6",
+       "1.1.0.6-jre14",
+       "1.1.0.6-jre15",
+       "1.1.0.7",
+       "1.1.0.7-jre14",
+       "1.1.0.7-jre15",
+       "1.1.0.7-jre8",
+       "1.1.0.8-SNAPSHOT-jre14",
+       "1.1.1.0",
+       "1.1.1.0-SNAPSHOT-jre14",
+       "1.1.1.0-SNAPSHOT-jre15",
+       "1.1.1.0-SNAPSHOT-jre8",
+       "1.1.1.0-jre14",
+       "1.1.1.0-jre15",
+       "1.1.1.0-jre8",
+       "1.1.1.1-SP1",
+       "1.1.1.1-jre14-SP1",
+       "1.1.1.1-jre15-SP1",
+       "1.1.1.2",
+       "1.1.1.2-jre14",
+       "1.1.1.2-jre15",
+       "1.1.1.3",
+       "1.1.1.3-jre14",
+       "1.1.1.3-jre15",
+       "1.1.1.3-jre16",
+       "1.1.1.3-jre8",
+       "1.1.1.4",
+       "1.1.1.4-jre14",
+       "1.1.1.4-jre15",
+       "1.1.1.4-jre16",
+       "1.1.1.4-jre8",
+       "1.1.1.5-jre15",
+       "1.1.1.7",
+       "1.1.1.7-jre15",
+       "1.1.1.7-jre16",
+       "1.1.1.7-jre8",
+       "1.1.1.8-jre15",
+       "1.1.1.8-jre16",
+       "1.1.1.9-jre15",
+       "1.1.1.9-jre16",
+       "1.2.0.0-jre16",
+       "1.2.0.1-jre11",
+       "1.2.0.1-jre15",
+       "1.2.0.1-jre16",
+       "1.2.0.2-jre16",
+       "1.2.0.3-jre17-rc1",
+       "1.2.1.1-jre17",
+       "1.2.1.2-jre17"
+      ]
+     },
+     {
+      "ecosystem": "Maven",
+      "name": "org.xbib.elasticsearch:log4j",
+      "versions": [
+       "6.3.2.1"
+      ]
+     },
+     {
+      "ecosystem": "Maven",
+      "name": "uk.co.nichesolutions.logging.log4j:log4j-core",
+      "versions": [
+       "2.6.3-CUSTOM"
+      ]
+     },
+     {
+      "ecosystem": "Maven",
+      "name": "org.ops4j.pax.logging:pax-logging-log4j2",
+      "ranges": [
+       {
+        "events": [
+         {
+          "introduced": "1.8.0"
+         },
+         {
+          "fixed": "1.9.2"
+         }
+        ],
+        "type": "ECOSYSTEM"
+       }
+      ],
+      "versions": [
+       "1.8.0",
+       "1.8.1",
+       "1.8.2",
+       "1.8.3",
+       "1.8.4",
+       "1.8.5",
+       "1.8.6",
+       "1.8.7",
+       "1.9.0",
+       "1.9.1"
+      ]
+     },
+     {
+      "ecosystem": "Maven",
+      "name": "org.ops4j.pax.logging:pax-logging-log4j2",
+      "ranges": [
+       {
+        "events": [
+         {
+          "introduced": "1.10.0"
+         },
+         {
+          "fixed": "1.10.8"
+         }
+        ],
+        "type": "ECOSYSTEM"
+       }
+      ],
+      "versions": [
+       "1.10.0",
+       "1.10.1",
+       "1.10.2",
+       "1.10.3",
+       "1.10.4",
+       "1.10.5",
+       "1.10.6",
+       "1.10.7"
+      ]
+     },
+     {
+      "ecosystem": "Maven",
+      "name": "org.ops4j.pax.logging:pax-logging-log4j2",
+      "ranges": [
+       {
+        "events": [
+         {
+          "introduced": "1.11.0"
+         },
+         {
+          "fixed": "1.11.10"
+         }
+        ],
+        "type": "ECOSYSTEM"
+       }
+      ],
+      "versions": [
+       "1.11.0",
+       "1.11.1",
+       "1.11.2",
+       "1.11.3",
+       "1.11.4",
+       "1.11.5",
+       "1.11.6",
+       "1.11.7",
+       "1.11.8",
+       "1.11.9"
+      ]
+     },
+     {
+      "ecosystem": "Maven",
+      "name": "org.ops4j.pax.logging:pax-logging-log4j2",
+      "ranges": [
+       {
+        "events": [
+         {
+          "introduced": "2.0.0"
+         },
+         {
+          "fixed": "2.0.11"
+         }
+        ],
+        "type": "ECOSYSTEM"
+       }
+      ],
+      "versions": [
+       "2.0.0",
+       "2.0.1",
+       "2.0.10",
+       "2.0.2",
+       "2.0.3",
+       "2.0.4",
+       "2.0.5",
+       "2.0.6",
+       "2.0.7",
+       "2.0.8",
+       "2.0.9"
+      ]
+     }
+    ],
+    "aliases": [
+     "CVE-2021-44228"
+    ],
+    "id": "GHSA-jfh8-c2jp-5v3q",
+    "modified": "2025-10-22T19:37:02.616807Z",
+    "severity": [
+     {
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:H/E:H",
+      "type": "CVSS_V3"
+     }
+    ],
+    "summary": "Remote code injection in Log4j"
+   },
+   {
+    "affected": [
+     {
+      "ecosystem": "Maven",
+      "name": "org.apache.logging.log4j:log4j-core",
+      "ranges": [
+       {
+        "events": [
+         {
+          "introduced": "2.4.0"
+         },
+         {
+          "fixed": "2.12.3"
+         }
+        ],
+        "type": "ECOSYSTEM"
+       }
+      ],
+      "versions": [
+       "2.10.0",
+       "2.11.0",
+       "2.11.1",
+       "2.11.2",
+       "2.12.0",
+       "2.12.1",
+       "2.12.2",
+       "2.4",
+       "2.4.1",
+       "2.5",
+       "2.6",
+       "2.6.1",
+       "2.6.2",
+       "2.7",
+       "2.8",
+       "2.8.1",
+       "2.8.2",
+       "2.9.0",
+       "2.9.1"
+      ]
+     },
+     {
+      "ecosystem": "Maven",
+      "name": "org.apache.logging.log4j:log4j-core",
+      "ranges": [
+       {
+        "events": [
+         {
+          "introduced": "2.13.0"
+         },
+         {
+          "fixed": "2.17.0"
+         }
+        ],
+        "type": "ECOSYSTEM"
+       }
+      ],
+      "versions": [
+       "2.13.0",
+       "2.13.1",
+       "2.13.2",
+       "2.13.3",
+       "2.14.0",
+       "2.14.1",
+       "2.15.0",
+       "2.16.0"
+      ]
+     },
+     {
+      "ecosystem": "Maven",
+      "name": "org.apache.logging.log4j:log4j-core",
+      "ranges": [
+       {
+        "events": [
+         {
+          "introduced": "0"
+         },
+         {
+          "fixed": "2.3.1"
+         }
+        ],
+        "type": "ECOSYSTEM"
+       }
+      ],
+      "versions": [
+       "2.0",
+       "2.0-alpha1",
+       "2.0-alpha2",
+       "2.0-beta1",
+       "2.0-beta2",
+       "2.0-beta3",
+       "2.0-beta4",
+       "2.0-beta5",
+       "2.0-beta6",
+       "2.0-beta7",
+       "2.0-beta8",
+       "2.0-beta9",
+       "2.0-rc1",
+       "2.0-rc2",
+       "2.0.1",
+       "2.0.2",
+       "2.1",
+       "2.2",
+       "2.3"
+      ]
+     },
+     {
+      "ecosystem": "Maven",
+      "name": "org.ops4j.pax.logging:pax-logging-log4j2",
+      "ranges": [
+       {
+        "events": [
+         {
+          "introduced": "1.8.0"
+         },
+         {
+          "fixed": "1.9.2"
+         }
+        ],
+        "type": "ECOSYSTEM"
+       }
+      ],
+      "versions": [
+       "1.8.0",
+       "1.8.1",
+       "1.8.2",
+       "1.8.3",
+       "1.8.4",
+       "1.8.5",
+       "1.8.6",
+       "1.8.7",
+       "1.9.0",
+       "1.9.1"
+      ]
+     },
+     {
+      "ecosystem": "Maven",
+      "name": "org.ops4j.pax.logging:pax-logging-log4j2",
+      "ranges": [
+       {
+        "events": [
+         {
+          "introduced": "1.10.0"
+         },
+         {
+          "fixed": "1.10.9"
+         }
+        ],
+        "type": "ECOSYSTEM"
+       }
+      ],
+      "versions": [
+       "1.10.0",
+       "1.10.1",
+       "1.10.2",
+       "1.10.3",
+       "1.10.4",
+       "1.10.5",
+       "1.10.6",
+       "1.10.7",
+       "1.10.8"
+      ]
+     },
+     {
+      "ecosystem": "Maven",
+      "name": "org.ops4j.pax.logging:pax-logging-log4j2",
+      "ranges": [
+       {
+        "events": [
+         {
+          "introduced": "1.11.0"
+         },
+         {
+          "fixed": "1.11.12"
+         }
+        ],
+        "type": "ECOSYSTEM"
+       }
+      ],
+      "versions": [
+       "1.11.0",
+       "1.11.1",
+       "1.11.10",
+       "1.11.11",
+       "1.11.2",
+       "1.11.3",
+       "1.11.4",
+       "1.11.5",
+       "1.11.6",
+       "1.11.7",
+       "1.11.8",
+       "1.11.9"
+      ]
+     },
+     {
+      "ecosystem": "Maven",
+      "name": "org.ops4j.pax.logging:pax-logging-log4j2",
+      "ranges": [
+       {
+        "events": [
+         {
+          "introduced": "2.0.0"
+         },
+         {
+          "fixed": "2.0.13"
+         }
+        ],
+        "type": "ECOSYSTEM"
+       }
+      ],
+      "versions": [
+       "2.0.0",
+       "2.0.1",
+       "2.0.10",
+       "2.0.11",
+       "2.0.12",
+       "2.0.2",
+       "2.0.3",
+       "2.0.4",
+       "2.0.5",
+       "2.0.6",
+       "2.0.7",
+       "2.0.8",
+       "2.0.9"
+      ]
+     }
+    ],
+    "aliases": [
+     "CVE-2021-45105"
+    ],
+    "id": "GHSA-p6xc-xr62-6r2g",
+    "modified": "2026-06-09T10:30:14.432177927Z",
+    "severity": [
+     {
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:N/I:N/A:H",
+      "type": "CVSS_V3"
+     }
+    ],
+    "summary": "Apache Log4j2 vulnerable to Improper Input Validation and Uncontrolled Recursion"
+   },
+   {
+    "affected": [
+     {
+      "ecosystem": "Maven",
+      "name": "org.apache.logging.log4j:log4j-core",
+      "ranges": [
+       {
+        "events": [
+         {
+          "introduced": "2.0-beta9"
+         },
+         {
+          "fixed": "2.25.3"
+         }
+        ],
+        "type": "ECOSYSTEM"
+       }
+      ],
+      "versions": [
+       "2.0",
+       "2.0-beta9",
+       "2.0-rc1",
+       "2.0-rc2",
+       "2.0.1",
+       "2.0.2",
+       "2.1",
+       "2.10.0",
+       "2.11.0",
+       "2.11.1",
+       "2.11.2",
+       "2.12.0",
+       "2.12.1",
+       "2.12.2",
+       "2.12.3",
+       "2.12.4",
+       "2.13.0",
+       "2.13.1",
+       "2.13.2",
+       "2.13.3",
+       "2.14.0",
+       "2.14.1",
+       "2.15.0",
+       "2.16.0",
+       "2.17.0",
+       "2.17.1",
+       "2.17.2",
+       "2.18.0",
+       "2.19.0",
+       "2.2",
+       "2.20.0",
+       "2.21.0",
+       "2.21.1",
+       "2.22.0",
+       "2.22.1",
+       "2.23.0",
+       "2.23.1",
+       "2.24.0",
+       "2.24.1",
+       "2.24.2",
+       "2.24.3",
+       "2.25.0",
+       "2.25.1",
+       "2.25.2",
+       "2.3",
+       "2.3.1",
+       "2.3.2",
+       "2.4",
+       "2.4.1",
+       "2.5",
+       "2.6",
+       "2.6.1",
+       "2.6.2",
+       "2.7",
+       "2.8",
+       "2.8.1",
+       "2.8.2",
+       "2.9.0",
+       "2.9.1"
+      ]
+     }
+    ],
+    "aliases": [
+     "CVE-2025-68161"
+    ],
+    "id": "GHSA-vc5p-v9hr-52mj",
+    "modified": "2026-09-10T03:50:32.126499218Z",
+    "severity": [
+     {
+      "score": "CVSS:4.0/AV:N/AC:H/AT:N/PR:N/UI:N/VC:L/VI:N/VA:N/SC:N/SI:L/SA:N",
+      "type": "CVSS_V4"
+     }
+    ],
+    "summary": "Apache Log4j does not verify the TLS hostname in its Socket Appender"
+   },
+   {
+    "affected": [
+     {
+      "ecosystem": "Maven",
+      "name": "org.apache.logging.log4j:log4j-core",
+      "ranges": [
+       {
+        "events": [
+         {
+          "introduced": "1.0.4"
+         },
+         {
+          "fixed": "2.0"
+         }
+        ],
+        "type": "ECOSYSTEM"
+       }
+      ],
+      "versions": [
+       "2.0-alpha1",
+       "2.0-alpha2",
+       "2.0-beta1",
+       "2.0-beta2",
+       "2.0-beta3",
+       "2.0-beta4",
+       "2.0-beta5",
+       "2.0-beta6",
+       "2.0-beta7",
+       "2.0-beta8",
+       "2.0-beta9",
+       "2.0-rc1",
+       "2.0-rc2"
+      ]
+     },
+     {
+      "ecosystem": "Maven",
+      "name": "log4j:log4j",
+      "ranges": [
+       {
+        "events": [
+         {
+          "introduced": "1.0.4"
+         },
+         {
+          "fixed": "2.0"
+         }
+        ],
+        "type": "ECOSYSTEM"
+       }
+      ],
+      "versions": [
+       "1.1.3",
+       "1.2.11",
+       "1.2.12",
+       "1.2.13",
+       "1.2.14",
+       "1.2.15",
+       "1.2.16",
+       "1.2.17",
+       "1.2.4",
+       "1.2.5",
+       "1.2.6",
+       "1.2.7",
+       "1.2.8",
+       "1.2.9"
+      ]
+     }
+    ],
+    "aliases": [
+     "CVE-2023-26464"
+    ],
+    "id": "GHSA-vp98-w2p3-mv35",
+    "modified": "2025-09-02T22:25:25Z",
+    "severity": [
+     {
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+      "type": "CVSS_V3"
+     }
+    ],
+    "summary": "Apache Log4j 1.x (EOL) allows Denial of Service (DoS)"
+   },
+   {
+    "affected": [
+     {
+      "ecosystem": "Maven",
+      "name": "org.apache.logging.log4j:log4j",
+      "ranges": [
+       {
+        "events": [
+         {
+          "introduced": "2.13.0"
+         },
+         {
+          "fixed": "2.13.2"
+         }
+        ],
+        "type": "ECOSYSTEM"
+       }
+      ],
+      "versions": [
+       "2.13.0",
+       "2.13.1"
+      ]
+     },
+     {
+      "ecosystem": "Maven",
+      "name": "org.apache.logging.log4j:log4j-core",
+      "ranges": [
+       {
+        "events": [
+         {
+          "introduced": "2.13.0"
+         },
+         {
+          "fixed": "2.13.2"
+         }
+        ],
+        "type": "ECOSYSTEM"
+       }
+      ],
+      "versions": [
+       "2.13.0",
+       "2.13.1"
+      ]
+     },
+     {
+      "ecosystem": "Maven",
+      "name": "org.apache.logging.log4j:log4j",
+      "ranges": [
+       {
+        "events": [
+         {
+          "introduced": "2.4.0"
+         },
+         {
+          "fixed": "2.12.3"
+         }
+        ],
+        "type": "ECOSYSTEM"
+       }
+      ],
+      "versions": [
+       "2.10.0",
+       "2.11.0",
+       "2.11.1",
+       "2.11.2",
+       "2.12.0",
+       "2.12.1",
+       "2.12.2",
+       "2.4",
+       "2.4.1",
+       "2.5",
+       "2.6",
+       "2.6.1",
+       "2.6.2",
+       "2.7",
+       "2.8",
+       "2.8.1",
+       "2.8.2",
+       "2.9.0",
+       "2.9.1"
+      ]
+     },
+     {
+      "ecosystem": "Maven",
+      "name": "org.apache.logging.log4j:log4j",
+      "ranges": [
+       {
+        "events": [
+         {
+          "introduced": "0"
+         },
+         {
+          "fixed": "2.3.2"
+         }
+        ],
+        "type": "ECOSYSTEM"
+       }
+      ],
+      "versions": [
+       "2.0",
+       "2.0-alpha1",
+       "2.0-alpha2",
+       "2.0-beta1",
+       "2.0-beta2",
+       "2.0-beta3",
+       "2.0-beta4",
+       "2.0-beta5",
+       "2.0-beta6",
+       "2.0-beta7",
+       "2.0-beta8",
+       "2.0-beta9",
+       "2.0-rc1",
+       "2.0-rc2",
+       "2.0.1",
+       "2.0.2",
+       "2.1",
+       "2.2",
+       "2.3",
+       "2.3.1"
+      ]
+     },
+     {
+      "ecosystem": "Maven",
+      "name": "org.apache.logging.log4j:log4j-core",
+      "ranges": [
+       {
+        "events": [
+         {
+          "introduced": "2.4.0"
+         },
+         {
+          "fixed": "2.12.3"
+         }
+        ],
+        "type": "ECOSYSTEM"
+       }
+      ],
+      "versions": [
+       "2.10.0",
+       "2.11.0",
+       "2.11.1",
+       "2.11.2",
+       "2.12.0",
+       "2.12.1",
+       "2.12.2",
+       "2.4",
+       "2.4.1",
+       "2.5",
+       "2.6",
+       "2.6.1",
+       "2.6.2",
+       "2.7",
+       "2.8",
+       "2.8.1",
+       "2.8.2",
+       "2.9.0",
+       "2.9.1"
+      ]
+     },
+     {
+      "ecosystem": "Maven",
+      "name": "org.apache.logging.log4j:log4j-core",
+      "ranges": [
+       {
+        "events": [
+         {
+          "introduced": "0"
+         },
+         {
+          "fixed": "2.3.2"
+         }
+        ],
+        "type": "ECOSYSTEM"
+       }
+      ],
+      "versions": [
+       "2.0",
+       "2.0-alpha1",
+       "2.0-alpha2",
+       "2.0-beta1",
+       "2.0-beta2",
+       "2.0-beta3",
+       "2.0-beta4",
+       "2.0-beta5",
+       "2.0-beta6",
+       "2.0-beta7",
+       "2.0-beta8",
+       "2.0-beta9",
+       "2.0-rc1",
+       "2.0-rc2",
+       "2.0.1",
+       "2.0.2",
+       "2.1",
+       "2.2",
+       "2.3",
+       "2.3.1"
+      ]
+     }
+    ],
+    "aliases": [
+     "CVE-2020-9488"
+    ],
+    "id": "GHSA-vwqq-5vrc-xw9h",
+    "modified": "2026-06-09T10:45:14.190237393Z",
+    "severity": [
+     {
+      "score": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:L/I:N/A:N",
+      "type": "CVSS_V3"
+     }
+    ],
+    "summary": "Improper validation of certificate with host mismatch in Apache Log4j SMTP appender"
+   }
+  ],
+  "org.xwiki.platform:xwiki-platform-web-templates": [
+   {
+    "affected": [
+     {
+      "ecosystem": "Maven",
+      "name": "org.xwiki.platform:xwiki-platform-web-templates",
+      "ranges": [
+       {
+        "events": [
+         {
+          "introduced": "1.3"
+         },
+         {
+          "fixed": "13.10.4"
+         }
+        ],
+        "type": "ECOSYSTEM"
+       }
+      ]
+     },
+     {
+      "ecosystem": "Maven",
+      "name": "org.xwiki.platform:xwiki-platform-web",
+      "ranges": [
+       {
+        "events": [
+         {
+          "introduced": "14.0"
+         },
+         {
+          "fixed": "14.2"
+         }
+        ],
+        "type": "ECOSYSTEM"
+       }
+      ]
+     }
+    ],
+    "aliases": [
+     "CVE-2022-36091"
+    ],
+    "id": "GHSA-599v-w48h-rjrm",
+    "modified": "2026-02-04T03:57:35.199490Z",
+    "severity": [
+     {
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N",
+      "type": "CVSS_V3"
+     }
+    ],
+    "summary": "XWiki Platform Web Templates vulnerable to Missing Authorization, Exposure of Private Personal Information to Unauthorized Actor"
+   },
+   {
+    "affected": [
+     {
+      "ecosystem": "Maven",
+      "name": "org.xwiki.platform:xwiki-platform-web-templates",
+      "ranges": [
+       {
+        "events": [
+         {
+          "introduced": "11.8-rc-1"
+         },
+         {
+          "fixed": "15.10.8"
+         }
+        ],
+        "type": "ECOSYSTEM"
+       }
+      ]
+     },
+     {
+      "ecosystem": "Maven",
+      "name": "org.xwiki.platform:xwiki-platform-web-templates",
+      "ranges": [
+       {
+        "events": [
+         {
+          "introduced": "16.0.0-rc-1"
+         },
+         {
+          "fixed": "16.3.0-rc-1"
+         }
+        ],
+        "type": "ECOSYSTEM"
+       }
+      ]
+     }
+    ],
+    "aliases": [
+     "CVE-2024-41947"
+    ],
+    "id": "GHSA-692v-783f-mg8x",
+    "modified": "2024-07-31T20:20:42Z",
+    "severity": [
+     {
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:R/S:C/C:H/I:H/A:H",
+      "type": "CVSS_V3"
+     },
+     {
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:P/VC:H/VI:H/VA:H/SC:H/SI:H/SA:H",
+      "type": "CVSS_V4"
+     }
+    ],
+    "summary": "XWiki Platform vulnerable to Cross-Site Scripting (XSS) through conflict resolution"
+   },
+   {
+    "affected": [
+     {
+      "ecosystem": "Maven",
+      "name": "org.xwiki.platform:xwiki-platform-flamingo-skin-resources",
+      "ranges": [
+       {
+        "events": [
+         {
+          "introduced": "1.9-milestone-2"
+         },
+         {
+          "fixed": "13.10.10"
+         }
+        ],
+        "type": "ECOSYSTEM"
+       }
+      ]
+     },
+     {
+      "ecosystem": "Maven",
+      "name": "org.xwiki.platform:xwiki-platform-flamingo-skin",
+      "ranges": [
+       {
+        "events": [
+         {
+          "introduced": "1.9-milestone-2"
+         },
+         {
+          "fixed": "13.10.10"
+         }
+        ],
+        "type": "ECOSYSTEM"
+       }
+      ]
+     },
+     {
+      "ecosystem": "Maven",
+      "name": "org.xwiki.platform:xwiki-platform-flamingo",
+      "ranges": [
+       {
+        "events": [
+         {
+          "introduced": "1.9-milestone-2"
+         },
+         {
+          "fixed": "13.10.10"
+         }
+        ],
+        "type": "ECOSYSTEM"
+       }
+      ]
+     },
+     {
+      "ecosystem": "Maven",
+      "name": "org.xwiki.platform:xwiki-platform-web-templates",
+      "ranges": [
+       {
+        "events": [
+         {
+          "introduced": "1.9-milestone-2"
+         },
+         {
+          "fixed": "13.10.10"
+         }
+        ],
+        "type": "ECOSYSTEM"
+       }
+      ]
+     },
+     {
+      "ecosystem": "Maven",
+      "name": "org.xwiki.platform:xwiki-platform-web",
+      "ranges": [
+       {
+        "events": [
+         {
+          "introduced": "1.9-milestone-2"
+         },
+         {
+          "fixed": "13.10.10"
+         }
+        ],
+        "type": "ECOSYSTEM"
+       }
+      ]
+     },
+     {
+      "ecosystem": "Maven",
+      "name": "org.xwiki.platform:xwiki-web-standard",
+      "ranges": [
+       {
+        "events": [
+         {
+          "introduced": "1.9-milestone-2"
+         },
+         {
+          "fixed": "13.10.10"
+         }
+        ],
+        "type": "ECOSYSTEM"
+       }
+      ]
+     },
+     {
+      "ecosystem": "Maven",
+      "name": "org.xwiki.platform:xwiki-platform-flamingo-skin-resources",
+      "ranges": [
+       {
+        "events": [
+         {
+          "introduced": "14.0-rc-1"
+         },
+         {
+          "fixed": "14.4.6"
+         }
+        ],
+        "type": "ECOSYSTEM"
+       }
+      ]
+     },
+     {
+      "ecosystem": "Maven",
+      "name": "org.xwiki.platform:xwiki-platform-flamingo-skin",
+      "ranges": [
+       {
+        "events": [
+         {
+          "introduced": "14.0-rc-1"
+         },
+         {
+          "fixed": "14.4.6"
+         }
+        ],
+        "type": "ECOSYSTEM"
+       }
+      ]
+     },
+     {
+      "ecosystem": "Maven",
+      "name": "org.xwiki.platform:xwiki-platform-flamingo",
+      "ranges": [
+       {
+        "events": [
+         {
+          "introduced": "14.0-rc-1"
+         },
+         {
+          "fixed": "14.4.6"
+         }
+        ],
+        "type": "ECOSYSTEM"
+       }
+      ]
+     },
+     {
+      "ecosystem": "Maven",
+      "name": "org.xwiki.platform:xwiki-platform-web-templates",
+      "ranges": [
+       {
+        "events": [
+         {
+          "introduced": "14.0-rc-1"
+         },
+         {
+          "fixed": "14.4.6"
+         }
+        ],
+        "type": "ECOSYSTEM"
+       }
+      ]
+     },
+     {
+      "ecosystem": "Maven",
+      "name": "org.xwiki.platform:xwiki-platform-web",
+      "ranges": [
+       {
+        "events": [
+         {
+          "introduced": "14.0-rc-1"
+         },
+         {
+          "fixed": "14.4.6"
+         }
+        ],
+        "type": "ECOSYSTEM"
+       }
+      ]
+     },
+     {
+      "ecosystem": "Maven",
+      "name": "org.xwiki.platform:xwiki-web-standard",
+      "ranges": [
+       {
+        "events": [
+         {
+          "introduced": "14.0-rc-1"
+         },
+         {
+          "fixed": "14.4.6"
+         }
+        ],
+        "type": "ECOSYSTEM"
+       }
+      ]
+     },
+     {
+      "ecosystem": "Maven",
+      "name": "org.xwiki.platform:xwiki-platform-flamingo-skin-resources",
+      "ranges": [
+       {
+        "events": [
+         {
+          "introduced": "14.5"
+         },
+         {
+          "fixed": "14.9"
+         }
+        ],
+        "type": "ECOSYSTEM"
+       }
+      ]
+     },
+     {
+      "ecosystem": "Maven",
+      "name": "org.xwiki.platform:xwiki-platform-flamingo-skin",
+      "ranges": [
+       {
+        "events": [
+         {
+          "introduced": "14.5"
+         },
+         {
+          "fixed": "14.9"
+         }
+        ],
+        "type": "ECOSYSTEM"
+       }
+      ]
+     },
+     {
+      "ecosystem": "Maven",
+      "name": "org.xwiki.platform:xwiki-platform-flamingo",
+      "ranges": [
+       {
+        "events": [
+         {
+          "introduced": "14.5"
+         },
+         {
+          "fixed": "14.9"
+         }
+        ],
+        "type": "ECOSYSTEM"
+       }
+      ]
+     },
+     {
+      "ecosystem": "Maven",
+      "name": "org.xwiki.platform:xwiki-platform-web-templates",
+      "ranges": [
+       {
+        "events": [
+         {
+          "introduced": "14.5"
+         },
+         {
+          "fixed": "14.9"
+         }
+        ],
+        "type": "ECOSYSTEM"
+       }
+      ]
+     },
+     {
+      "ecosystem": "Maven",
+      "name": "org.xwiki.platform:xwiki-platform-web",
+      "ranges": [
+       {
+        "events": [
+         {
+          "introduced": "14.5"
+         },
+         {
+          "fixed": "14.9"
+         }
+        ],
+        "type": "ECOSYSTEM"
+       }
+      ]
+     },
+     {
+      "ecosystem": "Maven",
+      "name": "org.xwiki.platform:xwiki-web-standard",
+      "ranges": [
+       {
+        "events": [
+         {
+          "introduced": "14.5"
+         },
+         {
+          "fixed": "14.9"
+         }
+        ],
+        "type": "ECOSYSTEM"
+       }
+      ]
+     }
+    ],
+    "aliases": [
+     "CVE-2023-29207"
+    ],
+    "id": "GHSA-6vgh-9r3c-2cxp",
+    "modified": "2026-09-10T03:49:54.070370563Z",
+    "severity": [
+     {
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:R/S:C/C:H/I:H/A:L",
+      "type": "CVSS_V3"
+     }
+    ],
+    "summary": "Improper Neutralization of Script-Related HTML Tags (XSS) in the LiveTable Macro"
+   },
+   {
+    "affected": [
+     {
+      "ecosystem": "Maven",
+      "name": "org.xwiki.platform:xwiki-platform-flamingo-skin-resources",
+      "ranges": [
+       {
+        "events": [
+         {
+          "introduced": "6.2-milestone-1"
+         },
+         {
+          "fixed": "16.10.10"
+         }
+        ],
+        "type": "ECOSYSTEM"
+       }
+      ]
+     },
+     {
+      "ecosystem": "Maven",
+      "name": "org.xwiki.platform:xwiki-platform-flamingo-skin-resources",
+      "ranges": [
+       {
+        "events": [
+         {
+          "introduced": "17.0.0-rc-1"
+         },
+         {
+          "fixed": "17.4.2"
+         }
+        ],
+        "type": "ECOSYSTEM"
+       }
+      ]
+     },
+     {
+      "ecosystem": "Maven",
+      "name": "org.xwiki.platform:xwiki-platform-web-templates",
+      "ranges": [
+       {
+        "events": [
+         {
+          "introduced": "6.2-milestone-1"
+         },
+         {
+          "fixed": "16.10.10"
+         }
+        ],
+        "type": "ECOSYSTEM"
+       }
+      ]
+     },
+     {
+      "ecosystem": "Maven",
+      "name": "org.xwiki.platform:xwiki-platform-web-templates",
+      "ranges": [
+       {
+        "events": [
+         {
+          "introduced": "17.0.0-rc-1"
+         },
+         {
+          "fixed": "17.4.2"
+         }
+        ],
+        "type": "ECOSYSTEM"
+       }
+      ]
+     }
+    ],
+    "aliases": [
+     "CVE-2025-66472"
+    ],
+    "id": "GHSA-7vpr-jm38-wr7w",
+    "modified": "2025-12-11T16:21:31.920475Z",
+    "severity": [
+     {
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:P/VC:N/VI:N/VA:N/SC:H/SI:H/SA:H",
+      "type": "CVSS_V4"
+     }
+    ],
+    "summary": "XWiki vulnerable to a reflected XSS via xredirect parameter in DeleteApplication"
+   },
+   {
+    "affected": [
+     {
+      "ecosystem": "Maven",
+      "name": "org.xwiki.platform:xwiki-platform-web-templates",
+      "ranges": [
+       {
+        "events": [
+         {
+          "introduced": "0"
+         },
+         {
+          "fixed": "14.10.12"
+         }
+        ],
+        "type": "ECOSYSTEM"
+       }
+      ]
+     },
+     {
+      "ecosystem": "Maven",
+      "name": "org.xwiki.platform:xwiki-platform-web-templates",
+      "ranges": [
+       {
+        "events": [
+         {
+          "introduced": "15.0-rc-1"
+         },
+         {
+          "fixed": "15.5-rc-1"
+         }
+        ],
+        "type": "ECOSYSTEM"
+       }
+      ]
+     },
+     {
+      "ecosystem": "Maven",
+      "name": "org.xwiki.platform:xwiki-platform-web",
+      "ranges": [
+       {
+        "events": [
+         {
+          "introduced": "3.1-milestone-2"
+         },
+         {
+          "fixed": "13.4-rc-1"
+         }
+        ],
+        "type": "ECOSYSTEM"
+       }
+      ]
+     }
+    ],
+    "aliases": [
+     "CVE-2023-45137"
+    ],
+    "id": "GHSA-93gh-jgjj-r929",
+    "modified": "2023-11-08T04:13:37.136855Z",
+    "severity": [
+     {
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:R/S:C/C:H/I:H/A:H",
+      "type": "CVSS_V3"
+     }
+    ],
+    "summary": "XWiki Platform vulnerable to XSS with edit right in the create document form for existing pages"
+   },
+   {
+    "affected": [
+     {
+      "ecosystem": "Maven",
+      "name": "org.xwiki.platform:xwiki-platform-web-templates",
+      "ranges": [
+       {
+        "events": [
+         {
+          "introduced": "0"
+         },
+         {
+          "fixed": "12.10.11"
+         }
+        ],
+        "type": "ECOSYSTEM"
+       }
+      ]
+     },
+     {
+      "ecosystem": "Maven",
+      "name": "org.xwiki.platform:xwiki-platform-web-templates",
+      "ranges": [
+       {
+        "events": [
+         {
+          "introduced": "13.0.0"
+         },
+         {
+          "fixed": "13.4.4"
+         }
+        ],
+        "type": "ECOSYSTEM"
+       }
+      ]
+     },
+     {
+      "ecosystem": "Maven",
+      "name": "org.xwiki.platform:xwiki-platform-web-templates",
+      "ranges": [
+       {
+        "events": [
+         {
+          "introduced": "13.5.0"
+         },
+         {
+          "fixed": "13.9"
+         }
+        ],
+        "type": "ECOSYSTEM"
+       }
+      ]
+     }
+    ],
+    "aliases": [
+     "CVE-2022-24819"
+    ],
+    "id": "GHSA-97jg-43c9-q6pf",
+    "modified": "2023-11-08T04:08:37.572170Z",
+    "severity": [
+     {
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N",
+      "type": "CVSS_V3"
+     }
+    ],
+    "summary": "Unauthenticated user can retrieve the list of users through uorgsuggest.vm"
+   },
+   {
+    "affected": [
+     {
+      "ecosystem": "Maven",
+      "name": "org.xwiki.platform:xwiki-platform-web-templates",
+      "ranges": [
+       {
+        "events": [
+         {
+          "introduced": "0"
+         },
+         {
+          "fixed": "15.10-rc-1"
+         }
+        ],
+        "type": "ECOSYSTEM"
+       }
+      ]
+     }
+    ],
+    "aliases": [
+     "CVE-2024-43401"
+    ],
+    "id": "GHSA-f963-4cq8-2gw7",
+    "modified": "2024-08-19T22:12:04.199287Z",
+    "severity": [
+     {
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:R/S:C/C:H/I:H/A:H",
+      "type": "CVSS_V3"
+     },
+     {
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:P/VC:H/VI:H/VA:H/SC:H/SI:H/SA:H",
+      "type": "CVSS_V4"
+     }
+    ],
+    "summary": "In XWiki Platform, payloads stored in content is executed when a user with script/programming right edit them"
+   },
+   {
+    "affected": [
+     {
+      "ecosystem": "Maven",
+      "name": "org.xwiki.platform:xwiki-platform-web-templates",
+      "ranges": [
+       {
+        "events": [
+         {
+          "introduced": "8.0-rc-1"
+         },
+         {
+          "fixed": "14.10.1"
+         }
+        ],
+        "type": "ECOSYSTEM"
+       }
+      ]
+     }
+    ],
+    "aliases": [
+     "CVE-2023-29513"
+    ],
+    "id": "GHSA-fp36-mjw5-fmgx",
+    "modified": "2023-11-08T04:12:19.713890Z",
+    "severity": [
+     {
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:N/I:L/A:N",
+      "type": "CVSS_V3"
+     }
+    ],
+    "summary": "xwiki-platform-web-templates allows users to be created even when registration is disabled without validation via template macro"
+   },
+   {
+    "affected": [
+     {
+      "ecosystem": "Maven",
+      "name": "org.xwiki.platform:xwiki-platform-web",
+      "ranges": [
+       {
+        "events": [
+         {
+          "introduced": "2.2.1"
+         },
+         {
+          "fixed": "14.4.8"
+         }
+        ],
+        "type": "ECOSYSTEM"
+       }
+      ]
+     },
+     {
+      "ecosystem": "Maven",
+      "name": "org.xwiki.platform:xwiki-platform-web-templates",
+      "ranges": [
+       {
+        "events": [
+         {
+          "introduced": "0"
+         },
+         {
+          "fixed": "14.4.8"
+         }
+        ],
+        "type": "ECOSYSTEM"
+       }
+      ]
+     },
+     {
+      "ecosystem": "Maven",
+      "name": "org.xwiki.platform:xwiki-platform-web-templates",
+      "ranges": [
+       {
+        "events": [
+         {
+          "introduced": "14.5"
+         },
+         {
+          "fixed": "14.10.5"
+         }
+        ],
+        "type": "ECOSYSTEM"
+       }
+      ]
+     },
+     {
+      "ecosystem": "Maven",
+      "name": "org.xwiki.platform:xwiki-platform-web-templates",
+      "ranges": [
+       {
+        "events": [
+         {
+          "introduced": "15.0-rc-1"
+         },
+         {
+          "fixed": "15.1-rc-1"
+         }
+        ],
+        "type": "ECOSYSTEM"
+       }
+      ]
+     }
+    ],
+    "aliases": [
+     "CVE-2023-34464"
+    ],
+    "id": "GHSA-fp7h-f9f5-x4q7",
+    "modified": "2023-11-08T04:12:47.488637Z",
+    "severity": [
+     {
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:R/S:C/C:H/I:H/A:H",
+      "type": "CVSS_V3"
+     }
+    ],
+    "summary": "XWiki vulnerable to stored cross-site scripting via any wiki document and the displaycontent/rendercontent template"
+   },
+   {
+    "affected": [
+     {
+      "ecosystem": "Maven",
+      "name": "org.xwiki.platform:xwiki-platform-web-templates",
+      "ranges": [
+       {
+        "events": [
+         {
+          "introduced": "2.0-milestone-1"
+         },
+         {
+          "fixed": "13.10.5"
+         }
+        ],
+        "type": "ECOSYSTEM"
+       }
+      ]
+     },
+     {
+      "ecosystem": "Maven",
+      "name": "org.xwiki.platform:xwiki-platform-web-templates",
+      "ranges": [
+       {
+        "events": [
+         {
+          "introduced": "14.0"
+         },
+         {
+          "fixed": "14.3"
+         }
+        ],
+        "type": "ECOSYSTEM"
+       }
+      ]
+     }
+    ],
+    "aliases": [
+     "CVE-2022-36095"
+    ],
+    "id": "GHSA-fxwr-4vq9-9vhj",
+    "modified": "2023-11-08T04:10:00.740524Z",
+    "severity": [
+     {
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:N/I:L/A:N",
+      "type": "CVSS_V3"
+     }
+    ],
+    "summary": "XWiki Cross-Site Request Forgery (CSRF) for actions on tags"
+   },
+   {
+    "affected": [
+     {
+      "ecosystem": "Maven",
+      "name": "org.xwiki.platform:xwiki-platform-web-templates",
+      "ranges": [
+       {
+        "events": [
+         {
+          "introduced": "0"
+         },
+         {
+          "fixed": "14.10.12"
+         }
+        ],
+        "type": "ECOSYSTEM"
+       }
+      ]
+     },
+     {
+      "ecosystem": "Maven",
+      "name": "org.xwiki.platform:xwiki-platform-web-templates",
+      "ranges": [
+       {
+        "events": [
+         {
+          "introduced": "15.0-rc-1"
+         },
+         {
+          "fixed": "15.5-rc-1"
+         }
+        ],
+        "type": "ECOSYSTEM"
+       }
+      ]
+     },
+     {
+      "ecosystem": "Maven",
+      "name": "org.xwiki.platform:xwiki-platform-web",
+      "ranges": [
+       {
+        "events": [
+         {
+          "introduced": "7.2-milestone-2"
+         },
+         {
+          "fixed": "14.10.12"
+         }
+        ],
+        "type": "ECOSYSTEM"
+       }
+      ]
+     }
+    ],
+    "aliases": [
+     "CVE-2023-45135"
+    ],
+    "id": "GHSA-ghf6-2f42-mjh9",
+    "modified": "2023-11-08T04:13:37.015319Z",
+    "severity": [
+     {
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:R/S:C/C:H/I:H/A:H",
+      "type": "CVSS_V3"
+     }
+    ],
+    "summary": "XWiki users can be tricked to execute scripts as the create page action doesn't display the page's title"
+   },
+   {
+    "affected": [
+     {
+      "ecosystem": "Maven",
+      "name": "org.xwiki.platform:xwiki-platform-web-templates",
+      "ranges": [
+       {
+        "events": [
+         {
+          "introduced": "0"
+         },
+         {
+          "fixed": "14.10.12"
+         }
+        ],
+        "type": "ECOSYSTEM"
+       }
+      ]
+     },
+     {
+      "ecosystem": "Maven",
+      "name": "org.xwiki.platform:xwiki-platform-web-templates",
+      "ranges": [
+       {
+        "events": [
+         {
+          "introduced": "15.0-rc-1"
+         },
+         {
+          "fixed": "15.5-rc-1"
+         }
+        ],
+        "type": "ECOSYSTEM"
+       }
+      ]
+     },
+     {
+      "ecosystem": "Maven",
+      "name": "org.xwiki.platform:xwiki-web-standard",
+      "ranges": [
+       {
+        "events": [
+         {
+          "introduced": "2.4-milestone-2"
+         },
+         {
+          "fixed": "3.1-milestone-1"
+         }
+        ],
+        "type": "ECOSYSTEM"
+       }
+      ]
+     },
+     {
+      "ecosystem": "Maven",
+      "name": "org.xwiki.platform:xwiki-platform-web",
+      "ranges": [
+       {
+        "events": [
+         {
+          "introduced": "3.1-milestone-1"
+         },
+         {
+          "fixed": "13.4-rc-1"
+         }
+        ],
+        "type": "ECOSYSTEM"
+       }
+      ]
+     }
+    ],
+    "aliases": [
+     "CVE-2023-45134"
+    ],
+    "id": "GHSA-gr82-8fj2-ggc3",
+    "modified": "2023-11-08T04:13:36.954584Z",
+    "severity": [
+     {
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:R/S:C/C:H/I:H/A:H",
+      "type": "CVSS_V3"
+     }
+    ],
+    "summary": "XWiki Platform XSS vulnerability from account in the create page form via template provider"
+   },
+   {
+    "affected": [
+     {
+      "ecosystem": "Maven",
+      "name": "org.xwiki.platform:xwiki-platform-web-templates",
+      "ranges": [
+       {
+        "events": [
+         {
+          "introduced": "2.6.1"
+         },
+         {
+          "fixed": "12.10.11"
+         }
+        ],
+        "type": "ECOSYSTEM"
+       }
+      ]
+     },
+     {
+      "ecosystem": "Maven",
+      "name": "org.xwiki.platform:xwiki-platform-web-templates",
+      "ranges": [
+       {
+        "events": [
+         {
+          "introduced": "13.0.0"
+         },
+         {
+          "fixed": "13.4.7"
+         }
+        ],
+        "type": "ECOSYSTEM"
+       }
+      ]
+     },
+     {
+      "ecosystem": "Maven",
+      "name": "org.xwiki.platform:xwiki-platform-web-templates",
+      "ranges": [
+       {
+        "events": [
+         {
+          "introduced": "13.10.0"
+         },
+         {
+          "fixed": "13.10.3"
+         }
+        ],
+        "type": "ECOSYSTEM"
+       }
+      ]
+     }
+    ],
+    "aliases": [
+     "CVE-2022-23622"
+    ],
+    "id": "GHSA-gx6h-936c-vrrr",
+    "modified": "2023-11-08T04:08:25.392451Z",
+    "severity": [
+     {
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:H/I:N/A:N",
+      "type": "CVSS_V3"
+     }
+    ],
+    "summary": "Cross site scripting in registration template in xwiki-platform"
+   },
+   {
+    "affected": [
+     {
+      "ecosystem": "Maven",
+      "name": "org.xwiki.platform:xwiki-platform-web-templates",
+      "ranges": [
+       {
+        "events": [
+         {
+          "introduced": "0"
+         },
+         {
+          "fixed": "13.10.5"
+         }
+        ],
+        "type": "ECOSYSTEM"
+       }
+      ]
+     },
+     {
+      "ecosystem": "Maven",
+      "name": "org.xwiki.platform:xwiki-platform-web",
+      "ranges": [
+       {
+        "events": [
+         {
+          "introduced": "8.0-rc-1"
+         },
+         {
+          "fixed": "13.10.5"
+         }
+        ],
+        "type": "ECOSYSTEM"
+       }
+      ]
+     },
+     {
+      "ecosystem": "Maven",
+      "name": "org.xwiki.platform:xwiki-platform-web-templates",
+      "ranges": [
+       {
+        "events": [
+         {
+          "introduced": "14.0"
+         },
+         {
+          "fixed": "14.3-rc-1"
+         }
+        ],
+        "type": "ECOSYSTEM"
+       }
+      ]
+     },
+     {
+      "ecosystem": "Maven",
+      "name": "org.xwiki.platform:xwiki-platform-web",
+      "ranges": [
+       {
+        "events": [
+         {
+          "introduced": "14.0"
+         },
+         {
+          "fixed": "14.3-rc-1"
+         }
+        ],
+        "type": "ECOSYSTEM"
+       }
+      ]
+     }
+    ],
+    "aliases": [
+     "CVE-2022-36093"
+    ],
+    "id": "GHSA-h5j3-5x63-p8jv",
+    "modified": "2023-11-08T04:10:00.619718Z",
+    "severity": [
+     {
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:L/I:H/A:N",
+      "type": "CVSS_V3"
+     }
+    ],
+    "summary": "XWiki Platform Web Templates vulnerable to Unauthorized User Registration Through the Distribution Wizard"
+   },
+   {
+    "affected": [
+     {
+      "ecosystem": "Maven",
+      "name": "org.xwiki.platform:xwiki-platform-web-templates",
+      "ranges": [
+       {
+        "events": [
+         {
+          "introduced": "4.1-milestone-2"
+         },
+         {
+          "fixed": "14.10.5"
+         }
+        ],
+        "type": "ECOSYSTEM"
+       }
+      ]
+     }
+    ],
+    "aliases": [
+     "CVE-2023-40176"
+    ],
+    "id": "GHSA-h8cm-3v5f-rgp6",
+    "modified": "2023-11-08T04:13:19.601678Z",
+    "severity": [
+     {
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:R/S:C/C:L/I:L/A:N",
+      "type": "CVSS_V3"
+     }
+    ],
+    "summary": "XWiki Platform Stored Cross-site Scripting in the user profile via the timezone displayer"
+   },
+   {
+    "affected": [
+     {
+      "ecosystem": "Maven",
+      "name": "org.xwiki.platform:xwiki-platform-web-templates",
+      "ranges": [
+       {
+        "events": [
+         {
+          "introduced": "1.0B1"
+         },
+         {
+          "fixed": "13.10.11"
+         }
+        ],
+        "type": "ECOSYSTEM"
+       }
+      ]
+     },
+     {
+      "ecosystem": "Maven",
+      "name": "org.xwiki.platform:xwiki-platform-web-templates",
+      "ranges": [
+       {
+        "events": [
+         {
+          "introduced": "14.0-rc-1"
+         },
+         {
+          "fixed": "14.4.8"
+         }
+        ],
+        "type": "ECOSYSTEM"
+       }
+      ]
+     },
+     {
+      "ecosystem": "Maven",
+      "name": "org.xwiki.platform:xwiki-platform-web-templates",
+      "ranges": [
+       {
+        "events": [
+         {
+          "introduced": "14.5"
+         },
+         {
+          "fixed": "14.10.1"
+         }
+        ],
+        "type": "ECOSYSTEM"
+       }
+      ]
+     }
+    ],
+    "aliases": [
+     "CVE-2023-29512"
+    ],
+    "id": "GHSA-hg5x-3w3x-7g96",
+    "modified": "2023-11-08T04:12:19.652725Z",
+    "severity": [
+     {
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:L",
+      "type": "CVSS_V3"
+     }
+    ],
+    "summary": "xwiki-platform-web-templates vulnerable to Eval Injection"
+   },
+   {
+    "affected": [
+     {
+      "ecosystem": "Maven",
+      "name": "org.xwiki.platform:xwiki-platform-web-templates",
+      "ranges": [
+       {
+        "events": [
+         {
+          "introduced": "4.2-milestone-3"
+         },
+         {
+          "fixed": "16.4.8"
+         }
+        ],
+        "type": "ECOSYSTEM"
+       }
+      ]
+     },
+     {
+      "ecosystem": "Maven",
+      "name": "org.xwiki.platform:xwiki-platform-web-templates",
+      "ranges": [
+       {
+        "events": [
+         {
+          "introduced": "16.5.0-rc-1"
+         },
+         {
+          "fixed": "16.10.6"
+         }
+        ],
+        "type": "ECOSYSTEM"
+       }
+      ]
+     },
+     {
+      "ecosystem": "Maven",
+      "name": "org.xwiki.platform:xwiki-platform-web-templates",
+      "ranges": [
+       {
+        "events": [
+         {
+          "introduced": "17.0.0-rc-1"
+         },
+         {
+          "fixed": "17.3.0-rc-1"
+         }
+        ],
+        "type": "ECOSYSTEM"
+       }
+      ]
+     }
+    ],
+    "aliases": [
+     "CVE-2025-32430"
+    ],
+    "id": "GHSA-m9x4-w7p9-mxhx",
+    "modified": "2026-09-10T03:50:27.339018361Z",
+    "severity": [
+     {
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:P/VC:N/VI:N/VA:N/SC:L/SI:L/SA:N",
+      "type": "CVSS_V4"
+     }
+    ],
+    "summary": "XWiki allows Reflected XSS in two templates"
+   },
+   {
+    "affected": [
+     {
+      "ecosystem": "Maven",
+      "name": "org.xwiki.platform:xwiki-platform-web-templates",
+      "ranges": [
+       {
+        "events": [
+         {
+          "introduced": "12.0-rc-1"
+         },
+         {
+          "fixed": "14.10.12"
+         }
+        ],
+        "type": "ECOSYSTEM"
+       }
+      ]
+     },
+     {
+      "ecosystem": "Maven",
+      "name": "org.xwiki.platform:xwiki-platform-web-templates",
+      "ranges": [
+       {
+        "events": [
+         {
+          "introduced": "15.0-rc-1"
+         },
+         {
+          "fixed": "15.5-rc-1"
+         }
+        ],
+        "type": "ECOSYSTEM"
+       }
+      ]
+     }
+    ],
+    "aliases": [
+     "CVE-2023-45136"
+    ],
+    "id": "GHSA-qcj9-gcpg-4w2w",
+    "modified": "2026-09-10T03:50:03.943104779Z",
+    "severity": [
+     {
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:H/I:H/A:H",
+      "type": "CVSS_V3"
+     }
+    ],
+    "summary": "XWiki Platform web templates vulnerable to reflected XSS in the create document form if name validation is enabled"
+   },
+   {
+    "affected": [
+     {
+      "ecosystem": "Maven",
+      "name": "org.xwiki.platform:xwiki-platform-web-templates",
+      "ranges": [
+       {
+        "events": [
+         {
+          "introduced": "2.5-milestone-2"
+         },
+         {
+          "fixed": "14.10.5"
+         }
+        ],
+        "type": "ECOSYSTEM"
+       }
+      ]
+     },
+     {
+      "ecosystem": "Maven",
+      "name": "org.xwiki.platform:xwiki-platform-web-templates",
+      "ranges": [
+       {
+        "events": [
+         {
+          "introduced": "15.0-rc-1"
+         },
+         {
+          "fixed": "15.1-rc-1"
+         }
+        ],
+        "type": "ECOSYSTEM"
+       }
+      ]
+     }
+    ],
+    "aliases": [
+     "CVE-2023-35160"
+    ],
+    "id": "GHSA-r8xc-xxh3-q5x3",
+    "modified": "2026-09-10T03:50:08.492043519Z",
+    "severity": [
+     {
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:H/I:H/A:H",
+      "type": "CVSS_V3"
+     }
+    ],
+    "summary": "XWiki Platform vulnerable to reflected cross-site scripting via back and xcontinue parameters in resubmit template"
+   },
+   {
+    "affected": [
+     {
+      "ecosystem": "Maven",
+      "name": "org.xwiki.platform:xwiki-platform-web-templates",
+      "ranges": [
+       {
+        "events": [
+         {
+          "introduced": "13.9-rc-1"
+         },
+         {
+          "fixed": "13.10.8"
+         }
+        ],
+        "type": "ECOSYSTEM"
+       }
+      ]
+     },
+     {
+      "ecosystem": "Maven",
+      "name": "org.xwiki.platform:xwiki-platform-web-templates",
+      "ranges": [
+       {
+        "events": [
+         {
+          "introduced": "14.0-rc-1"
+         },
+         {
+          "fixed": "14.4.3"
+         }
+        ],
+        "type": "ECOSYSTEM"
+       }
+      ]
+     },
+     {
+      "ecosystem": "Maven",
+      "name": "org.xwiki.platform:xwiki-platform-web-templates",
+      "ranges": [
+       {
+        "events": [
+         {
+          "introduced": "14.5"
+         },
+         {
+          "fixed": "14.7-rc-1"
+         }
+        ],
+        "type": "ECOSYSTEM"
+       }
+      ]
+     }
+    ],
+    "aliases": [
+     "CVE-2023-29203"
+    ],
+    "id": "GHSA-vvp7-r422-rx83",
+    "modified": "2026-09-10T03:49:57.253669394Z",
+    "severity": [
+     {
+      "score": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:L/I:N/A:N",
+      "type": "CVSS_V3"
+     }
+    ],
+    "summary": "Unauthenticated user can have information about hidden users on subwikis through uorgsuggest.vm "
+   },
+   {
+    "affected": [
+     {
+      "ecosystem": "Maven",
+      "name": "org.xwiki.platform:xwiki-platform-web-templates",
+      "ranges": [
+       {
+        "events": [
+         {
+          "introduced": "10.4-rc-1"
+         },
+         {
+          "fixed": "16.10.16"
+         }
+        ],
+        "type": "ECOSYSTEM"
+       }
+      ]
+     },
+     {
+      "ecosystem": "Maven",
+      "name": "org.xwiki.platform:xwiki-platform-web-templates",
+      "ranges": [
+       {
+        "events": [
+         {
+          "introduced": "17.0.0-rc-1"
+         },
+         {
+          "fixed": "17.4.8"
+         }
+        ],
+        "type": "ECOSYSTEM"
+       }
+      ]
+     },
+     {
+      "ecosystem": "Maven",
+      "name": "org.xwiki.platform:xwiki-platform-web-templates",
+      "ranges": [
+       {
+        "events": [
+         {
+          "introduced": "17.5.0-rc-1"
+         },
+         {
+          "fixed": "17.10.1"
+         }
+        ],
+        "type": "ECOSYSTEM"
+       }
+      ]
+     }
+    ],
+    "aliases": [
+     "CVE-2026-40105"
+    ],
+    "id": "GHSA-w4fj-87j5-f25c",
+    "modified": "2026-05-05T16:11:29.090127Z",
+    "severity": [
+     {
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N",
+      "type": "CVSS_V3"
+     },
+     {
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:P/VC:N/VI:N/VA:N/SC:H/SI:H/SA:H",
+      "type": "CVSS_V4"
+     }
+    ],
+    "summary": "XWiki has Reflected Cross-Site Scripting (XSS) in page history compare"
+   },
+   {
+    "affected": [
+     {
+      "ecosystem": "Maven",
+      "name": "org.xwiki.platform:xwiki-platform-web-templates",
+      "ranges": [
+       {
+        "events": [
+         {
+          "introduced": "7.0-milestone-2"
+         },
+         {
+          "fixed": "16.10.12"
+         }
+        ],
+        "type": "ECOSYSTEM"
+       }
+      ]
+     },
+     {
+      "ecosystem": "Maven",
+      "name": "org.xwiki.platform:xwiki-platform-web-templates",
+      "ranges": [
+       {
+        "events": [
+         {
+          "introduced": "17.0.0-rc-1"
+         },
+         {
+          "fixed": "17.4.5"
+         }
+        ],
+        "type": "ECOSYSTEM"
+       }
+      ]
+     },
+     {
+      "ecosystem": "Maven",
+      "name": "org.xwiki.platform:xwiki-platform-web-templates",
+      "ranges": [
+       {
+        "events": [
+         {
+          "introduced": "17.5.0-rc-1"
+         },
+         {
+          "fixed": "17.8.0-rc-1"
+         }
+        ],
+        "type": "ECOSYSTEM"
+       }
+      ]
+     }
+    ],
+    "aliases": [
+     "CVE-2026-24128"
+    ],
+    "id": "GHSA-wvqx-m5px-6cmp",
+    "modified": "2026-02-03T03:07:15.865116Z",
+    "severity": [
+     {
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:P/VC:N/VI:N/VA:N/SC:H/SI:H/SA:H",
+      "type": "CVSS_V4"
+     }
+    ],
+    "summary": "XWiki Affected by Reflected Cross-Site Scripting (XSS) in Error Messages"
+   },
+   {
+    "affected": [
+     {
+      "ecosystem": "Maven",
+      "name": "org.xwiki.platform:xwiki-platform-web-templates",
+      "ranges": [
+       {
+        "events": [
+         {
+          "introduced": "3.4-milestone-1"
+         },
+         {
+          "fixed": "14.10.5"
+         }
+        ],
+        "type": "ECOSYSTEM"
+       }
+      ]
+     },
+     {
+      "ecosystem": "Maven",
+      "name": "org.xwiki.platform:xwiki-platform-web-templates",
+      "ranges": [
+       {
+        "events": [
+         {
+          "introduced": "15.0-rc-1"
+         },
+         {
+          "fixed": "15.1-rc-1"
+         }
+        ],
+        "type": "ECOSYSTEM"
+       }
+      ]
+     }
+    ],
+    "aliases": [
+     "CVE-2023-35159"
+    ],
+    "id": "GHSA-x234-mg7q-m8g8",
+    "modified": "2026-09-10T03:50:02.497977877Z",
+    "severity": [
+     {
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:H/I:H/A:H",
+      "type": "CVSS_V3"
+     }
+    ],
+    "summary": "XWiki Platform vulnerable to reflected cross-site scripting via xredirect parameter in deletespace template"
+   }
+  ]
+ },
+ "ecosystem": "Maven",
+ "kind": "vulnerability"
+}

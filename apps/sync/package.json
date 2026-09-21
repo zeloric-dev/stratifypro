@@ -7,7 +7,14 @@
   "scripts": {
     "build": "tsc -p tsconfig.json",
     "typecheck": "tsc -p tsconfig.json --noEmit",
-    "test": "node --test dist/**/*.test.js"
+    "test": "node --test dist/**/*.test.js",
+    "start": "node dist/cli.js"
   },
-  "dependencies": { "@stratifypro/mirror": "workspace:*", "@stratifypro/eos": "workspace:*" }
+  "dependencies": {
+    "@stratifypro/mirror": "workspace:*",
+    "@stratifypro/eos": "workspace:*"
+  },
+  "devDependencies": {
+    "@types/node": "22.9.0"
+  }
 }
