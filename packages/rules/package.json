@@ -1,0 +1,18 @@
+{
+  "name": "@stratifypro/rules",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Rule packs, their schema, fixtures, and the golden reference results. Data, not code.",
+  "files": ["packs", "schema", "data"],
+  "exports": {
+    "./packs/*": "./packs/*",
+    "./schema/*": "./schema/*",
+    "./data/*": "./data/*"
+  },
+  "scripts": {
+    "build": "echo \"rules is data; nothing to build\"",
+    "typecheck": "echo \"rules is data; nothing to typecheck\"",
+    "test": "echo \"rules is proved by verify.sh, not by node --test\""
+  }
+}

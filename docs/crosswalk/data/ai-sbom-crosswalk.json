@@ -1,0 +1,1298 @@
+{
+  "$comment": "Machine-readable crosswalk between the G7 AI bill of materials minimum elements and the two SBOM formats. Data only. No conformance policy is expressed here.",
+  "crosswalkVersion": "0.1.0",
+  "compiled": "2026-08-29",
+  "specification": {
+    "title": "Software Bill of Materials for AI - Minimum Elements",
+    "publishedBy": [
+      "BSI (Germany)",
+      "ACN (Italy)",
+      "ANSSI (France)",
+      "CSE (Canada)",
+      "CISA (United States)",
+      "NCSC (United Kingdom)",
+      "NCO (Japan)"
+    ],
+    "inCollaborationWith": [
+      "European Commission"
+    ],
+    "authoringBody": "G7 Cybersecurity Working Group",
+    "published": "2026-05-12",
+    "dateNote": "The document itself carries no date beyond the year 2026 and no version number. 2026-05-12 is the publication date on the BSI landing page; CISA announced it on 2026-05-13. The 2026-06-16 date seen in some write-ups is a law firm client alert, not the guidance.",
+    "sourceUrl": "https://www.bsi.bund.de/SharedDocs/Downloads/EN/BSI/KI/SBOM-for-AI_minimum-elements.pdf",
+    "accessNote": "cisa.gov returns HTTP 403 to automated requests. BSI is a co-publisher and hosts the identical original.",
+    "mandatory": false,
+    "mandatoryQuote": "These minimum elements are not mandatory; do not create requirements, standards, or legislation.",
+    "totalElements": 50,
+    "totalClusters": 7,
+    "sitsOnTopOf": {
+      "title": "2026 Minimum Elements for a Software Bill of Materials (SBOM)",
+      "version": "2.1",
+      "published": "2026-07-29",
+      "sourceUrl": "https://www.ic3.gov/CSA/2026/260729.pdf",
+      "quote": "The minimum elements in an SBOM for AI are in addition to the general SBOM minimum elements."
+    }
+  },
+  "targets": {
+    "cyclonedx-1.7": {
+      "name": "CycloneDX",
+      "version": "1.7",
+      "released": "2025-10-21",
+      "standard": "ECMA-424, 2nd Edition",
+      "schema": "https://raw.githubusercontent.com/CycloneDX/specification/master/schema/bom-1.7.schema.json",
+      "note": "The AI object graph is structurally identical between 1.6 and 1.7. modelCard arrived in 1.5, environmentalConsiderations in 1.6."
+    },
+    "spdx-3.0.1": {
+      "name": "SPDX",
+      "version": "3.0.1",
+      "released": "2024-12-17",
+      "standard": "ISO/IEC 5962:2021 covers version 2.2.1 only; 3.x is not yet published as an ISO standard",
+      "schema": "https://spdx.org/schema/3.0.1/spdx-json-schema.json",
+      "ontology": "https://spdx.org/rdf/3.0.1/spdx-model.ttl",
+      "note": "Version 3.1 is a release candidate only as of 2026-08-29."
+    }
+  },
+  "fitScale": {
+    "direct": "The format has a purpose-built field that carries this element.",
+    "partial": "A field exists but is narrower, differently scoped, or uses an incompatible vocabulary.",
+    "properties-only": "Expressible only through a free-form property bag or an external link. Not interoperable.",
+    "none": "No representation at all."
+  },
+  "conformanceNote": "The source specification assigns no required, optional or recommended level to any element, and uses no RFC 2119 keywords. Every element here is marked 'unspecified'. Any conformance policy is the implementer's own and should be declared as such.",
+  "clusters": [
+    {
+      "id": "metadata",
+      "name": "Metadata",
+      "elementCount": 10,
+      "scope": "Information about the AI bill of materials itself, not about the components it describes.",
+      "elements": [
+        {
+          "id": "metadata.sbom-author",
+          "index": 1,
+          "name": "SBOM author",
+          "captures": "Entity that generated the SBOM. Distinct from the producer of the thing described.",
+          "statedConstraint": "String. Full names, no acronyms unless official.",
+          "conformance": "unspecified",
+          "mappings": {
+            "cyclonedx-1.7": {
+              "fit": "direct",
+              "paths": [
+                "metadata.authors[] (organizationalContact)",
+                "metadata.manufacturer"
+              ]
+            },
+            "spdx-3.0.1": {
+              "fit": "direct",
+              "paths": [
+                "CreationInfo.createdBy -> Agent"
+              ]
+            }
+          },
+          "note": ""
+        },
+        {
+          "id": "metadata.sbom-version",
+          "index": 2,
+          "name": "SBOM version",
+          "captures": "Version of the SBOM document itself, per component name/version pair.",
+          "statedConstraint": "SemVer 2.0.0 (major SHOULD be 1) or RFC 9562 UUID.",
+          "conformance": "unspecified",
+          "mappings": {
+            "cyclonedx-1.7": {
+              "fit": "partial",
+              "paths": [
+                "version (integer at BOM root)"
+              ]
+            },
+            "spdx-3.0.1": {
+              "fit": "none",
+              "paths": []
+            }
+          },
+          "note": "CDX version is an integer, not SemVer. SPDX 3.0.1 has no SBOM document version at all. Real gap in both."
+        },
+        {
+          "id": "metadata.sbom-data-format-name",
+          "index": 3,
+          "name": "SBOM data format name",
+          "captures": "Which format this SBOM is written in.",
+          "statedConstraint": "Free text.",
+          "conformance": "unspecified",
+          "mappings": {
+            "cyclonedx-1.7": {
+              "fit": "direct",
+              "paths": [
+                "bomFormat (const 'CycloneDX')"
+              ]
+            },
+            "spdx-3.0.1": {
+              "fit": "direct",
+              "paths": [
+                "@context + type: SpdxDocument"
+              ]
+            }
+          },
+          "note": ""
+        },
+        {
+          "id": "metadata.sbom-data-format-version",
+          "index": 4,
+          "name": "SBOM data format version",
+          "captures": "Version of that format. Deprecated versions should not be used.",
+          "statedConstraint": "Free text. Deprecation rule.",
+          "conformance": "unspecified",
+          "mappings": {
+            "cyclonedx-1.7": {
+              "fit": "direct",
+              "paths": [
+                "specVersion (e.g. '1.7')"
+              ]
+            },
+            "spdx-3.0.1": {
+              "fit": "direct",
+              "paths": [
+                "CreationInfo.specVersion (e.g. '3.0.1')"
+              ]
+            }
+          },
+          "note": ""
+        },
+        {
+          "id": "metadata.sbom-author-signature",
+          "index": 5,
+          "name": "SBOM author signature",
+          "captures": "Digital signature of the SBOM author, for integrity and authenticity.",
+          "statedConstraint": "Algorithm approved by NIST DSS, ISO/IEC 14888-4:2024 or ENISA. No format named.",
+          "conformance": "unspecified",
+          "mappings": {
+            "cyclonedx-1.7": {
+              "fit": "direct",
+              "paths": [
+                "signature (JSF, jsf-0.82 schema)",
+                "also declarations[].signature and citation[].signature"
+              ]
+            },
+            "spdx-3.0.1": {
+              "fit": "none",
+              "paths": []
+            }
+          },
+          "note": "THE COMMERCIAL HOOK. CycloneDX has a signature slot; SPDX 3.0.1 does not, so SPDX signing is out of band. Neither spec names a signature format (no Sigstore, DSSE, JWS or in-toto)."
+        },
+        {
+          "id": "metadata.sbom-tool-name",
+          "index": 6,
+          "name": "SBOM tool name",
+          "captures": "Tool the author used to build the SBOM.",
+          "statedConstraint": "String, full names.",
+          "conformance": "unspecified",
+          "mappings": {
+            "cyclonedx-1.7": {
+              "fit": "direct",
+              "paths": [
+                "metadata.tools.components[].name"
+              ]
+            },
+            "spdx-3.0.1": {
+              "fit": "direct",
+              "paths": [
+                "CreationInfo.createdUsing[] -> Tool.name"
+              ]
+            }
+          },
+          "note": ""
+        },
+        {
+          "id": "metadata.sbom-tool-version",
+          "index": 7,
+          "name": "SBOM tool version",
+          "captures": "Version of that tool. If none, say 'unknown'.",
+          "statedConstraint": "String. Explicit 'unknown' required if absent.",
+          "conformance": "unspecified",
+          "mappings": {
+            "cyclonedx-1.7": {
+              "fit": "direct",
+              "paths": [
+                "metadata.tools.components[].version"
+              ]
+            },
+            "spdx-3.0.1": {
+              "fit": "partial",
+              "paths": [
+                "Tool as Package -> packageVersion"
+              ]
+            }
+          },
+          "note": "Empty is non-conformant. Explicit 'unknown' is conformant. Neither format enforces this."
+        },
+        {
+          "id": "metadata.sbom-generation-context",
+          "index": 8,
+          "name": "SBOM generation context",
+          "captures": "Lifecycle phase at which the SBOM was made.",
+          "statedConstraint": "Open list. Examples: before build, build, after build.",
+          "conformance": "unspecified",
+          "mappings": {
+            "cyclonedx-1.7": {
+              "fit": "partial",
+              "paths": [
+                "metadata.lifecycles[].phase (design, pre-build, build, post-build, operations, discovery, decommission)"
+              ]
+            },
+            "spdx-3.0.1": {
+              "fit": "partial",
+              "paths": [
+                "LifecycleScopeType on relationships (design, build, development, test, runtime, other)"
+              ]
+            }
+          },
+          "note": "Vocabularies do not line up with each other or with the spec's three example values. SPDX scopes relationships, not the document."
+        },
+        {
+          "id": "metadata.sbom-timestamp",
+          "index": 9,
+          "name": "SBOM timestamp",
+          "captures": "When the SBOM data was last changed. Every version gets a new one.",
+          "statedConstraint": "RFC 9557 (extended timestamps with bracketed suffixes).",
+          "conformance": "unspecified",
+          "mappings": {
+            "cyclonedx-1.7": {
+              "fit": "partial",
+              "paths": [
+                "metadata.timestamp (JSON Schema format: date-time)"
+              ]
+            },
+            "spdx-3.0.1": {
+              "fit": "partial",
+              "paths": [
+                "CreationInfo.created (xsd:dateTimeStamp)"
+              ]
+            }
+          },
+          "note": "RFC 9557 permits suffixes such as [America/Chicago] that RFC 3339 validators reject. Both formats validate as plain date-time, so a strictly conformant timestamp can fail their schemas."
+        },
+        {
+          "id": "metadata.sbom-dependency-relationship",
+          "index": 10,
+          "name": "SBOM dependency relationship",
+          "captures": "Component X includes Y; or Y is derived from or a descendant of Z.",
+          "statedConstraint": "Values: includes, included in, plus derived-from and descendant-of semantics.",
+          "conformance": "unspecified",
+          "mappings": {
+            "cyclonedx-1.7": {
+              "fit": "direct",
+              "paths": [
+                "dependencies[] (ref, dependsOn, provides)",
+                "pedigree.ancestors/descendants/variants for derivation"
+              ]
+            },
+            "spdx-3.0.1": {
+              "fit": "direct",
+              "paths": [
+                "Relationship: contains, dependsOn, ancestorOf, descendantOf, hasVariant"
+              ]
+            }
+          },
+          "note": ""
+        }
+      ]
+    },
+    {
+      "id": "system-level-properties",
+      "name": "System Level Properties",
+      "elementCount": 9,
+      "scope": "The AI system as a whole, including systems composed of several AI elements such as classifiers, large language models or agents. Covers software dependencies and frameworks, and how components interact and process user data.",
+      "elements": [
+        {
+          "id": "system-level-properties.system-name",
+          "index": 11,
+          "name": "System name",
+          "captures": "Human-readable name of the whole AI system.",
+          "statedConstraint": "Multi-valued: alternate names should be capturable.",
+          "conformance": "unspecified",
+          "mappings": {
+            "cyclonedx-1.7": {
+              "fit": "partial",
+              "paths": [
+                "metadata.component.name"
+              ]
+            },
+            "spdx-3.0.1": {
+              "fit": "partial",
+              "paths": [
+                "Package.name"
+              ]
+            }
+          },
+          "note": "Neither format allows alternate names on a single component. Spec explicitly asks for multiple entries. Use properties or externalIdentifier as a workaround."
+        },
+        {
+          "id": "system-level-properties.system-components",
+          "index": 12,
+          "name": "System components",
+          "captures": "Everything included in the AI system: models, databases, tools.",
+          "statedConstraint": "Free.",
+          "conformance": "unspecified",
+          "mappings": {
+            "cyclonedx-1.7": {
+              "fit": "direct",
+              "paths": [
+                "metadata.component.components[]",
+                "components[] + dependencies[]"
+              ]
+            },
+            "spdx-3.0.1": {
+              "fit": "direct",
+              "paths": [
+                "Relationship contains"
+              ]
+            }
+          },
+          "note": ""
+        },
+        {
+          "id": "system-level-properties.system-producer",
+          "index": 13,
+          "name": "System producer",
+          "captures": "Entity that creates, defines and identifies the system.",
+          "statedConstraint": "Free.",
+          "conformance": "unspecified",
+          "mappings": {
+            "cyclonedx-1.7": {
+              "fit": "direct",
+              "paths": [
+                "metadata.component.manufacturer / .supplier"
+              ]
+            },
+            "spdx-3.0.1": {
+              "fit": "direct",
+              "paths": [
+                "Artifact.originatedBy / suppliedBy"
+              ]
+            }
+          },
+          "note": ""
+        },
+        {
+          "id": "system-level-properties.system-version",
+          "index": 14,
+          "name": "System version",
+          "captures": "Version of the system. If none, say 'unknown'.",
+          "statedConstraint": "Explicit 'unknown' required if absent.",
+          "conformance": "unspecified",
+          "mappings": {
+            "cyclonedx-1.7": {
+              "fit": "direct",
+              "paths": [
+                "metadata.component.version"
+              ]
+            },
+            "spdx-3.0.1": {
+              "fit": "direct",
+              "paths": [
+                "Package.packageVersion"
+              ]
+            }
+          },
+          "note": ""
+        },
+        {
+          "id": "system-level-properties.system-timestamp",
+          "index": 15,
+          "name": "System timestamp",
+          "captures": "Last update to the system, including model or software updates.",
+          "statedConstraint": "No RFC constraint stated (unlike SBOM timestamp).",
+          "conformance": "unspecified",
+          "mappings": {
+            "cyclonedx-1.7": {
+              "fit": "partial",
+              "paths": []
+            },
+            "spdx-3.0.1": {
+              "fit": "direct",
+              "paths": [
+                "Artifact.builtTime / releaseTime / validUntilTime"
+              ]
+            }
+          },
+          "note": "SPDX is materially better here. CycloneDX has no component-level 'last updated' field."
+        },
+        {
+          "id": "system-level-properties.system-data-flow",
+          "index": 16,
+          "name": "System data flow",
+          "captures": "Data movement between components: endpoints, APIs, agent protocols, external services.",
+          "statedConstraint": "Link, reference or description.",
+          "conformance": "unspecified",
+          "mappings": {
+            "cyclonedx-1.7": {
+              "fit": "direct",
+              "paths": [
+                "services[].endpoints[]",
+                "services[].data[] with flow (inbound, outbound, bi-directional, unknown) and classification"
+              ]
+            },
+            "spdx-3.0.1": {
+              "fit": "none",
+              "paths": []
+            }
+          },
+          "note": "CycloneDX SaaSBOM services model this properly. SPDX 3.0.1 cannot express data flow at all. Biggest single divergence between the two formats."
+        },
+        {
+          "id": "system-level-properties.system-data-usage",
+          "index": 17,
+          "name": "System data usage",
+          "captures": "How data is processed and consumed, including logging and derived metadata.",
+          "statedConstraint": "Link to documentation.",
+          "conformance": "unspecified",
+          "mappings": {
+            "cyclonedx-1.7": {
+              "fit": "partial",
+              "paths": [
+                "services[].data[].classification",
+                "externalReferences[]"
+              ]
+            },
+            "spdx-3.0.1": {
+              "fit": "partial",
+              "paths": [
+                "AIPackage.informationAboutApplication (free text)"
+              ]
+            }
+          },
+          "note": "Both weak. No structured notion of 'is user input used for training'."
+        },
+        {
+          "id": "system-level-properties.system-input-output-properties",
+          "index": 18,
+          "name": "System input/output properties",
+          "captures": "Input and output types, modality, preprocessing, tokenizer.",
+          "statedConstraint": "Free.",
+          "conformance": "unspecified",
+          "mappings": {
+            "cyclonedx-1.7": {
+              "fit": "partial",
+              "paths": [
+                "modelCard.modelParameters.inputs[].format / outputs[].format"
+              ]
+            },
+            "spdx-3.0.1": {
+              "fit": "partial",
+              "paths": [
+                "AIPackage.informationAboutApplication (free text)"
+              ]
+            }
+          },
+          "note": "CycloneDX allows exactly ONE key here (format) because inputOutputMLParameters is additionalProperties:false. Modality lives in the separate cdx:ai-ml property taxonomy, not the schema. This is model-level in CDX, not system-level."
+        },
+        {
+          "id": "system-level-properties.intended-application-area",
+          "index": 19,
+          "name": "Intended application area",
+          "captures": "Domain the system is deployed in: healthcare, finance, cybersecurity, real time.",
+          "statedConstraint": "Free.",
+          "conformance": "unspecified",
+          "mappings": {
+            "cyclonedx-1.7": {
+              "fit": "partial",
+              "paths": [
+                "modelCard.considerations.useCases[]"
+              ]
+            },
+            "spdx-3.0.1": {
+              "fit": "direct",
+              "paths": [
+                "AIPackage.domain (0..*)"
+              ]
+            }
+          },
+          "note": "SPDX has a purpose-built field. CycloneDX only has model-level use cases."
+        }
+      ]
+    },
+    {
+      "id": "models",
+      "name": "Models",
+      "elementCount": 13,
+      "scope": "Identifies the models used by the system, describes how each model's weights were produced, and outlines their properties and limitations.",
+      "elements": [
+        {
+          "id": "models.model-name",
+          "index": 20,
+          "name": "Model name",
+          "captures": "Human-readable model name.",
+          "statedConstraint": "Multi-valued: alternate names should be capturable.",
+          "conformance": "unspecified",
+          "mappings": {
+            "cyclonedx-1.7": {
+              "fit": "partial",
+              "paths": [
+                "components[].name (type: machine-learning-model)"
+              ]
+            },
+            "spdx-3.0.1": {
+              "fit": "partial",
+              "paths": [
+                "AIPackage.name"
+              ]
+            }
+          },
+          "note": "Same alternate-names gap as System name."
+        },
+        {
+          "id": "models.model-identifier",
+          "index": 21,
+          "name": "Model identifier",
+          "captures": "One or more machine-readable identifiers.",
+          "statedConstraint": "CPE, PURL, UUID, org IDs, commit hashes, OmniBOR, SWHID. Include ALL of them.",
+          "conformance": "unspecified",
+          "mappings": {
+            "cyclonedx-1.7": {
+              "fit": "direct",
+              "paths": [
+                "components[].purl, .cpe, .swid, .omniborId, .swhid, .bom-ref"
+              ]
+            },
+            "spdx-3.0.1": {
+              "fit": "direct",
+              "paths": [
+                "Element.spdxId",
+                "Element.externalIdentifier[]",
+                "Package.packageUrl"
+              ]
+            }
+          },
+          "note": "Both support the named schemes. Hugging Face PURL type (pkg:huggingface/...) is the de facto model identifier."
+        },
+        {
+          "id": "models.model-version",
+          "index": 22,
+          "name": "Model version",
+          "captures": "Model version. If none, say 'unknown'.",
+          "statedConstraint": "Explicit 'unknown' required if absent.",
+          "conformance": "unspecified",
+          "mappings": {
+            "cyclonedx-1.7": {
+              "fit": "direct",
+              "paths": [
+                "components[].version"
+              ]
+            },
+            "spdx-3.0.1": {
+              "fit": "direct",
+              "paths": [
+                "Package.packageVersion"
+              ]
+            }
+          },
+          "note": ""
+        },
+        {
+          "id": "models.model-timestamp",
+          "index": 23,
+          "name": "Model timestamp",
+          "captures": "Last update to the model, or its production release date.",
+          "statedConstraint": "Free.",
+          "conformance": "unspecified",
+          "mappings": {
+            "cyclonedx-1.7": {
+              "fit": "partial",
+              "paths": [
+                "components[].releaseNotes.timestamp"
+              ]
+            },
+            "spdx-3.0.1": {
+              "fit": "direct",
+              "paths": [
+                "Artifact.releaseTime / builtTime"
+              ]
+            }
+          },
+          "note": "SPDX better."
+        },
+        {
+          "id": "models.model-producer",
+          "index": 24,
+          "name": "Model producer",
+          "captures": "Who pre-trained, post-trained or fine-tuned the model. Also the security point of contact.",
+          "statedConstraint": "Multi-valued.",
+          "conformance": "unspecified",
+          "mappings": {
+            "cyclonedx-1.7": {
+              "fit": "direct",
+              "paths": [
+                "components[].manufacturer, .supplier, .authors[], .publisher"
+              ]
+            },
+            "spdx-3.0.1": {
+              "fit": "direct",
+              "paths": [
+                "Artifact.originatedBy (0..*), suppliedBy (0..1)"
+              ]
+            }
+          },
+          "note": ""
+        },
+        {
+          "id": "models.model-description",
+          "index": 25,
+          "name": "Model description",
+          "captures": "Capabilities, known limitations, and lineage including the predecessor model.",
+          "statedConstraint": "Free.",
+          "conformance": "unspecified",
+          "mappings": {
+            "cyclonedx-1.7": {
+              "fit": "partial",
+              "paths": [
+                "components[].description",
+                "modelCard.considerations.technicalLimitations[]",
+                "pedigree.ancestors[]"
+              ]
+            },
+            "spdx-3.0.1": {
+              "fit": "partial",
+              "paths": [
+                "Element.description",
+                "AIPackage.limitation",
+                "AIPackage.informationAboutTraining",
+                "ancestorOf relationship"
+              ]
+            }
+          },
+          "note": "LINEAGE IS THE PROBLEM. CycloneDX pedigree is structured but generic. SPDX 3.0.1 has no base-model edge at all, and even 3.1-dev's finetunedOn points at a dataset, not a parent model. 'This was fine-tuned from Llama 3' has no interoperable representation in either format."
+        },
+        {
+          "id": "models.model-hash-value",
+          "index": 26,
+          "name": "Model hash value",
+          "captures": "Hash of the weights or model file.",
+          "statedConstraint": "ASCII-formatted value.",
+          "conformance": "unspecified",
+          "mappings": {
+            "cyclonedx-1.7": {
+              "fit": "direct",
+              "paths": [
+                "components[].hashes[].content"
+              ]
+            },
+            "spdx-3.0.1": {
+              "fit": "direct",
+              "paths": [
+                "Element.verifiedUsing -> Hash.hashValue"
+              ]
+            }
+          },
+          "note": ""
+        },
+        {
+          "id": "models.model-hash-algorithm",
+          "index": 27,
+          "name": "Model hash algorithm",
+          "captures": "Algorithm that produced the hash.",
+          "statedConstraint": "IANA Hash Function Textual Names. NIST-approved.",
+          "conformance": "unspecified",
+          "mappings": {
+            "cyclonedx-1.7": {
+              "fit": "partial",
+              "paths": [
+                "components[].hashes[].alg (closed enum: MD5, SHA-1, SHA-256/384/512, SHA3-*, BLAKE2b-*, BLAKE3)"
+              ]
+            },
+            "spdx-3.0.1": {
+              "fit": "partial",
+              "paths": [
+                "Hash.algorithm (SPDX HashAlgorithm vocabulary)"
+              ]
+            }
+          },
+          "note": "NEITHER FORMAT USES IANA NAMES. Both have their own closed enums. A conformance checker has to map IANA names onto each format's vocabulary, and the sets do not fully overlap."
+        },
+        {
+          "id": "models.model-properties",
+          "index": 28,
+          "name": "Model properties",
+          "captures": "Architecture, parameter count, network type, hyperparameters. Explicitly nestable.",
+          "statedConstraint": "May contain sub-elements.",
+          "conformance": "unspecified",
+          "mappings": {
+            "cyclonedx-1.7": {
+              "fit": "direct",
+              "paths": [
+                "modelCard.modelParameters.approach.type (enum: supervised, unsupervised, reinforcement-learning, semi-supervised, self-supervised), .task, .architectureFamily, .modelArchitecture",
+                "plus cdx:ai-ml:model:parameter:count and :hyperparameter:* taxonomy"
+              ]
+            },
+            "spdx-3.0.1": {
+              "fit": "direct",
+              "paths": [
+                "AIPackage.typeOfModel (0..*)",
+                "AIPackage.hyperparameter[] (DictionaryEntry key/value strings)"
+              ]
+            }
+          },
+          "note": "CycloneDX is richer via the property taxonomy but the taxonomy sits outside the schema. SPDX hyperparameters are untyped strings with no units."
+        },
+        {
+          "id": "models.model-input-output-properties",
+          "index": 29,
+          "name": "Model input-output properties",
+          "captures": "Input and output types, context length, modality, tokenizer.",
+          "statedConstraint": "Free.",
+          "conformance": "unspecified",
+          "mappings": {
+            "cyclonedx-1.7": {
+              "fit": "partial",
+              "paths": [
+                "modelCard.modelParameters.inputs[].format / outputs[].format only"
+              ]
+            },
+            "spdx-3.0.1": {
+              "fit": "none",
+              "paths": []
+            }
+          },
+          "note": "Context length and modality have no schema home in either format. CycloneDX puts modality in the taxonomy (cdx:ai-ml:model:modality); context length only as a hyperparameter property."
+        },
+        {
+          "id": "models.model-training-properties",
+          "index": 30,
+          "name": "Model training properties",
+          "captures": "All training: pre-training, fine-tuning, continual learning, RLHF, DPO, PPO, GRPO.",
+          "statedConstraint": "Free, link to model card.",
+          "conformance": "unspecified",
+          "mappings": {
+            "cyclonedx-1.7": {
+              "fit": "partial",
+              "paths": [
+                "modelCard.modelParameters.approach.type",
+                "formulation[].workflows[] for the training run",
+                "cdx:ai-ml:model:parameter:tune_method (full, sft, rlhf, adapter, prompt, lora, alora, qlora)"
+              ]
+            },
+            "spdx-3.0.1": {
+              "fit": "partial",
+              "paths": [
+                "AIPackage.informationAboutTraining (free text)",
+                "trainedOn relationship"
+              ]
+            }
+          },
+          "note": "CycloneDX formulation can model the actual training run as a workflow. SPDX models it as a Build. Both are possible, neither is conventional, and no two producers will do it the same way."
+        },
+        {
+          "id": "models.model-license",
+          "index": 31,
+          "name": "Model license",
+          "captures": "Licence type, and whether open weight, open architecture, open data or open training.",
+          "statedConstraint": "Link to licence doc, or the SPDX/CDX licence fields.",
+          "conformance": "unspecified",
+          "mappings": {
+            "cyclonedx-1.7": {
+              "fit": "partial",
+              "paths": [
+                "components[].licenses[] (SPDX expression)"
+              ]
+            },
+            "spdx-3.0.1": {
+              "fit": "partial",
+              "paths": [
+                "hasDeclaredLicense and hasConcludedLicense relationships (exactly one of each REQUIRED on an AIPackage)"
+              ]
+            }
+          },
+          "note": "OPEN-WEIGHT VOCABULARY IS MISSING EVERYWHERE. Neither format has any way to say open weight vs open architecture vs open data vs open training. This is a named requirement with no representation."
+        },
+        {
+          "id": "models.model-external-references",
+          "index": 32,
+          "name": "Model external references",
+          "captures": "Links to model cards, system cards, papers, documentation.",
+          "statedConstraint": "Link/URL.",
+          "conformance": "unspecified",
+          "mappings": {
+            "cyclonedx-1.7": {
+              "fit": "direct",
+              "paths": [
+                "components[].externalReferences[] (47-value type enum incl. model-card, documentation, attestation, threat-model, adversary-model, risk-assessment, certification-report, pentest-report)"
+              ]
+            },
+            "spdx-3.0.1": {
+              "fit": "direct",
+              "paths": [
+                "Element.externalRef[]"
+              ]
+            }
+          },
+          "note": "CycloneDX has a dedicated model-card reference type. SPDX external refs are less typed."
+        }
+      ]
+    },
+    {
+      "id": "datasets-properties",
+      "name": "Datasets Properties",
+      "elementCount": 10,
+      "scope": "Datasets used during the whole lifecycle of the model, including the information that documents identity and provenance.",
+      "elements": [
+        {
+          "id": "datasets-properties.dataset-name",
+          "index": 33,
+          "name": "Dataset name",
+          "captures": "Name given by the dataset creator.",
+          "statedConstraint": "Free.",
+          "conformance": "unspecified",
+          "mappings": {
+            "cyclonedx-1.7": {
+              "fit": "direct",
+              "paths": [
+                "componentData.name",
+                "or components[].name with type: data"
+              ]
+            },
+            "spdx-3.0.1": {
+              "fit": "direct",
+              "paths": [
+                "DatasetPackage.name"
+              ]
+            }
+          },
+          "note": ""
+        },
+        {
+          "id": "datasets-properties.dataset-description",
+          "index": 34,
+          "name": "Dataset description",
+          "captures": "What the dataset is for: pre-training, fine-tuning, benchmark, evaluation. Public or private.",
+          "statedConstraint": "Free.",
+          "conformance": "unspecified",
+          "mappings": {
+            "cyclonedx-1.7": {
+              "fit": "direct",
+              "paths": [
+                "componentData.description"
+              ]
+            },
+            "spdx-3.0.1": {
+              "fit": "direct",
+              "paths": [
+                "Element.description",
+                "DatasetPackage.intendedUse"
+              ]
+            }
+          },
+          "note": ""
+        },
+        {
+          "id": "datasets-properties.dataset-content",
+          "index": 35,
+          "name": "Dataset content",
+          "captures": "What is in it and in what shape: financial, medical, image, audio, JSON, XML.",
+          "statedConstraint": "Free.",
+          "conformance": "unspecified",
+          "mappings": {
+            "cyclonedx-1.7": {
+              "fit": "partial",
+              "paths": [
+                "componentData.type (enum: source-code, configuration, dataset, definition, other)",
+                ".contents.{attachment,url,properties}"
+              ]
+            },
+            "spdx-3.0.1": {
+              "fit": "direct",
+              "paths": [
+                "DatasetPackage.datasetType (14-value enum: audio, categorical, graph, image, noAssertion, numeric, other, sensor, structured, syntactic, text, timeseries, timestamp, video)",
+                ".datasetSize (bytes)"
+              ]
+            }
+          },
+          "note": "SPDX is clearly better. Its 14-value datasetType is the only real content vocabulary in either format, and it is the ONLY required property in the whole SPDX AI/Dataset surface (minCount 1)."
+        },
+        {
+          "id": "datasets-properties.dataset-identifier",
+          "index": 36,
+          "name": "Dataset identifier",
+          "captures": "Unique identification of the dataset.",
+          "statedConstraint": "URL, URI.",
+          "conformance": "unspecified",
+          "mappings": {
+            "cyclonedx-1.7": {
+              "fit": "direct",
+              "paths": [
+                "componentData.bom-ref",
+                "components[].purl"
+              ]
+            },
+            "spdx-3.0.1": {
+              "fit": "direct",
+              "paths": [
+                "Element.spdxId",
+                "externalIdentifier[]",
+                "Package.downloadLocation"
+              ]
+            }
+          },
+          "note": ""
+        },
+        {
+          "id": "datasets-properties.dataset-hash",
+          "index": 37,
+          "name": "Dataset hash",
+          "captures": "Hash over the dataset file.",
+          "statedConstraint": "No algorithm field is defined (unlike Models).",
+          "conformance": "unspecified",
+          "mappings": {
+            "cyclonedx-1.7": {
+              "fit": "partial",
+              "paths": [
+                "components[].hashes[] on the wrapping component only"
+              ]
+            },
+            "spdx-3.0.1": {
+              "fit": "direct",
+              "paths": [
+                "Element.verifiedUsing -> Hash"
+              ]
+            }
+          },
+          "note": "TRAP: CycloneDX componentData has NO hash property of its own. You can only hash the wrapping component. Also note the spec itself omits a Dataset hash algorithm element, which is an asymmetry with the Models cluster."
+        },
+        {
+          "id": "datasets-properties.dataset-provenance",
+          "index": 38,
+          "name": "Dataset provenance",
+          "captures": "Origin, collection method (web crawl, commercial agreement), post-processing, curation, labelling, creator, synthetic-data method.",
+          "statedConstraint": "Free.",
+          "conformance": "unspecified",
+          "mappings": {
+            "cyclonedx-1.7": {
+              "fit": "partial",
+              "paths": [
+                "componentData.governance.{custodians,stewards,owners}",
+                ".contents.url",
+                "formulation[] for the pipeline"
+              ]
+            },
+            "spdx-3.0.1": {
+              "fit": "direct",
+              "paths": [
+                "DatasetPackage.dataCollectionProcess",
+                ".dataPreprocessing (0..*)",
+                ".anonymizationMethodUsed",
+                "Artifact.originatedBy"
+              ]
+            }
+          },
+          "note": "SPDX has purpose-built fields for collection and preprocessing. CycloneDX has stewardship roles SPDX lacks. Neither has a synthetic-data-method field."
+        },
+        {
+          "id": "datasets-properties.dataset-statistical-properties",
+          "index": 39,
+          "name": "Dataset statistical properties",
+          "captures": "Mean, variance, median, mode, range, skewness across the dataset lifecycle.",
+          "statedConstraint": "Free.",
+          "conformance": "unspecified",
+          "mappings": {
+            "cyclonedx-1.7": {
+              "fit": "properties-only",
+              "paths": [
+                "componentData.properties[] or .graphics"
+              ]
+            },
+            "spdx-3.0.1": {
+              "fit": "none",
+              "paths": []
+            }
+          },
+          "note": "REAL GAP IN BOTH. No statistical characterisation exists anywhere in either format. Nearest is SPDX datasetNoise (free text) and CycloneDX graphics (base64 images)."
+        },
+        {
+          "id": "datasets-properties.dataset-sensitivity",
+          "index": 40,
+          "name": "Dataset sensitivity",
+          "captures": "Whether it contains PII, freely accessible, copyright-protected, sensitive (financial, medical) or national-security data.",
+          "statedConstraint": "Free.",
+          "conformance": "unspecified",
+          "mappings": {
+            "cyclonedx-1.7": {
+              "fit": "partial",
+              "paths": [
+                "componentData.sensitiveData[] (free-text array)",
+                ".classification (unconstrained string)"
+              ]
+            },
+            "spdx-3.0.1": {
+              "fit": "partial",
+              "paths": [
+                "DatasetPackage.hasSensitivePersonalInformation (PresenceType: yes/no/noAssertion)",
+                ".confidentialityLevel (TLP: red, amber, green, clear)"
+              ]
+            }
+          },
+          "note": "SPDX has controlled vocabularies, CycloneDX has none. But NEITHER covers copyright-protected or national-security categories, which the spec names explicitly. SPDX 3.1-dev adds amberStrict."
+        },
+        {
+          "id": "datasets-properties.dataset-dependency-relationship",
+          "index": 41,
+          "name": "Dataset dependency relationship",
+          "captures": "Software used to create, modify and maintain the dataset. Derivation from another dataset.",
+          "statedConstraint": "Free.",
+          "conformance": "unspecified",
+          "mappings": {
+            "cyclonedx-1.7": {
+              "fit": "partial",
+              "paths": [
+                "dependencies[] on the data component",
+                "formulation[].components[] for the tooling"
+              ]
+            },
+            "spdx-3.0.1": {
+              "fit": "partial",
+              "paths": [
+                "Relationship: dependsOn, usesTool, ancestorOf",
+                "Build profile for the pipeline"
+              ]
+            }
+          },
+          "note": "Both express it, neither conventionally."
+        },
+        {
+          "id": "datasets-properties.dataset-license",
+          "index": 42,
+          "name": "Dataset license",
+          "captures": "Licence type of the dataset.",
+          "statedConstraint": "Link to licence doc.",
+          "conformance": "unspecified",
+          "mappings": {
+            "cyclonedx-1.7": {
+              "fit": "direct",
+              "paths": [
+                "components[].licenses[]"
+              ]
+            },
+            "spdx-3.0.1": {
+              "fit": "direct",
+              "paths": [
+                "hasDeclaredLicense and hasConcludedLicense (exactly one each REQUIRED on a DatasetPackage)"
+              ]
+            }
+          },
+          "note": ""
+        }
+      ]
+    },
+    {
+      "id": "infrastructure",
+      "name": "Infrastructure",
+      "elementCount": 2,
+      "scope": "Physical and virtual infrastructure critical to running and supporting the AI system, including a link to a hardware bill of materials where one exists.",
+      "elements": [
+        {
+          "id": "infrastructure.infrastructure-software",
+          "index": 43,
+          "name": "Infrastructure software",
+          "captures": "Firmware, package managers, third-party libraries, frameworks, runtimes, tools needed to run the system.",
+          "statedConstraint": "Free.",
+          "conformance": "unspecified",
+          "mappings": {
+            "cyclonedx-1.7": {
+              "fit": "direct",
+              "paths": [
+                "components[] of type library/framework/container/operating-system + dependencies[]",
+                "formulation[].components[]"
+              ]
+            },
+            "spdx-3.0.1": {
+              "fit": "direct",
+              "paths": [
+                "Relationship dependsOn / usesTool",
+                "Build profile"
+              ]
+            }
+          },
+          "note": ""
+        },
+        {
+          "id": "infrastructure.infrastructure-hardware",
+          "index": 44,
+          "name": "Infrastructure hardware",
+          "captures": "Link to an existing HBOM covering the hardware the system runs on.",
+          "statedConstraint": "Link to an HBOM.",
+          "conformance": "unspecified",
+          "mappings": {
+            "cyclonedx-1.7": {
+              "fit": "partial",
+              "paths": [
+                "externalReferences[].type: 'bom' with a BOM-Link URN",
+                "components[].type: 'device'"
+              ]
+            },
+            "spdx-3.0.1": {
+              "fit": "none",
+              "paths": []
+            }
+          },
+          "note": "SPDX 3.0.1 cannot express hardware at all. CycloneDX can link a separate BOM but has no HBOM profile either. Note OMB M-26-05 now makes agencies inventory hardware as well as software, so this gap has a buyer."
+        }
+      ]
+    },
+    {
+      "id": "security-properties",
+      "name": "Security Properties",
+      "elementCount": 4,
+      "scope": "Cybersecurity measures that apply to the AI models and systems.",
+      "elements": [
+        {
+          "id": "security-properties.security-controls",
+          "index": 45,
+          "name": "Security controls",
+          "captures": "General controls (encryption, data minimisation, differential privacy, access control, API auth, anomaly detection) AND AI-specific controls (adversarial robustness training, prompt injection controls, I/O filters, training-data curation).",
+          "statedConstraint": "Free, may link to a framework.",
+          "conformance": "unspecified",
+          "mappings": {
+            "cyclonedx-1.7": {
+              "fit": "properties-only",
+              "paths": [
+                "properties[] under a private namespace",
+                "externalReferences[].type: threat-model / adversary-model / risk-assessment",
+                "declarations[] (CDXA) against definitions.standards[]"
+              ]
+            },
+            "spdx-3.0.1": {
+              "fit": "properties-only",
+              "paths": [
+                "Extension profile",
+                "AIPackage.standardCompliance (partial)"
+              ]
+            }
+          },
+          "note": "THE BIGGEST GAP ON THIS SHEET. Neither format has ANY field for adversarial robustness, prompt injection resistance, jailbreak resistance, data poisoning, watermarking, guardrails or red-teaming. Zero hits for all of those terms in both schemas. This is unclaimed territory."
+        },
+        {
+          "id": "security-properties.security-compliance",
+          "index": 46,
+          "name": "Security compliance",
+          "captures": "Certification schemes, standards or frameworks the model or system complies with.",
+          "statedConstraint": "Free.",
+          "conformance": "unspecified",
+          "mappings": {
+            "cyclonedx-1.7": {
+              "fit": "partial",
+              "paths": [
+                "declarations[] (CDXA)",
+                "externalReferences[].type: certification-report"
+              ]
+            },
+            "spdx-3.0.1": {
+              "fit": "direct",
+              "paths": [
+                "AIPackage.standardCompliance (xsd:string, 0..*)"
+              ]
+            }
+          },
+          "note": "SPDX has a plain field. CycloneDX requires the heavier Attestations construct."
+        },
+        {
+          "id": "security-properties.cybersecurity-policy-information",
+          "index": 47,
+          "name": "Cybersecurity policy information",
+          "captures": "Link to the producer's published security.txt.",
+          "statedConstraint": "URL to a security.txt file.",
+          "conformance": "unspecified",
+          "mappings": {
+            "cyclonedx-1.7": {
+              "fit": "partial",
+              "paths": [
+                "externalReferences[] with an appropriate type"
+              ]
+            },
+            "spdx-3.0.1": {
+              "fit": "partial",
+              "paths": [
+                "Element.externalRef[] (securityAdvisory, securityOther)"
+              ]
+            }
+          },
+          "note": "Neither has a security.txt reference type by name. Nearest fit only."
+        },
+        {
+          "id": "security-properties.vulnerability-referencing",
+          "index": 48,
+          "name": "Vulnerability referencing",
+          "captures": "Link to databases or repositories showing exploitability of known vulnerabilities.",
+          "statedConstraint": "Static link/URL.",
+          "conformance": "unspecified",
+          "mappings": {
+            "cyclonedx-1.7": {
+              "fit": "direct",
+              "paths": [
+                "vulnerabilities[] (CVE, CWE, CVSS ratings, VEX analysis state)",
+                "externalReferences[].type: vulnerability-assertion"
+              ]
+            },
+            "spdx-3.0.1": {
+              "fit": "direct",
+              "paths": [
+                "Security profile: Vulnerability, VulnAssessmentRelationship, VEX relationships, CVSS v2/v3/v4, EPSS, SSVC"
+              ]
+            }
+          },
+          "note": "Both strong, but both are CVE-shaped. Neither can express a model-level attack surface, only vulnerabilities in software dependencies."
+        }
+      ]
+    },
+    {
+      "id": "key-performance-indicators",
+      "name": "Key Performance Indicators",
+      "elementCount": 2,
+      "scope": "Indicators for the AI system and its components, focusing on their lifecycle phases.",
+      "elements": [
+        {
+          "id": "key-performance-indicators.security-metrics",
+          "index": 49,
+          "name": "Security metrics",
+          "captures": "Metrics for the security characteristics of the models or the system, such as robustness benchmarks.",
+          "statedConstraint": "Free.",
+          "conformance": "unspecified",
+          "mappings": {
+            "cyclonedx-1.7": {
+              "fit": "properties-only",
+              "paths": [
+                "modelCard.quantitativeAnalysis.performanceMetrics[] (type free text, value is a STRING, optional slice and confidence interval)"
+              ]
+            },
+            "spdx-3.0.1": {
+              "fit": "properties-only",
+              "paths": [
+                "AIPackage.metric[] (DictionaryEntry: string key, string value)"
+              ]
+            }
+          },
+          "note": "Untyped in both. No units, no thresholds beyond SPDX metricDecisionThreshold, no security semantics. And in CycloneDX there is NO field linking a metric to the dataset it was measured on."
+        },
+        {
+          "id": "key-performance-indicators.operational-performance-kpis",
+          "index": 50,
+          "name": "Operational performance KPIs",
+          "captures": "Uptime, incident resolution time, latency, request throughput, load balancing.",
+          "statedConstraint": "Free.",
+          "conformance": "unspecified",
+          "mappings": {
+            "cyclonedx-1.7": {
+              "fit": "properties-only",
+              "paths": [
+                "properties[] only"
+              ]
+            },
+            "spdx-3.0.1": {
+              "fit": "properties-only",
+              "paths": [
+                "AIPackage.metric[] only"
+              ]
+            }
+          },
+          "note": "REAL GAP IN BOTH. No operational-telemetry concept exists in either format. This is arguably out of scope for a static BOM, and worth saying so."
+        }
+      ]
+    }
+  ]
+}

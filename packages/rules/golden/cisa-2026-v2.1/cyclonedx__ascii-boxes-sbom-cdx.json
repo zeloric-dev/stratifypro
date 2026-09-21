@@ -1,0 +1,58 @@
+{
+  "corpusFile": "cyclonedx__ascii-boxes-sbom-cdx.json",
+  "format": "cyclonedx",
+  "rulePackId": "cisa-2026-v2.1",
+  "rulePackVersion": "1.0.0",
+  "findingsByRule": {
+    "CISA-CD-001": [
+      "$.components[0]",
+      "$.components[1]"
+    ],
+    "CISA-CD-002": [
+      "$"
+    ],
+    "CISA-CD-003": [
+      "$.components[0]",
+      "$.components[1]"
+    ],
+    "CISA-CD-004": [
+      "$.components[*].hashes[*]"
+    ],
+    "CISA-CD-005": [
+      "$.components[0]",
+      "$.components[1]"
+    ],
+    "CISA-CD-006": [],
+    "CISA-CD-007": [],
+    "CISA-CD-008": [],
+    "CISA-MD-001": [
+      "$.metadata.authors[*]"
+    ],
+    "CISA-MD-002": [
+      "$"
+    ],
+    "CISA-MD-003": [],
+    "CISA-MD-004": [],
+    "CISA-MD-005": [
+      "$.metadata"
+    ],
+    "CISA-MD-006": [],
+    "CISA-MD-007": [
+      "$.metadata.tools[*]"
+    ],
+    "CISA-MD-008": [
+      "$.metadata.tools[*]"
+    ],
+    "CISA-MD-009": [],
+    "CISA-PR-001": [],
+    "CISA-PR-002": [
+      "$"
+    ],
+    "CISA-PR-003": [],
+    "CISA-PR-004": [
+      "$"
+    ],
+    "CISA-PR-005": [],
+    "CISA-PR-006": []
+  }
+}

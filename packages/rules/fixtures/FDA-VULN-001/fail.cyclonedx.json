@@ -1,0 +1,103 @@
+{
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.6",
+  "version": 1,
+  "serialNumber": "urn:uuid:3e671687-395b-41f5-a30f-a58921a69b79",
+  "metadata": {
+    "timestamp": "2026-09-13T10:00:00Z[America/Chicago]",
+    "lifecycles": [
+      {
+        "phase": "build"
+      }
+    ],
+    "authors": [
+      {
+        "name": "StratifyPro Test Fixtures"
+      }
+    ],
+    "tools": [
+      {
+        "name": "StratifyPro fixture generator",
+        "version": "1.0.0"
+      }
+    ],
+    "component": {
+      "type": "application",
+      "name": "example-device-firmware",
+      "version": "2.1.0",
+      "bom-ref": "root",
+      "externalReferences": [
+        {
+          "type": "bom",
+          "url": "https://example.invalid/sbom"
+        }
+      ],
+      "properties": [
+        {
+          "name": "stratifypro:traceability-ref",
+          "value": "TM-2026-001"
+        }
+      ]
+    }
+  },
+  "components": [
+    {
+      "type": "library",
+      "bom-ref": "c1",
+      "name": "openssl",
+      "version": "3.0.2",
+      "publisher": "The OpenSSL Project",
+      "purl": "pkg:generic/openssl@3.0.2",
+      "cpe": "cpe:2.3:a:openssl:openssl:3.0.2:*:*:*:*:*:*:*",
+      "licenses": [
+        {
+          "license": {
+            "id": "Apache-2.0"
+          }
+        }
+      ],
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+        }
+      ],
+      "properties": [
+        {
+          "name": "stratifypro:support-level",
+          "value": "actively maintained"
+        },
+        {
+          "name": "stratifypro:end-of-support",
+          "value": "2026-09-07"
+        }
+      ]
+    }
+  ],
+  "dependencies": [
+    {
+      "ref": "root",
+      "dependsOn": [
+        "c1"
+      ]
+    },
+    {
+      "ref": "c1",
+      "dependsOn": []
+    }
+  ],
+  "compositions": [
+    {
+      "aggregate": "complete",
+      "assemblies": [
+        "root"
+      ]
+    }
+  ],
+  "declarations": {
+    "signature": {
+      "algorithm": "ES256",
+      "value": "placeholder"
+    }
+  }
+}

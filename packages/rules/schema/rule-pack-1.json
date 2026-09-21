@@ -1,0 +1,313 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://stratifypro.io/schema/rule-pack-1.json",
+  "title": "StratifyPro rule pack, version 1",
+  "description": "A rule pack is data, not code, so that a regulatory reader can read it and disagree with it. Two constraints here are the product's honesty position made mechanical: every rule must carry a written severity justification, and no rule may be an error unless its source document contains genuine normative language. The loader enforces both and throws rather than degrading.",
+  "type": "object",
+  "required": [
+    "id",
+    "version",
+    "title",
+    "sourceDocuments",
+    "severityModel",
+    "rules"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "$schema": {
+      "type": "string"
+    },
+    "id": {
+      "type": "string",
+      "pattern": "^[a-z0-9]+(-[a-z0-9.]+)*$"
+    },
+    "version": {
+      "type": "string",
+      "pattern": "^\\d+\\.\\d+\\.\\d+$"
+    },
+    "title": {
+      "type": "string",
+      "minLength": 10
+    },
+    "compiled": {
+      "type": "string",
+      "format": "date"
+    },
+    "conformanceNote": {
+      "type": "string",
+      "minLength": 40
+    },
+    "sourceDocuments": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "#/$defs/sourceDocument"
+      }
+    },
+    "severityModel": {
+      "$ref": "#/$defs/severityModel"
+    },
+    "rules": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "#/$defs/rule"
+      }
+    }
+  },
+  "$defs": {
+    "severity": {
+      "enum": [
+        "error",
+        "warning",
+        "info",
+        "advisory"
+      ]
+    },
+    "targetFormat": {
+      "enum": [
+        "cyclonedx",
+        "spdx"
+      ]
+    },
+    "sourceDocument": {
+      "type": "object",
+      "required": [
+        "id",
+        "title",
+        "publisher",
+        "normativeLanguage"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^[a-z0-9]+(-[a-z0-9.]+)*$"
+        },
+        "title": {
+          "type": "string"
+        },
+        "citation": {
+          "type": "string"
+        },
+        "publisher": {
+          "type": "string"
+        },
+        "published": {
+          "type": "string"
+        },
+        "effective": {
+          "type": "string"
+        },
+        "supersedes": {
+          "type": "string"
+        },
+        "version": {
+          "type": "string"
+        },
+        "url": {
+          "type": "string",
+          "format": "uri"
+        },
+        "retrievedFrom": {
+          "type": "string",
+          "format": "uri"
+        },
+        "retrievedNote": {
+          "type": "string"
+        },
+        "documentNumber": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "documentNumberNote": {
+          "type": "string"
+        },
+        "note": {
+          "type": "string"
+        },
+        "normativeLanguage": {
+          "type": "boolean",
+          "description": "True only when the document contains genuine obligation language: shall, must, or a statutory requirement. Guidance that uses should throughout is false. Setting this true without evidence is the single most damaging error a pack author can make, because it unlocks error severity."
+        },
+        "normativeLanguageEvidence": {
+          "type": "string",
+          "minLength": 40,
+          "description": "Required whenever normativeLanguage is true. State the counted evidence: which words appear, how many times, and where."
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "normativeLanguage": {
+                "const": true
+              }
+            },
+            "required": [
+              "normativeLanguage"
+            ]
+          },
+          "then": {
+            "required": [
+              "normativeLanguageEvidence"
+            ]
+          }
+        }
+      ]
+    },
+    "severityModel": {
+      "type": "object",
+      "required": [
+        "default",
+        "justification",
+        "overridable"
+      ],
+      "properties": {
+        "default": {
+          "$ref": "#/$defs/severity"
+        },
+        "justification": {
+          "type": "string",
+          "minLength": 120
+        },
+        "overridable": {
+          "const": true
+        },
+        "maxSeverityFromThisSource": {
+          "$ref": "#/$defs/severity"
+        },
+        "maxSeverityNote": {
+          "type": "string"
+        },
+        "enforcementNote": {
+          "type": "string"
+        }
+      }
+    },
+    "rule": {
+      "type": "object",
+      "required": [
+        "id",
+        "title",
+        "severity",
+        "severityJustification",
+        "onEmptySelector",
+        "onEmptySelectorJustification",
+        "appliesTo",
+        "selector",
+        "assert",
+        "fix",
+        "sourceDocument",
+        "sourceLocation"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^[A-Z]{2,6}-[A-Z]{2,6}-\\d{3}$"
+        },
+        "title": {
+          "type": "string",
+          "minLength": 12
+        },
+        "severity": {
+          "$ref": "#/$defs/severity"
+        },
+        "onEmptySelector": {
+          "enum": ["fire", "skip", "pass"],
+          "description": "What the engine does when this rule's selector matches zero nodes in a document whose format does support that path. This is a third case, distinct from the two already specified elsewhere: a rule whose appliesTo excludes the detected format is skipped, and a rule referencing a path the format lacks entirely is skipped. Neither covers a CycloneDX document that simply carries no hashes, which is the common case. fire means the absence is itself the violation. skip means the rule cannot speak to this document and is reported in skippedRules. pass means the assertion is vacuously satisfied. Left undeclared, an implementer has to guess, and the Python reference and a reader of docs/copy.md would guess differently."
+        },
+        "onEmptySelectorJustification": {
+          "type": "string",
+          "minLength": 60,
+          "description": "Why that behaviour and not another, in terms of what the user would conclude from the result. Required for the same reason severityJustification is: a value in a data file that carries no reason gets changed by whoever finds it inconvenient."
+        },
+        "severityJustification": {
+          "type": "string",
+          "minLength": 60,
+          "description": "Why this severity and not another, in terms of the consequence to the user, never by quoting the source document's tone. A rule without one fails pack load."
+        },
+        "appliesTo": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {
+            "$ref": "#/$defs/targetFormat"
+          }
+        },
+        "selector": {
+          "type": "object",
+          "minProperties": 1,
+          "propertyNames": {
+            "$ref": "#/$defs/targetFormat"
+          },
+          "additionalProperties": {
+            "type": "string",
+            "pattern": "^\\$"
+          }
+        },
+        "assert": {
+          "description": "Either one assertion applied to every format, or an object keyed by format. anyOf rather than oneOf because a per-format object legitimately satisfies both shapes; the engine disambiguates by checking whether every key is a known format name, which no assertion operator is. Formats differ structurally often enough that this matters: SPDX creators are strings of the form 'Organization: X' while CycloneDX authors are objects with a name field, so one assertion cannot serve both.",
+          "anyOf": [
+            {
+              "type": "object",
+              "minProperties": 1,
+              "description": "One assertion applied to every format in appliesTo."
+            },
+            {
+              "type": "object",
+              "propertyNames": {
+                "$ref": "#/$defs/targetFormat"
+              },
+              "additionalProperties": {
+                "type": "object",
+                "minProperties": 1
+              },
+              "description": "Per-format assertions. Use this when the formats differ structurally, which they often do: SPDX creators are strings of the form 'Organization: X' while CycloneDX authors are objects with a name field."
+            }
+          ]
+        },
+        "fix": {
+          "type": "string",
+          "minLength": 25,
+          "description": "Written for a regulatory affairs reader, not an engineer. Says what to change, not which field name to edit."
+        },
+        "note": {
+          "type": "string"
+        },
+        "sourceDocument": {
+          "type": "string",
+          "pattern": "^[a-z0-9]+(-[a-z0-9.]+)*$",
+          "description": "The id of a document in sourceDocuments. Machine-resolvable on purpose: a free-text citation cannot be checked, and the error-severity rule depends on knowing which document a rule actually rests on."
+        },
+        "sourceLocation": {
+          "type": "string",
+          "minLength": 8,
+          "description": "Where inside that document, in the document's own sectioning. Human-readable."
+        },
+        "alsoSee": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "sourceDocument",
+              "sourceLocation"
+            ],
+            "properties": {
+              "sourceDocument": {
+                "type": "string"
+              },
+              "sourceLocation": {
+                "type": "string"
+              }
+            },
+            "additionalProperties": false
+          },
+          "description": "Secondary references. Never counted when deciding whether error severity is permitted."
+        }
+      }
+    }
+  }
+}

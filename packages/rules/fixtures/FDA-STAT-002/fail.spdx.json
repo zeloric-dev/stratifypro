@@ -1,0 +1,35 @@
+{
+  "spdxVersion": "SPDX-2.3",
+  "dataLicense": "CC0-1.0",
+  "SPDXID": "SPDXRef-DOCUMENT",
+  "name": "example-device-firmware",
+  "documentNamespace": "https://example.invalid/spdx/1",
+  "creationInfo": {
+    "created": "2026-09-13T10:00:00Z[America/Chicago]",
+    "creators": [
+      "Organization: StratifyPro Test Fixtures",
+      "Tool: fixture-generator-1.0.0"
+    ],
+    "comment": "generation context: build"
+  },
+  "relationships": [
+    {
+      "spdxElementId": "SPDXRef-DOCUMENT",
+      "relatedSpdxElement": "SPDXRef-Package-openssl",
+      "relationshipType": "DESCRIBES"
+    },
+    {
+      "spdxElementId": "SPDXRef-Package-openssl",
+      "relatedSpdxElement": "SPDXRef-Package-openssl",
+      "relationshipType": "DEPENDS_ON"
+    }
+  ],
+  "annotations": [
+    {
+      "annotationType": "OTHER",
+      "annotator": "Tool: fixture-generator",
+      "annotationDate": "2026-09-13T10:00:00Z",
+      "comment": "No omissions."
+    }
+  ]
+}

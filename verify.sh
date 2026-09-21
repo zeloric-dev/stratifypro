@@ -1,0 +1,232 @@
+#!/usr/bin/env bash
+# Everything in this repo that can be checked, checked. Run before trusting anything.
+# CI runs this. Exit nonzero means a claim in the spec is no longer true.
+set -uo pipefail
+fail=0
+run() { echo "--- $1"; shift; "$@" || { echo "    FAILED"; fail=1; }; }
+
+run "rule packs validate against the schema" \
+    python3 packages/rules/src/validate.py packages/rules/packs/cisa-2026-v2.1.json packages/rules/packs/fda-524b.json
+run "the validator is not blind (mutation test)" \
+    python3 packages/rules/src/mutation-test.py
+run "every fail fixture fires, no rule fires on its pass fixture" \
+    python3 packages/rules/src/reference-engine.py
+# The fixture check above proves each rule CAN fire. It does not prove WHICH
+# nodes it fires on, and the engine contract is one Finding per failing node
+# with its exact JSONPath. The golden artifact pins that: 21 corpus files by 2
+# packs, every failing path recorded. The TypeScript engine must reproduce
+# these byte-identically, which is how the fixture claim transfers to the
+# implementation that actually ships.
+run "golden results reproduce byte-identically (reference oracle)" \
+    python3 packages/rules/src/reference-engine.py --check-golden
+# The baselines were always reproducible. The dataset they are measured on was
+# not: it arrived as a committed artefact with no generator anywhere in the
+# repository's history, so nobody, including its author, could rebuild it.
+# Rule 4 of bench/identity/README.md says a number that is not reproducible by
+# someone who does not work here is a claim and not a measurement.
+run "benchmark dataset reproduces from its generator" \
+    python3 bench/identity/build.py --check
+run "benchmark baselines reproduce" \
+    python3 bench/identity/run.py --subset clean
+# NOT HERE, AND THE REASON IS WORTH READING. bench/identity/published.json is
+# what /bench renders, and reproducing it means running this resolver over every
+# benchmark row, which means built TypeScript. This script is deliberately
+# Python and git only: it runs first in CI and gates the build job, so it cannot
+# depend on that job's output without a cycle.
+#
+# scripts/bench-publish.py --check therefore runs as a step in the build job,
+# after pnpm build, and in `pnpm ci` locally. It is not skipped and not
+# optional; it is in the other gate. This comment exists so that nobody reading
+# verify.sh concludes the published benchmark is unchecked.
+
+run "structural claims hold (counts, severities, split, no leakage)" \
+    python3 scripts/check-claims.py
+run "coverage baseline regenerates from the corpus" \
+    python3 scripts/coverage.py --check
+
+run "the web app's copy is the approved copy, not a paraphrase"     python3 scripts/check-copy.py
+
+echo "--- the file checker cannot upload anything"
+# "Your file is checked in this browser. It is never uploaded." is a verbatim
+# string from docs/copy.md and it is the free tier's entire proposition. It is
+# also the easiest promise here to break by accident: one analytics call, one
+# error reporter, one "just POST the findings so we can debug it" and the
+# sentence is a lie while every test still passes. CLAUDE.md names the exact
+# temptation: storing the uploaded SBOM "temporarily, for debugging".
+#
+# THIS CHECK HAS BEEN WRONG THREE TIMES AND EACH TIME IT REPORTED CLEAN.
+#   1. A malformed sed printed errors and matched nothing.
+#   2. A \b written into the file as a literal backspace byte matched nothing.
+#   3. It scanned only apps/web/app and matched only the literal `fetch(`.
+#      apps/web/next.config.mjs sets transpilePackages for @stratifypro/engine
+#      and @stratifypro/resolve, and check.worker.ts imports both, so a fetch in
+#      packages/engine SHIPS INTO THE WORKER. A POST of the parsed SBOM planted
+#      in packages/engine/src/coverage.ts was reported clean. So was an aliased
+#      call inside the scanned directory: `const send = globalThis.fetch` then
+#      `send (url, ...)`, which `fetch\(` does not match.
+#
+# So: scan everything that can reach the bundle, and match the bare identifiers
+# rather than a call shape. An alias still has to name the function once.
+#
+# Coarse, and it knows it. A computed property access would slip through. It
+# catches the blatant cases, which are the ones that actually happen.
+# The scan list is DERIVED from next.config.mjs rather than written out, so a
+# package added to the bundle is scanned automatically. Scanning every package
+# instead would be wrong in the other direction: packages/mirror and apps/sync
+# exist to fetch advisory data in Phase 2, and a check that must be weakened the
+# first time it is inconvenient does not survive being inconvenient.
+NET_PATHS="apps/web/app"
+if [ -f apps/web/next.config.mjs ]; then
+  for pkg in $(grep -o "@stratifypro/[a-z-]*" apps/web/next.config.mjs | sort -u); do
+    d="packages/${pkg#@stratifypro/}/src"
+    [ -d "$d" ] && NET_PATHS="$NET_PATHS $d"
+  done
+fi
+if [ -n "$NET_PATHS" ]; then
+  NET=$(grep -rnE '(^|[^A-Za-z0-9_$.])(fetch|XMLHttpRequest|sendBeacon|WebSocket|EventSource|importScripts)([^A-Za-z0-9_]|$)' \
+          --include='*.ts' --include='*.tsx' $NET_PATHS 2>/dev/null \
+        | grep -vE '\.test\.ts' \
+        | grep -vE ':[0-9]+:[[:space:]]*(\*|//)')
+  if [ -n "$NET" ]; then
+    echo "$NET"
+    echo "    FAILED: a network primitive reached code that runs in the browser"; fail=1
+  else echo "    no network primitive in:$NET_PATHS"; fi
+else
+  echo "    skipped: no client source yet"
+fi
+
+echo "--- banned words in product copy"
+# SCOPE MATTERS. This scans where CLAIMS ABOUT STRATIFYPRO'S OUTPUT live: application
+# source, package source, and the public README. It deliberately does NOT scan
+# docs/copy.md, CLAUDE.md, docs/banned-phrases.txt or docs/cisa-2026-elements.md,
+# because those either DEFINE the banned list or quote a standards document that uses
+# the words legitimately. Scanning them produced seven false positives on the first run,
+# and a check that cries wolf gets muted, which is worse than no check at all.
+#
+# The list lives in exactly one place: docs/banned-phrases.txt. There is no second copy
+# to drift against.
+#
+# This is a coarse net and it knows it. A grep cannot tell "our output is conformant"
+# from "the document says a conformant file". It catches the blatant cases; a human
+# still reads the prose.
+PATTERN=$(grep -v '^#' docs/banned-phrases.txt | grep -v '^[[:space:]]*$' | paste -sd'|' -)
+if [ -z "$PATTERN" ]; then echo "    FAILED: docs/banned-phrases.txt is empty"; fail=1; fi
+# Source only. Build output is generated from the source this already scans, and
+# a bundler's cache is a binary blob that happens to contain the words: once
+# apps/web existed, .next/cache turned this check red on a webpack pack file.
+# A check that fires on something the developer cannot edit gets muted.
+SCAN_EXCLUDE="--exclude-dir=node_modules --exclude-dir=.next --exclude-dir=dist --exclude-dir=build --exclude-dir=.turbo"
+SCAN_PATHS=""
+for p in apps packages/*/src README.md; do [ -e "$p" ] && SCAN_PATHS="$SCAN_PATHS $p"; done
+if [ -z "$SCAN_PATHS" ]; then
+  echo "    skipped: no product source exists yet (expected until Step 1 runs)"
+elif grep -rniEI $SCAN_EXCLUDE "$PATTERN" $SCAN_PATHS 2>/dev/null; then
+  echo "    FAILED: banned claim found in product copy"; fail=1
+else echo "    clean"; fi
+
+echo "--- the banned list is not restated in CLAUDE.md"
+# CLAUDE.md must POINT AT docs/banned-phrases.txt and never restate any of it. A
+# restated list is a second policy that nobody updates, which is exactly how the old
+# two-copy arrangement drifted while its drift check printed "in sync". This tests
+# EVERY pattern in the list, not one of them.
+#
+# docs/copy.md is NOT scanned here, because its "Words to use instead" table has to
+# name the banned words in order to give the replacement. That table is checked a
+# different way, in scripts/check-claims.py: every word it offers a replacement for
+# must still be banned by docs/banned-phrases.txt, so the two cannot drift apart.
+if grep -niE "$PATTERN" CLAUDE.md 2>/dev/null; then
+  echo "    FAILED: a banned phrase is restated in CLAUDE.md"; fail=1
+else echo "    single source"; fi
+
+# docs/design.md and docs/ui-stack.md were authoritative and unchecked, and by
+# section 5.6's own standard an unchecked rule does not exist. Proven necessary:
+# a coloured left accent rail reached packages/report on the first build, which
+# ui-stack.md lists among the things that give a generated interface away.
+#
+# These were three inline greps and none of them had ever been seen to fail.
+# Step 1.16's acceptance is "each of the six greps planted with a violation and
+# seen to go red", which an inline grep cannot be held to, so the rules moved
+# into a script with a mutation test behind them. Running the mutation test
+# FIRST is deliberate: if the checks are blind, a clean result from them below
+# means nothing, exactly as the rule pack validator is proved before the packs
+# are validated with it.
+run "the design checks are not blind (mutation test)" \
+    python3 scripts/design-mutation-test.py
+run "design system is enforced, not just written down" \
+    python3 scripts/check-design.py
+
+# Doc 3 flow C: "explain <ruleId> in the CLI and /rules/<ruleId> on the web
+# render the same content from the same source." The tests in packages/engine
+# hold explainRule to the packs; they cannot see a renderer that stops using it.
+#
+# This was an inline grep here, and it shipped reporting clean while the branch
+# it shipped in already violated it: apps/web/app/rules/page.tsx rendered
+# {r.sourceDocument} alone while /rules/<id> rendered "document: clause" from
+# the shared view. The grep scanned two hand-listed files and that was not one
+# of them. An adversarial review then walked four more evasions through it.
+#
+# Mutation test first, for the same reason it runs first for the design rules:
+# a clean result from a blind check means nothing.
+# apps/web/app/packs.ts promised "a test asserts the two agree" and no such test
+# existed. The CLI enumerates packs from disk; a static site cannot, so three
+# hand-written lists in the web app have to be kept in step with the directory.
+run "every rule pack appears in every hand-written list"     python3 scripts/check-pack-lists.py
+
+run "the one-source check is not blind (mutation test)"     python3 scripts/one-source-mutation-test.py
+run "one rule is described in one place"     python3 scripts/check-one-source.py
+
+echo "--- corpus bytes in git match the working copy"
+# The hash check above reads the working copy. Git stores whatever its
+# attributes told it to store, and those can differ: this repository's first
+# commit predated .gitattributes, so one corpus file was committed with its
+# 2,873 CRLF pairs stripped. Every local check passed and CI failed on a fresh
+# clone, which is the worst shape for a failure to take.
+if command -v git >/dev/null 2>&1 && git rev-parse --verify -q HEAD >/dev/null 2>&1; then
+  drift=0
+  for f in fixtures/corpus/*.json; do
+    git show "HEAD:$f" > "$f.gitblob" 2>/dev/null || continue
+    if ! cmp -s "$f" "$f.gitblob"; then
+      echo "    committed bytes differ from working copy: $f"; drift=1
+    fi
+    rm -f "$f.gitblob"
+  done
+  [ $drift -eq 0 ] && echo "    identical" || { echo "    FAILED: re-add the file with .gitattributes in force"; fail=1; }
+else
+  echo "    skipped: no git repository or no commit yet"
+fi
+
+echo "--- no dependency is allowed to run install scripts"
+# pnpm-workspace.yaml records, per package, whether it may run a postinstall.
+# The decision for every one of them is false, and this check is what makes
+# that a rule rather than a sentence: section 5.6's standard is that an
+# unchecked rule does not exist, and this one is a single edit away from being
+# silently reversed by whoever hits ERR_PNPM_IGNORED_BUILDS and wants a green
+# pipeline more than the property.
+#
+# The property: installing this repository executes no third-party code. For a
+# project whose subject is software supply chain, that is not a nicety.
+#
+# A dependency that genuinely needs to build can be argued for here, in a
+# commit a reviewer reads, rather than at an interactive prompt nobody sees.
+if grep -qE '^[[:space:]]+[A-Za-z0-9@._/-]+:[[:space:]]*true[[:space:]]*$' pnpm-workspace.yaml 2>/dev/null; then
+  grep -nE '^[[:space:]]+[A-Za-z0-9@._/-]+:[[:space:]]*true[[:space:]]*$' pnpm-workspace.yaml
+  echo "    FAILED: a build script is approved; installing this repo now runs third-party code"; fail=1
+elif grep -qE '^[[:space:]]+[A-Za-z0-9@._/-]+:[[:space:]]*(set this|$)' pnpm-workspace.yaml 2>/dev/null; then
+  echo "    FAILED: allowBuilds has an undecided entry; decide it in the file, not at a prompt"; fail=1
+else echo "    none approved"; fi
+
+echo "--- em dashes"
+# Scoped to files this repository authors. Vendored dependencies are not ours
+# to punctuate: TypeScript alone ships em dashes in its localised diagnostic
+# messages, and without these exclusions the check goes red the moment anyone
+# runs pnpm install. A check that fires on something the developer cannot fix
+# gets muted, and a muted check is worse than an absent one.
+if grep -rl '—' --include='*.md' --include='*.json' . 2>/dev/null \
+     | grep -vE '^\./(\.git|node_modules|dist|build|\.next)/' \
+     | grep -vE '/node_modules/'; then
+  echo "    FAILED: em dash found"; fail=1
+else echo "    clean"; fi
+
+echo
+[ $fail -eq 0 ] && echo "ALL CHECKS PASS" || echo "CHECKS FAILED"
+exit $fail

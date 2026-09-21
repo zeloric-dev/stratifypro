@@ -1,0 +1,50 @@
+[
+  {
+    "resolver": "always-abstain",
+    "rows": 3326,
+    "answered": 0,
+    "precision": 0.0,
+    "recall": 0.0,
+    "f1": 0.0,
+    "abstentionRate": 1.0,
+    "unknownClass": 250,
+    "unknownCorrectlyAbstained": 250,
+    "unknownFalsePositives": 0
+  },
+  {
+    "resolver": "exact-match",
+    "rows": 3326,
+    "answered": 84,
+    "precision": 0.9762,
+    "recall": 0.0267,
+    "f1": 0.0519,
+    "abstentionRate": 0.9747,
+    "unknownClass": 250,
+    "unknownCorrectlyAbstained": 250,
+    "unknownFalsePositives": 0
+  },
+  {
+    "resolver": "normalised-match",
+    "rows": 3326,
+    "answered": 242,
+    "precision": 0.9545,
+    "recall": 0.0751,
+    "f1": 0.1392,
+    "abstentionRate": 0.9272,
+    "unknownClass": 250,
+    "unknownCorrectlyAbstained": 246,
+    "unknownFalsePositives": 4
+  },
+  {
+    "resolver": "prefix-strip",
+    "rows": 3326,
+    "answered": 275,
+    "precision": 0.96,
+    "recall": 0.0858,
+    "f1": 0.1576,
+    "abstentionRate": 0.9173,
+    "unknownClass": 250,
+    "unknownCorrectlyAbstained": 246,
+    "unknownFalsePositives": 4
+  }
+]

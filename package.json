@@ -1,0 +1,20 @@
+{
+  "name": "stratifypro",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=20"
+  },
+  "packageManager": "pnpm@12.5.1",
+  "scripts": {
+    "build": "pnpm -r build",
+    "typecheck": "pnpm -r typecheck",
+    "test": "pnpm -r test",
+    "check": "node apps/cli/dist/index.js check",
+    "verify": "bash verify.sh",
+    "ci": "pnpm build && pnpm -r typecheck && pnpm -r test && pnpm audit --prod && python3 scripts/bench-publish.py --check"
+  },
+  "devDependencies": {
+    "typescript": "5.6.3"
+  }
+}

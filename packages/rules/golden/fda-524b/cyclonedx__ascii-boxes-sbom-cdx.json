@@ -1,0 +1,48 @@
+{
+  "corpusFile": "cyclonedx__ascii-boxes-sbom-cdx.json",
+  "format": "cyclonedx",
+  "rulePackId": "fda-524b",
+  "rulePackVersion": "1.0.0",
+  "findingsByRule": {
+    "FDA-DEPTH-001": [
+      "$"
+    ],
+    "FDA-JUST-001": [
+      "$.metadata"
+    ],
+    "FDA-NTIA-001": [
+      "$.components[0]",
+      "$.components[1]"
+    ],
+    "FDA-NTIA-002": [],
+    "FDA-NTIA-003": [],
+    "FDA-NTIA-004": [
+      "$.components[0]",
+      "$.components[1]"
+    ],
+    "FDA-NTIA-005": [
+      "$"
+    ],
+    "FDA-NTIA-006": [
+      "$.metadata"
+    ],
+    "FDA-NTIA-007": [],
+    "FDA-STAT-001": [],
+    "FDA-STAT-002": [],
+    "FDA-SUP-001": [
+      "$.components[0]",
+      "$.components[1]"
+    ],
+    "FDA-SUP-002": [
+      "$.components[0]",
+      "$.components[1]"
+    ],
+    "FDA-TRACE-001": [
+      "$.metadata"
+    ],
+    "FDA-USER-001": [],
+    "FDA-VULN-001": [
+      "$.metadata"
+    ]
+  }
+}

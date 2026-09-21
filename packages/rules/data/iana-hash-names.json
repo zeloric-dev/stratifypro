@@ -1,0 +1,94 @@
+{
+  "$comment": "Controlled vocabulary for CISA-CD-004. The CISA 2026 elements say the Component Hash Algorithm should be identified using IANA Hash Function Textual Names. Neither CycloneDX nor SPDX uses those names in its own enumeration, so a validator that checks the IANA registry literally will reject almost every real file. The mapping below is how CISA-CD-004 is actually implemented: accept the format's own enum, normalise to the IANA name where one exists, and flag only algorithms that map to nothing.",
+  "retrieved": "2026-09-13",
+  "source": "https://www.iana.org/assignments/hash-function-text-names/hash-function-text-names.xhtml",
+  "registrationPolicy": "Standards Action. Registration requires a standards-track RFC which updates or obsoletes RFC 3279.",
+  "ianaRegistry": [
+    {
+      "name": "md2",
+      "reference": "RFC3279",
+      "approvedByNist": false,
+      "note": "Broken. Flag any use."
+    },
+    {
+      "name": "md5",
+      "reference": "RFC3279",
+      "approvedByNist": false,
+      "note": "Broken for collision resistance. Flag any use."
+    },
+    {
+      "name": "sha-1",
+      "reference": "RFC3279",
+      "approvedByNist": false,
+      "note": "Withdrawn by NIST for most uses. Flag."
+    },
+    {
+      "name": "sha-224",
+      "reference": "RFC4055",
+      "approvedByNist": true
+    },
+    {
+      "name": "sha-256",
+      "reference": "RFC4055",
+      "approvedByNist": true
+    },
+    {
+      "name": "sha-384",
+      "reference": "RFC4055",
+      "approvedByNist": true
+    },
+    {
+      "name": "sha-512",
+      "reference": "RFC4055",
+      "approvedByNist": true
+    },
+    {
+      "name": "shake128",
+      "reference": "RFC8692",
+      "approvedByNist": true
+    },
+    {
+      "name": "shake256",
+      "reference": "RFC8692",
+      "approvedByNist": true
+    }
+  ],
+  "formatEnumToIana": {
+    "cyclonedx": {
+      "$comment": "CycloneDX hash-alg enum. Values with an IANA equivalent normalise to it; null means the algorithm is real and usable but has no IANA registration, which is not the author's fault and must not be reported as an error.",
+      "MD5": "md5",
+      "SHA-1": "sha-1",
+      "SHA-256": "sha-256",
+      "SHA-384": "sha-384",
+      "SHA-512": "sha-512",
+      "SHA3-256": null,
+      "SHA3-384": null,
+      "SHA3-512": null,
+      "BLAKE2b-256": null,
+      "BLAKE2b-384": null,
+      "BLAKE2b-512": null,
+      "BLAKE3": null
+    },
+    "spdx": {
+      "$comment": "SPDX checksum algorithm enum.",
+      "MD2": "md2",
+      "MD5": "md5",
+      "SHA1": "sha-1",
+      "SHA224": "sha-224",
+      "SHA256": "sha-256",
+      "SHA384": "sha-384",
+      "SHA512": "sha-512",
+      "SHA3-256": null,
+      "SHA3-384": null,
+      "SHA3-512": null,
+      "BLAKE2b-256": null,
+      "BLAKE2b-384": null,
+      "BLAKE2b-512": null,
+      "BLAKE3": null,
+      "MD4": null,
+      "MD6": null,
+      "ADLER32": null
+    }
+  },
+  "implementerNote": "Three outcomes, and conflating them is the mistake. (1) The value maps to an IANA name: pass. (2) The value is in the format's enum but maps to null: pass with an informational note that no IANA registration exists, because the author did nothing wrong. (3) The value is in neither: that is the finding. Separately, md2, md5 and sha-1 pass the vocabulary check and should still raise a weak-algorithm warning, which is a different rule from CISA-CD-004 and is not in this pack."
+}

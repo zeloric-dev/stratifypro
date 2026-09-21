@@ -1,0 +1,817 @@
+{
+  "$schema": "https://stratifypro.io/schema/rule-pack-1.json",
+  "id": "cisa-2026-v2.1",
+  "version": "1.0.0",
+  "title": "CISA 2026 Minimum Elements for a Software Bill of Materials, v2.1",
+  "compiled": "2026-09-13",
+  "sourceDocuments": [
+    {
+      "id": "cisa-2026-v2.1",
+      "title": "2026 Minimum Elements for a Software Bill of Materials (SBOM)",
+      "publisher": "CISA with NSA, FBI and 15 international partner agencies (18 organizations)",
+      "published": "2026-07-29",
+      "version": "2.1",
+      "url": "https://www.cisa.gov/resources-tools/resources/2026-minimum-elements-software-bill-materials-sbom",
+      "retrievedFrom": "https://www.ic3.gov/CSA/2026/260729.pdf",
+      "retrievedNote": "cisa.gov and media.defense.gov both return 403 to automated retrieval. The ic3.gov mirror is byte-identical; PDF metadata confirms Title, Author CISA, 23 pages, CreationDate 2026-07-28.",
+      "normativeLanguage": false,
+      "normativeLanguageEvidence": "Zero occurrences of 'shall'. Zero of 'recommended'. One 'must', in prose about sharing mechanisms, not about a data field. 'should' appears 66 times and 'may' 42 times. The document contains no required/recommended distinction of any kind.",
+      "documentNumber": null,
+      "documentNumberNote": "The document carries no CSI number, product ID or publication number. The CSI_ prefix exists only in the media.defense.gov filename. Do not cite a document number."
+    }
+  ],
+  "severityModel": {
+    "default": "advisory",
+    "justification": "The source document uses 'should' uniformly and contains no 'shall' and no required/recommended tiering. A validator cannot derive MUST/SHOULD levels from it. Every severity in this pack is StratifyPro's judgement about what an SBOM consumer or an eSTAR technical screening reviewer is likely to flag, not a quotation of an obligation. Firms may override any severity. Where a rule is set to 'error' the justification names the downstream consequence that earns it, never the source document's language.",
+    "overridable": true,
+    "maxSeverityFromThisSource": "warning",
+    "maxSeverityNote": "Because normativeLanguage is false, the loader must refuse severity 'error' on any rule citing this document. Rules below that need 'error' cite the FDA pack's source instead and live there, not here."
+  },
+  "conformanceNote": "Presence of these elements is not conformance to anything. The document states: 'Each Data Fields element need not correlate directly with a particular data field in an SBOM data format, and an implemented data field may satisfy one or more of the minimum elements.' A single format field may satisfy several elements, and format field names differ. These rules check for the information, not for a named field.",
+  "rules": [
+    {
+      "id": "CISA-MD-001",
+      "title": "SBOM Author is present and is not a bare acronym",
+      "severity": "warning",
+      "severityJustification": "A consumer who cannot tell who generated the SBOM cannot weigh how much to trust it. The document asks for full names and explicitly distinguishes the author from the component producer. Warning rather than error because the source uses 'should' and carries no tiering.",
+      "onEmptySelector": "fire",
+      "onEmptySelectorJustification": "The selector walks a collection and the assertion asks whether each member carries something. A document with zero members has not satisfied that requirement, it has avoided being measured against it, and reporting nothing would let an empty or absent collection read as a clean result. The absence is the violation.",
+      "appliesTo": [
+        "cyclonedx",
+        "spdx"
+      ],
+      "selector": {
+        "cyclonedx": "$.metadata.authors[*]",
+        "spdx": "$.creationInfo"
+      },
+      "assert": {
+        "cyclonedx": {
+          "allOf": [
+            {
+              "exists": "name"
+            },
+            {
+              "not": {
+                "matches": "^[A-Z]{2,6}$"
+              }
+            }
+          ]
+        },
+        "spdx": {
+          "exists": "creators"
+        }
+      },
+      "fix": "Record the full legal name of the entity that operated the tool. Acronyms are acceptable only when the entity's official name contains one.",
+      "note": "The document is explicit that this captures the entity operating the tool, not the tool itself. See CISA-MD-007 for the tool. SPDX carries creators as strings of the form 'Organization: X' or 'Tool: y-1.0', not as objects. The acronym and version checks in the CycloneDX branch are applied to the parsed suffix by the engine, not by this assert.",
+      "sourceDocument": "cisa-2026-v2.1",
+      "sourceLocation": "SBOM Metadata, element 1, SBOM Author (Major Update)"
+    },
+    {
+      "id": "CISA-MD-002",
+      "title": "SBOM Author Signature is present",
+      "severity": "warning",
+      "severityJustification": "New in 2026 and the element StratifyPro's evidence layer attaches to. Absence does not make a document wrong, but it makes tamper-evidence impossible, so a consumer has no way to know the file is as the author left it.",
+      "onEmptySelector": "fire",
+      "onEmptySelectorJustification": "The selector is the document root, which is present in every parsed document, so this rule can never see an empty selector. The value is declared because the field is required of every rule, and fire is the conservative choice should a future selector change make it reachable.",
+      "appliesTo": [
+        "cyclonedx",
+        "spdx"
+      ],
+      "selector": {
+        "cyclonedx": "$",
+        "spdx": "$"
+      },
+      "assert": {
+        "cyclonedx": {
+          "anyOf": [
+            {
+              "exists": "signature"
+            },
+            {
+              "exists": "declarations"
+            }
+          ]
+        },
+        "spdx": {
+          "anyOf": [
+            {
+              "exists": "externalDocumentRefs"
+            },
+            {
+              "exists": "signature"
+            }
+          ]
+        }
+      },
+      "fix": "Sign the document with an algorithm approved by a relevant authority, for example one from the NIST Digital Signature Standard, ISO/IEC 14888-4:2024, or the ENISA Agreed Cryptographic Mechanisms list.",
+      "note": "The document names DSS, ISO/IEC 14888-4:2024 and the ENISA list as examples of approved sources. It does not mandate a specific algorithm. SPDX 2.x has no native document signature field, so this rule will fire on essentially every SPDX 2.x file. That is a true finding about the format, not about the author, and the fix text says so.",
+      "sourceDocument": "cisa-2026-v2.1",
+      "sourceLocation": "SBOM Metadata, element 2, SBOM Author Signature (New)"
+    },
+    {
+      "id": "CISA-MD-003",
+      "title": "SBOM Data Format Name is declared",
+      "severity": "info",
+      "severityJustification": "Both formats carry this structurally, so this rule almost never fires on a real file. It exists so a hand-assembled or converted document that lost its format marker is caught rather than silently misread.",
+      "onEmptySelector": "fire",
+      "onEmptySelectorJustification": "The selector is the document root, which is present in every parsed document, so this rule can never see an empty selector. The value is declared because the field is required of every rule, and fire is the conservative choice should a future selector change make it reachable.",
+      "appliesTo": [
+        "cyclonedx",
+        "spdx"
+      ],
+      "selector": {
+        "cyclonedx": "$",
+        "spdx": "$"
+      },
+      "assert": {
+        "anyOf": [
+          {
+            "exists": "bomFormat"
+          },
+          {
+            "exists": "spdxVersion"
+          },
+          {
+            "exists": "@context"
+          }
+        ]
+      },
+      "fix": "Emit the document through a conformant serializer rather than hand-editing it.",
+      "sourceDocument": "cisa-2026-v2.1",
+      "sourceLocation": "SBOM Metadata, element 3, SBOM Data Format Name (New)"
+    },
+    {
+      "id": "CISA-MD-004",
+      "title": "SBOM Data Format Version is declared and not deprecated",
+      "severity": "warning",
+      "severityJustification": "The document says versions declared deprecated by the format maintainers should not be used. A deprecated version is accepted by tools today and may not be tomorrow, which is a slow failure a consumer cannot see coming.",
+      "onEmptySelector": "fire",
+      "onEmptySelectorJustification": "The selector is the document root, which is present in every parsed document, so this rule can never see an empty selector. The value is declared because the field is required of every rule, and fire is the conservative choice should a future selector change make it reachable.",
+      "appliesTo": [
+        "cyclonedx",
+        "spdx"
+      ],
+      "selector": {
+        "cyclonedx": "$",
+        "spdx": "$"
+      },
+      "assert": {
+        "anyOf": [
+          {
+            "exists": "specVersion"
+          },
+          {
+            "exists": "spdxVersion"
+          }
+        ]
+      },
+      "fix": "Declare the format version, and check it against the format maintainer's own deprecation list before publishing.",
+      "note": "The document names no version numbers. The deprecation list is maintained upstream by CycloneDX and SPDX, so this rule checks presence here and defers the deprecation check to a maintained list in packages/rules/data/deprecated-format-versions.json.",
+      "sourceDocument": "cisa-2026-v2.1",
+      "sourceLocation": "SBOM Metadata, element 4, SBOM Data Format Version (New)"
+    },
+    {
+      "id": "CISA-MD-005",
+      "title": "SBOM Generation Context is declared",
+      "severity": "warning",
+      "severityJustification": "Without it a consumer cannot tell whether a missing component hash means the artifact was unavailable or the data is simply absent. This element is what makes CISA-CD-003's 'unknown' answer legible instead of suspicious.",
+      "onEmptySelector": "fire",
+      "onEmptySelectorJustification": "The selector names a specific object the assertion inspects. When that object is absent the information the rule exists to check was not supplied at all, which is a stronger failure than supplying it badly. Reporting nothing would make a missing section indistinguishable from a satisfied one.",
+      "appliesTo": [
+        "cyclonedx",
+        "spdx"
+      ],
+      "selector": {
+        "cyclonedx": "$.metadata",
+        "spdx": "$.creationInfo"
+      },
+      "assert": {
+        "anyOf": [
+          {
+            "exists": "lifecycles"
+          },
+          {
+            "exists": "properties[?(@.name=='cdx:sbom:generation-context')]"
+          },
+          {
+            "exists": "comment"
+          }
+        ]
+      },
+      "fix": "Record the lifecycle phase the SBOM was generated in. The document accepts general references such as 'before build', 'build' and 'after build', as well as more specific identifiers.",
+      "note": "Footnote 5 defines build as 'compilation, interpretation, or another process that makes source code executable'. CycloneDX lifecycles is the closest native construct; SPDX has none, so a property or comment is the practical carrier.",
+      "sourceDocument": "cisa-2026-v2.1",
+      "sourceLocation": "SBOM Metadata, element 5, SBOM Generation Context (New)"
+    },
+    {
+      "id": "CISA-MD-006",
+      "title": "SBOM Timestamp is present and is a valid RFC 9557 timestamp",
+      "severity": "warning",
+      "severityJustification": "A document with no timestamp cannot be ordered against any other version of itself, which defeats the Frequency practice entirely. Flagged separately because the required format is RFC 9557, not RFC 3339.",
+      "onEmptySelector": "fire",
+      "onEmptySelectorJustification": "The selector names a specific object the assertion inspects. When that object is absent the information the rule exists to check was not supplied at all, which is a stronger failure than supplying it badly. Reporting nothing would make a missing section indistinguishable from a satisfied one.",
+      "appliesTo": [
+        "cyclonedx",
+        "spdx"
+      ],
+      "selector": {
+        "cyclonedx": "$.metadata",
+        "spdx": "$.creationInfo"
+      },
+      "assert": {
+        "allOf": [
+          {
+            "anyOf": [
+              {
+                "exists": "timestamp"
+              },
+              {
+                "exists": "created"
+              }
+            ]
+          }
+        ]
+      },
+      "fix": "Emit the timestamp of the most recent update to the SBOM data in RFC 9557 format.",
+      "note": "IMPLEMENTER WARNING: RFC 9557 is RFC 3339 plus optional bracketed suffixes such as [America/New_York]. A validator that accepts only RFC 3339 will reject conformant timestamps. The regex above accepts both.",
+      "sourceDocument": "cisa-2026-v2.1",
+      "sourceLocation": "SBOM Metadata, element 6, SBOM Timestamp (Minor Update)"
+    },
+    {
+      "id": "CISA-MD-007",
+      "title": "SBOM Tool Name is present and is not a bare acronym",
+      "severity": "info",
+      "severityJustification": "Tool identity is how a consumer weighs a known extractor defect. Informational because the consequence is a slightly weaker judgement, not a wrong one.",
+      "onEmptySelector": "fire",
+      "onEmptySelectorJustification": "The selector walks a collection and the assertion asks whether each member carries something. A document with zero members has not satisfied that requirement, it has avoided being measured against it, and reporting nothing would let an empty or absent collection read as a clean result. The absence is the violation.",
+      "appliesTo": [
+        "cyclonedx",
+        "spdx"
+      ],
+      "selector": {
+        "cyclonedx": "$.metadata.tools[*]",
+        "spdx": "$.creationInfo"
+      },
+      "assert": {
+        "cyclonedx": {
+          "allOf": [
+            {
+              "exists": "name"
+            },
+            {
+              "not": {
+                "matches": "^[A-Z]{2,6}$"
+              }
+            }
+          ]
+        },
+        "spdx": {
+          "exists": "creators"
+        }
+      },
+      "fix": "Record the tool's full name. Acronyms are acceptable only when the tool's official name contains one.",
+      "sourceDocument": "cisa-2026-v2.1",
+      "sourceLocation": "SBOM Metadata, element 7, SBOM Tool Name (New)",
+      "note": "SPDX carries creators as strings of the form 'Organization: X' or 'Tool: y-1.0', not as objects. The acronym and version checks in the CycloneDX branch are applied to the parsed suffix by the engine, not by this assert."
+    },
+    {
+      "id": "CISA-MD-008",
+      "title": "SBOM Tool Version is present, or explicitly unknown",
+      "severity": "info",
+      "severityJustification": "The document is unusually precise here: an empty value is non-conformant but an explicit 'unknown' is conformant. This rule enforces that distinction rather than treating silence and 'unknown' as the same.",
+      "onEmptySelector": "fire",
+      "onEmptySelectorJustification": "The selector walks a collection and the assertion asks whether each member carries something. A document with zero members has not satisfied that requirement, it has avoided being measured against it, and reporting nothing would let an empty or absent collection read as a clean result. The absence is the violation.",
+      "appliesTo": [
+        "cyclonedx",
+        "spdx"
+      ],
+      "selector": {
+        "cyclonedx": "$.metadata.tools[*]",
+        "spdx": "$.creationInfo"
+      },
+      "assert": {
+        "cyclonedx": {
+          "anyOf": [
+            {
+              "exists": "version"
+            },
+            {
+              "equals": {
+                "version": "unknown"
+              }
+            }
+          ]
+        },
+        "spdx": {
+          "exists": "creators"
+        }
+      },
+      "fix": "Record the tool version. If no version identifier is available, state 'unknown' explicitly rather than leaving the field empty.",
+      "note": "Empty is non-conformant, explicit 'unknown' is conformant. This is the Explicitly Identifying Unknown Information practice applied at field level. SPDX carries creators as strings of the form 'Organization: X' or 'Tool: y-1.0', not as objects. The acronym and version checks in the CycloneDX branch are applied to the parsed suffix by the engine, not by this assert.",
+      "sourceDocument": "cisa-2026-v2.1",
+      "sourceLocation": "SBOM Metadata, element 8, SBOM Tool Version (New)"
+    },
+    {
+      "id": "CISA-MD-009",
+      "title": "SBOM Version is present, and SemVer major is 1 if SemVer is used",
+      "severity": "info",
+      "severityJustification": "The document states that a published SBOM following these minimum elements should carry SemVer major version 1. That makes the major version a directly checkable claim of conformance intent, which is rare and worth checking.",
+      "onEmptySelector": "fire",
+      "onEmptySelectorJustification": "The selector is the document root, which is present in every parsed document, so this rule can never see an empty selector. The value is declared because the field is required of every rule, and fire is the conservative choice should a future selector change make it reachable.",
+      "appliesTo": [
+        "cyclonedx",
+        "spdx"
+      ],
+      "selector": {
+        "cyclonedx": "$",
+        "spdx": "$"
+      },
+      "assert": {
+        "anyOf": [
+          {
+            "exists": "version"
+          },
+          {
+            "exists": "serialNumber"
+          },
+          {
+            "exists": "documentNamespace"
+          }
+        ]
+      },
+      "fix": "Set a version for this SBOM. If using Semantic Versioning, the major version should be 1. If using a serial number, conform to RFC 9562 for unique identifiers.",
+      "note": "Footnote 8 gives the sequence: next minor is 1.1, next major is 2. Footnote 9 cites RFC 9562 for UUID-style identifiers.",
+      "sourceDocument": "cisa-2026-v2.1",
+      "sourceLocation": "SBOM Metadata, element 9, SBOM Version (New)"
+    },
+    {
+      "id": "CISA-CD-001",
+      "title": "Component Producer is present, singular, and not a bare acronym",
+      "severity": "warning",
+      "severityJustification": "This element replaces Supplier Name and exists to give a point of contact for security concerns and to disambiguate same-named components from different producers. Measurement across 10,000 repositories found zero percent of generated SBOMs carry it, so this rule will fire on almost every real file, which is the point.",
+      "onEmptySelector": "fire",
+      "onEmptySelectorJustification": "The selector walks a collection and the assertion asks whether each member carries something. A document with zero members has not satisfied that requirement, it has avoided being measured against it, and reporting nothing would let an empty or absent collection read as a clean result. The absence is the violation.",
+      "appliesTo": [
+        "cyclonedx",
+        "spdx"
+      ],
+      "selector": {
+        "cyclonedx": "$.components[*]",
+        "spdx": "$.packages[*]"
+      },
+      "assert": {
+        "anyOf": [
+          {
+            "exists": "publisher"
+          },
+          {
+            "exists": "supplier.name"
+          },
+          {
+            "exists": "originator"
+          }
+        ]
+      },
+      "fix": "Name the entity that created the component. Exactly one. For open source, use the package manager's convention where one exists, otherwise the original project or maintaining organization. If there is genuinely no clear producer, state unknown provenance explicitly.",
+      "note": "RENAME: this element replaces 'Supplier Name' from the 2021 NTIA elements. A rule pack built to the 2021 baseline uses the old name and is out of date. Footnote 10 warns that 'producer' is not the EU term of art 'manufacturer': all manufacturers are producers, not all producers are manufacturers.",
+      "sourceDocument": "cisa-2026-v2.1",
+      "sourceLocation": "Component Data, element 1, Component Producer (Major Update)"
+    },
+    {
+      "id": "CISA-CD-002",
+      "title": "Dependency relationships are declared",
+      "severity": "warning",
+      "severityJustification": "Measured across 78,612 published SBOMs, 52.9 percent omit this entirely and only 0.10 percent of CycloneDX files use compositions to declare the graph incomplete. Silence is therefore indistinguishable from completeness, and a consumer reading a flat list cannot tell whether there are no dependencies or no data.",
+      "onEmptySelector": "fire",
+      "onEmptySelectorJustification": "The selector is the document root, which is present in every parsed document, so this rule can never see an empty selector. The value is declared because the field is required of every rule, and fire is the conservative choice should a future selector change make it reachable.",
+      "appliesTo": [
+        "cyclonedx",
+        "spdx"
+      ],
+      "selector": {
+        "cyclonedx": "$",
+        "spdx": "$"
+      },
+      "assert": {
+        "anyOf": [
+          {
+            "exists": "dependencies"
+          },
+          {
+            "exists": "relationships"
+          }
+        ]
+      },
+      "fix": "Emit the dependency graph. If the graph is known to be incomplete, say so: CycloneDX compositions with aggregate 'incomplete', or an SPDX relationship of NOASSERTION, so a reader can tell absence of data from absence of dependencies.",
+      "note": "Footnote 11 is materially important: copied-and-pasted code is effectively a dependency and should be documented as a named local fork with a dependency relationship, because tracking it that way improves vulnerability management.",
+      "sourceDocument": "cisa-2026-v2.1",
+      "sourceLocation": "Component Data, element 2, Component Dependency Relationship (Minor Update)"
+    },
+    {
+      "id": "CISA-CD-003",
+      "title": "Component Hash Value is present, or explicitly unknown",
+      "severity": "warning",
+      "severityJustification": "A hash is what lets a recipient verify they hold the same artifact the SBOM describes. The document permits 'unknown' when the author had no access to the executable artifact, which is legitimate for a before-build SBOM, so this rule accepts an explicit unknown and fires only on silence.",
+      "onEmptySelector": "fire",
+      "onEmptySelectorJustification": "The selector walks a collection and the assertion asks whether each member carries something. A document with zero members has not satisfied that requirement, it has avoided being measured against it, and reporting nothing would let an empty or absent collection read as a clean result. The absence is the violation.",
+      "appliesTo": [
+        "cyclonedx",
+        "spdx"
+      ],
+      "selector": {
+        "cyclonedx": "$.components[*]",
+        "spdx": "$.packages[*]"
+      },
+      "assert": {
+        "anyOf": [
+          {
+            "exists": "hashes[*].content"
+          },
+          {
+            "exists": "checksums[*].checksumValue"
+          },
+          {
+            "equals": {
+              "hashes": "unknown"
+            }
+          }
+        ]
+      },
+      "fix": "Record the hash of the executable component artifact as ASCII hexadecimal. If the artifact was not available, state that the value is unknown.",
+      "note": "Interacts with CISA-MD-005: a 'before build' generation context makes 'unknown' here expected rather than sloppy. A tool should not flag this as hard when the context explains it.",
+      "sourceDocument": "cisa-2026-v2.1",
+      "sourceLocation": "Component Data, element 3, Component Hash Value (New)"
+    },
+    {
+      "id": "CISA-CD-004",
+      "title": "Component Hash Algorithm is a registered IANA Hash Function Textual Name",
+      "severity": "warning",
+      "severityJustification": "This is one of the few elements with a genuine controlled vocabulary, so it is directly machine-checkable rather than a judgement call. An unrecognised algorithm name makes the hash unverifiable by an automated consumer.",
+      "onEmptySelector": "fire",
+      "onEmptySelectorJustification": "The selector walks a collection and the assertion asks whether each member carries something. A document with zero members has not satisfied that requirement, it has avoided being measured against it, and reporting nothing would let an empty or absent collection read as a clean result. The absence is the violation.",
+      "appliesTo": [
+        "cyclonedx",
+        "spdx"
+      ],
+      "selector": {
+        "cyclonedx": "$.components[*].hashes[*]",
+        "spdx": "$.packages[*].checksums[*]"
+      },
+      "assert": {
+        "anyOf": [
+          {
+            "exists": "alg"
+          },
+          {
+            "exists": "algorithm"
+          }
+        ]
+      },
+      "fix": "Name the algorithm using an IANA Hash Function Textual Name. The algorithm should also be approved by a relevant authority such as NIST.",
+      "note": "Vocabulary source: https://www.iana.org/assignments/hash-function-text-names/hash-function-text-names.xhtml, cached in packages/rules/data/iana-hash-names.json with its retrieval date. The vocabulary check against packages/rules/data/iana-hash-names.json is performed by the loader after this presence assert, because three outcomes must be distinguished: maps to IANA, is a real algorithm with no IANA registration, or is unrecognised. Only the third is a finding.",
+      "sourceDocument": "cisa-2026-v2.1",
+      "sourceLocation": "Component Data, element 4, Component Hash Algorithm (New)"
+    },
+    {
+      "id": "CISA-CD-005",
+      "title": "Every component carries at least one machine-readable identifier",
+      "severity": "warning",
+      "severityJustification": "This is the element the whole matching layer depends on. Without an identifier a component cannot be looked up in any vulnerability database, which is precisely the failure that produces an FDA information request. Escalated to error in the FDA pack, where a named downstream consequence justifies it.",
+      "onEmptySelector": "fire",
+      "onEmptySelectorJustification": "The selector walks a collection and the assertion asks whether each member carries something. A document with zero members has not satisfied that requirement, it has avoided being measured against it, and reporting nothing would let an empty or absent collection read as a clean result. The absence is the violation.",
+      "appliesTo": [
+        "cyclonedx",
+        "spdx"
+      ],
+      "selector": {
+        "cyclonedx": "$.components[*]",
+        "spdx": "$.packages[*]"
+      },
+      "assert": {
+        "anyOf": [
+          {
+            "exists": "purl"
+          },
+          {
+            "exists": "cpe"
+          },
+          {
+            "exists": "externalRefs[?(@.referenceType=='purl')]"
+          },
+          {
+            "exists": "externalRefs[?(@.referenceCategory=='SECURITY')]"
+          },
+          {
+            "exists": "swhid"
+          },
+          {
+            "exists": "omniborId"
+          }
+        ]
+      },
+      "fix": "Add at least one identifier, preferably a Package URL. Include every identifier you have, not just one: the document says if there are multiple, include all of them.",
+      "note": "PURL is now Ecma International ECMA-427, December 2025. Cite the Ecma standard, not just the GitHub specification. Prefer PURL over CPE: since NIST's 15 April 2026 change, most new CVEs never receive a CPE at all.",
+      "sourceDocument": "cisa-2026-v2.1",
+      "sourceLocation": "Component Data, element 5, Component Identifiers (Major Update)"
+    },
+    {
+      "id": "CISA-CD-006",
+      "title": "Component License is present, or explicitly unknown",
+      "severity": "info",
+      "severityJustification": "Measured license accuracy in generated SBOMs runs between 1.7 and 27.6 percent depending on tool and ecosystem, and components without an exact version carry no license data at all. The realistic ask is an explicit unknown rather than silence.",
+      "onEmptySelector": "fire",
+      "onEmptySelectorJustification": "The selector walks a collection and the assertion asks whether each member carries something. A document with zero members has not satisfied that requirement, it has avoided being measured against it, and reporting nothing would let an empty or absent collection read as a clean result. The absence is the violation.",
+      "appliesTo": [
+        "cyclonedx",
+        "spdx"
+      ],
+      "selector": {
+        "cyclonedx": "$.components[*]",
+        "spdx": "$.packages[*]"
+      },
+      "assert": {
+        "anyOf": [
+          {
+            "exists": "licenses"
+          },
+          {
+            "exists": "licenseConcluded"
+          },
+          {
+            "exists": "licenseDeclared"
+          }
+        ]
+      },
+      "fix": "Use an SPDX license identifier where one applies. If no identifier fits, give a URL to the full license text. Flag proprietary conditions explicitly. If you do not know, say unknown.",
+      "note": "The body definition and the Appendix A table definition differ slightly in wording: the body uses 'identifier(s)/license(s)', the table drops the parentheticals. Semantically identical.",
+      "sourceDocument": "cisa-2026-v2.1",
+      "sourceLocation": "Component Data, element 6, Component License (New)"
+    },
+    {
+      "id": "CISA-CD-007",
+      "title": "Component Name is present and is not a bare acronym",
+      "severity": "warning",
+      "severityJustification": "The human-readable handle for everything else. Distinct from the identifier, and the 2026 update explicitly allows multiple entries so alternate names can be captured, which is directly useful to identity resolution.",
+      "onEmptySelector": "fire",
+      "onEmptySelectorJustification": "The selector walks a collection and the assertion asks whether each member carries something. A document with zero members has not satisfied that requirement, it has avoided being measured against it, and reporting nothing would let an empty or absent collection read as a clean result. The absence is the violation.",
+      "appliesTo": [
+        "cyclonedx",
+        "spdx"
+      ],
+      "selector": {
+        "cyclonedx": "$.components[*]",
+        "spdx": "$.packages[*]"
+      },
+      "assert": {
+        "allOf": [
+          {
+            "exists": "name"
+          },
+          {
+            "not": {
+              "matches": "^[A-Z]{2,6}$"
+            }
+          }
+        ]
+      },
+      "fix": "Use the full name the component producer assigned. Record alternate names as additional entries where the format allows.",
+      "sourceDocument": "cisa-2026-v2.1",
+      "sourceLocation": "Component Data, element 7, Component Name (Minor Update)"
+    },
+    {
+      "id": "CISA-CD-008",
+      "title": "Component Version is present, or explicitly unknown",
+      "severity": "warning",
+      "severityJustification": "Without a version, no vulnerability lookup can be range-matched, so the component is effectively invisible to security tooling. Measured: only 29.9 percent of Python projects and 41.4 percent of Java projects carry version information for all top-level dependencies.",
+      "onEmptySelector": "fire",
+      "onEmptySelectorJustification": "The selector walks a collection and the assertion asks whether each member carries something. A document with zero members has not satisfied that requirement, it has avoided being measured against it, and reporting nothing would let an empty or absent collection read as a clean result. The absence is the violation.",
+      "appliesTo": [
+        "cyclonedx",
+        "spdx"
+      ],
+      "selector": {
+        "cyclonedx": "$.components[*]",
+        "spdx": "$.packages[*]"
+      },
+      "assert": {
+        "anyOf": [
+          {
+            "exists": "version"
+          },
+          {
+            "exists": "versionInfo"
+          },
+          {
+            "equals": {
+              "version": "unknown"
+            }
+          }
+        ]
+      },
+      "fix": "Record the version the component producer assigned. If the producer provides no version, state that it is unknown.",
+      "sourceDocument": "cisa-2026-v2.1",
+      "sourceLocation": "Component Data, element 8, Component Version (Major Update)"
+    },
+    {
+      "id": "CISA-PR-001",
+      "title": "Accommodation of updates: the document is revisable and identifies its own version",
+      "severity": "info",
+      "severityJustification": "A practice, not a data field, so it is only partly checkable from a file. What a file can show is whether it is versioned well enough for a correction to be issued against it.",
+      "onEmptySelector": "fire",
+      "onEmptySelectorJustification": "The selector is the document root, which is present in every parsed document, so this rule can never see an empty selector. The value is declared because the field is required of every rule, and fire is the conservative choice should a future selector change make it reachable.",
+      "appliesTo": [
+        "cyclonedx",
+        "spdx"
+      ],
+      "selector": {
+        "cyclonedx": "$",
+        "spdx": "$"
+      },
+      "assert": {
+        "anyOf": [
+          {
+            "exists": "version"
+          },
+          {
+            "exists": "serialNumber"
+          },
+          {
+            "exists": "documentNamespace"
+          }
+        ]
+      },
+      "fix": "Version the SBOM so corrections can be issued and recognised. Correct errors promptly when found.",
+      "note": "PARTIAL CHECK. The organizational half of this practice cannot be checked from a file and must be asserted by the author.",
+      "sourceDocument": "cisa-2026-v2.1",
+      "sourceLocation": "Practices and Processes, 1, Accommodation of Updates to SBOM Data (Major Update)"
+    },
+    {
+      "id": "CISA-PR-002",
+      "title": "Coverage: transitive dependencies are present, or incompleteness is declared",
+      "severity": "warning",
+      "severityJustification": "The 2026 update extended Coverage to transitive dependencies explicitly. The document's own test is that a recipient should be able to conclude a new vulnerability does not affect them if the component is absent from the SBOM. A flat top-level-only list makes that conclusion unsafe while looking complete.",
+      "onEmptySelector": "fire",
+      "onEmptySelectorJustification": "The selector is the document root, which is present in every parsed document, so this rule can never see an empty selector. The value is declared because the field is required of every rule, and fire is the conservative choice should a future selector change make it reachable.",
+      "appliesTo": [
+        "cyclonedx",
+        "spdx"
+      ],
+      "selector": {
+        "cyclonedx": "$",
+        "spdx": "$"
+      },
+      "assert": {
+        "anyOf": [
+          {
+            "exists": "dependencies"
+          },
+          {
+            "exists": "compositions"
+          },
+          {
+            "exists": "relationships"
+          }
+        ]
+      },
+      "fix": "Include transitive dependencies. There is no minimum depth, but if the graph is shallow or partial, declare that explicitly so a reader does not mistake absence of data for absence of risk.",
+      "note": "CHANGE FROM 2021: transitive dependencies are now named explicitly. Also: multiple instances of a component with differing metadata should each be listed separately with their own dependency relationship.",
+      "sourceDocument": "cisa-2026-v2.1",
+      "sourceLocation": "Practices and Processes, 2, Coverage (Major Update)"
+    },
+    {
+      "id": "CISA-PR-003",
+      "title": "Distribution and delivery: the document is retrievable at a stable reference",
+      "severity": "info",
+      "severityJustification": "Mostly an organizational practice. The file-level signal is whether it carries a version-specific reference a recipient could return to.",
+      "onEmptySelector": "fire",
+      "onEmptySelectorJustification": "The selector names a specific object the assertion inspects. When that object is absent the information the rule exists to check was not supplied at all, which is a stronger failure than supplying it badly. Reporting nothing would make a missing section indistinguishable from a satisfied one.",
+      "appliesTo": [
+        "cyclonedx",
+        "spdx"
+      ],
+      "selector": {
+        "cyclonedx": "$.metadata.component",
+        "spdx": "$"
+      },
+      "assert": {
+        "anyOf": [
+          {
+            "exists": "externalReferences"
+          },
+          {
+            "exists": "documentNamespace"
+          },
+          {
+            "exists": "externalDocumentRefs"
+          }
+        ]
+      },
+      "fix": "Make the SBOM available promptly to those who need it, through a version-specific URL, an API, or alongside installation. Access controls may limit who sees it but should not block authorized parties or prevent integration into trusted security tools.",
+      "note": "PARTIAL CHECK. Note the 2026 document removed the separate Access Control element and folded it into this practice.",
+      "sourceDocument": "cisa-2026-v2.1",
+      "sourceLocation": "Practices and Processes, 3, Distribution and Delivery (Minor Update)"
+    },
+    {
+      "id": "CISA-PR-004",
+      "title": "Explicitly identifying unknown information: gaps are stated, not silent",
+      "severity": "warning",
+      "severityJustification": "The highest-leverage practice in the document and the one most often ignored. The distinction it draws is between information unknown to the author and information the author is withholding, and a reader is entitled to know which. A field left empty tells them neither.",
+      "onEmptySelector": "fire",
+      "onEmptySelectorJustification": "The selector is the document root, which is present in every parsed document, so this rule can never see an empty selector. The value is declared because the field is required of every rule, and fire is the conservative choice should a future selector change make it reachable.",
+      "appliesTo": [
+        "cyclonedx",
+        "spdx"
+      ],
+      "selector": {
+        "cyclonedx": "$",
+        "spdx": "$"
+      },
+      "assert": {
+        "cyclonedx": {
+          "exists": "compositions"
+        },
+        "spdx": {
+          "exists": "annotations"
+        }
+      },
+      "fix": "Where a field is not provided, state whether the information is unknown to you or withheld by you. Have a process for recipients to ask about redacted security-related information.",
+      "note": "The document warns that organizations may consider an SBOM incomplete if the author withholds essential component data. Measured baseline: only 0.10 percent of CycloneDX SBOMs use compositions at all. This rule previously carried a second arm, matchesAny NOASSERTION, evaluated as a substring search across the whole serialised document. That arm was removed on 20 September 2026. It made the rule pass on 12 of the 13 SPDX corpus files, up to 4,140 occurrences in one, because syft and tern emit NOASSERTION automatically into empty licence and supplier fields. A token a generator writes by default is not an author deliberately identifying unknown information, and treating it as one put the rule in direct contradiction with the published finding that 0 of 21 corpus files admit incompleteness. With the arm removed the rule fires on all 21, which reproduces that published figure exactly. Neither fixture exercised the removed arm, so both continue to behave as before.",
+      "sourceDocument": "cisa-2026-v2.1",
+      "sourceLocation": "Practices and Processes, 4, Explicitly Identifying Unknown Information (Major Update)"
+    },
+    {
+      "id": "CISA-PR-005",
+      "title": "Frequency: the document is bound to a specific component version",
+      "severity": "info",
+      "severityJustification": "Each software version should have its own SBOM. A file-level proxy is whether the document names the exact component version it describes, so a consumer can tell which build it belongs to.",
+      "onEmptySelector": "fire",
+      "onEmptySelectorJustification": "The selector names a specific object the assertion inspects. When that object is absent the information the rule exists to check was not supplied at all, which is a stronger failure than supplying it badly. Reporting nothing would make a missing section indistinguishable from a satisfied one.",
+      "appliesTo": [
+        "cyclonedx",
+        "spdx"
+      ],
+      "selector": {
+        "cyclonedx": "$.metadata.component",
+        "spdx": "$.packages[0]"
+      },
+      "assert": {
+        "allOf": [
+          {
+            "exists": "name"
+          },
+          {
+            "anyOf": [
+              {
+                "exists": "version"
+              },
+              {
+                "exists": "versionInfo"
+              }
+            ]
+          }
+        ]
+      },
+      "fix": "Generate a new SBOM for every build or release, and reissue a revised one when you discover new details or correct an error.",
+      "note": "PARTIAL CHECK. Whether the author actually reissues on every build cannot be seen from one file.",
+      "sourceDocument": "cisa-2026-v2.1",
+      "sourceLocation": "Practices and Processes, 5, Frequency (Minor Update)"
+    },
+    {
+      "id": "CISA-PR-006",
+      "title": "Machine-processable data: the document parses as a current, non-deprecated format",
+      "severity": "warning",
+      "severityJustification": "The whole point of the exercise. A document that cannot be parsed by a standard tool provides no automation value regardless of what it contains.",
+      "onEmptySelector": "fire",
+      "onEmptySelectorJustification": "The selector is the document root, which is present in every parsed document, so this rule can never see an empty selector. The value is declared because the field is required of every rule, and fire is the conservative choice should a future selector change make it reachable.",
+      "appliesTo": [
+        "cyclonedx",
+        "spdx"
+      ],
+      "selector": {
+        "cyclonedx": "$",
+        "spdx": "$"
+      },
+      "assert": {
+        "allOf": [
+          {
+            "exists": "bomFormat|spdxVersion|@context"
+          },
+          {
+            "anyOf": [
+              {
+                "exists": "specVersion"
+              },
+              {
+                "exists": "spdxVersion"
+              }
+            ]
+          }
+        ]
+      },
+      "fix": "Publish in SPDX or CycloneDX. Avoid deprecated versions of either format for new software.",
+      "note": "Standards references from the document: SPDX is ISO/IEC 5962:2021. CycloneDX is Ecma International ECMA-424, December 2025. Both should be cited as standards, not only as project websites.",
+      "sourceDocument": "cisa-2026-v2.1",
+      "sourceLocation": "Practices and Processes, 6, Machine-Processable Data (Major Update)"
+    }
+  ]
+}

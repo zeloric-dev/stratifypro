@@ -1,0 +1,9 @@
+{
+  "overrides": [
+    {
+      "ruleId": "FDA-STAT-001",
+      "to": "warning",
+      "reason": "Replace this. The reason is printed in the report a reviewer reads, and sixty characters is the floor, not the target."
+    }
+  ]
+}

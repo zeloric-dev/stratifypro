@@ -1,0 +1,37 @@
+# The single source of truth for phrases that fail the build.
+# verify.sh reads THIS FILE. CLAUDE.md and docs/copy.md point at it and do not
+# restate it, because two copies of a policy is how a policy drifts.
+#
+# One extended-regex pattern per line. Lines starting with # are comments.
+# Scope: application source, package source and the public README. Documents that
+# DEFINE this policy or quote a standards document are deliberately not scanned.
+FDA[ -]compliant
+FDA[ -]approved
+Part 11 compliant
+\bcompliant\b
+\bconformant\b
+\bcertified\b
+\bvalidated\b
+\bguaranteed\b
+ensures compliance
+compliance guaranteed
+will pass
+# A checked file is never described as having "contained" anything. StratifyPro does
+# not retain the file and cannot say what was in it.
+(^|[^-])contained\b
+# Narrowed 20 September 2026, and NOT by weakening it.
+# The bare \bcontained\b fired on 'self-contained', the exact phrase SPEC.md and
+# docs/design.md instruct the builder to use for the report, so the check went red
+# the moment packages/report/src existed, on wording the spec itself mandates.
+# Section 5.6: a check that raises false alarms gets muted, and a muted check is
+# worse than an absent one.
+# No lookbehind here on purpose: verify.sh greps with -E, which is POSIX ERE and
+# silently has no (?<!...). A lookbehind would have looked right and never run.
+# The real claim is still caught: 'the file contained the content' matches.
+# 21 CFR 11.3(b)(7) reserves "electronic signature" for an individual. The seal is a
+# cryptographic seal or a signed manifest.
+electronic signature
+# Medical devices are excluded from the EU Cyber Resilience Act. Any CRA claim is false.
+cyber resilience act
+# The refuse-to-accept policy expired on 1 October 2023. It is a technical screening hold.
+refuse to accept

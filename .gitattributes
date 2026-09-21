@@ -1,0 +1,25 @@
+# Line endings are an integrity concern in this repository, not a style one.
+#
+# verify.sh recomputes the SHA-256 of every file in fixtures/corpus/ and
+# compares it against the value recorded in provenance.json. Git's default
+# EOL conversion on Windows rewrites bytes on checkout, which breaks all 21
+# recorded hashes and makes check 5 fail for a reason that has nothing to do
+# with the repository being wrong.
+#
+# Everything is normalised to LF. The byte-exact assets are excluded from
+# conversion entirely.
+
+* text=auto eol=lf
+
+# Never convert: their bytes are load-bearing.
+fixtures/corpus/**        -text
+packages/rules/fixtures/** -text
+bench/identity/**         -text
+docs/crosswalk/**         -text
+
+# Binary
+*.xlsx binary
+*.png  binary
+*.jpg  binary
+*.pdf  binary
+*.zip  binary

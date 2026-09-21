@@ -1,0 +1,213 @@
+/* An instrument, not a website.
+ *
+ * Calm surface, few colours, strong typography, tabular numerals. No accent
+ * rails: docs/ui-stack.md lists a coloured border on one side of a card among
+ * the things that give a generated interface away, and verify.sh now fails on
+ * one. Severity and method are carried by chips, which stay legible without
+ * relying on colour alone.
+ */
+
+:root {
+  --bg: #fbfbfa;
+  --surface: #fff;
+  --surface-2: #f2f3f2;
+  --ink: #17191a;
+  --ink-2: #4d5254;
+  --ink-3: #757b7e;
+  --line: #dcdedd;
+  --line-2: #bfc3c2;
+  --accent: #1c5f5a;
+  --accent-ink: #0f3b38;
+  --accent-bg: #e4efed;
+  --err: #9b2c28;
+  --err-bg: #f7e4e3;
+  --warn: #7a5300;
+  --warn-bg: #f6eeda;
+  --ok: #2f6b4f;
+  --ok-bg: #e2efe8;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #131515;
+    --surface: #1a1d1d;
+    --surface-2: #232727;
+    --ink: #e9ebea;
+    --ink-2: #b3b8b7;
+    --ink-3: #868c8b;
+    --line: #2b2f2f;
+    --line-2: #3d4342;
+    --accent: #5cb5ac;
+    --accent-ink: #8ed6cd;
+    --accent-bg: #16302e;
+    --err: #e59b96;
+    --err-bg: #3a1f1e;
+    --warn: #ddbb73;
+    --warn-bg: #332a16;
+    --ok: #7fc0a0;
+    --ok-bg: #1b2e24;
+  }
+}
+
+* { box-sizing: border-box; }
+
+html, body { margin: 0; padding: 0; }
+
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font: 15px/1.55 ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  font-variant-numeric: tabular-nums;
+  -webkit-font-smoothing: antialiased;
+}
+
+.wrap { max-width: 760px; margin: 0 auto; padding: 40px 20px 72px; }
+
+h1 { font-size: 21px; margin: 0 0 6px; letter-spacing: -0.015em; }
+h2 {
+  font-size: 11px; margin: 30px 0 10px; text-transform: uppercase;
+  letter-spacing: 0.1em; color: var(--ink-3); font-weight: 600;
+}
+.lede { color: var(--ink-2); margin: 0 0 24px; max-width: 60ch; }
+
+form { display: flex; gap: 8px; flex-wrap: wrap; }
+input[type="text"] {
+  flex: 1 1 320px; min-width: 0; padding: 10px 12px;
+  border: 1px solid var(--line-2); background: var(--surface); color: var(--ink);
+  font: inherit; border-radius: 3px;
+}
+input[type="text"]:focus-visible, button:focus-visible, a:focus-visible {
+  outline: 2px solid var(--accent); outline-offset: 2px;
+}
+button {
+  padding: 10px 18px; border: 1px solid var(--ink); background: var(--ink);
+  color: var(--bg); font: inherit; font-weight: 600; cursor: pointer; border-radius: 3px;
+}
+button:hover { background: var(--ink-2); border-color: var(--ink-2); }
+button[disabled] { opacity: 0.5; cursor: default; }
+
+.card {
+  border: 1px solid var(--line); background: var(--surface);
+  padding: 16px 18px; margin: 14px 0; border-radius: 3px;
+}
+.purl {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 14px; word-break: break-all; color: var(--ink);
+}
+.chip {
+  display: inline-block; padding: 1px 7px; border: 1px solid; border-radius: 2px;
+  font-size: 11px; font-weight: 600; letter-spacing: 0.03em;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+}
+.m-exact, .m-dictionary { color: var(--ok); border-color: var(--ok); background: var(--ok-bg); }
+.m-heuristic { color: var(--warn); border-color: var(--warn); background: var(--warn-bg); }
+.m-model-suggested { color: var(--err); border-color: var(--err); background: var(--err-bg); }
+.m-abstain { color: var(--ink-3); border-color: var(--line-2); background: var(--surface-2); }
+
+.meta { color: var(--ink-3); font-size: 13px; margin-top: 8px; }
+.meta a { color: var(--accent); }
+.abstain-why { color: var(--ink-2); margin-top: 8px; }
+.examples { margin-top: 18px; color: var(--ink-3); font-size: 13px; }
+.examples button {
+  background: none; border: 1px solid var(--line-2); color: var(--ink-2);
+  font-weight: 400; padding: 3px 9px; margin: 0 6px 6px 0; font-size: 12.5px;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+}
+.examples button:hover { background: var(--surface-2); color: var(--ink); }
+
+footer {
+  margin-top: 44px; padding-top: 16px; border-top: 1px solid var(--line);
+  color: var(--ink-3); font-size: 12.5px;
+}
+
+/* The drop zone. Below the findings, never above: a drop zone at the top of a
+ * page asks for work before giving any value. Dashed rather than a filled
+ * panel, because a solid box reads as a button and this is a target. */
+.drop {
+  border: 1px dashed var(--line-2); border-radius: 3px;
+  padding: 18px; margin: 10px 0 0;
+  background: var(--surface);
+}
+.drop.dragging { border-color: var(--accent); background: var(--accent-bg); }
+.drop p { margin: 0 0 8px; }
+.drop p:last-child { margin-bottom: 0; }
+
+select {
+  font: inherit; font-size: 13px; padding: 2px 6px;
+  border: 1px solid var(--line-2); border-radius: 3px;
+  background: var(--surface); color: var(--ink);
+}
+
+/* A button that reads as a link, for "choose one" inside a sentence. The
+ * element stays a button so it keeps keyboard and screen reader behaviour. */
+.linkish {
+  background: none; border: none; padding: 0; font: inherit;
+  color: var(--accent); text-decoration: underline; cursor: pointer;
+}
+.linkish:hover { background: none; color: var(--accent-ink); }
+
+/* Not display:none: a hidden file input still has to be focusable and
+ * clickable for the label button to reach it. */
+.visually-hidden {
+  position: absolute; width: 1px; height: 1px;
+  padding: 0; margin: -1px; overflow: hidden;
+  clip: rect(0 0 0 0); white-space: nowrap; border: 0;
+}
+
+.paths { margin: 8px 0; padding-left: 18px; color: var(--ink-2); font-size: 13px; }
+.paths li { margin: 2px 0; }
+.paths code {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 12.5px; word-break: break-all;
+}
+
+.sev-error { color: var(--err); border-color: var(--err); background: var(--err-bg); }
+.sev-warning { color: var(--warn); border-color: var(--warn); background: var(--warn-bg); }
+.sev-info, .sev-advisory { color: var(--ink-3); border-color: var(--line-2); background: var(--surface-2); }
+
+.cover {
+  border: 1px solid var(--line); background: var(--surface-2);
+  padding: 14px 16px; margin: 14px 0; border-radius: 3px;
+}
+.cover .big { font-size: 17px; font-weight: 600; }
+.cover .counts { color: var(--ink-3); font-size: 13px; margin-top: 4px; }
+.cover .note { color: var(--ink-2); font-size: 13px; margin-top: 8px; max-width: 62ch; }
+
+details { margin: 10px 0; }
+summary { cursor: pointer; }
+
+/* Definition list for a rule's fields. Labels are quiet, values carry the
+ * weight, and the justification under each value is the point of the page. */
+.fields { margin: 18px 0; }
+.fields > div {
+  display: grid; grid-template-columns: 190px 1fr; gap: 12px;
+  padding: 10px 0; border-top: 1px solid var(--line);
+}
+.fields dt { color: var(--ink-3); font-size: 13px; }
+.fields dd { margin: 0; }
+.fields .note { color: var(--ink-2); font-size: 13px; margin-top: 5px; max-width: 68ch; }
+@media (max-width: 620px) {
+  .fields > div { grid-template-columns: 1fr; gap: 3px; }
+}
+
+/* Tables read as document, not dashboard: hairline rules, no striping, no
+ * outer shadow, tabular numerals inherited from body. */
+table { border-collapse: collapse; width: 100%; font-size: 13.5px; margin: 10px 0 24px; }
+th, td { text-align: left; padding: 7px 10px 7px 0; border-bottom: 1px solid var(--line); vertical-align: top; }
+th {
+  font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em;
+  color: var(--ink-3); font-weight: 600; border-bottom-color: var(--line-2);
+}
+td.num { text-align: right; font-variant-numeric: tabular-nums; }
+.scroll { overflow-x: auto; }
+.rules td:first-child { width: 42%; }
+
+nav.top { margin-bottom: 26px; font-size: 13px; }
+nav.top a { color: var(--ink-2); margin-right: 14px; }
+nav.top a:hover { color: var(--ink); }
+
+/* Crosswalk fit. Carried by the word first: design.md requires severity and
+ * status to be announced in text, never by colour alone. */
+.fit-direct { color: var(--ok); border-color: var(--ok); background: var(--ok-bg); }
+.fit-partial { color: var(--warn); border-color: var(--warn); background: var(--warn-bg); }
+.fit-properties-only, .fit-none { color: var(--ink-3); border-color: var(--line-2); background: var(--surface-2); }

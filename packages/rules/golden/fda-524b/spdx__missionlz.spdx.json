@@ -1,0 +1,36 @@
+{
+  "corpusFile": "spdx__missionlz.spdx.json",
+  "format": "spdx",
+  "rulePackId": "fda-524b",
+  "rulePackVersion": "1.0.0",
+  "findingsByRule": {
+    "FDA-DEPTH-001": [],
+    "FDA-JUST-001": [
+      "$"
+    ],
+    "FDA-NTIA-001": [],
+    "FDA-NTIA-002": [],
+    "FDA-NTIA-003": [],
+    "FDA-NTIA-004": [
+      "$.packages[1]"
+    ],
+    "FDA-NTIA-005": [],
+    "FDA-NTIA-006": [],
+    "FDA-NTIA-007": [],
+    "FDA-STAT-001": [],
+    "FDA-STAT-002": [],
+    "FDA-SUP-001": [
+      "$.packages[0]",
+      "$.packages[1]"
+    ],
+    "FDA-SUP-002": [
+      "$.packages[0]",
+      "$.packages[1]"
+    ],
+    "FDA-TRACE-001": [],
+    "FDA-USER-001": [],
+    "FDA-VULN-001": [
+      "$"
+    ]
+  }
+}

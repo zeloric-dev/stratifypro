@@ -1,0 +1,124 @@
+name: ci
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+# verify.sh runs FIRST, before any pnpm task.
+#
+# It was previously absent from CI entirely, which meant the 39 rules, 156
+# fixtures, corpus hashes, coverage baseline, golden results and benchmark
+# would have stopped being continuously checked at exactly the moment
+# TypeScript started and the repository began changing daily.
+
+jobs:
+  verify:
+    name: verify.sh (rules, fixtures, corpus, benchmark)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      # Named explicitly rather than assumed. START-HERE.md used to claim
+      # "There is no other setup", and on a clean machine 6 of 9 checks failed
+      # purely on the missing interpreter while the document told the reader
+      # the failure was telling the truth.
+      - name: Install Python dependencies
+        run: python -m pip install --quiet -r requirements.txt
+
+      - name: Run verify.sh
+        run: bash verify.sh
+
+  build:
+    name: typecheck, build, test
+    runs-on: ubuntu-latest
+    needs: verify
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 12.5.1
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: pnpm
+
+      - run: pnpm install --frozen-lockfile
+
+      # Build FIRST, in topological order. Packages consume each other's
+      # emitted .d.ts files, so typechecking before building fails to resolve
+      # @stratifypro/engine and every downstream error cascades from that one
+      # unresolved import. Locally it appeared to pass only because a stale
+      # dist/ from an earlier build was still on disk.
+      - run: pnpm build
+
+      - run: pnpm -r typecheck
+
+      - run: pnpm -r test
+
+      # A software supply chain tool that does not check its own supply chain.
+      #
+      # This was added after the hosting provider refused a deployment with
+      # "Vulnerable version of Next.js detected": Next 15.0.3 carried the
+      # middleware authorization bypass, the build was green, 181 tests were
+      # green, and verify.sh printed ALL CHECKS PASS. Nothing here looked. An
+      # audit then found four more advisories in a transitive postcss, two of
+      # them high.
+      #
+      # --prod only. Dev dependencies do not ship, and a check that goes red on
+      # something nobody can be exposed to is a check people learn to ignore.
+      # Remediations go in pnpm-workspace.yaml overrides, each with the advisory
+      # it answers written beside it.
+      - name: Dependencies carry no known vulnerability
+        run: pnpm audit --prod
+
+      # The published benchmark is this project's public credential, and it is
+      # the one number on the site produced by code rather than by a data file.
+      # It lives here rather than in verify.sh because scoring it needs built
+      # TypeScript, and verify.sh gates this job.
+      - name: The published benchmark reproduces, ours included
+        run: python3 scripts/bench-publish.py --check
+
+      # "Zero runtime dependencies" is the answer to "what is in your tool".
+      # It is a sales claim and a security claim, so it is enforced rather
+      # than intended.
+      - name: Engine declares zero runtime dependencies
+        run: |
+          deps=$(node -p "Object.keys(require('./packages/engine/package.json').dependencies||{}).length")
+          if [ "$deps" != "0" ]; then
+            echo "packages/engine declares $deps runtime dependencies; it must declare none"
+            exit 1
+          fi
+          echo "engine: zero runtime dependencies"
+
+      # Nothing flows upward. The engine must stay usable with every package
+      # below it absent, because the free browser checker ships the engine and
+      # the rule packs alone.
+      - name: Engine does not import from apps or sibling packages
+        run: |
+          if grep -rnE "from '(\.\./)*(apps|packages)/" packages/engine/src; then
+            echo "packages/engine imports outside itself"
+            exit 1
+          fi
+          echo "engine: no upward or sibling imports"
+
+      # The engine runs in a browser tab with no network, in CI with no
+      # browser, and on a server. Shipped engine code therefore uses no Node
+      # built-in. Its own tests may: they read the golden artifact off disk,
+      # and a test is not shipped behaviour.
+      - name: Engine ships no Node built-in imports
+        run: |
+          offenders=$(grep -rlE "from 'node:" packages/engine/src --include='*.ts' \
+                      | grep -v '\.test\.ts$' || true)
+          if [ -n "$offenders" ]; then
+            echo "engine source imports Node built-ins:"
+            echo "$offenders"
+            exit 1
+          fi
+          echo "engine: no Node built-ins outside tests"

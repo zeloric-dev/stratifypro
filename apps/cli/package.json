@@ -1,0 +1,22 @@
+{
+  "name": "@stratifypro/cli",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Command line interface. check, resolve, explain, packs.",
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "test": "node --test dist/**/*.test.js"
+  },
+  "dependencies": {
+    "@stratifypro/engine": "workspace:*",
+    "@stratifypro/report": "workspace:*"
+  },
+  "bin": {
+    "stratifypro": "./dist/index.js"
+  },
+  "devDependencies": {
+    "@types/node": "22.9.0"
+  }
+}

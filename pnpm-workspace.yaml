@@ -1,0 +1,32 @@
+packages:
+  - "packages/*"
+  - "apps/*"
+
+# Which dependencies may run install scripts. pnpm will not install until every
+# package that wants to run one appears here, which is the behaviour we want:
+# the decision is recorded in the repository rather than made by whoever runs
+# install first.
+#
+# sharp: false. It is an OPTIONAL dependency of Next used only for image
+# optimisation, and this site serves no images, so nothing is lost. Its
+# postinstall fetches and links prebuilt native binaries from a CDN at install
+# time. A project whose entire subject is software supply chain should not
+# execute unvetted postinstall code to build its own marketing site, and
+# approving a build script to turn a red pipeline green is exactly how that
+# happens. Next falls back to unoptimised images and builds fine.
+allowBuilds:
+  sharp: false
+
+# Transitive dependencies pinned above what a parent package asks for, because
+# the parent's pin carries a published vulnerability.
+#
+# postcss: Next 15.5.25 pins 8.4.31. Four advisories apply to it, two high, and
+# the fixes land in 8.5.23. postcss is semver-stable across 8.x, and the build
+# is verified against this override rather than assumed: 492 static pages, same
+# output.
+#
+# This is the remediation this product would tell a customer to apply, so it is
+# the one applied here. Each entry states the advisory it answers; an override
+# with no reason beside it is how a pin outlives the problem it was for.
+overrides:
+  postcss: 8.5.28

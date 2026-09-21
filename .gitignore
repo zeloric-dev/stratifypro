@@ -1,0 +1,36 @@
+# Dependencies
+node_modules/
+.pnpm-store/
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+
+# Build output
+dist/
+build/
+.next/
+out/
+*.tsbuildinfo
+
+# Secrets. Never commit a real one.
+# Any key that has ever appeared in a chat log, a screenshot or a commit is
+# exposed right now. Rotating it is the cheapest serious security work available.
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+.vercel
+
+# Local tooling
+.DS_Store
+Thumbs.db
+*.log
+.cache/
+coverage/
+.turbo/
+
+# Generated reports, never the source of truth
+/tmp/
+scratch/

@@ -1,0 +1,78 @@
+{
+  "spdxVersion": "SPDX-2.3",
+  "dataLicense": "CC0-1.0",
+  "SPDXID": "SPDXRef-DOCUMENT",
+  "name": "example-device-firmware",
+  "documentNamespace": "https://example.invalid/spdx/1",
+  "creationInfo": {
+    "created": "2026-09-13T10:00:00Z[America/Chicago]",
+    "creators": [
+      "Organization: StratifyPro Test Fixtures",
+      "Tool: fixture-generator-1.0.0"
+    ]
+  },
+  "packages": [
+    {
+      "SPDXID": "SPDXRef-Package-openssl",
+      "name": "openssl",
+      "versionInfo": "3.0.2",
+      "supplier": "Organization: The OpenSSL Project",
+      "originator": "Organization: The OpenSSL Project",
+      "licenseConcluded": "Apache-2.0",
+      "licenseDeclared": "Apache-2.0",
+      "downloadLocation": "NOASSERTION",
+      "filesAnalyzed": false,
+      "checksums": [
+        {
+          "algorithm": "SHA256",
+          "checksumValue": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+        }
+      ],
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:generic/openssl@3.0.2"
+        },
+        {
+          "referenceCategory": "SECURITY",
+          "referenceType": "cpe23Type",
+          "referenceLocator": "cpe:2.3:a:openssl:openssl:3.0.2:*:*:*:*:*:*:*"
+        },
+        {
+          "referenceCategory": "OTHER",
+          "referenceType": "support",
+          "referenceLocator": "https://example.invalid/eos"
+        }
+      ],
+      "annotations": [
+        {
+          "annotationType": "OTHER",
+          "annotator": "Tool: fixture-generator",
+          "annotationDate": "2026-09-13T10:00:00Z",
+          "comment": "support-level: actively maintained; end-of-support: 2026-09-07"
+        }
+      ]
+    }
+  ],
+  "relationships": [
+    {
+      "spdxElementId": "SPDXRef-DOCUMENT",
+      "relatedSpdxElement": "SPDXRef-Package-openssl",
+      "relationshipType": "DESCRIBES"
+    },
+    {
+      "spdxElementId": "SPDXRef-Package-openssl",
+      "relatedSpdxElement": "SPDXRef-Package-openssl",
+      "relationshipType": "DEPENDS_ON"
+    }
+  ],
+  "annotations": [
+    {
+      "annotationType": "OTHER",
+      "annotator": "Tool: fixture-generator",
+      "annotationDate": "2026-09-13T10:00:00Z",
+      "comment": "No omissions."
+    }
+  ]
+}

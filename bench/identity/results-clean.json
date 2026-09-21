@@ -1,0 +1,62 @@
+[
+  {
+    "resolver": "always-abstain",
+    "rows": 996,
+    "answered": 0,
+    "precision": 0.0,
+    "recall": 0.0,
+    "f1": 0.0,
+    "abstentionRate": 1.0,
+    "unknownClass": 36,
+    "unknownObserved": 36,
+    "unknownDerived": 0,
+    "unknownCorrectlyAbstained": 36,
+    "unknownFalsePositives": 0,
+    "predictionsMissing": 0
+  },
+  {
+    "resolver": "exact-match",
+    "rows": 996,
+    "answered": 84,
+    "precision": 0.9762,
+    "recall": 0.0854,
+    "f1": 0.1571,
+    "abstentionRate": 0.9157,
+    "unknownClass": 36,
+    "unknownObserved": 36,
+    "unknownDerived": 0,
+    "unknownCorrectlyAbstained": 36,
+    "unknownFalsePositives": 0,
+    "predictionsMissing": 0
+  },
+  {
+    "resolver": "normalised-match",
+    "rows": 996,
+    "answered": 88,
+    "precision": 0.9773,
+    "recall": 0.0896,
+    "f1": 0.1641,
+    "abstentionRate": 0.9116,
+    "unknownClass": 36,
+    "unknownObserved": 36,
+    "unknownDerived": 0,
+    "unknownCorrectlyAbstained": 36,
+    "unknownFalsePositives": 0,
+    "predictionsMissing": 0
+  },
+  {
+    "resolver": "prefix-strip",
+    "rows": 996,
+    "answered": 88,
+    "precision": 0.9773,
+    "recall": 0.0896,
+    "f1": 0.1641,
+    "abstentionRate": 0.9116,
+    "unknownClass": 36,
+    "unknownObserved": 36,
+    "unknownDerived": 0,
+    "unknownCorrectlyAbstained": 36,
+    "unknownFalsePositives": 0,
+    "predictionsMissing": 0
+  }
+]

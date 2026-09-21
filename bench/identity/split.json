@@ -1,0 +1,27 @@
+{
+  "train": [
+    "cyclonedx__ascii-boxes-sbom-cdx.json",
+    "cyclonedx__ghidra-sbom-cdx.json",
+    "cyclonedx__harp-darwin-amd64.sbom.json",
+    "cyclonedx__kawipiko-sbom-cdx.json",
+    "cyclonedx__obsidian-sailboat-sbom-cdx.json",
+    "spdx__grype-sbom.spdx.json",
+    "spdx__helm-controller_0.16.0_sbom.spdx.json",
+    "spdx__image-automation-controller_0.20.0_sbom.spdx.json",
+    "spdx__jx-darwin-arm64.tar.gz.sbom.json",
+    "spdx__lab-syft.json",
+    "spdx__lab-tern.json",
+    "spdx__lab-trivy.json",
+    "spdx__microsoft-sbom-tool.spdx.json",
+    "spdx__source-controller_0.21.2_sbom.spdx.json"
+  ],
+  "heldOut": [
+    "cyclonedx__joc-cockpit-sbom-cdx.json",
+    "cyclonedx__redis-commander-sbom-cdx.json",
+    "cyclonedx__text-statistician-cdx.json",
+    "spdx__image-reflector-controller_0.16.0_sbom.spdx.json",
+    "spdx__julia.spdx.json",
+    "spdx__missionlz.spdx.json",
+    "spdx__powershell.spdx.json"
+  ]
+}

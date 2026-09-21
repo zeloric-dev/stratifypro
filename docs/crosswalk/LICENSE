@@ -1,0 +1,26 @@
+Creative Commons Attribution 4.0 International (CC BY 4.0)
+
+Copyright (c) 2026 StratifyPro
+
+This crosswalk data is licensed under the Creative Commons Attribution 4.0
+International License. You are free to share and adapt it for any purpose,
+including commercially, provided you give appropriate credit.
+
+Full licence text: https://creativecommons.org/licenses/by/4.0/legalcode
+
+NOTE ON QUOTED MATERIAL
+
+This work quotes and paraphrases element names, definitions and constraints
+from the following documents, which remain the property of their publishers
+and are reproduced here for identification and interoperability purposes:
+
+  Software Bill of Materials for AI: Minimum Elements
+  Published 2026 by BSI (Germany), ACN (Italy), ANSSI (France),
+  CSE (Canada), CISA (United States), NCSC (United Kingdom) and
+  NCO (Japan), in collaboration with the European Commission.
+
+  2026 Minimum Elements for a Software Bill of Materials (SBOM), v2.1
+  Published 2026 by CISA with 17 partner agencies.
+
+Schema paths reference the CycloneDX specification (Apache 2.0, and ECMA-424)
+and the SPDX specification (Linux Foundation).

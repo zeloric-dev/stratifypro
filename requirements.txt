@@ -1,0 +1,13 @@
+# Python dependencies for verify.sh and the reference implementation.
+#
+# START-HERE.md previously claimed "There is no other setup." That was not
+# true: verify.sh invokes python3 six times, packages/rules/src/validate.py
+# imports jsonschema, and the crosswalk build chain imports openpyxl. On a
+# clean machine verify.sh failed 6 of 9 checks purely on the missing
+# interpreter, and then told the reader the failure was telling the truth.
+#
+# Install:  python -m pip install -r requirements.txt
+# Requires: Python 3.11 or newer
+
+jsonschema>=4.21,<5      # packages/rules/src/validate.py, rule pack schema validation
+openpyxl>=3.1,<4         # scripts/build_crosswalk.py and scripts/emit.py

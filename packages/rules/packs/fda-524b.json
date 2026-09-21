@@ -1,0 +1,582 @@
+{
+  "$schema": "https://stratifypro.io/schema/rule-pack-1.json",
+  "id": "fda-524b",
+  "version": "1.0.0",
+  "title": "FDA section 524B premarket submission profile",
+  "compiled": "2026-09-13",
+  "sourceDocuments": [
+    {
+      "id": "fdc-524b",
+      "title": "Federal Food, Drug, and Cosmetic Act section 524B, Ensuring Cybersecurity of Devices",
+      "citation": "21 U.S.C. 360n-2(b)(3)",
+      "publisher": "United States Congress",
+      "published": "2022-12-29",
+      "effective": "2023-03-29",
+      "url": "https://www.law.cornell.edu/uscode/text/21/360n-2",
+      "normativeLanguage": true,
+      "normativeLanguageEvidence": "Statutory 'shall': a sponsor of a cyber device shall 'provide to the Secretary a software bill of materials, including commercial, open-source, and off-the-shelf software components.' Added by section 3305 of the Consolidated Appropriations Act, 2023.",
+      "note": "This is the only source in either pack that carries genuine normative language, and it is the only source that may support severity 'error'."
+    },
+    {
+      "id": "fda-premarket-2026-02",
+      "title": "Cybersecurity in Medical Devices: Quality Management System Considerations and Content of Premarket Submissions",
+      "publisher": "US Food and Drug Administration, CDRH",
+      "published": "2026-02-03",
+      "supersedes": "The 27 June 2025 version, which superseded the 27 September 2023 version.",
+      "url": "https://www.fda.gov/media/119933/download",
+      "normativeLanguage": false,
+      "normativeLanguageEvidence": "Guidance, not regulation. Uses 'should' and 'recommends' throughout. FDA guidance documents state on their face that they do not establish legally enforceable responsibilities.",
+      "note": "The SBOM text in section V.A.4(b) is word-for-word identical across the September 2023, June 2025 and February 2026 versions. The 2026 change was a QMSR and ISO 13485 realignment elsewhere in the document. There is no pending FDA change to chase."
+    },
+    {
+      "id": "ntia-2021",
+      "title": "Framing Software Component Transparency: Establishing a Common Software Bill of Materials (SBOM)",
+      "publisher": "NTIA Multistakeholder Process on Software Component Transparency",
+      "published": "2021-10",
+      "url": "https://www.ntia.gov/report/2021/minimum-elements-software-bill-materials-sbom",
+      "normativeLanguage": false,
+      "note": "IMPORTANT AND EASY TO GET WRONG: the February 2026 FDA guidance still points at the OCTOBER 2021 NTIA baseline attributes, not at the CISA 2026 v2.1 elements. Checking an FDA submission against the 2026 CISA element set is checking against a document FDA has not adopted. The two packs are therefore different on purpose and must not be merged."
+    }
+  ],
+  "severityModel": {
+    "default": "warning",
+    "justification": "Severity here tracks the enforcement consequence, not the source document's tone. Section 524B(b)(3) is a statutory 'shall', so the total absence of a machine-readable SBOM is an error: it is a straightforward Refuse to Accept trigger and FDA's temporal carve-out expired on 1 October 2023. Everything the guidance frames as 'should', including the NTIA baseline attributes, support level and end-of-support date, is a warning: those come back as review deficiencies or eSTAR technical screening holds, which cost time rather than the filing. Firms may override any severity.",
+    "overridable": true,
+    "enforcementNote": "Two mechanisms, and they are different. Refuse to Accept applies to statutory absence. The live day-to-day mechanism for a deficient submission is an eSTAR technical screening hold: per FDA's own cybersecurity FAQ, 'An eSTAR submission will be put on a Technical Screening hold if it does not contain accurate responses and relevant attachments in the Cybersecurity section.' Never describe a deficiency as a rejection."
+  },
+  "conformanceNote": "FDA names no file format. The guidance requires machine-readability plus the NTIA baseline attributes, says 'Industry-accepted formats of SBOMs are encouraged', and never mentions SPDX, CycloneDX or SWID anywhere in its text. These rules therefore check for information, never for a named format's field. Depth: FDA asks for the full stack including upstream transitive dependencies, which is materially deeper than the EU floor.",
+  "rules": [
+    {
+      "id": "FDA-STAT-001",
+      "title": "A software bill of materials exists and is machine-readable",
+      "severity": "error",
+      "severityJustification": "Section 524B(b)(3) is a statutory shall. FDA's temporal carve-out for cyber devices expired on 1 October 2023, after which section 524B information is by itself a sufficient basis for a Refuse to Accept decision. The absence of a machine-readable SBOM is the clearest case there is.",
+      "onEmptySelector": "fire",
+      "onEmptySelectorJustification": "The selector is the document root, which is present in every parsed document, so this rule can never see an empty selector. The value is declared because the field is required of every rule, and fire is the conservative choice should a future selector change make it reachable.",
+      "appliesTo": [
+        "cyclonedx",
+        "spdx"
+      ],
+      "selector": {
+        "cyclonedx": "$",
+        "spdx": "$"
+      },
+      "assert": {
+        "allOf": [
+          {
+            "exists": "bomFormat|spdxVersion|@context"
+          },
+          {
+            "exists": "components|packages"
+          }
+        ]
+      },
+      "fix": "Provide a machine-readable SBOM. FDA names no format; industry-accepted formats are encouraged.",
+      "note": "STATUTORY. This is the only rule in either pack whose severity rests on normative language rather than on a documented consequence.",
+      "sourceDocument": "fdc-524b",
+      "sourceLocation": "Section 524B(b)(3), 21 USC 360n-2(b)(3)",
+      "alsoSee": [
+        {
+          "sourceDocument": "fda-premarket-2026-02",
+          "sourceLocation": "Section VII.C.3, SBOM"
+        }
+      ]
+    },
+    {
+      "id": "FDA-STAT-002",
+      "title": "The SBOM enumerates commercial, open-source and off-the-shelf components",
+      "severity": "error",
+      "severityJustification": "The statute names all three categories explicitly. An SBOM that lists only the manufacturer's own code is not the artifact the statute asks for, and its absence is a statutory gap rather than a quality problem.",
+      "onEmptySelector": "fire",
+      "onEmptySelectorJustification": "The selector is the document root, which is present in every parsed document, so this rule can never see an empty selector. The value is declared because the field is required of every rule, and fire is the conservative choice should a future selector change make it reachable.",
+      "appliesTo": [
+        "cyclonedx",
+        "spdx"
+      ],
+      "selector": {
+        "cyclonedx": "$",
+        "spdx": "$"
+      },
+      "assert": {
+        "minLength": {
+          "field": "components|packages",
+          "min": 1
+        }
+      },
+      "fix": "Enumerate every component including purchased and licensed software, open source, and off-the-shelf software, not only first-party code.",
+      "note": "STATUTORY. Counting is a weak proxy for the real requirement; a human still has to confirm the categories are actually represented.",
+      "sourceDocument": "fdc-524b",
+      "sourceLocation": "Section 524B(b)(3), 21 USC 360n-2(b)(3)",
+      "alsoSee": [
+        {
+          "sourceDocument": "fda-premarket-2026-02",
+          "sourceLocation": "Section VII.C.3, SBOM"
+        }
+      ]
+    },
+    {
+      "id": "FDA-NTIA-001",
+      "title": "Supplier name is present for every component",
+      "severity": "warning",
+      "severityJustification": "An NTIA baseline attribute. The guidance frames these as 'should', and in practice a missing baseline attribute returns as a review deficiency or an eSTAR technical screening hold rather than a refusal, so it costs weeks rather than the filing.",
+      "onEmptySelector": "fire",
+      "onEmptySelectorJustification": "The selector walks a collection and the assertion asks whether each member carries something. A document with zero members has not satisfied that requirement, it has avoided being measured against it, and reporting nothing would let an empty or absent collection read as a clean result. The absence is the violation.",
+      "appliesTo": [
+        "cyclonedx",
+        "spdx"
+      ],
+      "selector": {
+        "cyclonedx": "$.components[*]",
+        "spdx": "$.packages[*]"
+      },
+      "assert": {
+        "anyOf": [
+          {
+            "exists": "publisher"
+          },
+          {
+            "exists": "supplier"
+          },
+          {
+            "exists": "originator"
+          }
+        ]
+      },
+      "fix": "Name the supplier of each component. Measured across 10,000 repositories, zero percent of generated SBOMs carry this, so expect to add it by hand or fix your generator.",
+      "note": "NTIA 2021 BASELINE, not CISA 2026. FDA has not adopted the 2026 element set.",
+      "sourceDocument": "ntia-2021",
+      "sourceLocation": "Minimum elements, baseline attributes table",
+      "alsoSee": [
+        {
+          "sourceDocument": "fda-premarket-2026-02",
+          "sourceLocation": "Section V.A.4(b), first paragraph"
+        }
+      ]
+    },
+    {
+      "id": "FDA-NTIA-002",
+      "title": "Component name is present",
+      "severity": "warning",
+      "severityJustification": "An NTIA baseline attribute. The guidance frames these as 'should', and in practice a missing baseline attribute returns as a review deficiency or an eSTAR technical screening hold rather than a refusal, so it costs weeks rather than the filing.",
+      "onEmptySelector": "fire",
+      "onEmptySelectorJustification": "The selector walks a collection and the assertion asks whether each member carries something. A document with zero members has not satisfied that requirement, it has avoided being measured against it, and reporting nothing would let an empty or absent collection read as a clean result. The absence is the violation.",
+      "appliesTo": [
+        "cyclonedx",
+        "spdx"
+      ],
+      "selector": {
+        "cyclonedx": "$.components[*]",
+        "spdx": "$.packages[*]"
+      },
+      "assert": {
+        "anyOf": [
+          {
+            "exists": "name"
+          }
+        ]
+      },
+      "fix": "Give every component the name its supplier uses.",
+      "note": "NTIA 2021 BASELINE, not CISA 2026. FDA has not adopted the 2026 element set.",
+      "sourceDocument": "ntia-2021",
+      "sourceLocation": "Minimum elements, baseline attributes table",
+      "alsoSee": [
+        {
+          "sourceDocument": "fda-premarket-2026-02",
+          "sourceLocation": "Section V.A.4(b), first paragraph"
+        }
+      ]
+    },
+    {
+      "id": "FDA-NTIA-003",
+      "title": "Version of the component is present",
+      "severity": "warning",
+      "severityJustification": "An NTIA baseline attribute. The guidance frames these as 'should', and in practice a missing baseline attribute returns as a review deficiency or an eSTAR technical screening hold rather than a refusal, so it costs weeks rather than the filing.",
+      "onEmptySelector": "fire",
+      "onEmptySelectorJustification": "The selector walks a collection and the assertion asks whether each member carries something. A document with zero members has not satisfied that requirement, it has avoided being measured against it, and reporting nothing would let an empty or absent collection read as a clean result. The absence is the violation.",
+      "appliesTo": [
+        "cyclonedx",
+        "spdx"
+      ],
+      "selector": {
+        "cyclonedx": "$.components[*]",
+        "spdx": "$.packages[*]"
+      },
+      "assert": {
+        "anyOf": [
+          {
+            "exists": "version"
+          },
+          {
+            "exists": "versionInfo"
+          }
+        ]
+      },
+      "fix": "Record the version of every component. Without it no vulnerability range can be matched.",
+      "note": "NTIA 2021 BASELINE, not CISA 2026. FDA has not adopted the 2026 element set.",
+      "sourceDocument": "ntia-2021",
+      "sourceLocation": "Minimum elements, baseline attributes table",
+      "alsoSee": [
+        {
+          "sourceDocument": "fda-premarket-2026-02",
+          "sourceLocation": "Section V.A.4(b), first paragraph"
+        }
+      ]
+    },
+    {
+      "id": "FDA-NTIA-004",
+      "title": "Other unique identifiers are present",
+      "severity": "warning",
+      "severityJustification": "An NTIA baseline attribute. The guidance frames these as 'should', and in practice a missing baseline attribute returns as a review deficiency or an eSTAR technical screening hold rather than a refusal, so it costs weeks rather than the filing.",
+      "onEmptySelector": "fire",
+      "onEmptySelectorJustification": "The selector walks a collection and the assertion asks whether each member carries something. A document with zero members has not satisfied that requirement, it has avoided being measured against it, and reporting nothing would let an empty or absent collection read as a clean result. The absence is the violation.",
+      "appliesTo": [
+        "cyclonedx",
+        "spdx"
+      ],
+      "selector": {
+        "cyclonedx": "$.components[*]",
+        "spdx": "$.packages[*]"
+      },
+      "assert": {
+        "anyOf": [
+          {
+            "exists": "purl"
+          },
+          {
+            "exists": "cpe"
+          },
+          {
+            "exists": "externalRefs[?(@.referenceType=='purl')]"
+          }
+        ]
+      },
+      "fix": "Add a Package URL to every component. This is the single highest-value fix in the file.",
+      "note": "NTIA 2021 BASELINE, not CISA 2026. FDA has not adopted the 2026 element set.",
+      "sourceDocument": "ntia-2021",
+      "sourceLocation": "Minimum elements, baseline attributes table",
+      "alsoSee": [
+        {
+          "sourceDocument": "fda-premarket-2026-02",
+          "sourceLocation": "Section V.A.4(b), first paragraph"
+        }
+      ]
+    },
+    {
+      "id": "FDA-NTIA-005",
+      "title": "Dependency relationships are declared",
+      "severity": "warning",
+      "severityJustification": "An NTIA baseline attribute. The guidance frames these as 'should', and in practice a missing baseline attribute returns as a review deficiency or an eSTAR technical screening hold rather than a refusal, so it costs weeks rather than the filing.",
+      "onEmptySelector": "fire",
+      "onEmptySelectorJustification": "The selector is the document root, which is present in every parsed document, so this rule can never see an empty selector. The value is declared because the field is required of every rule, and fire is the conservative choice should a future selector change make it reachable.",
+      "appliesTo": [
+        "cyclonedx",
+        "spdx"
+      ],
+      "selector": {
+        "cyclonedx": "$",
+        "spdx": "$"
+      },
+      "assert": {
+        "anyOf": [
+          {
+            "exists": "dependencies"
+          },
+          {
+            "exists": "relationships"
+          }
+        ]
+      },
+      "fix": "Emit the dependency graph. If it is incomplete, declare that explicitly rather than leaving it silent.",
+      "note": "NTIA 2021 BASELINE, not CISA 2026. FDA has not adopted the 2026 element set.",
+      "sourceDocument": "ntia-2021",
+      "sourceLocation": "Minimum elements, baseline attributes table",
+      "alsoSee": [
+        {
+          "sourceDocument": "fda-premarket-2026-02",
+          "sourceLocation": "Section V.A.4(b), first paragraph"
+        }
+      ]
+    },
+    {
+      "id": "FDA-NTIA-006",
+      "title": "Author of the SBOM data is present",
+      "severity": "warning",
+      "severityJustification": "An NTIA baseline attribute. The guidance frames these as 'should', and in practice a missing baseline attribute returns as a review deficiency or an eSTAR technical screening hold rather than a refusal, so it costs weeks rather than the filing.",
+      "onEmptySelector": "fire",
+      "onEmptySelectorJustification": "The selector names a specific object the assertion inspects. When that object is absent the information the rule exists to check was not supplied at all, which is a stronger failure than supplying it badly. Reporting nothing would make a missing section indistinguishable from a satisfied one.",
+      "appliesTo": [
+        "cyclonedx",
+        "spdx"
+      ],
+      "selector": {
+        "cyclonedx": "$.metadata",
+        "spdx": "$.creationInfo"
+      },
+      "assert": {
+        "cyclonedx": {
+          "exists": "authors"
+        },
+        "spdx": {
+          "exists": "creators"
+        }
+      },
+      "fix": "Name the entity that generated the SBOM.",
+      "note": "NTIA 2021 BASELINE, not CISA 2026. FDA has not adopted the 2026 element set. SPDX carries creators as strings of the form 'Organization: X' or 'Tool: y-1.0', not as objects. The acronym and version checks in the CycloneDX branch are applied to the parsed suffix by the engine, not by this assert.",
+      "sourceDocument": "ntia-2021",
+      "sourceLocation": "Minimum elements, baseline attributes table",
+      "alsoSee": [
+        {
+          "sourceDocument": "fda-premarket-2026-02",
+          "sourceLocation": "Section V.A.4(b), first paragraph"
+        }
+      ]
+    },
+    {
+      "id": "FDA-NTIA-007",
+      "title": "Timestamp is present",
+      "severity": "warning",
+      "severityJustification": "An NTIA baseline attribute. The guidance frames these as 'should', and in practice a missing baseline attribute returns as a review deficiency or an eSTAR technical screening hold rather than a refusal, so it costs weeks rather than the filing.",
+      "onEmptySelector": "fire",
+      "onEmptySelectorJustification": "The selector names a specific object the assertion inspects. When that object is absent the information the rule exists to check was not supplied at all, which is a stronger failure than supplying it badly. Reporting nothing would make a missing section indistinguishable from a satisfied one.",
+      "appliesTo": [
+        "cyclonedx",
+        "spdx"
+      ],
+      "selector": {
+        "cyclonedx": "$.metadata",
+        "spdx": "$.creationInfo"
+      },
+      "assert": {
+        "anyOf": [
+          {
+            "exists": "timestamp"
+          },
+          {
+            "exists": "created"
+          }
+        ]
+      },
+      "fix": "Record when the SBOM data was last updated.",
+      "note": "NTIA 2021 BASELINE, not CISA 2026. FDA has not adopted the 2026 element set.",
+      "sourceDocument": "ntia-2021",
+      "sourceLocation": "Minimum elements, baseline attributes table",
+      "alsoSee": [
+        {
+          "sourceDocument": "fda-premarket-2026-02",
+          "sourceLocation": "Section V.A.4(b), first paragraph"
+        }
+      ]
+    },
+    {
+      "id": "FDA-SUP-001",
+      "title": "Every component declares a software level of support",
+      "severity": "warning",
+      "severityJustification": "FDA asks for this explicitly and by name, and no SBOM format has a field for it, so it is absent from essentially every generated file. It is a named item in real deficiency letters. Warning because the guidance says 'should' and permits it to be supplied in an addendum rather than in the SBOM.",
+      "onEmptySelector": "fire",
+      "onEmptySelectorJustification": "The selector walks a collection and the assertion asks whether each member carries something. A document with zero members has not satisfied that requirement, it has avoided being measured against it, and reporting nothing would let an empty or absent collection read as a clean result. The absence is the violation.",
+      "appliesTo": [
+        "cyclonedx",
+        "spdx"
+      ],
+      "selector": {
+        "cyclonedx": "$.components[*]",
+        "spdx": "$.packages[*]"
+      },
+      "assert": {
+        "anyOf": [
+          {
+            "exists": "properties[?(@.name=='stratifypro:support-level')]"
+          },
+          {
+            "exists": "annotations[?(@.annotationType=='OTHER')]"
+          },
+          {
+            "exists": "externalRefs[?(@.referenceType=='support')]"
+          }
+        ]
+      },
+      "fix": "State for each component whether it is actively maintained, no longer maintained, or abandoned. FDA gives those three as its own examples. You may supply this in an addendum rather than inside the SBOM.",
+      "note": "NO FORMAT HAS A FIELD FOR THIS. Neither CycloneDX nor SPDX. Carry it as a namespaced property and say so in the submission. This gap is one of the reasons packages/eos exists.",
+      "sourceDocument": "fda-premarket-2026-02",
+      "sourceLocation": "Section V.A.4(b), first additional element"
+    },
+    {
+      "id": "FDA-SUP-002",
+      "title": "Every component declares an end-of-support date",
+      "severity": "warning",
+      "severityJustification": "Same standing as the level of support, and named in published reviews of real FDA deficiency letters as a recurring citation. The only public data source for these dates is a community-maintained wiki, which is why StratifyPro maintains its own.",
+      "onEmptySelector": "fire",
+      "onEmptySelectorJustification": "The selector walks a collection and the assertion asks whether each member carries something. A document with zero members has not satisfied that requirement, it has avoided being measured against it, and reporting nothing would let an empty or absent collection read as a clean result. The absence is the violation.",
+      "appliesTo": [
+        "cyclonedx",
+        "spdx"
+      ],
+      "selector": {
+        "cyclonedx": "$.components[*]",
+        "spdx": "$.packages[*]"
+      },
+      "assert": {
+        "anyOf": [
+          {
+            "exists": "properties[?(@.name=='stratifypro:end-of-support')]"
+          },
+          {
+            "exists": "annotations[?(@.annotationType=='OTHER')]"
+          },
+          {
+            "exists": "externalRefs[?(@.referenceType=='support')]"
+          }
+        ]
+      },
+      "fix": "Give the end-of-support date for every component. Where the date is genuinely unknown, say so explicitly rather than omitting the field.",
+      "note": "NO FORMAT HAS A FIELD FOR THIS. Resolved by packages/eos where possible.",
+      "sourceDocument": "fda-premarket-2026-02",
+      "sourceLocation": "Section V.A.4(b), second additional element"
+    },
+    {
+      "id": "FDA-VULN-001",
+      "title": "Known vulnerabilities are identified, including CISA KEV entries",
+      "severity": "warning",
+      "severityJustification": "This is the rule that addresses the deficiency actually being issued. Published reviews of real deficiency letters describe reviewers cross-referencing the submitted SBOM against public vulnerability databases and citing CVEs the sponsor did not disclose. A conformance-only checker does not catch this; packages/vulnmatch does.",
+      "onEmptySelector": "fire",
+      "onEmptySelectorJustification": "The selector names a specific object the assertion inspects. When that object is absent the information the rule exists to check was not supplied at all, which is a stronger failure than supplying it badly. Reporting nothing would make a missing section indistinguishable from a satisfied one.",
+      "appliesTo": [
+        "cyclonedx",
+        "spdx"
+      ],
+      "selector": {
+        "cyclonedx": "$.metadata",
+        "spdx": "$"
+      },
+      "assert": {
+        "cyclonedx": {
+          "exists": "properties"
+        },
+        "spdx": {
+          "exists": "annotations"
+        }
+      },
+      "fix": "Identify every known vulnerability for the device and its components, including anything in CISA's Known Exploited Vulnerabilities Catalog. For each one, describe how it was found, give a safety and security risk assessment, and describe the risk controls, including any compensating controls.",
+      "note": "THE HIGHEST-VALUE RULE IN THIS PACK. The presence check here is weak on its own; it exists so the finding has an anchor. The real work is done by the matching layer in section 6A, which finds the advisories the file failed to declare.",
+      "sourceDocument": "fda-premarket-2026-02",
+      "sourceLocation": "Section V.A.4(b), known vulnerabilities paragraph"
+    },
+    {
+      "id": "FDA-DEPTH-001",
+      "title": "Transitive dependencies are present",
+      "severity": "warning",
+      "severityJustification": "FDA asks for the full stack including 'the upstream software dependencies that are required or depended upon by proprietary, purchased, licensed, and open-source software'. It sets no top-level floor, which makes it materially deeper than the EU requirement. A flat list of direct dependencies understates the real surface.",
+      "onEmptySelector": "fire",
+      "onEmptySelectorJustification": "The selector is the document root, which is present in every parsed document, so this rule can never see an empty selector. The value is declared because the field is required of every rule, and fire is the conservative choice should a future selector change make it reachable.",
+      "appliesTo": [
+        "cyclonedx",
+        "spdx"
+      ],
+      "selector": {
+        "cyclonedx": "$",
+        "spdx": "$"
+      },
+      "assert": {
+        "cyclonedx": {
+          "exists": "dependencies"
+        },
+        "spdx": {
+          "exists": "relationships"
+        }
+      },
+      "fix": "Include upstream transitive dependencies, not just the components you chose directly.",
+      "note": "FDA sets no minimum depth and no top-level floor. Do not apply the EU CRA's top-level-only reading here.",
+      "sourceDocument": "fda-premarket-2026-02",
+      "sourceLocation": "Section V.A.4, robust SBOM paragraph, and depth discussion"
+    },
+    {
+      "id": "FDA-JUST-001",
+      "title": "If SBOM information is missing, a justification is present",
+      "severity": "warning",
+      "severityJustification": "The guidance provides an explicit escape hatch, and it is one almost nobody uses. A submission with gaps and no justification looks like an oversight. The same submission with a written justification looks like a decision, and reviewers treat the two differently.",
+      "onEmptySelector": "fire",
+      "onEmptySelectorJustification": "The selector names a specific object the assertion inspects. When that object is absent the information the rule exists to check was not supplied at all, which is a stronger failure than supplying it badly. Reporting nothing would make a missing section indistinguishable from a satisfied one.",
+      "appliesTo": [
+        "cyclonedx",
+        "spdx"
+      ],
+      "selector": {
+        "cyclonedx": "$.metadata",
+        "spdx": "$"
+      },
+      "assert": {
+        "cyclonedx": {
+          "exists": "properties"
+        },
+        "spdx": {
+          "exists": "annotations"
+        }
+      },
+      "fix": "Where SBOM information cannot be provided, include a written justification for why it cannot be included in the premarket submission.",
+      "note": "Underused and cheap. Pair this with the CISA practice on explicitly identifying unknown information.",
+      "sourceDocument": "fda-premarket-2026-02",
+      "sourceLocation": "Section V.A.4(b): 'If a manufacturer is unable to provide the SBOM information to FDA, the manufacturer should provide a justification'"
+    },
+    {
+      "id": "FDA-USER-001",
+      "title": "The SBOM is in a form that can be provided to users continuously",
+      "severity": "info",
+      "severityJustification": "A labelling obligation rather than a submission one, and it reaches past the filing into the product's whole life. It is informational here because a static file cannot demonstrate a continuous process, but a submission that ignores it leaves a gap a reviewer may notice.",
+      "onEmptySelector": "fire",
+      "onEmptySelectorJustification": "The selector names a specific object the assertion inspects. When that object is absent the information the rule exists to check was not supplied at all, which is a stronger failure than supplying it badly. Reporting nothing would make a missing section indistinguishable from a satisfied one.",
+      "appliesTo": [
+        "cyclonedx",
+        "spdx"
+      ],
+      "selector": {
+        "cyclonedx": "$.metadata.component",
+        "spdx": "$"
+      },
+      "assert": {
+        "anyOf": [
+          {
+            "exists": "externalReferences"
+          },
+          {
+            "exists": "documentNamespace"
+          },
+          {
+            "exists": "externalDocumentRefs"
+          }
+        ]
+      },
+      "fix": "Provide or make SBOM information available to users continuously, in machine-readable form. If you use an online portal, keep the links current and accurate.",
+      "note": "PARTIAL CHECK. The continuity of the process cannot be seen from one file.",
+      "sourceDocument": "fda-premarket-2026-02",
+      "sourceLocation": "Section VI.A, labelling"
+    },
+    {
+      "id": "FDA-TRACE-001",
+      "title": "The SBOM can be traced to the threat model and risk assessment",
+      "severity": "info",
+      "severityJustification": "The guidance asks for traceability between the threat model, the risk assessment, the SBOM and testing, and separately for each architectural asset to trace to its SBOM component. Neither link can be verified from the SBOM alone, so this rule exists to put the requirement in front of the preparer rather than to test it.",
+      "onEmptySelector": "fire",
+      "onEmptySelectorJustification": "The selector names a specific object the assertion inspects. When that object is absent the information the rule exists to check was not supplied at all, which is a stronger failure than supplying it badly. Reporting nothing would make a missing section indistinguishable from a satisfied one.",
+      "appliesTo": [
+        "cyclonedx",
+        "spdx"
+      ],
+      "selector": {
+        "cyclonedx": "$.metadata",
+        "spdx": "$"
+      },
+      "assert": {
+        "cyclonedx": {
+          "exists": "properties"
+        },
+        "spdx": {
+          "exists": "documentNamespace"
+        }
+      },
+      "fix": "Carry a stable reference in the SBOM that the threat model and risk assessment can cite back to, so a reviewer can follow one artifact to the next.",
+      "note": "PARTIAL CHECK, and a signpost to a second product: cross-artifact traceability has no commercial tooling at all.",
+      "sourceDocument": "fda-premarket-2026-02",
+      "sourceLocation": "Sections V.A and V.B.2, traceability"
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "name": "@stratifypro/sync",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Scheduled refresh of the advisory mirror and end-of-support dataset.",
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "test": "node --test dist/**/*.test.js"
+  },
+  "dependencies": { "@stratifypro/mirror": "workspace:*", "@stratifypro/eos": "workspace:*" }
+}
