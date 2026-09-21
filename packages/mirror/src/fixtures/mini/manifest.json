@@ -1,5 +1,5 @@
 {
-  "$comment": "A small real subset of a full mirror, for offline tests. Rebuild with scripts/mirror-fixture.py --from .mirror. Not a mirror to check anything real against: it holds 11 packages.",
+  "$comment": "A small real subset of a full mirror, for offline tests. Rebuild with scripts/mirror-fixture.py --from .mirror. Not a mirror to check anything real against: it holds 12 packages.",
   "builtAt": "2026-09-21T23:13:20.947Z",
   "kev": {
     "catalogVersion": "2026.09.21",
@@ -29,7 +29,7 @@
       "name": "OSV npm",
       "sha256": "39909ce8a62707f8a325b401659ef8c8119531013023ce55c9d0c6c5359cfdce",
       "url": "https://osv-vulnerabilities.storage.googleapis.com/npm/all.zip",
-      "vulnerabilities": 158
+      "vulnerabilities": 159
     },
     {
       "ecosystems": [

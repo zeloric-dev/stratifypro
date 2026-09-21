@@ -187,15 +187,29 @@ export class Mirror {
     return f !== null && Object.prototype.hasOwnProperty.call(f.advisories, name);
   }
 
-  /** CISA Known Exploited Vulnerabilities, by CVE id. 1,717 entries, 1.7 MB. */
+  /**
+   * CISA Known Exploited Vulnerabilities, by CVE id. 1,717 entries, 1.7 MB.
+   *
+   * A MISSING FILE IS RECORDED, NOT SHRUGGED OFF. Returning an empty set
+   * quietly turns every `knownExploited` flag false, and that flag is the
+   * highest-signal field in the whole report: a reviewer escalates on a
+   * known-exploited CVE. Deleting kev.json used to produce a run where no
+   * source reported a problem and nothing was flagged as exploited, which is
+   * the report being wrong in the one place it is most read.
+   */
   kevIds(): Set<string> {
     if (this.#kev) return this.#kev;
     const path = join(this.dir, 'kev.json');
     const out = new Set<string>();
-    if (existsSync(path)) {
+    if (!existsSync(path)) {
+      this.#problems.set('kev', `${path} is not on disk, so no component can be marked known-exploited`);
+    } else {
       try {
         const d = JSON.parse(readFileSync(path, 'utf8')) as { vulnerabilities?: Array<{ cveID?: string }> };
         for (const v of d.vulnerabilities ?? []) if (v.cveID) out.add(v.cveID);
+        if (out.size === 0) {
+          this.#problems.set('kev', `${path} parsed but carries no CVE ids`);
+        }
       } catch (e) {
         this.#problems.set('kev', `${path} could not be read: ${(e as Error).message}`);
       }
@@ -212,7 +226,27 @@ export class Mirror {
    * would report the failure as healthy.
    */
   status(): SourceStatus[] {
-    return this.manifest.sources.map((s) => {
+    // Force the KEV load so its absence is reported rather than inferred from
+    // whether anything happened to ask for it during the run.
+    const kevCount = this.kevIds().size;
+    const kevProblem = this.#problems.get('kev');
+    const kev: SourceStatus[] = this.manifest.kev
+      ? [
+          {
+            name: 'CISA KEV',
+            present: kevProblem === undefined,
+            fetchedAt: this.manifest.kev.fetchedAt,
+            ecosystems: [],
+            vulnerabilities: kevCount,
+            maliciousPackageReports: 0,
+            ...(kevProblem ? { problem: kevProblem } : {}),
+          },
+        ]
+      : [];
+
+    return [
+      ...kev,
+      ...this.manifest.sources.map((s) => {
       const problem = s.ecosystems.map((e) => this.#problems.get(e)).find((p) => p !== undefined);
       return {
         name: s.name,
@@ -221,9 +255,10 @@ export class Mirror {
         ecosystems: s.ecosystems,
         vulnerabilities: s.vulnerabilities,
         maliciousPackageReports: s.maliciousPackageReports,
-        ...(problem ? { problem } : {}),
-      };
-    });
+          ...(problem ? { problem } : {}),
+        };
+      }),
+    ];
   }
 }
 

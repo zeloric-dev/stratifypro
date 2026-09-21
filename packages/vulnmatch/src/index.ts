@@ -80,30 +80,50 @@ function evaluate(advisory: Advisory, ecosystem: string, name: string, version: 
   for (const af of advisory.affected) {
     if (af.ecosystem !== ecosystem || af.name !== name) continue;
 
-    // An enumerated list is authoritative when present: OSV publishes it as
-    // the complete set of affected versions, so absence from it is a real
-    // negative rather than a failure to find.
+    let entryEvaluable = false;
+
+    // An enumerated list answers a hit outright. It does NOT answer a miss on
+    // its own, which is the correction below.
     if (af.versions && af.versions.length > 0) {
-      sawEvaluable = true;
+      entryEvaluable = true;
       if (af.versions.includes(version)) return { outcome: 'affected', method: 'enumerated-version' };
-      continue;
     }
 
+    // THE RANGES ARE CONSULTED EVEN WHEN A VERSION LIST EXISTS, and this is a
+    // fix rather than a preference.
+    //
+    // The first version of this function treated `versions` as authoritative
+    // and skipped the ranges whenever it was present. OSV's `versions` is not
+    // authoritative: it is a convenience list materialised from the ranges
+    // against the versions that were known when the advisory was last
+    // exported. A release published after that is inside the range and absent
+    // from the list.
+    //
+    // Measured on the real mirror: 508 affected-entries carry both, and on 85
+    // of them a semver range calls a version affected that the list omits. At
+    // 65 of those version points the whole component came back `clear`,
+    // go.opentelemetry.io/otel/baggage among them. That is the one thing this
+    // package exists to never do.
+    //
+    // The corpus tally did not move: 838 affected, 3,952 clear, 298 unknown
+    // before and after. None of the 21 corpus documents happens to pin a
+    // version in the gap. That is luck, it is not a defence, and it is exactly
+    // why the number to fix on was the one from the advisory data rather than
+    // the one from our own fixtures.
     if (af.ranges && af.ranges.length > 0) {
       for (const r of af.ranges) {
         const hit = affectedBy(version, r);
-        if (hit === null) sawIndeterminate = true;
-        else {
-          sawEvaluable = true;
-          if (hit) return { outcome: 'affected', method: 'semver-range' };
-        }
+        if (hit === null) continue; // this range abstains; another may not
+        entryEvaluable = true;
+        if (hit) return { outcome: 'affected', method: 'semver-range' };
       }
-      continue;
     }
 
-    // An affected entry with neither versions nor ranges names the package and
-    // says nothing about which versions. It cannot clear anything.
-    sawIndeterminate = true;
+    // Nothing in this entry could be compared: no version list, and no range
+    // in an ordering this implements. It names the package and says nothing
+    // about which versions, so it cannot clear anything.
+    if (entryEvaluable) sawEvaluable = true;
+    else sawIndeterminate = true;
   }
 
   if (sawIndeterminate && !sawEvaluable) return { outcome: 'indeterminate' };

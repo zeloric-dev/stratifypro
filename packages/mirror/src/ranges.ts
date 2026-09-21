@@ -96,6 +96,12 @@ export function affectedBy(version: string, range: Range): boolean | null {
   const evs = events(range);
   if (evs === null || evs.length === 0) return null;
 
+  // Every OSV range opens with an `introduced` event. One that does not is
+  // malformed, and the walk below would return a confident `false` for it:
+  // nothing ever opens the window, so nothing is ever affected. That reads in
+  // the report as "compared and clean" for an advisory this never understood.
+  if (!evs.some((e) => e.kind === 'introduced')) return null;
+
   const cmp = (a: Bound, b: Bound): number => {
     if (a === ZERO && b === ZERO) return 0;
     if (a === ZERO) return -1;

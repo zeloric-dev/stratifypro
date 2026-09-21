@@ -120,6 +120,76 @@ test('an exact version-list hit answers even where the ordering is not implement
   assert.ok(v.hits.every((h) => h.method === 'enumerated-version'));
 });
 
+test('REGRESSION: a range is consulted even when an enumerated list exists', () => {
+  // go.opentelemetry.io/otel/baggage carries both, and its semver range covers
+  // versions the list omits, because OSV materialises `versions` from the
+  // ranges against the releases known at export time. Treating the list as
+  // authoritative and skipping the range made this component come back CLEAR
+  // while the range said affected.
+  //
+  // Measured on the full mirror when this was found: 508 affected-entries
+  // carry both, 85 disagree, and 65 of those produced a false `clear`. Nothing
+  // in the suite caught it, because every test used a package where the two
+  // agreed.
+  const v = check(mirror, {
+    name: 'baggage',
+    version: '1.41.1',
+    purl: 'pkg:golang/go.opentelemetry.io/otel/baggage@v1.41.1',
+  });
+  assert.equal(v.status, 'affected', 'a version inside the range must not be reported clear');
+  if (v.status !== 'affected') return;
+  assert.ok(
+    v.hits.some((h) => h.method === 'semver-range'),
+    'the range, not the list, is what answers here',
+  );
+});
+
+test('an enumerated list still answers a hit outright', () => {
+  // The complement: the fix must not have turned the list into decoration.
+  const v = check(mirror, {
+    name: 'log4j-core',
+    version: '2.17.1',
+    purl: 'pkg:maven/org.apache.logging.log4j/log4j-core@2.17.1',
+  });
+  assert.equal(v.status, 'affected');
+  if (v.status !== 'affected') return;
+  assert.ok(v.hits.some((h) => h.method === 'enumerated-version'));
+});
+
+test('REGRESSION: a missing or unreadable KEV catalogue is reported, not shrugged off', () => {
+  // knownExploited is the highest-signal field in the report: a reviewer
+  // escalates on a known-exploited CVE. Deleting kev.json used to return an
+  // empty set, turn every flag false, and leave EVERY source reporting
+  // present=true. The report was wrong in the one place it is most read and
+  // nothing said so.
+  for (const mode of ['delete', 'corrupt'] as const) {
+    const dir = mkdtempSync(join(tmpdir(), 'mirror-'));
+    try {
+      cpSync(FIXTURE, dir, { recursive: true });
+      if (mode === 'delete') rmSync(join(dir, 'kev.json'));
+      else writeFileSync(join(dir, 'kev.json'), '{ not json');
+      const broken = openMirror(dir);
+      const result = run(broken, [
+        { name: 'guava', version: '19.0', purl: 'pkg:maven/com.google.guava/guava@19.0' },
+      ]);
+      const kev = result.sources.find((s) => s.name === 'CISA KEV');
+      assert.ok(kev, `no CISA KEV row in the source status (${mode})`);
+      assert.equal(kev.present, false, `a ${mode}d KEV catalogue must not report present`);
+      assert.ok(kev.problem, `a ${mode}d KEV catalogue must carry a problem`);
+    } finally {
+      rmSync(dir, { recursive: true, force: true });
+    }
+  }
+});
+
+test('an intact KEV catalogue reports present, with its count and capture date', () => {
+  const kev = run(mirror, []).sources.find((s) => s.name === 'CISA KEV');
+  assert.ok(kev);
+  assert.equal(kev.present, true);
+  assert.ok(kev.vulnerabilities > 0, 'an intact catalogue has entries');
+  assert.ok(kev.fetchedAt, 'and a capture date');
+});
+
 test('a Go package path is answered by its parent module, and says so', () => {
   // OSV files Go advisories against the module. 72 percent of the corpus's
   // golang purls carry no type qualifier, so the package-or-module question
