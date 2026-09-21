@@ -41,6 +41,14 @@ run "benchmark baselines reproduce" \
 
 run "structural claims hold (counts, severities, split, no leakage)" \
     python3 scripts/check-claims.py
+# Offline on purpose. The dataset is committed; --refresh is the only thing
+# that touches the network, and verify.sh must keep running on a machine that
+# has none. What this asserts is that every row states where it came from and
+# when, and that the coverage figure is the corpus rather than a number somebody
+# typed: it is the figure a reader is most likely to quote and the one it would
+# be most tempting to leave generous.
+run "the end-of-support dataset states its sources and its reach"     python3 scripts/eos-build.py --check
+
 run "coverage baseline regenerates from the corpus" \
     python3 scripts/coverage.py --check
 

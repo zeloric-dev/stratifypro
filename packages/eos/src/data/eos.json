@@ -1,0 +1,2578 @@
+{
+  "$comment": "End-of-support dates keyed by product, with the corpus coverage this source can reach. Rebuild with scripts/eos-build.py --refresh.",
+  "capturedAt": "2026-09-20",
+  "coverage": {
+    "componentInstances": 5088,
+    "componentInstancesWithData": 125,
+    "corpusFiles": 21,
+    "distinctNames": 2873,
+    "distinctNamesWithData": 58,
+    "method": "Generous slug matching: the bare name, its last path segment, and common prefix and suffix stripping. A narrower matcher would understate this figure."
+  },
+  "matches": {
+    "Docker.DotNet": "dotnet",
+    "Julia": "julia",
+    "System.Data.SQLite": "sqlite",
+    "System.Security.Cryptography.OpenSsl": "openssl",
+    "cloud.google.com/go": "go",
+    "debian": "debian",
+    "elasticsearch": "elasticsearch",
+    "elasticsearch-core": "elasticsearch",
+    "express": "express",
+    "font-awesome": "font-awesome",
+    "github.com/Azure/azure-pipeline-go": "go",
+    "github.com/Azure/azure-sdk-for-go": "go",
+    "github.com/Azure/azure-storage-blob-go": "go",
+    "github.com/CycloneDX/cyclonedx-go": "go",
+    "github.com/anchore/packageurl-go": "go",
+    "github.com/aws/aws-sdk-go": "go",
+    "github.com/bugsnag/bugsnag-go": "go",
+    "github.com/chai2010/gettext-go": "go",
+    "github.com/containerd/containerd": "containerd",
+    "github.com/fernet/fernet-go": "go",
+    "github.com/form3tech-oss/jwt-go": "go",
+    "github.com/google/cel-go": "go",
+    "github.com/json-iterator/go": "go",
+    "github.com/lucas-clemente/quic-go": "go",
+    "github.com/miscreant/miscreant.go": "go",
+    "github.com/nbutton23/zxcvbn-go": "go",
+    "github.com/opencontainers/image-spec/specs-go": "go",
+    "github.com/prometheus/client_golang/prometheus": "prometheus",
+    "github.com/prometheus/client_model/go": "go",
+    "github.com/tetafro/godot": "godot",
+    "github.com/xanzy/go-gitlab": "gitlab",
+    "github.com/yvasiyarov/newrelic_platform_go": "go",
+    "icons-angular": "angular",
+    "is-windows": "windows",
+    "jquery": "jquery",
+    "k8s.io/client-go": "go",
+    "log4j-core": "log4j",
+    "openssl": "openssl",
+    "oras.land/oras-go": "go",
+    "org.elasticsearch:elasticsearch": "elasticsearch",
+    "org.postgresql:postgresql": "postgresql",
+    "org.testcontainers:postgresql": "postgresql",
+    "packageurl-dotnet": "dotnet",
+    "perl": "perl",
+    "postgresql": "postgresql",
+    "rails": "rails",
+    "runtime.debian.8-x64.runtime.native.System.Security.Cryptography.OpenSsl": "openssl",
+    "runtime.fedora.23-x64.runtime.native.System.Security.Cryptography.OpenSsl": "openssl",
+    "runtime.fedora.24-x64.runtime.native.System.Security.Cryptography.OpenSsl": "openssl",
+    "runtime.native.System.Security.Cryptography.OpenSsl": "openssl",
+    "runtime.opensuse.13.2-x64.runtime.native.System.Security.Cryptography.OpenSsl": "openssl",
+    "runtime.opensuse.42.1-x64.runtime.native.System.Security.Cryptography.OpenSsl": "openssl",
+    "runtime.osx.10.10-x64.runtime.native.System.Security.Cryptography.OpenSsl": "openssl",
+    "runtime.rhel.7-x64.runtime.native.System.Security.Cryptography.OpenSsl": "openssl",
+    "runtime.ubuntu.14.04-x64.runtime.native.System.Security.Cryptography.OpenSsl": "openssl",
+    "runtime.ubuntu.16.04-x64.runtime.native.System.Security.Cryptography.OpenSsl": "openssl",
+    "runtime.ubuntu.16.10-x64.runtime.native.System.Security.Cryptography.OpenSsl": "openssl",
+    "util-linux": "linux"
+  },
+  "products": [
+    {
+      "capturedAt": "2026-09-20",
+      "cycles": [
+        {
+          "cycle": "22",
+          "eol": "2028-06-30",
+          "latest": "22.1.7",
+          "lts": false
+        },
+        {
+          "cycle": "21",
+          "eol": "2027-06-30",
+          "latest": "21.2.23",
+          "lts": false
+        },
+        {
+          "cycle": "20",
+          "eol": "2026-11-28",
+          "latest": "20.3.31",
+          "lts": false
+        },
+        {
+          "cycle": "19",
+          "eol": "2026-05-19",
+          "latest": "19.2.25",
+          "lts": false
+        },
+        {
+          "cycle": "18",
+          "eol": "2025-11-21",
+          "latest": "18.2.14",
+          "lts": false
+        },
+        {
+          "cycle": "17",
+          "eol": "2025-05-15",
+          "latest": "17.3.12",
+          "lts": false
+        },
+        {
+          "cycle": "16",
+          "eol": "2024-11-08",
+          "latest": "16.2.12",
+          "lts": false
+        },
+        {
+          "cycle": "15",
+          "eol": "2024-05-18",
+          "latest": "15.2.10",
+          "lts": false
+        },
+        {
+          "cycle": "14",
+          "eol": "2023-11-18",
+          "latest": "14.3.0",
+          "lts": false
+        },
+        {
+          "cycle": "13",
+          "eol": "2023-05-04",
+          "latest": "13.4.0",
+          "lts": false
+        },
+        {
+          "cycle": "12",
+          "eol": "2022-11-12",
+          "latest": "12.2.17",
+          "lts": false
+        },
+        {
+          "cycle": "11",
+          "eol": "2022-05-11",
+          "latest": "11.2.14",
+          "lts": false
+        },
+        {
+          "cycle": "10",
+          "eol": "2021-12-24",
+          "latest": "10.2.5",
+          "lts": false
+        },
+        {
+          "cycle": "9",
+          "eol": "2021-08-06",
+          "latest": "9.1.13",
+          "lts": false
+        }
+      ],
+      "product": "angular",
+      "source": "https://endoflife.date/api/angular.json",
+      "sourceLicence": "MIT",
+      "sourceName": "endoflife.date"
+    },
+    {
+      "capturedAt": "2026-09-20",
+      "cycles": [
+        {
+          "cycle": "2.4",
+          "eol": "2027-05-16",
+          "latest": "2.4.0",
+          "lts": false
+        },
+        {
+          "cycle": "2.3",
+          "eol": "2028-04-30",
+          "latest": "2.3.5",
+          "lts": true
+        },
+        {
+          "cycle": "2.2",
+          "eol": "2026-11-06",
+          "latest": "2.2.8",
+          "lts": false
+        },
+        {
+          "cycle": "2.1",
+          "eol": "2026-07-03",
+          "latest": "2.1.9",
+          "lts": false
+        },
+        {
+          "cycle": "2.0",
+          "eol": "2027-03-01",
+          "latest": "2.0.12",
+          "lts": true
+        },
+        {
+          "cycle": "1.7",
+          "eol": "2026-09-01",
+          "latest": "1.7.35",
+          "lts": true
+        },
+        {
+          "cycle": "1.6",
+          "eol": "2025-08-23",
+          "latest": "1.6.39",
+          "lts": true
+        },
+        {
+          "cycle": "1.5",
+          "eol": "2023-02-28",
+          "latest": "1.5.18",
+          "lts": false
+        },
+        {
+          "cycle": "1.4",
+          "eol": "2022-03-03",
+          "latest": "1.4.13",
+          "lts": false
+        },
+        {
+          "cycle": "1.3",
+          "eol": "2021-03-04",
+          "latest": "1.3.10",
+          "lts": false
+        },
+        {
+          "cycle": "1.2",
+          "eol": "2020-10-15",
+          "latest": "1.2.14",
+          "lts": false
+        },
+        {
+          "cycle": "1.1",
+          "eol": "2019-10-23",
+          "latest": "1.1.8",
+          "lts": false
+        },
+        {
+          "cycle": "1.0",
+          "eol": "2018-12-05",
+          "latest": "1.0.3",
+          "lts": false
+        }
+      ],
+      "product": "containerd",
+      "source": "https://endoflife.date/api/containerd.json",
+      "sourceLicence": "MIT",
+      "sourceName": "endoflife.date"
+    },
+    {
+      "capturedAt": "2026-09-20",
+      "cycles": [
+        {
+          "cycle": "13",
+          "eol": "2030-06-30",
+          "latest": "13.7",
+          "lts": false
+        },
+        {
+          "cycle": "12",
+          "eol": "2028-06-30",
+          "latest": "12.15",
+          "lts": false
+        },
+        {
+          "cycle": "11",
+          "eol": "2026-08-31",
+          "latest": "11.11",
+          "lts": false
+        },
+        {
+          "cycle": "10",
+          "eol": "2024-06-30",
+          "latest": "10.13",
+          "lts": false
+        },
+        {
+          "cycle": "9",
+          "eol": "2022-07-01",
+          "latest": "9.13",
+          "lts": false
+        },
+        {
+          "cycle": "8",
+          "eol": "2020-06-30",
+          "latest": "8.11",
+          "lts": false
+        },
+        {
+          "cycle": "7",
+          "eol": "2018-05-31",
+          "latest": "7.11",
+          "lts": false
+        },
+        {
+          "cycle": "6",
+          "eol": "2016-02-29",
+          "latest": "6.0.10",
+          "lts": false
+        },
+        {
+          "cycle": "5",
+          "eol": "2012-02-06",
+          "latest": "5.0.10",
+          "lts": false
+        },
+        {
+          "cycle": "4",
+          "eol": "2010-02-15",
+          "latest": "4.0r9",
+          "lts": false
+        },
+        {
+          "cycle": "3.1",
+          "eol": "2008-03-31",
+          "latest": "3.1r8",
+          "lts": false
+        },
+        {
+          "cycle": "3.0",
+          "eol": "2006-06-30",
+          "latest": "3.0r6",
+          "lts": false
+        },
+        {
+          "cycle": "2.2",
+          "eol": "2003-06-30",
+          "latest": "2.2r7",
+          "lts": false
+        },
+        {
+          "cycle": "2.1",
+          "eol": "2000-10-30",
+          "latest": "2.1r5",
+          "lts": false
+        },
+        {
+          "cycle": "2.0",
+          "eol": "1999-02-15",
+          "latest": "2.0r5",
+          "lts": false
+        },
+        {
+          "cycle": "1.3",
+          "eol": "1998-12-08",
+          "latest": "1.3.1 r.6",
+          "lts": false
+        },
+        {
+          "cycle": "1.2",
+          "eol": "1997-10-23",
+          "latest": "1.2",
+          "lts": false
+        },
+        {
+          "cycle": "1.1",
+          "eol": "1996-12-12",
+          "latest": "1.1",
+          "lts": false
+        }
+      ],
+      "product": "debian",
+      "source": "https://endoflife.date/api/debian.json",
+      "sourceLicence": "MIT",
+      "sourceName": "endoflife.date"
+    },
+    {
+      "capturedAt": "2026-09-20",
+      "cycles": [
+        {
+          "cycle": "10",
+          "eol": "2028-11-14",
+          "latest": "10.0.12",
+          "lts": true
+        },
+        {
+          "cycle": "9",
+          "eol": "2026-11-10",
+          "latest": "9.0.20",
+          "lts": false
+        },
+        {
+          "cycle": "8",
+          "eol": "2026-11-10",
+          "latest": "8.0.31",
+          "lts": true
+        },
+        {
+          "cycle": "7",
+          "eol": "2024-05-14",
+          "latest": "7.0.20",
+          "lts": false
+        },
+        {
+          "cycle": "6",
+          "eol": "2024-11-12",
+          "latest": "6.0.36",
+          "lts": true
+        },
+        {
+          "cycle": "5",
+          "eol": "2022-05-10",
+          "latest": "5.0.17",
+          "lts": false
+        },
+        {
+          "cycle": "3.1",
+          "eol": "2022-12-13",
+          "latest": "3.1.32",
+          "lts": true
+        },
+        {
+          "cycle": "3.0",
+          "eol": "2020-03-03",
+          "latest": "3.0.3",
+          "lts": false
+        },
+        {
+          "cycle": "2.2",
+          "eol": "2019-12-23",
+          "latest": "2.2.8",
+          "lts": false
+        },
+        {
+          "cycle": "2.1",
+          "eol": "2021-08-21",
+          "latest": "2.1.30",
+          "lts": true
+        },
+        {
+          "cycle": "2.0",
+          "eol": "2018-10-01",
+          "latest": "2.0.9",
+          "lts": false
+        },
+        {
+          "cycle": "1.1",
+          "eol": "2019-06-27",
+          "latest": "1.1.13",
+          "lts": false
+        },
+        {
+          "cycle": "1.0",
+          "eol": "2019-06-27",
+          "latest": "1.0.16",
+          "lts": false
+        }
+      ],
+      "product": "dotnet",
+      "source": "https://endoflife.date/api/dotnet.json",
+      "sourceLicence": "MIT",
+      "sourceName": "endoflife.date"
+    },
+    {
+      "capturedAt": "2026-09-20",
+      "cycles": [
+        {
+          "cycle": "9.5",
+          "eol": false,
+          "latest": "9.5.4",
+          "lts": false
+        },
+        {
+          "cycle": "9.4",
+          "eol": false,
+          "latest": "9.4.7",
+          "lts": false
+        },
+        {
+          "cycle": "9.3",
+          "eol": "2026-08-04",
+          "latest": "9.3.8",
+          "lts": false
+        },
+        {
+          "cycle": "9.2",
+          "eol": "2026-05-05",
+          "latest": "9.2.8",
+          "lts": false
+        },
+        {
+          "cycle": "9.1",
+          "eol": "2026-02-03",
+          "latest": "9.1.10",
+          "lts": false
+        },
+        {
+          "cycle": "8.19",
+          "eol": "2027-07-15",
+          "latest": "8.19.21",
+          "lts": false
+        },
+        {
+          "cycle": "8.18",
+          "eol": "2025-10-21",
+          "latest": "8.18.8",
+          "lts": false
+        },
+        {
+          "cycle": "9.0",
+          "eol": "2025-10-23",
+          "latest": "9.0.8",
+          "lts": false
+        },
+        {
+          "cycle": "8.17",
+          "eol": "2025-08-12",
+          "latest": "8.17.10",
+          "lts": false
+        },
+        {
+          "cycle": "8.16",
+          "eol": "2025-04-15",
+          "latest": "8.16.6",
+          "lts": false
+        },
+        {
+          "cycle": "7",
+          "eol": "2026-01-15",
+          "latest": "7.17.29",
+          "lts": false
+        },
+        {
+          "cycle": "6",
+          "eol": "2022-02-10",
+          "latest": "6.8.23",
+          "lts": false
+        }
+      ],
+      "product": "elasticsearch",
+      "source": "https://endoflife.date/api/elasticsearch.json",
+      "sourceLicence": "MIT",
+      "sourceName": "endoflife.date"
+    },
+    {
+      "capturedAt": "2026-09-20",
+      "cycles": [
+        {
+          "cycle": "5",
+          "eol": false,
+          "latest": "5.2.1",
+          "lts": false
+        },
+        {
+          "cycle": "4",
+          "eol": false,
+          "latest": "4.22.3",
+          "lts": false
+        },
+        {
+          "cycle": "3",
+          "eol": "2015-07-05",
+          "latest": "3.21.2",
+          "lts": false
+        },
+        {
+          "cycle": "2",
+          "eol": "2012-07-01",
+          "latest": "2.5.11",
+          "lts": false
+        },
+        {
+          "cycle": "1",
+          "eol": "2011-03-01",
+          "latest": "1.0.9",
+          "lts": false
+        }
+      ],
+      "product": "express",
+      "source": "https://endoflife.date/api/express.json",
+      "sourceLicence": "MIT",
+      "sourceName": "endoflife.date"
+    },
+    {
+      "capturedAt": "2026-09-20",
+      "cycles": [
+        {
+          "cycle": "7",
+          "eol": false,
+          "latest": "7.3.1",
+          "lts": false
+        },
+        {
+          "cycle": "6",
+          "eol": false,
+          "latest": "6.7.2",
+          "lts": true
+        },
+        {
+          "cycle": "5",
+          "eol": false,
+          "latest": "5.15.4",
+          "lts": true
+        },
+        {
+          "cycle": "4",
+          "eol": true,
+          "latest": "4.7.0",
+          "lts": false
+        },
+        {
+          "cycle": "3",
+          "eol": true,
+          "latest": "3.2.1",
+          "lts": false
+        },
+        {
+          "cycle": "2",
+          "eol": true,
+          "latest": "2.0.0",
+          "lts": false
+        },
+        {
+          "cycle": "1",
+          "eol": true,
+          "latest": "1.0.0",
+          "lts": false
+        }
+      ],
+      "product": "font-awesome",
+      "source": "https://endoflife.date/api/font-awesome.json",
+      "sourceLicence": "MIT",
+      "sourceName": "endoflife.date"
+    },
+    {
+      "capturedAt": "2026-09-20",
+      "cycles": [
+        {
+          "cycle": "19.4",
+          "eol": "2026-12-17",
+          "latest": "19.4.0",
+          "lts": false
+        },
+        {
+          "cycle": "19.3",
+          "eol": "2026-11-19",
+          "latest": "19.3.2",
+          "lts": false
+        },
+        {
+          "cycle": "19.2",
+          "eol": "2026-10-15",
+          "latest": "19.2.6",
+          "lts": false
+        },
+        {
+          "cycle": "19.1",
+          "eol": "2026-09-17",
+          "latest": "19.1.8",
+          "lts": false
+        },
+        {
+          "cycle": "19.0",
+          "eol": "2026-08-20",
+          "latest": "19.0.8",
+          "lts": false
+        },
+        {
+          "cycle": "18.11",
+          "eol": "2026-07-16",
+          "latest": "18.11.11",
+          "lts": false
+        },
+        {
+          "cycle": "18.10",
+          "eol": "2026-06-18",
+          "latest": "18.10.8",
+          "lts": false
+        },
+        {
+          "cycle": "18.9",
+          "eol": "2026-05-21",
+          "latest": "18.9.8",
+          "lts": false
+        },
+        {
+          "cycle": "18.8",
+          "eol": "2026-04-16",
+          "latest": "18.8.11",
+          "lts": false
+        },
+        {
+          "cycle": "18.7",
+          "eol": "2026-03-19",
+          "latest": "18.7.7",
+          "lts": false
+        },
+        {
+          "cycle": "18.6",
+          "eol": "2026-02-19",
+          "latest": "18.6.8",
+          "lts": false
+        },
+        {
+          "cycle": "18.5",
+          "eol": "2026-01-15",
+          "latest": "18.5.7",
+          "lts": false
+        },
+        {
+          "cycle": "18.4",
+          "eol": "2025-12-18",
+          "latest": "18.4.6",
+          "lts": false
+        },
+        {
+          "cycle": "18.3",
+          "eol": "2025-11-20",
+          "latest": "18.3.6",
+          "lts": false
+        },
+        {
+          "cycle": "18.2",
+          "eol": "2025-10-16",
+          "latest": "18.2.8",
+          "lts": false
+        },
+        {
+          "cycle": "18.1",
+          "eol": "2025-09-18",
+          "latest": "18.1.6",
+          "lts": false
+        },
+        {
+          "cycle": "18.0",
+          "eol": "2025-08-21",
+          "latest": "18.0.6",
+          "lts": false
+        },
+        {
+          "cycle": "17.11",
+          "eol": "2025-07-17",
+          "latest": "17.11.7",
+          "lts": false
+        },
+        {
+          "cycle": "17.10",
+          "eol": "2025-06-19",
+          "latest": "17.10.8",
+          "lts": false
+        },
+        {
+          "cycle": "17.9",
+          "eol": "2025-05-15",
+          "latest": "17.9.8",
+          "lts": false
+        },
+        {
+          "cycle": "17.8",
+          "eol": "2025-04-17",
+          "latest": "17.8.7",
+          "lts": false
+        },
+        {
+          "cycle": "17.7",
+          "eol": "2025-03-20",
+          "latest": "17.7.7",
+          "lts": false
+        },
+        {
+          "cycle": "17.6",
+          "eol": "2025-02-20",
+          "latest": "17.6.5",
+          "lts": false
+        },
+        {
+          "cycle": "17.5",
+          "eol": "2025-01-16",
+          "latest": "17.5.5",
+          "lts": false
+        },
+        {
+          "cycle": "17.4",
+          "eol": "2024-12-19",
+          "latest": "17.4.6",
+          "lts": false
+        },
+        {
+          "cycle": "17.3",
+          "eol": "2024-11-21",
+          "latest": "17.3.7",
+          "lts": false
+        },
+        {
+          "cycle": "17.2",
+          "eol": "2024-10-17",
+          "latest": "17.2.9",
+          "lts": false
+        },
+        {
+          "cycle": "17.1",
+          "eol": "2024-09-19",
+          "latest": "17.1.8",
+          "lts": false
+        },
+        {
+          "cycle": "17.0",
+          "eol": "2024-08-15",
+          "latest": "17.0.8",
+          "lts": false
+        },
+        {
+          "cycle": "16.11",
+          "eol": "2024-07-18",
+          "latest": "16.11.10",
+          "lts": false
+        },
+        {
+          "cycle": "16.10",
+          "eol": "2024-06-20",
+          "latest": "16.10.10",
+          "lts": false
+        },
+        {
+          "cycle": "16.9",
+          "eol": "2024-05-16",
+          "latest": "16.9.11",
+          "lts": false
+        },
+        {
+          "cycle": "16.8",
+          "eol": "2024-04-18",
+          "latest": "16.8.10",
+          "lts": false
+        },
+        {
+          "cycle": "16.7",
+          "eol": "2024-03-21",
+          "latest": "16.7.10",
+          "lts": false
+        },
+        {
+          "cycle": "16.6",
+          "eol": "2024-02-15",
+          "latest": "16.6.10",
+          "lts": false
+        },
+        {
+          "cycle": "16.5",
+          "eol": "2024-01-18",
+          "latest": "16.5.10",
+          "lts": false
+        },
+        {
+          "cycle": "16.4",
+          "eol": "2023-12-21",
+          "latest": "16.4.7",
+          "lts": false
+        },
+        {
+          "cycle": "16.3",
+          "eol": "2023-11-16",
+          "latest": "16.3.9",
+          "lts": false
+        },
+        {
+          "cycle": "16.2",
+          "eol": "2023-10-22",
+          "latest": "16.2.11",
+          "lts": false
+        },
+        {
+          "cycle": "16.1",
+          "eol": "2023-09-22",
+          "latest": "16.1.8",
+          "lts": false
+        },
+        {
+          "cycle": "16.0",
+          "eol": "2023-08-22",
+          "latest": "16.0.10",
+          "lts": false
+        },
+        {
+          "cycle": "15.11",
+          "eol": "2023-07-22",
+          "latest": "15.11.13",
+          "lts": false
+        },
+        {
+          "cycle": "15.10",
+          "eol": "2023-06-22",
+          "latest": "15.10.8",
+          "lts": false
+        },
+        {
+          "cycle": "15.9",
+          "eol": "2023-05-22",
+          "latest": "15.9.8",
+          "lts": false
+        },
+        {
+          "cycle": "15.8",
+          "eol": "2023-04-22",
+          "latest": "15.8.6",
+          "lts": false
+        },
+        {
+          "cycle": "15.7",
+          "eol": "2023-03-22",
+          "latest": "15.7.9",
+          "lts": false
+        },
+        {
+          "cycle": "15.6",
+          "eol": "2023-02-22",
+          "latest": "15.6.8",
+          "lts": false
+        },
+        {
+          "cycle": "15.5",
+          "eol": "2023-01-22",
+          "latest": "15.5.9",
+          "lts": false
+        },
+        {
+          "cycle": "15.4",
+          "eol": "2022-12-22",
+          "latest": "15.4.6",
+          "lts": false
+        },
+        {
+          "cycle": "15.3",
+          "eol": "2022-11-22",
+          "latest": "15.3.5",
+          "lts": false
+        },
+        {
+          "cycle": "15.2",
+          "eol": "2022-10-22",
+          "latest": "15.2.5",
+          "lts": false
+        },
+        {
+          "cycle": "15.1",
+          "eol": "2022-09-22",
+          "latest": "15.1.6",
+          "lts": false
+        },
+        {
+          "cycle": "15.0",
+          "eol": "2022-08-22",
+          "latest": "15.0.5",
+          "lts": false
+        },
+        {
+          "cycle": "14.10",
+          "eol": "2022-07-22",
+          "latest": "14.10.5",
+          "lts": false
+        },
+        {
+          "cycle": "14.9",
+          "eol": "2022-06-22",
+          "latest": "14.9.5",
+          "lts": false
+        },
+        {
+          "cycle": "14.8",
+          "eol": "2022-05-22",
+          "latest": "14.8.6",
+          "lts": false
+        },
+        {
+          "cycle": "14.7",
+          "eol": "2022-04-22",
+          "latest": "14.7.7",
+          "lts": false
+        },
+        {
+          "cycle": "14.6",
+          "eol": "2022-03-22",
+          "latest": "14.6.7",
+          "lts": false
+        },
+        {
+          "cycle": "14.5",
+          "eol": "2022-02-22",
+          "latest": "14.5.4",
+          "lts": false
+        },
+        {
+          "cycle": "14.4",
+          "eol": "2022-01-22",
+          "latest": "14.4.5",
+          "lts": false
+        },
+        {
+          "cycle": "14.3",
+          "eol": "2021-12-22",
+          "latest": "14.3.6",
+          "lts": false
+        },
+        {
+          "cycle": "14.2",
+          "eol": "2021-11-22",
+          "latest": "14.2.7",
+          "lts": false
+        },
+        {
+          "cycle": "14.1",
+          "eol": "2021-10-22",
+          "latest": "14.1.8",
+          "lts": false
+        },
+        {
+          "cycle": "14.0",
+          "eol": "2021-09-22",
+          "latest": "14.0.12",
+          "lts": false
+        },
+        {
+          "cycle": "13.12",
+          "eol": "2021-08-22",
+          "latest": "13.12.15",
+          "lts": false
+        },
+        {
+          "cycle": "13.11",
+          "eol": "2021-07-22",
+          "latest": "13.11.7",
+          "lts": false
+        },
+        {
+          "cycle": "13.10",
+          "eol": "2021-06-22",
+          "latest": "13.10.5",
+          "lts": false
+        }
+      ],
+      "product": "gitlab",
+      "source": "https://endoflife.date/api/gitlab.json",
+      "sourceLicence": "MIT",
+      "sourceName": "endoflife.date"
+    },
+    {
+      "capturedAt": "2026-09-20",
+      "cycles": [
+        {
+          "cycle": "1.27",
+          "eol": false,
+          "latest": "1.27.1",
+          "lts": false
+        },
+        {
+          "cycle": "1.26",
+          "eol": false,
+          "latest": "1.26.8",
+          "lts": false
+        },
+        {
+          "cycle": "1.25",
+          "eol": "2026-08-19",
+          "latest": "1.25.14",
+          "lts": false
+        },
+        {
+          "cycle": "1.24",
+          "eol": "2026-02-10",
+          "latest": "1.24.13",
+          "lts": false
+        },
+        {
+          "cycle": "1.23",
+          "eol": "2025-08-12",
+          "latest": "1.23.12",
+          "lts": false
+        },
+        {
+          "cycle": "1.22",
+          "eol": "2025-02-11",
+          "latest": "1.22.12",
+          "lts": false
+        },
+        {
+          "cycle": "1.21",
+          "eol": "2024-08-13",
+          "latest": "1.21.13",
+          "lts": false
+        },
+        {
+          "cycle": "1.20",
+          "eol": "2024-02-06",
+          "latest": "1.20.14",
+          "lts": false
+        },
+        {
+          "cycle": "1.19",
+          "eol": "2023-09-06",
+          "latest": "1.19.13",
+          "lts": false
+        },
+        {
+          "cycle": "1.18",
+          "eol": "2023-02-01",
+          "latest": "1.18.10",
+          "lts": false
+        },
+        {
+          "cycle": "1.17",
+          "eol": "2022-08-02",
+          "latest": "1.17.13",
+          "lts": false
+        },
+        {
+          "cycle": "1.16",
+          "eol": "2022-03-15",
+          "latest": "1.16.15",
+          "lts": false
+        },
+        {
+          "cycle": "1.15",
+          "eol": "2021-08-16",
+          "latest": "1.15.15",
+          "lts": false
+        },
+        {
+          "cycle": "1.14",
+          "eol": "2021-02-16",
+          "latest": "1.14.15",
+          "lts": false
+        },
+        {
+          "cycle": "1.13",
+          "eol": "2020-08-11",
+          "latest": "1.13.15",
+          "lts": false
+        },
+        {
+          "cycle": "1.12",
+          "eol": "2020-02-25",
+          "latest": "1.12.17",
+          "lts": false
+        },
+        {
+          "cycle": "1.11",
+          "eol": "2019-09-03",
+          "latest": "1.11.13",
+          "lts": false
+        },
+        {
+          "cycle": "1.10",
+          "eol": "2019-02-25",
+          "latest": "1.10.8",
+          "lts": false
+        }
+      ],
+      "product": "go",
+      "source": "https://endoflife.date/api/go.json",
+      "sourceLicence": "MIT",
+      "sourceName": "endoflife.date"
+    },
+    {
+      "capturedAt": "2026-09-20",
+      "cycles": [
+        {
+          "cycle": "4.7",
+          "eol": false,
+          "latest": "4.7.2",
+          "lts": false
+        },
+        {
+          "cycle": "4.6",
+          "eol": false,
+          "latest": "4.6.3",
+          "lts": false
+        },
+        {
+          "cycle": "4.5",
+          "eol": false,
+          "latest": "4.5.2",
+          "lts": false
+        },
+        {
+          "cycle": "4.4",
+          "eol": "2026-03-26",
+          "latest": "4.4.1",
+          "lts": false
+        },
+        {
+          "cycle": "3.6",
+          "eol": false,
+          "latest": "3.6.3",
+          "lts": true
+        },
+        {
+          "cycle": "4.3",
+          "eol": "2025-10-23",
+          "latest": "4.3",
+          "lts": false
+        },
+        {
+          "cycle": "4.2",
+          "eol": "2025-10-09",
+          "latest": "4.2.2",
+          "lts": false
+        },
+        {
+          "cycle": "4.1",
+          "eol": "2025-03-03",
+          "latest": "4.1.4",
+          "lts": false
+        },
+        {
+          "cycle": "4.0",
+          "eol": "2023-11-29",
+          "latest": "4.0.4",
+          "lts": false
+        },
+        {
+          "cycle": "3.5",
+          "eol": "2025-10-23",
+          "latest": "3.5.3",
+          "lts": true
+        },
+        {
+          "cycle": "3.4",
+          "eol": "2022-08-05",
+          "latest": "3.4.5",
+          "lts": false
+        },
+        {
+          "cycle": "3.3",
+          "eol": "2021-11-05",
+          "latest": "3.3.4",
+          "lts": false
+        },
+        {
+          "cycle": "3.2",
+          "eol": "2021-04-21",
+          "latest": "3.2.3",
+          "lts": false
+        },
+        {
+          "cycle": "3.1",
+          "eol": "2020-01-29",
+          "latest": "3.1.2",
+          "lts": false
+        },
+        {
+          "cycle": "3.0",
+          "eol": true,
+          "latest": "3.0.6",
+          "lts": false
+        },
+        {
+          "cycle": "2.1",
+          "eol": true,
+          "latest": "2.1.6",
+          "lts": true
+        },
+        {
+          "cycle": "2.0",
+          "eol": true,
+          "latest": "2.0.4.1",
+          "lts": false
+        },
+        {
+          "cycle": "1.0",
+          "eol": true,
+          "latest": "1.0",
+          "lts": false
+        }
+      ],
+      "product": "godot",
+      "source": "https://endoflife.date/api/godot.json",
+      "sourceLicence": "MIT",
+      "sourceName": "endoflife.date"
+    },
+    {
+      "capturedAt": "2026-09-20",
+      "cycles": [
+        {
+          "cycle": "4",
+          "eol": false,
+          "latest": "4.0.0",
+          "lts": false
+        },
+        {
+          "cycle": "3",
+          "eol": false,
+          "latest": "3.7.1",
+          "lts": false
+        },
+        {
+          "cycle": "2",
+          "eol": true,
+          "latest": "2.2.4",
+          "lts": false
+        },
+        {
+          "cycle": "1",
+          "eol": true,
+          "latest": "1.12.4",
+          "lts": false
+        }
+      ],
+      "product": "jquery",
+      "source": "https://endoflife.date/api/jquery.json",
+      "sourceLicence": "MIT",
+      "sourceName": "endoflife.date"
+    },
+    {
+      "capturedAt": "2026-09-20",
+      "cycles": [
+        {
+          "cycle": "1.13",
+          "eol": false,
+          "latest": "1.13.0",
+          "lts": false
+        },
+        {
+          "cycle": "1.12",
+          "eol": "2026-09-10",
+          "latest": "1.12.7",
+          "lts": false
+        },
+        {
+          "cycle": "1.11",
+          "eol": "2025-10-08",
+          "latest": "1.11.9",
+          "lts": false
+        },
+        {
+          "cycle": "1.10",
+          "eol": false,
+          "latest": "1.10.12",
+          "lts": true
+        },
+        {
+          "cycle": "1.6",
+          "eol": "2024-10-08",
+          "latest": "1.6.7",
+          "lts": true
+        },
+        {
+          "cycle": "1.0",
+          "eol": "2021-12-01",
+          "latest": "1.0.5",
+          "lts": true
+        }
+      ],
+      "product": "julia",
+      "source": "https://endoflife.date/api/julia.json",
+      "sourceLicence": "MIT",
+      "sourceName": "endoflife.date"
+    },
+    {
+      "capturedAt": "2026-09-20",
+      "cycles": [
+        {
+          "cycle": "7.2",
+          "eol": false,
+          "latest": "7.2.6",
+          "lts": false
+        },
+        {
+          "cycle": "7.1",
+          "eol": "2026-09-02",
+          "latest": "7.1.13",
+          "lts": false
+        },
+        {
+          "cycle": "7.0",
+          "eol": "2026-06-27",
+          "latest": "7.0.14",
+          "lts": false
+        },
+        {
+          "cycle": "6.19",
+          "eol": "2026-04-22",
+          "latest": "6.19.14",
+          "lts": false
+        },
+        {
+          "cycle": "6.18",
+          "eol": "2028-12-31",
+          "latest": "6.18.52",
+          "lts": true
+        },
+        {
+          "cycle": "6.17",
+          "eol": "2025-12-18",
+          "latest": "6.17.13",
+          "lts": false
+        },
+        {
+          "cycle": "6.16",
+          "eol": "2025-10-12",
+          "latest": "6.16.12",
+          "lts": false
+        },
+        {
+          "cycle": "6.15",
+          "eol": "2025-08-20",
+          "latest": "6.15.11",
+          "lts": false
+        },
+        {
+          "cycle": "6.14",
+          "eol": "2025-06-10",
+          "latest": "6.14.11",
+          "lts": false
+        },
+        {
+          "cycle": "6.13",
+          "eol": "2025-04-20",
+          "latest": "6.13.12",
+          "lts": false
+        },
+        {
+          "cycle": "6.12",
+          "eol": "2028-12-31",
+          "latest": "6.12.110",
+          "lts": true
+        },
+        {
+          "cycle": "6.11",
+          "eol": "2024-12-05",
+          "latest": "6.11.11",
+          "lts": false
+        },
+        {
+          "cycle": "6.10",
+          "eol": "2024-10-10",
+          "latest": "6.10.14",
+          "lts": false
+        },
+        {
+          "cycle": "6.9",
+          "eol": "2024-07-27",
+          "latest": "6.9.12",
+          "lts": false
+        },
+        {
+          "cycle": "6.8",
+          "eol": "2024-05-30",
+          "latest": "6.8.12",
+          "lts": false
+        },
+        {
+          "cycle": "6.7",
+          "eol": "2024-04-03",
+          "latest": "6.7.12",
+          "lts": false
+        },
+        {
+          "cycle": "6.6",
+          "eol": "2027-12-31",
+          "latest": "6.6.157",
+          "lts": true
+        },
+        {
+          "cycle": "6.5",
+          "eol": "2023-11-28",
+          "latest": "6.5.13",
+          "lts": false
+        },
+        {
+          "cycle": "6.4",
+          "eol": "2023-09-13",
+          "latest": "6.4.16",
+          "lts": false
+        },
+        {
+          "cycle": "6.3",
+          "eol": "2023-07-11",
+          "latest": "6.3.13",
+          "lts": false
+        },
+        {
+          "cycle": "6.2",
+          "eol": "2023-05-17",
+          "latest": "6.2.16",
+          "lts": false
+        },
+        {
+          "cycle": "6.1",
+          "eol": "2027-12-31",
+          "latest": "6.1.188",
+          "lts": true
+        },
+        {
+          "cycle": "6.0",
+          "eol": "2023-01-12",
+          "latest": "6.0.19",
+          "lts": false
+        },
+        {
+          "cycle": "5.19",
+          "eol": "2022-10-24",
+          "latest": "5.19.17",
+          "lts": false
+        },
+        {
+          "cycle": "5.18",
+          "eol": "2022-08-21",
+          "latest": "5.18.19",
+          "lts": false
+        },
+        {
+          "cycle": "5.17",
+          "eol": "2022-06-14",
+          "latest": "5.17.15",
+          "lts": false
+        },
+        {
+          "cycle": "5.16",
+          "eol": "2022-04-13",
+          "latest": "5.16.20",
+          "lts": false
+        },
+        {
+          "cycle": "5.15",
+          "eol": "2026-12-31",
+          "latest": "5.15.221",
+          "lts": true
+        },
+        {
+          "cycle": "5.14",
+          "eol": "2021-11-21",
+          "latest": "5.14.21",
+          "lts": false
+        },
+        {
+          "cycle": "5.13",
+          "eol": "2021-09-18",
+          "latest": "5.13.19",
+          "lts": false
+        },
+        {
+          "cycle": "5.12",
+          "eol": "2021-07-20",
+          "latest": "5.12.19",
+          "lts": false
+        },
+        {
+          "cycle": "5.11",
+          "eol": "2021-05-19",
+          "latest": "5.11.22",
+          "lts": false
+        },
+        {
+          "cycle": "5.10",
+          "eol": "2026-12-31",
+          "latest": "5.10.270",
+          "lts": true
+        },
+        {
+          "cycle": "5.4",
+          "eol": "2025-12-03",
+          "latest": "5.4.302",
+          "lts": true
+        },
+        {
+          "cycle": "4.19",
+          "eol": "2024-12-05",
+          "latest": "4.19.325",
+          "lts": true
+        },
+        {
+          "cycle": "4.14",
+          "eol": "2024-01-10",
+          "latest": "4.14.336",
+          "lts": true
+        },
+        {
+          "cycle": "4.9",
+          "eol": "2023-01-07",
+          "latest": "4.9.337",
+          "lts": true
+        }
+      ],
+      "product": "linux",
+      "source": "https://endoflife.date/api/linux.json",
+      "sourceLicence": "MIT",
+      "sourceName": "endoflife.date"
+    },
+    {
+      "capturedAt": "2026-09-20",
+      "cycles": [
+        {
+          "cycle": "2",
+          "eol": false,
+          "latest": "2.26.1",
+          "lts": false
+        },
+        {
+          "cycle": "2.12",
+          "eol": "2021-12-14",
+          "latest": "2.12.4",
+          "lts": false
+        },
+        {
+          "cycle": "2.3",
+          "eol": "2015-09-20",
+          "latest": "2.3.2",
+          "lts": false
+        },
+        {
+          "cycle": "1",
+          "eol": "2015-10-15",
+          "latest": "1.2.17",
+          "lts": false
+        }
+      ],
+      "product": "log4j",
+      "source": "https://endoflife.date/api/log4j.json",
+      "sourceLicence": "MIT",
+      "sourceName": "endoflife.date"
+    },
+    {
+      "capturedAt": "2026-09-20",
+      "cycles": [
+        {
+          "cycle": "4.0",
+          "eol": "2027-05-14",
+          "latest": "4.0.2",
+          "lts": false
+        },
+        {
+          "cycle": "3.6",
+          "eol": "2026-11-01",
+          "latest": "3.6.4",
+          "lts": false
+        },
+        {
+          "cycle": "3.5",
+          "eol": "2030-04-08",
+          "latest": "3.5.8",
+          "lts": true
+        },
+        {
+          "cycle": "3.4",
+          "eol": "2026-10-22",
+          "latest": "3.4.7",
+          "lts": false
+        },
+        {
+          "cycle": "3.3",
+          "eol": "2026-04-09",
+          "latest": "3.3.7",
+          "lts": false
+        },
+        {
+          "cycle": "3.2",
+          "eol": "2025-11-23",
+          "latest": "3.2.6",
+          "lts": false
+        },
+        {
+          "cycle": "3.1",
+          "eol": "2025-03-14",
+          "latest": "3.1.8",
+          "lts": false
+        },
+        {
+          "cycle": "3.0",
+          "eol": "2026-09-07",
+          "latest": "3.0.22",
+          "lts": true
+        },
+        {
+          "cycle": "1.1.1",
+          "eol": "2023-09-11",
+          "latest": "1.1.1w",
+          "lts": true
+        },
+        {
+          "cycle": "1.1.0",
+          "eol": "2019-09-11",
+          "latest": "1.1.0l",
+          "lts": false
+        },
+        {
+          "cycle": "1.0.2",
+          "eol": "2019-12-31",
+          "latest": "1.0.2u",
+          "lts": true
+        },
+        {
+          "cycle": "1.0.1",
+          "eol": "2016-12-31",
+          "latest": "1.0.1u",
+          "lts": false
+        },
+        {
+          "cycle": "1.0.0",
+          "eol": "2015-12-31",
+          "latest": "1.0.0t",
+          "lts": false
+        },
+        {
+          "cycle": "0.9.8",
+          "eol": "2015-12-31",
+          "latest": "0.9.8zh",
+          "lts": false
+        }
+      ],
+      "product": "openssl",
+      "source": "https://endoflife.date/api/openssl.json",
+      "sourceLicence": "MIT",
+      "sourceName": "endoflife.date"
+    },
+    {
+      "capturedAt": "2026-09-20",
+      "cycles": [
+        {
+          "cycle": "5.44",
+          "eol": "2029-07-15",
+          "latest": "5.44.0",
+          "lts": false
+        },
+        {
+          "cycle": "5.42",
+          "eol": "2028-07-03",
+          "latest": "5.42.3",
+          "lts": false
+        },
+        {
+          "cycle": "5.40",
+          "eol": "2027-06-09",
+          "latest": "5.40.5",
+          "lts": false
+        },
+        {
+          "cycle": "5.38",
+          "eol": "2026-07-02",
+          "latest": "5.38.5",
+          "lts": false
+        },
+        {
+          "cycle": "5.36",
+          "eol": "2025-05-27",
+          "latest": "5.36.3",
+          "lts": false
+        },
+        {
+          "cycle": "5.34",
+          "eol": "2024-05-20",
+          "latest": "5.34.3",
+          "lts": false
+        },
+        {
+          "cycle": "5.32",
+          "eol": "2023-06-20",
+          "latest": "5.32.1",
+          "lts": false
+        },
+        {
+          "cycle": "5.30",
+          "eol": "2022-05-22",
+          "latest": "5.30.3",
+          "lts": false
+        },
+        {
+          "cycle": "5.28",
+          "eol": "2021-06-23",
+          "latest": "5.28.3",
+          "lts": false
+        },
+        {
+          "cycle": "5.26",
+          "eol": "2020-05-30",
+          "latest": "5.26.3",
+          "lts": false
+        }
+      ],
+      "product": "perl",
+      "source": "https://endoflife.date/api/perl.json",
+      "sourceLicence": "MIT",
+      "sourceName": "endoflife.date"
+    },
+    {
+      "capturedAt": "2026-09-20",
+      "cycles": [
+        {
+          "cycle": "18",
+          "eol": "2030-11-14",
+          "latest": "18.6",
+          "lts": false
+        },
+        {
+          "cycle": "17",
+          "eol": "2029-11-08",
+          "latest": "17.11",
+          "lts": false
+        },
+        {
+          "cycle": "16",
+          "eol": "2028-11-09",
+          "latest": "16.15",
+          "lts": false
+        },
+        {
+          "cycle": "15",
+          "eol": "2027-11-11",
+          "latest": "15.19",
+          "lts": false
+        },
+        {
+          "cycle": "14",
+          "eol": "2026-11-12",
+          "latest": "14.24",
+          "lts": false
+        },
+        {
+          "cycle": "13",
+          "eol": "2025-11-13",
+          "latest": "13.23",
+          "lts": false
+        },
+        {
+          "cycle": "12",
+          "eol": "2024-11-21",
+          "latest": "12.22",
+          "lts": false
+        },
+        {
+          "cycle": "11",
+          "eol": "2023-11-09",
+          "latest": "11.22",
+          "lts": false
+        },
+        {
+          "cycle": "10",
+          "eol": "2022-11-10",
+          "latest": "10.23",
+          "lts": false
+        },
+        {
+          "cycle": "9.6",
+          "eol": "2021-11-11",
+          "latest": "9.6.24",
+          "lts": false
+        },
+        {
+          "cycle": "9.5",
+          "eol": "2021-02-11",
+          "latest": "9.5.25",
+          "lts": false
+        },
+        {
+          "cycle": "9.4",
+          "eol": "2020-02-13",
+          "latest": "9.4.26",
+          "lts": false
+        },
+        {
+          "cycle": "9.3",
+          "eol": "2018-11-08",
+          "latest": "9.3.25",
+          "lts": false
+        },
+        {
+          "cycle": "9.2",
+          "eol": "2017-11-09",
+          "latest": "9.2.24",
+          "lts": false
+        },
+        {
+          "cycle": "9.1",
+          "eol": "2016-10-27",
+          "latest": "9.1.24",
+          "lts": false
+        },
+        {
+          "cycle": "9.0",
+          "eol": "2015-10-08",
+          "latest": "9.0.23",
+          "lts": false
+        },
+        {
+          "cycle": "8.4",
+          "eol": "2014-07-24",
+          "latest": "8.4.22",
+          "lts": false
+        },
+        {
+          "cycle": "8.3",
+          "eol": "2013-02-07",
+          "latest": "8.3.23",
+          "lts": false
+        },
+        {
+          "cycle": "8.2",
+          "eol": "2011-12-05",
+          "latest": "8.2.23",
+          "lts": false
+        },
+        {
+          "cycle": "8.1",
+          "eol": "2010-11-08",
+          "latest": "8.1.23",
+          "lts": false
+        },
+        {
+          "cycle": "8.0",
+          "eol": "2010-10-01",
+          "latest": "8.0.26",
+          "lts": false
+        },
+        {
+          "cycle": "7.4",
+          "eol": "2010-10-01",
+          "latest": "7.4.30",
+          "lts": false
+        },
+        {
+          "cycle": "7.3",
+          "eol": "2007-11-27",
+          "latest": "7.3.21",
+          "lts": false
+        },
+        {
+          "cycle": "7.2",
+          "eol": "2007-02-04",
+          "latest": "7.2.8",
+          "lts": false
+        },
+        {
+          "cycle": "7.1",
+          "eol": "2006-04-13",
+          "latest": "7.1.3",
+          "lts": false
+        },
+        {
+          "cycle": "7.0",
+          "eol": "2005-05-08",
+          "latest": "7.0.3",
+          "lts": false
+        },
+        {
+          "cycle": "6.5",
+          "eol": "2004-06-09",
+          "latest": "6.5.3",
+          "lts": false
+        },
+        {
+          "cycle": "6.4",
+          "eol": "2003-10-30",
+          "latest": "6.4.2",
+          "lts": false
+        },
+        {
+          "cycle": "6.3",
+          "eol": "2003-03-01",
+          "latest": "6.3.2",
+          "lts": false
+        }
+      ],
+      "product": "postgresql",
+      "source": "https://endoflife.date/api/postgresql.json",
+      "sourceLicence": "MIT",
+      "sourceName": "endoflife.date"
+    },
+    {
+      "capturedAt": "2026-09-20",
+      "cycles": [
+        {
+          "cycle": "3.14",
+          "eol": "2026-09-30",
+          "latest": "3.14.0",
+          "lts": false
+        },
+        {
+          "cycle": "3.13",
+          "eol": "2027-07-31",
+          "latest": "3.13.3",
+          "lts": true
+        },
+        {
+          "cycle": "3.12",
+          "eol": "2026-07-09",
+          "latest": "3.12.0",
+          "lts": false
+        },
+        {
+          "cycle": "3.11",
+          "eol": "2026-05-14",
+          "latest": "3.11.3",
+          "lts": false
+        },
+        {
+          "cycle": "3.10",
+          "eol": "2026-04-08",
+          "latest": "3.10.0",
+          "lts": false
+        },
+        {
+          "cycle": "3.9",
+          "eol": "2026-02-17",
+          "latest": "3.9.1",
+          "lts": false
+        },
+        {
+          "cycle": "3.8",
+          "eol": "2026-01-09",
+          "latest": "3.8.1",
+          "lts": false
+        },
+        {
+          "cycle": "3.7",
+          "eol": "2025-11-26",
+          "latest": "3.7.3",
+          "lts": false
+        },
+        {
+          "cycle": "3.6",
+          "eol": "2025-11-02",
+          "latest": "3.6.0",
+          "lts": false
+        },
+        {
+          "cycle": "3.5",
+          "eol": "2026-07-31",
+          "latest": "3.5.5",
+          "lts": true
+        },
+        {
+          "cycle": "3.4",
+          "eol": "2025-06-28",
+          "latest": "3.4.2",
+          "lts": false
+        },
+        {
+          "cycle": "3.3",
+          "eol": "2025-05-27",
+          "latest": "3.3.1",
+          "lts": false
+        },
+        {
+          "cycle": "3.2",
+          "eol": "2025-03-31",
+          "latest": "3.2.1",
+          "lts": false
+        },
+        {
+          "cycle": "3.1",
+          "eol": "2025-02-13",
+          "latest": "3.1.0",
+          "lts": false
+        },
+        {
+          "cycle": "3.0",
+          "eol": "2024-12-26",
+          "latest": "3.0.1",
+          "lts": false
+        },
+        {
+          "cycle": "2.55",
+          "eol": "2024-12-03",
+          "latest": "2.55.1",
+          "lts": false
+        },
+        {
+          "cycle": "2.54",
+          "eol": "2024-09-20",
+          "latest": "2.54.1",
+          "lts": false
+        },
+        {
+          "cycle": "2.53",
+          "eol": "2025-07-31",
+          "latest": "2.53.5",
+          "lts": true
+        },
+        {
+          "cycle": "2.52",
+          "eol": "2024-06-19",
+          "latest": "2.52.0",
+          "lts": false
+        },
+        {
+          "cycle": "2.51",
+          "eol": "2024-04-30",
+          "latest": "2.51.2",
+          "lts": false
+        },
+        {
+          "cycle": "2.50",
+          "eol": "2024-04-04",
+          "latest": "2.50.1",
+          "lts": false
+        },
+        {
+          "cycle": "2.49",
+          "eol": "2024-02-26",
+          "latest": "2.49.1",
+          "lts": false
+        },
+        {
+          "cycle": "2.48",
+          "eol": "2023-12-28",
+          "latest": "2.48.1",
+          "lts": false
+        },
+        {
+          "cycle": "2.47",
+          "eol": "2023-10-18",
+          "latest": "2.47.2",
+          "lts": false
+        },
+        {
+          "cycle": "2.46",
+          "eol": "2023-09-05",
+          "latest": "2.46.0",
+          "lts": false
+        },
+        {
+          "cycle": "2.45",
+          "eol": "2024-07-31",
+          "latest": "2.45.6",
+          "lts": true
+        },
+        {
+          "cycle": "2.44",
+          "eol": "2023-08-06",
+          "latest": "2.44.0",
+          "lts": false
+        },
+        {
+          "cycle": "2.43",
+          "eol": "2023-05-02",
+          "latest": "2.43.1",
+          "lts": false
+        },
+        {
+          "cycle": "2.42",
+          "eol": "2023-03-14",
+          "latest": "2.42.0",
+          "lts": false
+        },
+        {
+          "cycle": "2.41",
+          "eol": "2023-01-31",
+          "latest": "2.41.0",
+          "lts": false
+        },
+        {
+          "cycle": "2.40",
+          "eol": "2022-12-19",
+          "latest": "2.40.7",
+          "lts": false
+        },
+        {
+          "cycle": "2.39",
+          "eol": "2022-11-16",
+          "latest": "2.39.2",
+          "lts": false
+        },
+        {
+          "cycle": "2.38",
+          "eol": "2022-09-27",
+          "latest": "2.38.0",
+          "lts": false
+        },
+        {
+          "cycle": "2.37",
+          "eol": "2023-07-31",
+          "latest": "2.37.9",
+          "lts": true
+        },
+        {
+          "cycle": "2.36",
+          "eol": "2022-07-11",
+          "latest": "2.36.2",
+          "lts": false
+        }
+      ],
+      "product": "prometheus",
+      "source": "https://endoflife.date/api/prometheus.json",
+      "sourceLicence": "MIT",
+      "sourceName": "endoflife.date"
+    },
+    {
+      "capturedAt": "2026-09-20",
+      "cycles": [
+        {
+          "cycle": "8.1",
+          "eol": "2027-10-10",
+          "latest": "8.1.3.1",
+          "lts": false
+        },
+        {
+          "cycle": "8.0",
+          "eol": "2026-11-07",
+          "latest": "8.0.5.1",
+          "lts": false
+        },
+        {
+          "cycle": "7.2",
+          "eol": "2026-08-09",
+          "latest": "7.2.3.2",
+          "lts": false
+        },
+        {
+          "cycle": "7.1",
+          "eol": "2025-10-01",
+          "latest": "7.1.6",
+          "lts": false
+        },
+        {
+          "cycle": "7.0",
+          "eol": "2025-04-01",
+          "latest": "7.0.10",
+          "lts": false
+        },
+        {
+          "cycle": "6.1",
+          "eol": "2024-10-01",
+          "latest": "6.1.7.10",
+          "lts": false
+        },
+        {
+          "cycle": "6.0",
+          "eol": "2023-06-01",
+          "latest": "6.0.6.1",
+          "lts": false
+        },
+        {
+          "cycle": "5.2",
+          "eol": "2022-06-01",
+          "latest": "5.2.8.1",
+          "lts": false
+        },
+        {
+          "cycle": "5.1",
+          "eol": "2019-08-25",
+          "latest": "5.1.7",
+          "lts": false
+        },
+        {
+          "cycle": "5.0",
+          "eol": "2018-04-09",
+          "latest": "5.0.7.2",
+          "lts": false
+        },
+        {
+          "cycle": "4.2",
+          "eol": "2017-04-27",
+          "latest": "4.2.11.3",
+          "lts": false
+        }
+      ],
+      "product": "rails",
+      "source": "https://endoflife.date/api/rails.json",
+      "sourceLicence": "MIT",
+      "sourceName": "endoflife.date"
+    },
+    {
+      "capturedAt": "2026-09-20",
+      "cycles": [
+        {
+          "cycle": "3",
+          "eol": false,
+          "latest": "3.53.4",
+          "lts": false
+        },
+        {
+          "cycle": "2",
+          "eol": "2004-09-18",
+          "latest": "2.8.17",
+          "lts": false
+        },
+        {
+          "cycle": "1",
+          "eol": "2001-09-28",
+          "latest": "1.0.32",
+          "lts": false
+        }
+      ],
+      "product": "sqlite",
+      "source": "https://endoflife.date/api/sqlite.json",
+      "sourceLicence": "MIT",
+      "sourceName": "endoflife.date"
+    },
+    {
+      "capturedAt": "2026-09-20",
+      "cycles": [
+        {
+          "cycle": "11-26h1-e",
+          "eol": "2029-03-13",
+          "latest": "10.0.28000",
+          "lts": false
+        },
+        {
+          "cycle": "11-26h1-w",
+          "eol": "2028-03-14",
+          "latest": "10.0.28000",
+          "lts": false
+        },
+        {
+          "cycle": "11-25h2-e",
+          "eol": "2028-10-10",
+          "latest": "10.0.26200",
+          "lts": false
+        },
+        {
+          "cycle": "11-25h2-w",
+          "eol": "2027-10-12",
+          "latest": "10.0.26200",
+          "lts": false
+        },
+        {
+          "cycle": "11-24h2-iot-lts",
+          "eol": "2034-10-10",
+          "latest": "10.0.26100",
+          "lts": true
+        },
+        {
+          "cycle": "11-24h2-e-lts",
+          "eol": "2029-10-09",
+          "latest": "10.0.26100",
+          "lts": true
+        },
+        {
+          "cycle": "11-24h2-e",
+          "eol": "2027-10-12",
+          "latest": "10.0.26100",
+          "lts": false
+        },
+        {
+          "cycle": "11-24h2-w",
+          "eol": "2026-10-13",
+          "latest": "10.0.26100",
+          "lts": false
+        },
+        {
+          "cycle": "11-23h2-e",
+          "eol": "2026-11-10",
+          "latest": "10.0.22631",
+          "lts": false
+        },
+        {
+          "cycle": "11-23h2-w",
+          "eol": "2025-11-11",
+          "latest": "10.0.22631",
+          "lts": false
+        },
+        {
+          "cycle": "10-22h2",
+          "eol": "2025-10-14",
+          "latest": "10.0.19045",
+          "lts": false
+        },
+        {
+          "cycle": "11-22h2-e",
+          "eol": "2025-10-14",
+          "latest": "10.0.22621",
+          "lts": false
+        },
+        {
+          "cycle": "11-22h2-w",
+          "eol": "2024-10-08",
+          "latest": "10.0.22621",
+          "lts": false
+        },
+        {
+          "cycle": "10-21h2-iot-lts",
+          "eol": "2032-01-13",
+          "latest": "10.0.19044",
+          "lts": true
+        },
+        {
+          "cycle": "10-21h2-e-lts",
+          "eol": "2027-01-12",
+          "latest": "10.0.19044",
+          "lts": true
+        },
+        {
+          "cycle": "10-21h2-e",
+          "eol": "2024-06-11",
+          "latest": "10.0.19044",
+          "lts": false
+        },
+        {
+          "cycle": "10-21h2-w",
+          "eol": "2023-06-13",
+          "latest": "10.0.19044",
+          "lts": false
+        },
+        {
+          "cycle": "11-21h2-e",
+          "eol": "2024-10-08",
+          "latest": "10.0.22000",
+          "lts": false
+        },
+        {
+          "cycle": "11-21h2-w",
+          "eol": "2023-10-10",
+          "latest": "10.0.22000",
+          "lts": false
+        },
+        {
+          "cycle": "10-21h1",
+          "eol": "2022-12-13",
+          "latest": "10.0.19043",
+          "lts": false
+        },
+        {
+          "cycle": "10-20h2-e",
+          "eol": "2023-05-09",
+          "latest": "10.0.19042",
+          "lts": false
+        },
+        {
+          "cycle": "10-20h2-w",
+          "eol": "2022-05-10",
+          "latest": "10.0.19042",
+          "lts": false
+        },
+        {
+          "cycle": "10-2004",
+          "eol": "2021-12-14",
+          "latest": "10.0.19041",
+          "lts": false
+        },
+        {
+          "cycle": "10-1909-e",
+          "eol": "2022-05-10",
+          "latest": "10.0.18363",
+          "lts": false
+        },
+        {
+          "cycle": "10-1909-w",
+          "eol": "2021-05-11",
+          "latest": "10.0.18363",
+          "lts": false
+        },
+        {
+          "cycle": "10-1903",
+          "eol": "2020-12-08",
+          "latest": "10.0.18362",
+          "lts": false
+        },
+        {
+          "cycle": "10-1809-e-lts",
+          "eol": "2029-01-09",
+          "latest": "10.0.17763",
+          "lts": true
+        },
+        {
+          "cycle": "10-1809-e",
+          "eol": "2021-05-11",
+          "latest": "10.0.17763",
+          "lts": false
+        },
+        {
+          "cycle": "10-1809-w",
+          "eol": "2020-11-10",
+          "latest": "10.0.17763",
+          "lts": false
+        },
+        {
+          "cycle": "10-1803-e",
+          "eol": "2021-05-11",
+          "latest": "10.0.17134",
+          "lts": false
+        },
+        {
+          "cycle": "10-1803-w",
+          "eol": "2019-11-12",
+          "latest": "10.0.17134",
+          "lts": false
+        },
+        {
+          "cycle": "10-1709-e",
+          "eol": "2020-10-13",
+          "latest": "10.0.16299",
+          "lts": false
+        },
+        {
+          "cycle": "10-1709-w",
+          "eol": "2019-04-09",
+          "latest": "10.0.16299",
+          "lts": false
+        },
+        {
+          "cycle": "10-1703-e",
+          "eol": "2019-10-08",
+          "latest": "10.0.15063",
+          "lts": false
+        },
+        {
+          "cycle": "10-1703-w",
+          "eol": "2018-10-09",
+          "latest": "10.0.15063",
+          "lts": false
+        },
+        {
+          "cycle": "10-1607-e-lts",
+          "eol": "2026-10-13",
+          "latest": "10.0.14393",
+          "lts": true
+        },
+        {
+          "cycle": "10-1607-e",
+          "eol": "2019-04-09",
+          "latest": "10.0.14393",
+          "lts": false
+        },
+        {
+          "cycle": "10-1607-w",
+          "eol": "2018-04-10",
+          "latest": "10.0.14393",
+          "lts": false
+        },
+        {
+          "cycle": "10-1511",
+          "eol": "2017-10-10",
+          "latest": "10.0.10586",
+          "lts": false
+        },
+        {
+          "cycle": "10-1507-e-lts",
+          "eol": "2025-10-14",
+          "latest": "10.0.10240",
+          "lts": true
+        },
+        {
+          "cycle": "10-1507",
+          "eol": "2017-05-09",
+          "latest": "10.0.10240",
+          "lts": false
+        },
+        {
+          "cycle": "10-1507-iot",
+          "eol": "2020-11-10",
+          "latest": "10.0.10240",
+          "lts": false
+        },
+        {
+          "cycle": "8.1",
+          "eol": "2023-01-10",
+          "latest": "6.3.9600",
+          "lts": false
+        },
+        {
+          "cycle": "8",
+          "eol": "2016-01-12",
+          "latest": "6.2.9200",
+          "lts": false
+        },
+        {
+          "cycle": "7-sp1",
+          "eol": "2020-01-14",
+          "latest": "6.1.7601",
+          "lts": false
+        },
+        {
+          "cycle": "6-sp2",
+          "eol": "2017-04-11",
+          "latest": "6.0.6200",
+          "lts": false
+        },
+        {
+          "cycle": "5-sp3",
+          "eol": "2014-04-08",
+          "latest": "5.1.2600",
+          "lts": false
+        }
+      ],
+      "product": "windows",
+      "source": "https://endoflife.date/api/windows.json",
+      "sourceLicence": "MIT",
+      "sourceName": "endoflife.date"
+    }
+  ],
+  "source": {
+    "licence": "MIT",
+    "name": "endoflife.date",
+    "repository": "https://github.com/endoflife-date/endoflife.date"
+  }
+}

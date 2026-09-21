@@ -240,6 +240,10 @@ importers:
       '@stratifypro/engine':
         specifier: workspace:*
         version: link:../engine
+    devDependencies:
+      '@types/node':
+        specifier: 22.9.0
+        version: 22.9.0
 
   packages/ledger:
     dependencies:
