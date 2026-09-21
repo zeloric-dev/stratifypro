@@ -27,6 +27,8 @@ const CENTRAL = 0x02014b50;
 export interface Entry {
   name: string;
   read(): Buffer;
+  /** True when a 32-bit field held the Zip64 sentinel and the real value is elsewhere. */
+  overflowed: boolean;
 }
 
 function findEocd(buf: Buffer): number {
@@ -60,6 +62,11 @@ export function readZip(buf: Buffer): Entry[] {
   }
 
   const entries: Entry[] = [];
+  // Counted separately: directory entries are real entries as far as the
+  // central directory's count is concerned, but they are not files. Folding
+  // them into `entries` would be wrong and dropping them silently would make
+  // the count cross-check below fire on a perfectly good archive.
+  let directories = 0;
   let p = start;
   while (p < buf.length && buf.readUInt32LE(p) === CENTRAL) {
     const method = buf.readUInt16LE(p + 10);
@@ -71,9 +78,13 @@ export function readZip(buf: Buffer): Entry[] {
     const name = buf.toString('utf8', p + 46, p + 46 + nameLen);
     p += 46 + nameLen + extraLen + commentLen;
 
-    if (name.endsWith('/')) continue;
+    if (name.endsWith('/')) {
+      directories += 1;
+      continue;
+    }
     entries.push({
       name,
+      overflowed: compressedSize === 0xffffffff || localOffset === 0xffffffff,
       read(): Buffer {
         // The local header repeats the name and carries its own extra field,
         // which is usually a different length from the central one.
@@ -90,11 +101,26 @@ export function readZip(buf: Buffer): Entry[] {
 
   if (entries.length === 0) throw new Error('zip central directory is empty or unreadable');
   // The cross-check that catches a truncated read rather than trusting it.
-  if (count !== 0 && entries.length !== count) {
+  if (count !== 0 && entries.length + directories !== count) {
     throw new Error(
-      `zip declares ${count} entries but the central directory walk found ${entries.length}. ` +
+      `zip declares ${count} entries but the central directory walk found ` +
+        `${entries.length + directories} (${entries.length} files, ${directories} directories). ` +
         `Refusing a partial read: a mirror short of advisories reports components as clean.`,
     );
+  }
+
+  // A 32-bit sentinel in a local-header offset or a compressed size means the
+  // real value lives in the entry's Zip64 extra field, which this does not
+  // parse. Reading the sentinel as a number would seek to 4 GB and return
+  // rubbish, so refuse instead. No OSV export is near this today; the largest
+  // is 205 MB.
+  for (const e of entries) {
+    if (e.overflowed) {
+      throw new Error(
+        `${e.name}: this entry needs Zip64 extended information, which this reader does not parse. ` +
+          `Refusing rather than reading a wrong offset.`,
+      );
+    }
   }
   return entries;
 }

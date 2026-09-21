@@ -3988,6 +3988,105 @@
     "summary": "Malicious image with /dev symlink can trigger limited host filesystem integrity violations in github.com/opencontainers/runc"
    }
   ],
+  "go.opentelemetry.io/otel/baggage": [
+   {
+    "affected": [
+     {
+      "ecosystem": "Go",
+      "name": "go.opentelemetry.io/otel/baggage",
+      "ranges": [
+       {
+        "events": [
+         {
+          "introduced": "1.41.0"
+         },
+         {
+          "fixed": "1.42.0"
+         }
+        ],
+        "type": "SEMVER"
+       }
+      ],
+      "versions": [
+       "1.41.0"
+      ]
+     },
+     {
+      "ecosystem": "Go",
+      "name": "go.opentelemetry.io/otel/propagation",
+      "ranges": [
+       {
+        "events": [
+         {
+          "introduced": "1.41.0"
+         },
+         {
+          "fixed": "1.42.0"
+         }
+        ],
+        "type": "SEMVER"
+       }
+      ],
+      "versions": [
+       "1.41.0"
+      ]
+     },
+     {
+      "ecosystem": "Go",
+      "name": "go.opentelemetry.io/otel/baggage",
+      "ranges": [
+       {
+        "events": [
+         {
+          "introduced": "1.43.0"
+         },
+         {
+          "fixed": "1.44.0"
+         }
+        ],
+        "type": "SEMVER"
+       }
+      ],
+      "versions": [
+       "1.43.0"
+      ]
+     },
+     {
+      "ecosystem": "Go",
+      "name": "go.opentelemetry.io/otel/propagation",
+      "ranges": [
+       {
+        "events": [
+         {
+          "introduced": "1.43.0"
+         },
+         {
+          "fixed": "1.44.0"
+         }
+        ],
+        "type": "SEMVER"
+       }
+      ],
+      "versions": [
+       "1.43.0"
+      ]
+     }
+    ],
+    "aliases": [
+     "CVE-2026-41178",
+     "GO-2026-5158"
+    ],
+    "id": "GHSA-5wrp-cwcj-q835",
+    "modified": "2026-09-10T03:51:04.741693305Z",
+    "severity": [
+     {
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:L",
+      "type": "CVSS_V3"
+     }
+    ],
+    "summary": "opentelemetry-go's baggage parsing no longer caps raw header length"
+   }
+  ],
   "golang.org/x/crypto": [
    {
     "affected": [

@@ -24,6 +24,11 @@ through the matcher, including the ones that must ABSTAIN:
   indeterminate              a Debian record with ECOSYSTEM ranges and no
                              enumerated versions, which must come back unknown
                              rather than clear
+  list and range disagree    an entry carrying both, where the range covers a
+                             version the list omits. The list is a convenience
+                             view materialised when the advisory was exported,
+                             not the authority, and treating it as one produced
+                             65 false `clear` verdicts on the real mirror.
   known exploited            an advisory whose alias is on the CISA KEV list
   malicious package          a MAL- record, which must never be counted as a
                              vulnerability
@@ -56,6 +61,13 @@ WANTED = [
         "Maven",
         "org.xwiki.platform:xwiki-platform-web-templates",
         "51 unevaluable entries and ZERO evaluable ones, so the whole component must abstain",
+    ),
+    (
+        "Go",
+        "go.opentelemetry.io/otel/baggage",
+        "carries BOTH an enumerated version list and a semver range, and the range "
+        "covers versions the list omits. Treating the list as authoritative made this "
+        "component come back clear while the range said affected.",
     ),
 ]
 
@@ -246,6 +258,10 @@ def check():
     # dpkg ordering at all. The first version of this check counted the ranges,
     # reported the path covered, and the fixture contained no such entry.
     unevaluable = 0
+    # An entry carrying BOTH an enumerated list and an evaluable semver range.
+    # Without one of these the regression that produced 65 false `clear`
+    # verdicts is untestable, and a fixture rebuild could drop it unnoticed.
+    both_list_and_range = 0
     for ecosystem in ecosystems:
         adv = json.load(io.open(os.path.join(OUT, "advisories", slug(ecosystem) + ".json"), encoding="utf-8"))
         for rows in adv["advisories"].values():
@@ -259,6 +275,8 @@ def check():
                             seen_ranges[r["type"]] += 1
                     if not af.get("versions") and ranges and all(r.get("type") != "SEMVER" for r in ranges):
                         unevaluable += 1
+                    if af.get("versions") and any(r.get("type") == "SEMVER" for r in ranges):
+                        both_list_and_range += 1
         mal = json.load(io.open(os.path.join(OUT, "malicious", slug(ecosystem) + ".json"), encoding="utf-8"))
         malicious_total += len(mal["advisories"])
 
@@ -274,6 +292,12 @@ def check():
     if malicious_total == 0:
         print("    FAILED: no malicious-package records, so their separation is untested")
         fail = 1
+    if both_list_and_range == 0:
+        print(
+            "    FAILED: no affected entry carries both an enumerated version list and a "
+            "semver range, so nothing here would catch the list being treated as authoritative"
+        )
+        fail = 1
     if unevaluable == 0:
         print(
             "    FAILED: no affected entry has ranges without an enumerated version list, so "
@@ -285,10 +309,10 @@ def check():
         return 1
     print(
         "    %d ecosystems; %d enumerated lists, %d semver ranges, %d ecosystem ranges, "
-        "%d malicious packages, %d entries that must abstain; every source carries a url, "
-        "a date and a digest"
+        "%d malicious packages, %d entries that must abstain, %d carrying both a list and "
+        "a range; every source carries a url, a date and a digest"
         % (len(ecosystems), enumerated, seen_ranges["SEMVER"], seen_ranges["ECOSYSTEM"],
-           malicious_total, unevaluable)
+           malicious_total, unevaluable, both_list_and_range)
     )
     return 0
 

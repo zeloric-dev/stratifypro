@@ -117,3 +117,13 @@ test('an unknown event kind abstains rather than being ignored', () => {
 test('an empty event list abstains', () => {
   assert.equal(affectedBy('1.0.0', semver([])), null);
 });
+
+test('REGRESSION: a range that never opens a window abstains rather than returning false', () => {
+  // Every OSV range starts with an `introduced` event. One that does not is
+  // malformed, and the walk returns a confident `false` for it: nothing opens
+  // the window, so nothing is affected at any version. In the report that
+  // reads as "compared and clean" for an advisory this never understood.
+  assert.equal(affectedBy('1.0.0', semver([{ fixed: '2.0.0' }])), null);
+  assert.equal(affectedBy('3.0.0', semver([{ fixed: '2.0.0' }])), null);
+  assert.equal(affectedBy('1.0.0', semver([{ last_affected: '2.0.0' }])), null);
+});

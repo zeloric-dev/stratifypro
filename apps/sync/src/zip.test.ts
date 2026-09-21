@@ -142,6 +142,16 @@ test('a declared count that does not match the walk is refused, not trusted', ()
   assert.throws(() => readZip(zip), /Refusing a partial read/);
 });
 
+test('directory entries count toward the declared total without becoming files', () => {
+  // They are entries as far as the central directory is concerned but they are
+  // not files. Dropping them silently would make the count cross-check fire on
+  // a perfectly good archive; counting them as files would put a directory in
+  // the mirror.
+  const zip = writeZip([one('a.json', '{}'), { name: 'sub/', body: Buffer.alloc(0), method: 0 }]);
+  const entries = readZip(zip);
+  assert.deepEqual(entries.map((e) => e.name), ['a.json']);
+});
+
 test('a file that is not a zip is refused', () => {
   assert.throws(() => readZip(Buffer.from('not a zip at all')), /no end-of-central-directory/);
 });
