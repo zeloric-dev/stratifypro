@@ -28,10 +28,25 @@ It exists because of a specific mistake, recorded below.
 | 1.15 | `/honesty`, `/bench`, `/crosswalk`, `/rules/<id>` | done |
 | 1.16 | Design enforcement check in `verify.sh` | done, 7 rules, every one mutation-tested |
 | 1.17 | Verbatim copy check | done, `scripts/check-copy.py`, whole-cell match |
-| 1.18 | Publish: repository public, benchmark and crosswalk released | prepared: site deployed, public repo built and verified, awaiting DNS and the visibility flip |
+| 1.18 | Publish: repository public, benchmark and crosswalk released | done, except DNS |
 
 `resolve` is not yet a CLI subcommand, though step 1.10 lists it. The library and
 the web app both use it; the command is missing.
+
+## Phase 1 is complete
+
+The repository is public at github.com/zeloric-dev/stratifypro and the site is
+live. The benchmark, its generator, its baselines and this resolver's own score
+are published together; so is the crosswalk, under CC BY 4.0.
+
+One thing is not done and it is not code: stratifypro.io has Cloudflare
+nameservers and no DNS records, so the site answers at its deployment address
+rather than at its own domain. Two records fix it.
+
+The Phase 1 gate is unchanged and still unmet, by its own words: "a person who
+is not the founder completes a resolution unaided, and says what it was like."
+That number is zero. Everything above is what had to exist before it could stop
+being zero.
 
 ## What 1.14 turned up
 
