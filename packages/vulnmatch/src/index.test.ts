@@ -190,6 +190,81 @@ test('an intact KEV catalogue reports present, with its count and capture date',
   assert.ok(kev.fetchedAt, 'and a capture date');
 });
 
+test('SPEC 1.14: every match carries how its identifier was established', () => {
+  // A match with no account of where its identifier came from is a match a
+  // reviewer cannot check. When the document carried the purl, that is what it
+  // says; when a resolver supplied it, the resolver's own method travels with
+  // the result.
+  const declaredPurl = check(mirror, {
+    name: 'log4j-core',
+    version: '2.17.1',
+    purl: 'pkg:maven/org.apache.logging.log4j/log4j-core@2.17.1',
+  });
+  assert.equal(declaredPurl.status, 'affected');
+  if (declaredPurl.status !== 'affected') return;
+  assert.equal(declaredPurl.examined.identifiedBy.method, 'declared');
+
+  const resolved = check(mirror, {
+    name: 'log4j',
+    version: '2.17.1',
+    purl: 'pkg:maven/org.apache.logging.log4j/log4j-core@2.17.1',
+    provenance: { method: 'dictionary', matchedOn: 'log4j', observations: 412 },
+  });
+  assert.equal(resolved.status, 'affected');
+  if (resolved.status !== 'affected') return;
+  assert.equal(resolved.examined.identifiedBy.method, 'dictionary');
+  assert.equal(resolved.examined.identifiedBy.observations, 412);
+});
+
+test('SPEC 1.14: an advisory the document already declared is marked, not hidden', () => {
+  // A supplier who declared a CVE is in a different position from one who
+  // stayed silent, and a report that flattens the two tells a reviewer the
+  // wrong thing. Declaring by ALIAS counts: a document naming the CVE has
+  // declared the GHSA that aliases it.
+  const bare = check(mirror, {
+    name: 'log4j-core',
+    version: '2.17.1',
+    purl: 'pkg:maven/org.apache.logging.log4j/log4j-core@2.17.1',
+  });
+  assert.equal(bare.status, 'affected');
+  if (bare.status !== 'affected') return;
+  assert.ok(bare.hits.every((h) => h.alreadyDeclared === false), 'nothing was declared here');
+
+  const first = bare.hits[0];
+  assert.ok(first);
+  for (const id of [first.id, ...(first.aliases.length > 0 ? [first.aliases[0] as string] : [])]) {
+    const withDeclaration = check(mirror, {
+      name: 'log4j-core',
+      version: '2.17.1',
+      purl: 'pkg:maven/org.apache.logging.log4j/log4j-core@2.17.1',
+      declared: [id],
+    });
+    assert.equal(withDeclaration.status, 'affected');
+    if (withDeclaration.status !== 'affected') return;
+    const same = withDeclaration.hits.find((h) => h.id === first.id);
+    assert.ok(same?.alreadyDeclared, `declaring ${id} should mark ${first.id}`);
+    // Still reported. Declared is not a reason to drop it from the report.
+    assert.equal(withDeclaration.hits.length, bare.hits.length);
+  }
+});
+
+test('SPEC 1.14: the tally separates undeclared advisories from the total', () => {
+  const comp = {
+    name: 'log4j-core',
+    version: '2.17.1',
+    purl: 'pkg:maven/org.apache.logging.log4j/log4j-core@2.17.1',
+  };
+  const before = run(mirror, [comp]);
+  assert.ok(before.tally.undeclared > 0);
+
+  const hits = before.results[0]?.verdict;
+  assert.ok(hits && hits.status === 'affected');
+  const allIds = hits.hits.map((h) => h.id);
+  const after = run(mirror, [{ ...comp, declared: allIds }]);
+  assert.equal(after.tally.undeclared, 0, 'declaring every hit leaves nothing undeclared');
+  assert.equal(after.tally.affected, 1, 'but the component is still affected');
+});
+
 test('a Go package path is answered by its parent module, and says so', () => {
   // OSV files Go advisories against the module. 72 percent of the corpus's
   // golang purls carry no type qualifier, so the package-or-module question

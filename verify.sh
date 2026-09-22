@@ -52,6 +52,16 @@ run "the end-of-support dataset states its sources and its reach"     python3 sc
 run "coverage baseline regenerates from the corpus" \
     python3 scripts/coverage.py --check
 
+# SPEC.md 1.12 accepts on "docs/corpus-results.md, dated, reproducible by
+# command". This is the reproducible-by-command half, and it runs here rather
+# than in the build job because it reads the golden artifact rather than
+# re-running the engine. The golden results are themselves checked
+# byte-for-byte a few lines above, so a table that matches them matches the
+# engine, and a published results table cannot drift from the tool it
+# describes without one of the two failing.
+run "the published corpus results are the engine's own output" \
+    python3 scripts/corpus-results.py --check
+
 run "the web app's copy is the approved copy, not a paraphrase"     python3 scripts/check-copy.py
 
 echo "--- the file checker cannot upload anything"

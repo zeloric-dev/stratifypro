@@ -11,7 +11,9 @@
   },
   "dependencies": {
     "@stratifypro/engine": "workspace:*",
-    "@stratifypro/report": "workspace:*"
+    "@stratifypro/report": "workspace:*",
+    "@stratifypro/mirror": "workspace:*",
+    "@stratifypro/vulnmatch": "workspace:*"
   },
   "bin": {
     "stratifypro": "./dist/index.js"

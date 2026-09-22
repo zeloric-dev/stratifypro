@@ -34,8 +34,38 @@ import {
 
 export const PACKAGE_NAME = '@stratifypro/vulnmatch' as const;
 
+export { componentsFrom } from './document.js';
+
 /** How a version was compared. Reported per hit so the reasoning is visible. */
 export type Method = 'enumerated-version' | 'semver-range';
+
+/**
+ * How the identifier that was looked up came to be known.
+ *
+ * SPEC.md 1.14 accepts on "every match carries its resolution provenance and
+ * confidence". This is that, and it is a plain structure rather than an import
+ * from @stratifypro/resolve on purpose: SPEC.md says resolve, vulnmatch and eos
+ * depend on engine types only and never on each other. The caller resolves and
+ * passes the answer in, so the two packages stay independent and a resolution
+ * from any source can be carried.
+ *
+ * THERE IS NO NUMERIC CONFIDENCE, and that is deliberate rather than missing.
+ * packages/resolve already settled this: "the method is the confidence". An
+ * exact purl declared in the document and a heuristic guess are different in
+ * kind, not in degree, and a 0.82 next to the second one invites arithmetic
+ * that the underlying evidence does not support.
+ */
+export interface IdentifierProvenance {
+  /**
+   * `declared` when the document itself carried the package URL. Anything else
+   * is whatever the resolver called it: `exact`, `dictionary`, `heuristic`.
+   */
+  method: string;
+  /** The form that actually matched, so a reader can check the answer. */
+  matchedOn?: string;
+  /** How many times the dictionary observed the mapping, when it came from there. */
+  observations?: number;
+}
 
 export interface Hit {
   id: string;
@@ -46,6 +76,21 @@ export interface Hit {
   method: Method;
   /** The OSV key that matched. Differs from the component when a Go prefix answered. */
   matchedName: string;
+  /**
+   * True when the document already listed this advisory in its own
+   * `vulnerabilities` array.
+   *
+   * SPEC.md 1.14 asks for "advisories the file did not declare", so the two
+   * have to be told apart rather than merged. A supplier who declared a CVE
+   * and shipped a fix note is in a different position from one who did not
+   * mention it, and a report that flattens them tells a reviewer the wrong
+   * thing about the supplier.
+   *
+   * Across the 21-file corpus this is false for every hit, because not one of
+   * those files declares a single vulnerability. That is a finding about the
+   * state of published SBOMs, not a reason to drop the field.
+   */
+  alreadyDeclared: boolean;
 }
 
 export interface Examined {
@@ -54,6 +99,8 @@ export interface Examined {
   version: string;
   /** Set when a Go package path was answered by its parent module. */
   viaGoModule?: string;
+  /** How the identifier that was looked up came to be known. Always present. */
+  identifiedBy: IdentifierProvenance;
 }
 
 export type Verdict =
@@ -65,6 +112,16 @@ export interface Component {
   name: string;
   version: string | null;
   purl: string | null;
+  /**
+   * How `purl` was established. Defaults to `declared`, which is what it is
+   * when the document carried it.
+   *
+   * A caller that ran @stratifypro/resolve over a component with no purl
+   * passes the resolver's own method here, and every hit then says so.
+   */
+  provenance?: IdentifierProvenance;
+  /** Advisory ids the document already declared for this component. */
+  declared?: readonly string[];
 }
 
 /** One advisory against one version: did it match, miss, or resist evaluation? */
@@ -131,7 +188,13 @@ function evaluate(advisory: Advisory, ecosystem: string, name: string, version: 
   return { outcome: sawIndeterminate ? 'indeterminate' : 'clear' };
 }
 
-function toHit(a: Advisory, method: Method, matchedName: string, kev: Set<string>): Hit {
+function toHit(
+  a: Advisory,
+  method: Method,
+  matchedName: string,
+  kev: Set<string>,
+  declared: ReadonlySet<string>,
+): Hit {
   const aliases = a.aliases ?? [];
   return {
     id: a.id,
@@ -140,6 +203,10 @@ function toHit(a: Advisory, method: Method, matchedName: string, kev: Set<string
     knownExploited: [a.id, ...aliases].some((x) => kev.has(x)),
     method,
     matchedName,
+    // Matched on the id OR any alias: a document that declared CVE-2021-44228
+    // has declared the GHSA that aliases it, and reporting it as undeclared
+    // would accuse the supplier of an omission they did not make.
+    alreadyDeclared: [a.id, ...aliases].some((x) => declared.has(x)),
   };
 }
 
@@ -201,18 +268,28 @@ export function check(mirror: Mirror, component: Component): Verdict {
     }
   }
 
-  const examined: Examined = { ecosystem, name, version, ...(viaGoModule ? { viaGoModule } : {}) };
+  const examined: Examined = {
+    ecosystem,
+    name,
+    version,
+    ...(viaGoModule ? { viaGoModule } : {}),
+    // Always present. A match with no account of how its identifier was
+    // established is a match a reviewer cannot check, and SPEC.md 1.14 accepts
+    // this step on exactly that.
+    identifiedBy: component.provenance ?? { method: 'declared', matchedOn: component.purl },
+  };
   const kev = mirror.kevIds();
+  const declared = new Set(component.declared ?? []);
 
   const malicious = (mirror.maliciousFor(ecosystem, name) ?? []).map((a) =>
-    toHit(a, 'enumerated-version', name, kev),
+    toHit(a, 'enumerated-version', name, kev, declared),
   );
 
   const hits: Hit[] = [];
   let indeterminate = 0;
   for (const a of advisories) {
     const r = evaluate(a, ecosystem, name, version);
-    if (r.outcome === 'affected') hits.push(toHit(a, r.method as Method, name, kev));
+    if (r.outcome === 'affected') hits.push(toHit(a, r.method as Method, name, kev, declared));
     else if (r.outcome === 'indeterminate') indeterminate += 1;
   }
 
@@ -231,7 +308,21 @@ export function check(mirror: Mirror, component: Component): Verdict {
 export interface RunResult {
   results: Array<{ component: Component; verdict: Verdict }>;
   sources: SourceStatus[];
-  tally: { affected: number; clear: number; unknown: number; knownExploited: number; malicious: number };
+  tally: {
+    affected: number;
+    clear: number;
+    unknown: number;
+    knownExploited: number;
+    malicious: number;
+    /**
+     * Advisories matched that the document did not declare.
+     *
+     * This is the number SPEC.md 1.14 is actually about. A file that declares
+     * its known vulnerabilities and one that stays silent both produce
+     * "advisories found"; only this tells them apart.
+     */
+    undeclared: number;
+  };
 }
 
 /**
@@ -243,11 +334,14 @@ export interface RunResult {
  */
 export function run(mirror: Mirror, components: Component[]): RunResult {
   const results = components.map((component) => ({ component, verdict: check(mirror, component) }));
-  const tally = { affected: 0, clear: 0, unknown: 0, knownExploited: 0, malicious: 0 };
+  const tally = {
+    affected: 0, clear: 0, unknown: 0, knownExploited: 0, malicious: 0, undeclared: 0,
+  };
   for (const { verdict } of results) {
     tally[verdict.status] += 1;
     if (verdict.status === 'affected') {
       tally.knownExploited += verdict.hits.filter((h) => h.knownExploited).length;
+      tally.undeclared += verdict.hits.filter((h) => !h.alreadyDeclared).length;
     }
     if (verdict.status !== 'unknown') tally.malicious += verdict.malicious.length;
   }

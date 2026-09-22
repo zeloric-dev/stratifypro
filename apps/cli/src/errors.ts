@@ -60,6 +60,29 @@ export class CliError extends Error {
 }
 
 export const Errors = {
+  noMirror: (dir: string, detail: string) =>
+    new CliError(
+      'SP-MIRROR-001',
+      EXIT.PARSE,
+      `No advisory mirror at ${dir}.`,
+      [
+        detail,
+        'The mirror is not committed: the five ecosystems the corpus uses are 297 MB',
+        'of OSV export, and a file that size rebuilt weekly does not belong in git.',
+      ].join(' '),
+      [
+        'Build one:  pnpm --filter @stratifypro/sync start',
+        'Or point at an existing one:  advisories <file> --mirror <dir>',
+      ].join('\n'),
+    ),
+  badFormat: (given: string) =>
+    new CliError(
+      'SP-INPUT-003',
+      EXIT.PACK,
+      `Unknown format "${given}".`,
+      'The advisories command renders as readable text or as JSON, nothing else.',
+      'Use --format text or --format json.',
+    ),
   fileUnreadable: (path: string, detail: string) =>
     new CliError(
       'SP-INPUT-001',

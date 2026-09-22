@@ -6,42 +6,145 @@ this file is the one being maintained.
 
 It exists because of a specific mistake, recorded below.
 
-## Phase 1: the free layer
+## Phase 1, numbered as SPEC.md numbers it
+
+SPEC.md is the authority. Every row below is its step and its acceptance test,
+not a paraphrase.
 
 | # | Step | Status |
 |---|---|---|
-| 1.1 | Scaffold all eight packages, CI green | done |
-| 1.2 | `packages/engine`: parse and detect both formats | done |
-| | its acceptance, unsupported versions refused by name | done, was never implemented until 1.14 needed it |
-| 1.3 | Rule pack schema requires `onEmptySelector` plus justification | done |
-| 1.4 | `packages/engine`: evaluate, a finding per failing node with its path | done |
-| 1.5 | Differential oracle, golden artifact per corpus file and pack | done |
-| 1.6 | Overrides with a required reason, recorded in `CheckResult` | done, merged in #11 |
-| 1.7 | `packages/resolve`: deterministic tiers only, with abstention | done |
-| 1.8 | `bench/identity` runner, single implementation | done |
-| 1.9 | `packages/report`: aggregated findings, coverage header first | done |
-| 1.10 | `apps/cli`: `check`, `explain`, `packs`, exit codes, `--fail-on` | done |
-| 1.11 | Stable error codes and a docs URL on every user-facing error | done |
-| 1.12 | `apps/web`: the paste-a-name entry point, answered on first paint | done |
-| 1.13 | Permanent URL per resolution, prerendered and indexable | done |
-| 1.14 | The file checker, drop zone below the findings | done |
-| 1.15 | `/honesty`, `/bench`, `/crosswalk`, `/rules/<id>` | done |
-| 1.16 | Design enforcement check in `verify.sh` | done, 7 rules, every one mutation-tested |
-| 1.17 | Verbatim copy check | done, `scripts/check-copy.py`, whole-cell match |
-| 1.18 | Publish: repository public, benchmark and crosswalk released | done, except DNS |
+| 1.1 | Monorepo scaffold, CI green on an empty build | done |
+| 1.2 | `packages/engine` parse and detect both formats | done, **narrower than the acceptance** |
+| 1.3 | Rule pack schema + loader with mandatory `severityJustification` | done |
+| 1.4 | `cisa-2026-v2.1` pack, 17 fields + 6 practices | done |
+| 1.5 | `fda-524b` pack, built against the teardown gaps | pack done, **second acceptance unmet** |
+| 1.6 | `packages/report` renders standalone HTML, no network | done |
+| 1.7 | `apps/cli` published to npm | **not done** |
+| 1.8 | `apps/web` free checker at `stratifypro.io` | software done, **not at that domain** |
+| 1.9 | A defective sample preloaded on arrival | done |
+| 1.10 | Five-event instrumentation | **not done, and contradicts 1.8** |
+| 1.11 | Sentry wired | **not done, and contradicts 1.8** |
+| 1.12 | Run the engine over all corpus files, publish the results | done |
+| 1.13 | `packages/resolve`, deterministic tiers only | done |
+| 1.14 | `packages/vulnmatch`, PURL-native | done |
+| 1.15 | `packages/eos`, provenance and capture date per row | done |
+| 1.16 | `bench/identity` v0, dataset, runner, four baselines | done |
 
-`resolve` is not yet a CLI subcommand, though step 1.10 lists it. The library and
-the web app both use it; the command is missing.
+### The five that are not done, and why each one is not a typo
 
-## Phase 2, started
+**1.2 is narrower than its acceptance says.** The acceptance is "CycloneDX
+1.4-1.7 and SPDX 2.2-3.0.1". The engine supports CycloneDX 1.2 to 1.7 and SPDX
+2.2 to 2.3, and **refuses SPDX 3.0 deliberately**: 3.0 is JSON-LD with an
+`@graph` and no `spdxVersion` key, so the selectors written for 2.x address
+nothing in it. An earlier build accepted 3.0 documents and told their authors
+"this file parsed, but it lists no components", which is false about the file.
+Refusing by name is the better failure. The acceptance test is the thing that
+is wrong here, and it should be amended rather than met.
 
-| # | Step | Status |
+**1.5's second acceptance is unmet.** "Every rule in the pack maps to a row in
+`docs/teardown.md`." That file does not exist. The pack was built against real
+gaps, but the document that would let anyone check that claim was never
+written, so right now the mapping is an assertion. Writing it needs the
+teardown itself, which is research, not code.
+
+**1.7 has not happened.** `apps/cli/package.json` is `"private": true` at
+version `0.0.0`. The acceptance is `npx @stratifypro/cli check file.json` on a
+clean machine, and nothing has ever been published to npm.
+
+**1.8 is done as software and not as a URL.** "Fully client-side, network tab
+shows zero requests after page load" holds, and `verify.sh` enforces it. The
+site is live at its deployment address; `stratifypro.io` has Cloudflare
+nameservers and no DNS records. Two records fix it, and neither token supplied
+so far can write them.
+
+**1.10 and 1.11 cannot both be built and leave 1.8 true.** 1.8 accepts on
+"network tab shows zero requests after page load". 1.10 asks for five
+instrumentation events and 1.11 asks for Sentry, and both of those are requests
+after page load. This is a contradiction inside the spec, not an oversight in
+the build: `verify.sh` currently fails the build if a network primitive reaches
+the browser bundle, so wiring Sentry would turn the gate red by design. Somebody
+has to decide which of the two promises wins. Until then, neither is built, and
+that is a decision recorded rather than a task forgotten.
+
+`resolve` is not yet a CLI subcommand, though the CLI has `check`, `explain`,
+`packs` and now `advisories`. The library and the web app both use it; the
+command is missing.
+
+## The numbering in this file was wrong, and this is the correction
+
+Until now the Phase 2 rows below were numbered from a planning document that is
+not in this repository. SPEC.md, which IS in this repository and is the public
+specification, numbers the same work differently:
+
+| Work | SPEC.md | what this file used to call it |
 |---|---|---|
-| 2.1 | `packages/mirror` + `apps/sync`: local advisory index | done |
-| 2.2 | `packages/vulnmatch` with `SourceStatus` per run | done |
-| 2.3 | `packages/eos` plus the freshness check | done |
+| `packages/vulnmatch` | **1.14**, Phase 1 | 2.2, Phase 2 |
+| `packages/eos` | **1.15**, Phase 1 | 2.3, Phase 2 |
+| Clerk auth + Organizations | 2.1, Phase 2 | not listed |
 
-2.3 first, out of order, because it is free and public like the crosswalk
+Two consequences, and the second is the bad one.
+
+A reader of the public repository could not resolve any Phase 2 number at all,
+because the document those numbers came from is not published.
+
+And this file said **"Phase 1 is complete"** while SPEC.md's own 1.14 and 1.15
+were unbuilt. That is precisely the mistake this file exists to record, made in
+the file that records it. Nobody was misled for long, because the next person to
+look went looking. Again: luck, not a process.
+
+The collision went further than Phase 2. This file's own Phase 1 table used the
+other document's numbers too, so `1.12`, `1.14` and `1.15` each meant two
+different things in one file:
+
+| # | SPEC.md | what this file used to call it |
+|---|---|---|
+| 1.12 | Run the engine over the corpus, publish the results | the paste-a-name entry point |
+| 1.14 | `packages/vulnmatch` | the file checker drop zone |
+| 1.15 | `packages/eos` | `/honesty`, `/bench`, `/crosswalk`, `/rules/<id>` |
+
+Commit messages before this point cite the old numbers and cannot be edited, so
+the mapping stays here. The table above is now SPEC.md's numbering throughout.
+
+`packages/mirror` and `apps/sync` are not a numbered step in SPEC.md. They are
+how 1.14 is built: SPEC.md 1.14 says "OSV.dev and GitHub Advisory Database,
+PURL-native", and querying an API per component would send a customer's bill of
+materials to a third party one component at a time, before they have filed. The
+mirror is the way to satisfy that step without that.
+
+**The acceptance tests for the three steps just finished**, as SPEC.md writes
+them:
+
+| Step | Acceptance | Met? |
+|---|---|---|
+| 1.12 | `docs/corpus-results.md`, dated, reproducible by command | yes |
+| 1.14 | Given a corpus file, returns advisories the file did not declare | yes |
+| 1.14 | Every match carries its resolution provenance and confidence | yes |
+| 1.15 | Covers the corpus | yes, and the 2.5% ceiling is published |
+| 1.15 | Published free under CC BY at `stratifypro.io/eos` | yes, with the licence stated precisely |
+
+**On that last one, read the page rather than the tick.** The end-of-support
+rows are endoflife.date's, published by them under MIT, and they keep that
+licence. What is released under CC BY 4.0 is the selection, the corpus matching
+and the coverage measurement, which is the part that is ours. Claiming CC BY
+over the whole thing would be relicensing somebody else's data.
+
+### The thing no acceptance test stated
+
+When `packages/mirror` and `packages/vulnmatch` first landed, **neither was
+wired into anything**: not the CLI, not `packages/report`, not the web app.
+2,000 lines and 254 tests, and the product a person could run was unchanged.
+
+That is now fixed. `stratifypro advisories <file>` is the command, and
+`apps/cli/src/advisories.e2e.test.ts` spawns the real binary rather than
+importing the library, because this repository has already shipped a feature
+that existed everywhere except where somebody could reach it: severity
+overrides were in the spec, honoured by the engine, rendered by the report, and
+had no flag.
+
+A library nobody calls is a claim, not a capability. The corpus's largest file
+now reports 39 affected components and 117 advisories it never declared.
+
+1.15 first, out of order, because it is free and public like the crosswalk
 rather than part of the paid layer, and because both packs already fire on the
 gap it fills: FDA-SUP-001 and FDA-SUP-002 are the two largest finding groups in
 the corpus.
@@ -50,10 +153,11 @@ Its coverage is 2.5 percent of component instances and that figure is published
 with the data rather than buried. The only public source tracks products;
 bills of material are made of packages.
 
-2.1 and 2.2 landed together because 2.1's acceptance test is a sentence about
-2.2: "vulnmatch makes zero outbound per-query calls in a full corpus run".
-Building the index without the thing that queries it would have left that
-sentence unprovable, which is the state this file exists to prevent.
+The mirror and the matcher landed together because the mirror's whole point is
+a sentence about the matcher: "vulnmatch makes zero outbound per-query calls in
+a full corpus run". Building the index without the thing that queries it would
+have left that sentence unprovable, which is the state this file exists to
+prevent.
 
 It is proved twice. verify.sh greps `packages/mirror` and `packages/vulnmatch`
 for network primitives, and `scripts/mirror-mutation-test.py` plants four kinds
@@ -108,11 +212,23 @@ was **reported clean**, three lines under a comment asserting that exact case
 was covered. Fourth time that check has been wrong, fourth time it reported
 clean. It had never been watched failing.
 
-## Phase 1 is complete
+## Phase 1 is not complete, and this heading used to say it was
 
-The repository is public at github.com/zeloric-dev/stratifypro and the site is
-live. The benchmark, its generator, its baselines and this resolver's own score
-are published together; so is the crosswalk, under CC BY 4.0.
+Written when the free layer shipped, and wrong the moment it was written:
+SPEC.md's Phase 1 runs to 1.16, and 1.12, 1.14 and 1.15 were all unbuilt. The
+sentence below it is still true and is kept for that reason. The heading was
+not.
+
+What IS true: the repository is public at github.com/zeloric-dev/stratifypro
+and the site is live. The benchmark, its generator, its baselines and this
+resolver's own score are published together; so is the crosswalk, under CC BY
+4.0.
+
+What was not, when this heading was corrected: 1.12 had no
+`docs/corpus-results.md`; 1.14 carried no resolution provenance on a match;
+1.15 had no `/eos` route. All three are now done and the table at the top of
+this file tracks them. SPEC.md's Phase 1 runs to 1.16, and 1.16, the identity
+benchmark, was already built and published.
 
 One thing is not done and it is not code: stratifypro.io has Cloudflare
 nameservers and no DNS records, so the site answers at its deployment address
@@ -123,7 +239,10 @@ is not the founder completes a resolution unaided, and says what it was like."
 That number is zero. Everything above is what had to exist before it could stop
 being zero.
 
-## What 1.14 turned up
+## What the file checker turned up
+
+(Numbered 1.14 in the old scheme, which is SPEC.md's `packages/vulnmatch`. The
+work described below is the file checker drop zone.)
 
 Building the file checker required a version check that step 1.2 claims to have.
 Its acceptance test is "unsupported versions refused by name, not generically",

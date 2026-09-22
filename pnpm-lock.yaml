@@ -178,9 +178,15 @@ importers:
       '@stratifypro/engine':
         specifier: workspace:*
         version: link:../../packages/engine
+      '@stratifypro/mirror':
+        specifier: workspace:*
+        version: link:../../packages/mirror
       '@stratifypro/report':
         specifier: workspace:*
         version: link:../../packages/report
+      '@stratifypro/vulnmatch':
+        specifier: workspace:*
+        version: link:../../packages/vulnmatch
     devDependencies:
       '@types/node':
         specifier: 22.9.0
