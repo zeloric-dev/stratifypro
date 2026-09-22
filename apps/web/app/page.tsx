@@ -1,5 +1,6 @@
 import { Checker } from './Checker';
 import { FileChecker } from './FileChecker';
+import { Sample } from './Sample';
 
 export default function Home() {
   return (
@@ -14,6 +15,8 @@ export default function Home() {
       <Checker />
 
       <FileChecker />
+
+      <Sample />
 
       <h2>Why this is hard</h2>
       <p className="lede">

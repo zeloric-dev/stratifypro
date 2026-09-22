@@ -14,7 +14,7 @@ import { BASE } from './site-url';
  * to carry, even though each one is a real result and still renders.
  */
 export default function sitemap(): MetadataRoute.Sitemap {
-  const pages = ['', '/rules', '/crosswalk', '/bench', '/honesty'].map((path) => ({
+  const pages = ['', '/rules', '/crosswalk', '/bench', '/honesty', '/eos'].map((path) => ({
     url: `${BASE}${path}`,
     changeFrequency: 'monthly' as const,
     priority: path === '' ? 1 : 0.8,

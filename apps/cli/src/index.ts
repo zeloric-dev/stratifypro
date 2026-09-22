@@ -21,6 +21,8 @@ import {
   type Severity,
   SUPPORTED,
 } from '@stratifypro/engine';
+import { openMirror } from '@stratifypro/mirror';
+import { componentsFrom, run as runMatch } from '@stratifypro/vulnmatch';
 import { CliError, Errors, EXIT, type ExitCode } from './errors.js';
 import { renderText, SEVERITY_RANK } from './render.js';
 
@@ -121,7 +123,7 @@ interface Args {
  * a file the user never typed; the second silently ignored an argument they
  * did type.
  */
-const VALUE_FLAGS = new Set(['pack', 'fail-on', 'format', 'overrides']);
+const VALUE_FLAGS = new Set(['pack', 'fail-on', 'format', 'overrides', 'mirror']);
 
 function parseArgs(argv: string[]): Args {
   const [command = 'help', ...rest] = argv;
@@ -325,6 +327,98 @@ function cmdPacks(): ExitCode {
   return EXIT.CLEAN;
 }
 
+/**
+ * `advisories <file>` — cross-reference a bill of materials against the local mirror.
+ *
+ * SPEC.md 1.14: "Given a corpus file, returns advisories the file did not
+ * declare. Every match carries its resolution provenance and confidence."
+ *
+ * WHY THE SOURCE STATUS IS PRINTED EVERY TIME, including when it is healthy.
+ * A result set is only as complete as the sources behind it, and "no
+ * advisories found" against a mirror whose Debian shard failed to load is a
+ * sentence that is true and useless. The dates are printed for the same
+ * reason: an advisory mirror is a snapshot, and a reader six months from now
+ * needs to know which one.
+ */
+function cmdAdvisories(args: Args): ExitCode {
+  const file = args.positional[0];
+  if (!file) {
+    process.stderr.write('usage: advisories <file> [--mirror <dir>] [--format text|json]\n');
+    return EXIT.PACK;
+  }
+  const format = args.flags.get('format') ?? 'text';
+  if (format !== 'text' && format !== 'json') throw Errors.badFormat(String(format));
+
+  const dir = args.flags.get('mirror') ?? join(process.cwd(), '.mirror');
+  const { doc } = readDoc(file);
+
+  let mirror;
+  try {
+    mirror = openMirror(dir);
+  } catch (e) {
+    throw Errors.noMirror(dir, e instanceof Error ? e.message : String(e));
+  }
+
+  const components = componentsFrom(doc);
+  const result = runMatch(mirror, components);
+
+  if (format === 'json') {
+    process.stdout.write(JSON.stringify({ file, mirror: dir, ...result }, null, 2) + '\n');
+    return result.tally.affected > 0 ? EXIT.FINDINGS : EXIT.CLEAN;
+  }
+
+  const out: string[] = ['', `  ${file}`, ''];
+  out.push(
+    `  ${result.tally.affected} affected, ${result.tally.clear} clear, ` +
+      `${result.tally.unknown} not examined, of ${components.length} components`,
+  );
+  out.push(
+    `  ${result.tally.undeclared} advisor${result.tally.undeclared === 1 ? 'y' : 'ies'} the file did not declare` +
+      (result.tally.knownExploited > 0
+        ? `, ${result.tally.knownExploited} of them on the CISA KEV catalogue`
+        : ''),
+  );
+  if (result.tally.malicious > 0) {
+    // Never added to the advisory count. They are a different kind of problem
+    // and 96.8% of OSV's npm records are these.
+    out.push(`  ${result.tally.malicious} malicious-package report(s), counted separately`);
+  }
+  out.push('');
+
+  for (const { component, verdict } of result.results) {
+    if (verdict.status !== 'affected') continue;
+    const undeclared = verdict.hits.filter((h) => !h.alreadyDeclared);
+    if (undeclared.length === 0) continue;
+    const via = verdict.examined.viaGoModule ? ` via ${verdict.examined.viaGoModule}` : '';
+    out.push(`  ${component.name} ${verdict.examined.version}${via}`);
+    out.push(`    identified by: ${verdict.examined.identifiedBy.method}`);
+    for (const h of undeclared) {
+      const kev = h.knownExploited ? '  [CISA KEV]' : '';
+      out.push(`    ${h.id}${kev}  (${h.method})`);
+      if (h.summary) out.push(`      ${h.summary.slice(0, 96)}`);
+    }
+    out.push('');
+  }
+
+  // Not a footnote. A reader who skips this cannot tell a clean file from an
+  // unexamined one.
+  out.push('  Sources, and when each was captured:');
+  for (const s of result.sources) {
+    const state = s.present ? 'ok' : 'PROBLEM';
+    out.push(`    ${state.padEnd(8)} ${s.name.padEnd(14)} ${s.fetchedAt ?? 'no date'}`);
+    if (s.problem) out.push(`             ${s.problem}`);
+  }
+  if (result.tally.unknown > 0) {
+    out.push('');
+    out.push(
+      `  ${result.tally.unknown} component(s) were not examined. Run with --format json to see why each one.`,
+    );
+  }
+  out.push('');
+  process.stdout.write(out.join('\n'));
+  return result.tally.affected > 0 ? EXIT.FINDINGS : EXIT.CLEAN;
+}
+
 function cmdHelp(): ExitCode {
   process.stdout.write(
     [
@@ -333,7 +427,8 @@ function cmdHelp(): ExitCode {
       '',
       '    check <file> [--pack <id>] [--fail-on error|warning|info] [--format text|json]',
       '                 [--overrides <file>]   change a severity, with a reason, on the record',
-      '                 [--overrides <file>]   change a severity, with a reason, on the record',
+      '    advisories <file> [--mirror <dir>] [--format text|json]',
+      '                 advisories the file did not declare, from a local mirror',
       '    explain <ruleId> [--pack <id>]',
       '    packs',
       '',
@@ -356,6 +451,8 @@ function main(): ExitCode {
       return cmdExplain(args);
     case 'packs':
       return cmdPacks();
+    case 'advisories':
+      return cmdAdvisories(args);
     case 'help':
     case '--help':
     case '-h':

@@ -21,6 +21,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             <a href="/">Check a name</a>
             <a href="/rules">Rules</a>
             <a href="/crosswalk">Crosswalk</a>
+            <a href="/eos">End of support</a>
             <a href="/bench">Benchmark</a>
             <a href="/honesty">What this does not do</a>
             {/*
