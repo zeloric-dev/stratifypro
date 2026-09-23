@@ -97,6 +97,16 @@ jobs:
       - name: The advisory matcher makes no outbound call, and the scan proves it
         run: python3 scripts/mirror-mutation-test.py
 
+      # The dogfood. A checker whose own bill of materials has never been
+      # checked is selling something it has not tried. This re-runs the engine
+      # over the committed SBOM of this repository and fails if the published
+      # page has drifted from what the tool actually says.
+      #
+      # It lives here rather than in verify.sh because it needs the built CLI,
+      # and verify.sh gates this job.
+      - name: This tool still says what it says about its own SBOM
+        run: python3 scripts/self-sbom.py --check
+
       # "Zero runtime dependencies" is the answer to "what is in your tool".
       # It is a sales claim and a security claim, so it is enforced rather
       # than intended.

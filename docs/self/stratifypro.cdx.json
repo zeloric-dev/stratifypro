@@ -1,0 +1,4744 @@
+{
+  "$schema": "http://cyclonedx.org/schema/bom-1.7.schema.json",
+  "bomFormat": "CycloneDX",
+  "components": [
+    {
+      "bom-ref": "pkg:npm/%40emnapi/runtime@1.11.3?package-id=7032d85f63180fab",
+      "cpe": "cpe:2.3:a:\\@emnapi\\/runtime:\\@emnapi\\/runtime:1.11.3:*:*:*:*:*:*:*",
+      "name": "@emnapi/runtime",
+      "properties": [
+        {
+          "name": "syft:package:foundBy",
+          "value": "javascript-lock-cataloger"
+        },
+        {
+          "name": "syft:package:language",
+          "value": "javascript"
+        },
+        {
+          "name": "syft:package:type",
+          "value": "npm"
+        },
+        {
+          "name": "syft:package:metadataType",
+          "value": "javascript-pnpm-lock-entry"
+        },
+        {
+          "name": "syft:location:0:path",
+          "value": "\\pnpm-lock.yaml"
+        }
+      ],
+      "purl": "pkg:npm/%40emnapi/runtime@1.11.3",
+      "type": "library",
+      "version": "1.11.3"
+    },
+    {
+      "bom-ref": "pkg:npm/%40img/colour@1.1.0?package-id=0c239e69c8478c26",
+      "cpe": "cpe:2.3:a:\\@img\\/colour:\\@img\\/colour:1.1.0:*:*:*:*:*:*:*",
+      "name": "@img/colour",
+      "properties": [
+        {
+          "name": "syft:package:foundBy",
+          "value": "javascript-lock-cataloger"
+        },
+        {
+          "name": "syft:package:language",
+          "value": "javascript"
+        },
+        {
+          "name": "syft:package:type",
+          "value": "npm"
+        },
+        {
+          "name": "syft:package:metadataType",
+          "value": "javascript-pnpm-lock-entry"
+        },
+        {
+          "name": "syft:location:0:path",
+          "value": "\\pnpm-lock.yaml"
+        }
+      ],
+      "purl": "pkg:npm/%40img/colour@1.1.0",
+      "type": "library",
+      "version": "1.1.0"
+    },
+    {
+      "bom-ref": "pkg:npm/%40img/sharp-darwin-arm64@0.35.4?package-id=6d4bbc014f573281",
+      "cpe": "cpe:2.3:a:\\@img\\/sharp-darwin-arm64:\\@img\\/sharp-darwin-arm64:0.35.4:*:*:*:*:*:*:*",
+      "name": "@img/sharp-darwin-arm64",
+      "properties": [
+        {
+          "name": "syft:package:foundBy",
+          "value": "javascript-lock-cataloger"
+        },
+        {
+          "name": "syft:package:language",
+          "value": "javascript"
+        },
+        {
+          "name": "syft:package:type",
+          "value": "npm"
+        },
+        {
+          "name": "syft:package:metadataType",
+          "value": "javascript-pnpm-lock-entry"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@img\\/sharp-darwin-arm64:\\@img\\/sharp_darwin_arm64:0.35.4:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@img\\/sharp_darwin_arm64:\\@img\\/sharp-darwin-arm64:0.35.4:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@img\\/sharp_darwin_arm64:\\@img\\/sharp_darwin_arm64:0.35.4:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@img\\/sharp-darwin:\\@img\\/sharp-darwin-arm64:0.35.4:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@img\\/sharp-darwin:\\@img\\/sharp_darwin_arm64:0.35.4:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@img\\/sharp_darwin:\\@img\\/sharp-darwin-arm64:0.35.4:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@img\\/sharp_darwin:\\@img\\/sharp_darwin_arm64:0.35.4:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@img\\/sharp:\\@img\\/sharp-darwin-arm64:0.35.4:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@img\\/sharp:\\@img\\/sharp_darwin_arm64:0.35.4:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:location:0:path",
+          "value": "\\pnpm-lock.yaml"
+        }
+      ],
+      "purl": "pkg:npm/%40img/sharp-darwin-arm64@0.35.4",
+      "type": "library",
+      "version": "0.35.4"
+    },
+    {
+      "bom-ref": "pkg:npm/%40img/sharp-darwin-x64@0.35.4?package-id=ab463ba4128d5a6f",
+      "cpe": "cpe:2.3:a:\\@img\\/sharp-darwin-x64:\\@img\\/sharp-darwin-x64:0.35.4:*:*:*:*:*:*:*",
+      "name": "@img/sharp-darwin-x64",
+      "properties": [
+        {
+          "name": "syft:package:foundBy",
+          "value": "javascript-lock-cataloger"
+        },
+        {
+          "name": "syft:package:language",
+          "value": "javascript"
+        },
+        {
+          "name": "syft:package:type",
+          "value": "npm"
+        },
+        {
+          "name": "syft:package:metadataType",
+          "value": "javascript-pnpm-lock-entry"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@img\\/sharp-darwin-x64:\\@img\\/sharp_darwin_x64:0.35.4:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@img\\/sharp_darwin_x64:\\@img\\/sharp-darwin-x64:0.35.4:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@img\\/sharp_darwin_x64:\\@img\\/sharp_darwin_x64:0.35.4:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@img\\/sharp-darwin:\\@img\\/sharp-darwin-x64:0.35.4:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@img\\/sharp-darwin:\\@img\\/sharp_darwin_x64:0.35.4:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@img\\/sharp_darwin:\\@img\\/sharp-darwin-x64:0.35.4:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@img\\/sharp_darwin:\\@img\\/sharp_darwin_x64:0.35.4:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@img\\/sharp:\\@img\\/sharp-darwin-x64:0.35.4:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@img\\/sharp:\\@img\\/sharp_darwin_x64:0.35.4:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:location:0:path",
+          "value": "\\pnpm-lock.yaml"
+        }
+      ],
+      "purl": "pkg:npm/%40img/sharp-darwin-x64@0.35.4",
+      "type": "library",
+      "version": "0.35.4"
+    },
+    {
+      "bom-ref": "pkg:npm/%40img/sharp-freebsd-wasm32@0.35.4?package-id=cc7befa540382106",
+      "cpe": "cpe:2.3:a:\\@img\\/sharp-freebsd-wasm32:\\@img\\/sharp-freebsd-wasm32:0.35.4:*:*:*:*:*:*:*",
+      "name": "@img/sharp-freebsd-wasm32",
+      "properties": [
+        {
+          "name": "syft:package:foundBy",
+          "value": "javascript-lock-cataloger"
+        },
+        {
+          "name": "syft:package:language",
+          "value": "javascript"
+        },
+        {
+          "name": "syft:package:type",
+          "value": "npm"
+        },
+        {
+          "name": "syft:package:metadataType",
+          "value": "javascript-pnpm-lock-entry"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@img\\/sharp-freebsd-wasm32:\\@img\\/sharp_freebsd_wasm32:0.35.4:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@img\\/sharp_freebsd_wasm32:\\@img\\/sharp-freebsd-wasm32:0.35.4:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@img\\/sharp_freebsd_wasm32:\\@img\\/sharp_freebsd_wasm32:0.35.4:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@img\\/sharp-freebsd:\\@img\\/sharp-freebsd-wasm32:0.35.4:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@img\\/sharp-freebsd:\\@img\\/sharp_freebsd_wasm32:0.35.4:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@img\\/sharp_freebsd:\\@img\\/sharp-freebsd-wasm32:0.35.4:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@img\\/sharp_freebsd:\\@img\\/sharp_freebsd_wasm32:0.35.4:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@img\\/sharp:\\@img\\/sharp-freebsd-wasm32:0.35.4:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@img\\/sharp:\\@img\\/sharp_freebsd_wasm32:0.35.4:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:location:0:path",
+          "value": "\\pnpm-lock.yaml"
+        }
+      ],
+      "purl": "pkg:npm/%40img/sharp-freebsd-wasm32@0.35.4",
+      "type": "library",
+      "version": "0.35.4"
+    },
+    {
+      "bom-ref": "pkg:npm/%40img/sharp-libvips-darwin-arm64@1.3.3?package-id=ee0e5d82a8ddeb49",
+      "cpe": "cpe:2.3:a:\\@img\\/sharp-libvips-darwin-arm64:\\@img\\/sharp-libvips-darwin-arm64:1.3.3:*:*:*:*:*:*:*",
+      "name": "@img/sharp-libvips-darwin-arm64",
+      "properties": [
+        {
+          "name": "syft:package:foundBy",
+          "value": "javascript-lock-cataloger"
+        },
+        {
+          "name": "syft:package:language",
+          "value": "javascript"
+        },
+        {
+          "name": "syft:package:type",
+          "value": "npm"
+        },
+        {
+          "name": "syft:package:metadataType",
+          "value": "javascript-pnpm-lock-entry"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@img\\/sharp-libvips-darwin-arm64:\\@img\\/sharp_libvips_darwin_arm64:1.3.3:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@img\\/sharp_libvips_darwin_arm64:\\@img\\/sharp-libvips-darwin-arm64:1.3.3:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@img\\/sharp_libvips_darwin_arm64:\\@img\\/sharp_libvips_darwin_arm64:1.3.3:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@img\\/sharp-libvips-darwin:\\@img\\/sharp-libvips-darwin-arm64:1.3.3:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@img\\/sharp-libvips-darwin:\\@img\\/sharp_libvips_darwin_arm64:1.3.3:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@img\\/sharp_libvips_darwin:\\@img\\/sharp-libvips-darwin-arm64:1.3.3:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@img\\/sharp_libvips_darwin:\\@img\\/sharp_libvips_darwin_arm64:1.3.3:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@img\\/sharp-libvips:\\@img\\/sharp-libvips-darwin-arm64:1.3.3:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@img\\/sharp-libvips:\\@img\\/sharp_libvips_darwin_arm64:1.3.3:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@img\\/sharp_libvips:\\@img\\/sharp-libvips-darwin-arm64:1.3.3:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@img\\/sharp_libvips:\\@img\\/sharp_libvips_darwin_arm64:1.3.3:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@img\\/sharp:\\@img\\/sharp-libvips-darwin-arm64:1.3.3:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@img\\/sharp:\\@img\\/sharp_libvips_darwin_arm64:1.3.3:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:location:0:path",
+          "value": "\\pnpm-lock.yaml"
+        }
+      ],
+      "purl": "pkg:npm/%40img/sharp-libvips-darwin-arm64@1.3.3",
+      "type": "library",
+      "version": "1.3.3"
+    },
+    {
+      "bom-ref": "pkg:npm/%40img/sharp-libvips-darwin-x64@1.3.3?package-id=95d5d670b1cd63bc",
+      "cpe": "cpe:2.3:a:\\@img\\/sharp-libvips-darwin-x64:\\@img\\/sharp-libvips-darwin-x64:1.3.3:*:*:*:*:*:*:*",
+      "name": "@img/sharp-libvips-darwin-x64",
+      "properties": [
+        {
+          "name": "syft:package:foundBy",
+          "value": "javascript-lock-cataloger"
+        },
+        {
+          "name": "syft:package:language",
+          "value": "javascript"
+        },
+        {
+          "name": "syft:package:type",
+          "value": "npm"
+        },
+        {
+          "name": "syft:package:metadataType",
+          "value": "javascript-pnpm-lock-entry"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@img\\/sharp-libvips-darwin-x64:\\@img\\/sharp_libvips_darwin_x64:1.3.3:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@img\\/sharp_libvips_darwin_x64:\\@img\\/sharp-libvips-darwin-x64:1.3.3:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@img\\/sharp_libvips_darwin_x64:\\@img\\/sharp_libvips_darwin_x64:1.3.3:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@img\\/sharp-libvips-darwin:\\@img\\/sharp-libvips-darwin-x64:1.3.3:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@img\\/sharp-libvips-darwin:\\@img\\/sharp_libvips_darwin_x64:1.3.3:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@img\\/sharp_libvips_darwin:\\@img\\/sharp-libvips-darwin-x64:1.3.3:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@img\\/sharp_libvips_darwin:\\@img\\/sharp_libvips_darwin_x64:1.3.3:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@img\\/sharp-libvips:\\@img\\/sharp-libvips-darwin-x64:1.3.3:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@img\\/sharp-libvips:\\@img\\/sharp_libvips_darwin_x64:1.3.3:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@img\\/sharp_libvips:\\@img\\/sharp-libvips-darwin-x64:1.3.3:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@img\\/sharp_libvips:\\@img\\/sharp_libvips_darwin_x64:1.3.3:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@img\\/sharp:\\@img\\/sharp-libvips-darwin-x64:1.3.3:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@img\\/sharp:\\@img\\/sharp_libvips_darwin_x64:1.3.3:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:location:0:path",
+          "value": "\\pnpm-lock.yaml"
+        }
+      ],
+      "purl": "pkg:npm/%40img/sharp-libvips-darwin-x64@1.3.3",
+      "type": "library",
+      "version": "1.3.3"
+    },
+    {
+      "bom-ref": "pkg:npm/%40img/sharp-libvips-linux-arm@1.3.3?package-id=731308fc238476bc",
+      "cpe": "cpe:2.3:a:\\@img\\/sharp-libvips-linux-arm:\\@img\\/sharp-libvips-linux-arm:1.3.3:*:*:*:*:*:*:*",
+      "name": "@img/sharp-libvips-linux-arm",
+      "properties": [
+        {
+          "name": "syft:package:foundBy",
+          "value": "javascript-lock-cataloger"
+        },
+        {
+          "name": "syft:package:language",
+          "value": "javascript"
+        },
+        {
+          "name": "syft:package:type",
+          "value": "npm"
+        },
+        {
+          "name": "syft:package:metadataType",
+          "value": "javascript-pnpm-lock-entry"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@img\\/sharp-libvips-linux-arm:\\@img\\/sharp_libvips_linux_arm:1.3.3:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@img\\/sharp_libvips_linux_arm:\\@img\\/sharp-libvips-linux-arm:1.3.3:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@img\\/sharp_libvips_linux_arm:\\@img\\/sharp_libvips_linux_arm:1.3.3:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@img\\/sharp-libvips-linux:\\@img\\/sharp-libvips-linux-arm:1.3.3:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@img\\/sharp-libvips-linux:\\@img\\/sharp_libvips_linux_arm:1.3.3:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@img\\/sharp_libvips_linux:\\@img\\/sharp-libvips-linux-arm:1.3.3:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@img\\/sharp_libvips_linux:\\@img\\/sharp_libvips_linux_arm:1.3.3:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@img\\/sharp-libvips:\\@img\\/sharp-libvips-linux-arm:1.3.3:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@img\\/sharp-libvips:\\@img\\/sharp_libvips_linux_arm:1.3.3:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@img\\/sharp_libvips:\\@img\\/sharp-libvips-linux-arm:1.3.3:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@img\\/sharp_libvips:\\@img\\/sharp_libvips_linux_arm:1.3.3:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@img\\/sharp:\\@img\\/sharp-libvips-linux-arm:1.3.3:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@img\\/sharp:\\@img\\/sharp_libvips_linux_arm:1.3.3:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:location:0:path",
+          "value": "\\pnpm-lock.yaml"
+        }
+      ],
+      "purl": "pkg:npm/%40img/sharp-libvips-linux-arm@1.3.3",
+      "type": "library",
+      "version": "1.3.3"
+    },
+    {
+      "bom-ref": "pkg:npm/%40img/sharp-libvips-linux-arm64@1.3.3?package-id=353d1923b1dba93d",
+      "cpe": "cpe:2.3:a:\\@img\\/sharp-libvips-linux-arm64:\\@img\\/sharp-libvips-linux-arm64:1.3.3:*:*:*:*:*:*:*",
+      "name": "@img/sharp-libvips-linux-arm64",
+      "properties": [
+        {
+          "name": "syft:package:foundBy",
+          "value": "javascript-lock-cataloger"
+        },
+        {
+          "name": "syft:package:language",
+          "value": "javascript"
+        },
+        {
+          "name": "syft:package:type",
+          "value": "npm"
+        },
+        {
+          "name": "syft:package:metadataType",
+          "value": "javascript-pnpm-lock-entry"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@img\\/sharp-libvips-linux-arm64:\\@img\\/sharp_libvips_linux_arm64:1.3.3:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@img\\/sharp_libvips_linux_arm64:\\@img\\/sharp-libvips-linux-arm64:1.3.3:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@img\\/sharp_libvips_linux_arm64:\\@img\\/sharp_libvips_linux_arm64:1.3.3:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@img\\/sharp-libvips-linux:\\@img\\/sharp-libvips-linux-arm64:1.3.3:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@img\\/sharp-libvips-linux:\\@img\\/sharp_libvips_linux_arm64:1.3.3:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@img\\/sharp_libvips_linux:\\@img\\/sharp-libvips-linux-arm64:1.3.3:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@img\\/sharp_libvips_linux:\\@img\\/sharp_libvips_linux_arm64:1.3.3:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@img\\/sharp-libvips:\\@img\\/sharp-libvips-linux-arm64:1.3.3:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@img\\/sharp-libvips:\\@img\\/sharp_libvips_linux_arm64:1.3.3:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@img\\/sharp_libvips:\\@img\\/sharp-libvips-linux-arm64:1.3.3:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@img\\/sharp_libvips:\\@img\\/sharp_libvips_linux_arm64:1.3.3:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@img\\/sharp:\\@img\\/sharp-libvips-linux-arm64:1.3.3:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@img\\/sharp:\\@img\\/sharp_libvips_linux_arm64:1.3.3:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:location:0:path",
+          "value": "\\pnpm-lock.yaml"
+        }
+      ],
+      "purl": "pkg:npm/%40img/sharp-libvips-linux-arm64@1.3.3",
+      "type": "library",
+      "version": "1.3.3"
+    },
+    {
+      "bom-ref": "pkg:npm/%40img/sharp-libvips-linux-ppc64@1.3.3?package-id=fcf3ec6f6d64473f",
+      "cpe": "cpe:2.3:a:\\@img\\/sharp-libvips-linux-ppc64:\\@img\\/sharp-libvips-linux-ppc64:1.3.3:*:*:*:*:*:*:*",
+      "name": "@img/sharp-libvips-linux-ppc64",
+      "properties": [
+        {
+          "name": "syft:package:foundBy",
+          "value": "javascript-lock-cataloger"
+        },
+        {
+          "name": "syft:package:language",
+          "value": "javascript"
+        },
+        {
+          "name": "syft:package:type",
+          "value": "npm"
+        },
+        {
+          "name": "syft:package:metadataType",
+          "value": "javascript-pnpm-lock-entry"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@img\\/sharp-libvips-linux-ppc64:\\@img\\/sharp_libvips_linux_ppc64:1.3.3:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@img\\/sharp_libvips_linux_ppc64:\\@img\\/sharp-libvips-linux-ppc64:1.3.3:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@img\\/sharp_libvips_linux_ppc64:\\@img\\/sharp_libvips_linux_ppc64:1.3.3:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@img\\/sharp-libvips-linux:\\@img\\/sharp-libvips-linux-ppc64:1.3.3:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@img\\/sharp-libvips-linux:\\@img\\/sharp_libvips_linux_ppc64:1.3.3:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@img\\/sharp_libvips_linux:\\@img\\/sharp-libvips-linux-ppc64:1.3.3:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@img\\/sharp_libvips_linux:\\@img\\/sharp_libvips_linux_ppc64:1.3.3:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@img\\/sharp-libvips:\\@img\\/sharp-libvips-linux-ppc64:1.3.3:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@img\\/sharp-libvips:\\@img\\/sharp_libvips_linux_ppc64:1.3.3:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@img\\/sharp_libvips:\\@img\\/sharp-libvips-linux-ppc64:1.3.3:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@img\\/sharp_libvips:\\@img\\/sharp_libvips_linux_ppc64:1.3.3:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@img\\/sharp:\\@img\\/sharp-libvips-linux-ppc64:1.3.3:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@img\\/sharp:\\@img\\/sharp_libvips_linux_ppc64:1.3.3:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:location:0:path",
+          "value": "\\pnpm-lock.yaml"
+        }
+      ],
+      "purl": "pkg:npm/%40img/sharp-libvips-linux-ppc64@1.3.3",
+      "type": "library",
+      "version": "1.3.3"
+    },
+    {
+      "bom-ref": "pkg:npm/%40img/sharp-libvips-linux-riscv64@1.3.3?package-id=1b6f8a361af7fd1e",
+      "cpe": "cpe:2.3:a:\\@img\\/sharp-libvips-linux-riscv64:\\@img\\/sharp-libvips-linux-riscv64:1.3.3:*:*:*:*:*:*:*",
+      "name": "@img/sharp-libvips-linux-riscv64",
+      "properties": [
+        {
+          "name": "syft:package:foundBy",
+          "value": "javascript-lock-cataloger"
+        },
+        {
+          "name": "syft:package:language",
+          "value": "javascript"
+        },
+        {
+          "name": "syft:package:type",
+          "value": "npm"
+        },
+        {
+          "name": "syft:package:metadataType",
+          "value": "javascript-pnpm-lock-entry"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@img\\/sharp-libvips-linux-riscv64:\\@img\\/sharp_libvips_linux_riscv64:1.3.3:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@img\\/sharp_libvips_linux_riscv64:\\@img\\/sharp-libvips-linux-riscv64:1.3.3:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@img\\/sharp_libvips_linux_riscv64:\\@img\\/sharp_libvips_linux_riscv64:1.3.3:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@img\\/sharp-libvips-linux:\\@img\\/sharp-libvips-linux-riscv64:1.3.3:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@img\\/sharp-libvips-linux:\\@img\\/sharp_libvips_linux_riscv64:1.3.3:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@img\\/sharp_libvips_linux:\\@img\\/sharp-libvips-linux-riscv64:1.3.3:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@img\\/sharp_libvips_linux:\\@img\\/sharp_libvips_linux_riscv64:1.3.3:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@img\\/sharp-libvips:\\@img\\/sharp-libvips-linux-riscv64:1.3.3:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@img\\/sharp-libvips:\\@img\\/sharp_libvips_linux_riscv64:1.3.3:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@img\\/sharp_libvips:\\@img\\/sharp-libvips-linux-riscv64:1.3.3:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@img\\/sharp_libvips:\\@img\\/sharp_libvips_linux_riscv64:1.3.3:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@img\\/sharp:\\@img\\/sharp-libvips-linux-riscv64:1.3.3:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@img\\/sharp:\\@img\\/sharp_libvips_linux_riscv64:1.3.3:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:location:0:path",
+          "value": "\\pnpm-lock.yaml"
+        }
+      ],
+      "purl": "pkg:npm/%40img/sharp-libvips-linux-riscv64@1.3.3",
+      "type": "library",
+      "version": "1.3.3"
+    },
+    {
+      "bom-ref": "pkg:npm/%40img/sharp-libvips-linux-s390x@1.3.3?package-id=e4809f8080ff1942",
+      "cpe": "cpe:2.3:a:\\@img\\/sharp-libvips-linux-s390x:\\@img\\/sharp-libvips-linux-s390x:1.3.3:*:*:*:*:*:*:*",
+      "name": "@img/sharp-libvips-linux-s390x",
+      "properties": [
+        {
+          "name": "syft:package:foundBy",
+          "value": "javascript-lock-cataloger"
+        },
+        {
+          "name": "syft:package:language",
+          "value": "javascript"
+        },
+        {
+          "name": "syft:package:type",
+          "value": "npm"
+        },
+        {
+          "name": "syft:package:metadataType",
+          "value": "javascript-pnpm-lock-entry"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@img\\/sharp-libvips-linux-s390x:\\@img\\/sharp_libvips_linux_s390x:1.3.3:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@img\\/sharp_libvips_linux_s390x:\\@img\\/sharp-libvips-linux-s390x:1.3.3:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@img\\/sharp_libvips_linux_s390x:\\@img\\/sharp_libvips_linux_s390x:1.3.3:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@img\\/sharp-libvips-linux:\\@img\\/sharp-libvips-linux-s390x:1.3.3:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@img\\/sharp-libvips-linux:\\@img\\/sharp_libvips_linux_s390x:1.3.3:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@img\\/sharp_libvips_linux:\\@img\\/sharp-libvips-linux-s390x:1.3.3:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@img\\/sharp_libvips_linux:\\@img\\/sharp_libvips_linux_s390x:1.3.3:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@img\\/sharp-libvips:\\@img\\/sharp-libvips-linux-s390x:1.3.3:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@img\\/sharp-libvips:\\@img\\/sharp_libvips_linux_s390x:1.3.3:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@img\\/sharp_libvips:\\@img\\/sharp-libvips-linux-s390x:1.3.3:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@img\\/sharp_libvips:\\@img\\/sharp_libvips_linux_s390x:1.3.3:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@img\\/sharp:\\@img\\/sharp-libvips-linux-s390x:1.3.3:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@img\\/sharp:\\@img\\/sharp_libvips_linux_s390x:1.3.3:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:location:0:path",
+          "value": "\\pnpm-lock.yaml"
+        }
+      ],
+      "purl": "pkg:npm/%40img/sharp-libvips-linux-s390x@1.3.3",
+      "type": "library",
+      "version": "1.3.3"
+    },
+    {
+      "bom-ref": "pkg:npm/%40img/sharp-libvips-linux-x64@1.3.3?package-id=44f6ccb7c6f45746",
+      "cpe": "cpe:2.3:a:\\@img\\/sharp-libvips-linux-x64:\\@img\\/sharp-libvips-linux-x64:1.3.3:*:*:*:*:*:*:*",
+      "name": "@img/sharp-libvips-linux-x64",
+      "properties": [
+        {
+          "name": "syft:package:foundBy",
+          "value": "javascript-lock-cataloger"
+        },
+        {
+          "name": "syft:package:language",
+          "value": "javascript"
+        },
+        {
+          "name": "syft:package:type",
+          "value": "npm"
+        },
+        {
+          "name": "syft:package:metadataType",
+          "value": "javascript-pnpm-lock-entry"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@img\\/sharp-libvips-linux-x64:\\@img\\/sharp_libvips_linux_x64:1.3.3:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@img\\/sharp_libvips_linux_x64:\\@img\\/sharp-libvips-linux-x64:1.3.3:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@img\\/sharp_libvips_linux_x64:\\@img\\/sharp_libvips_linux_x64:1.3.3:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@img\\/sharp-libvips-linux:\\@img\\/sharp-libvips-linux-x64:1.3.3:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@img\\/sharp-libvips-linux:\\@img\\/sharp_libvips_linux_x64:1.3.3:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@img\\/sharp_libvips_linux:\\@img\\/sharp-libvips-linux-x64:1.3.3:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@img\\/sharp_libvips_linux:\\@img\\/sharp_libvips_linux_x64:1.3.3:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@img\\/sharp-libvips:\\@img\\/sharp-libvips-linux-x64:1.3.3:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@img\\/sharp-libvips:\\@img\\/sharp_libvips_linux_x64:1.3.3:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@img\\/sharp_libvips:\\@img\\/sharp-libvips-linux-x64:1.3.3:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@img\\/sharp_libvips:\\@img\\/sharp_libvips_linux_x64:1.3.3:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@img\\/sharp:\\@img\\/sharp-libvips-linux-x64:1.3.3:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@img\\/sharp:\\@img\\/sharp_libvips_linux_x64:1.3.3:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:location:0:path",
+          "value": "\\pnpm-lock.yaml"
+        }
+      ],
+      "purl": "pkg:npm/%40img/sharp-libvips-linux-x64@1.3.3",
+      "type": "library",
+      "version": "1.3.3"
+    },
+    {
+      "bom-ref": "pkg:npm/%40img/sharp-libvips-linuxmusl-arm64@1.3.3?package-id=97da7e0c3506e9eb",
+      "cpe": "cpe:2.3:a:\\@img\\/sharp-libvips-linuxmusl-arm64:\\@img\\/sharp-libvips-linuxmusl-arm64:1.3.3:*:*:*:*:*:*:*",
+      "name": "@img/sharp-libvips-linuxmusl-arm64",
+      "properties": [
+        {
+          "name": "syft:package:foundBy",
+          "value": "javascript-lock-cataloger"
+        },
+        {
+          "name": "syft:package:language",
+          "value": "javascript"
+        },
+        {
+          "name": "syft:package:type",
+          "value": "npm"
+        },
+        {
+          "name": "syft:package:metadataType",
+          "value": "javascript-pnpm-lock-entry"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@img\\/sharp-libvips-linuxmusl-arm64:\\@img\\/sharp_libvips_linuxmusl_arm64:1.3.3:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@img\\/sharp_libvips_linuxmusl_arm64:\\@img\\/sharp-libvips-linuxmusl-arm64:1.3.3:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@img\\/sharp_libvips_linuxmusl_arm64:\\@img\\/sharp_libvips_linuxmusl_arm64:1.3.3:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@img\\/sharp-libvips-linuxmusl:\\@img\\/sharp-libvips-linuxmusl-arm64:1.3.3:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@img\\/sharp-libvips-linuxmusl:\\@img\\/sharp_libvips_linuxmusl_arm64:1.3.3:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@img\\/sharp_libvips_linuxmusl:\\@img\\/sharp-libvips-linuxmusl-arm64:1.3.3:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@img\\/sharp_libvips_linuxmusl:\\@img\\/sharp_libvips_linuxmusl_arm64:1.3.3:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@img\\/sharp-libvips:\\@img\\/sharp-libvips-linuxmusl-arm64:1.3.3:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@img\\/sharp-libvips:\\@img\\/sharp_libvips_linuxmusl_arm64:1.3.3:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@img\\/sharp_libvips:\\@img\\/sharp-libvips-linuxmusl-arm64:1.3.3:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@img\\/sharp_libvips:\\@img\\/sharp_libvips_linuxmusl_arm64:1.3.3:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@img\\/sharp:\\@img\\/sharp-libvips-linuxmusl-arm64:1.3.3:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@img\\/sharp:\\@img\\/sharp_libvips_linuxmusl_arm64:1.3.3:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:location:0:path",
+          "value": "\\pnpm-lock.yaml"
+        }
+      ],
+      "purl": "pkg:npm/%40img/sharp-libvips-linuxmusl-arm64@1.3.3",
+      "type": "library",
+      "version": "1.3.3"
+    },
+    {
+      "bom-ref": "pkg:npm/%40img/sharp-libvips-linuxmusl-x64@1.3.3?package-id=2ba840a5d8228901",
+      "cpe": "cpe:2.3:a:\\@img\\/sharp-libvips-linuxmusl-x64:\\@img\\/sharp-libvips-linuxmusl-x64:1.3.3:*:*:*:*:*:*:*",
+      "name": "@img/sharp-libvips-linuxmusl-x64",
+      "properties": [
+        {
+          "name": "syft:package:foundBy",
+          "value": "javascript-lock-cataloger"
+        },
+        {
+          "name": "syft:package:language",
+          "value": "javascript"
+        },
+        {
+          "name": "syft:package:type",
+          "value": "npm"
+        },
+        {
+          "name": "syft:package:metadataType",
+          "value": "javascript-pnpm-lock-entry"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@img\\/sharp-libvips-linuxmusl-x64:\\@img\\/sharp_libvips_linuxmusl_x64:1.3.3:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@img\\/sharp_libvips_linuxmusl_x64:\\@img\\/sharp-libvips-linuxmusl-x64:1.3.3:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@img\\/sharp_libvips_linuxmusl_x64:\\@img\\/sharp_libvips_linuxmusl_x64:1.3.3:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@img\\/sharp-libvips-linuxmusl:\\@img\\/sharp-libvips-linuxmusl-x64:1.3.3:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@img\\/sharp-libvips-linuxmusl:\\@img\\/sharp_libvips_linuxmusl_x64:1.3.3:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@img\\/sharp_libvips_linuxmusl:\\@img\\/sharp-libvips-linuxmusl-x64:1.3.3:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@img\\/sharp_libvips_linuxmusl:\\@img\\/sharp_libvips_linuxmusl_x64:1.3.3:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@img\\/sharp-libvips:\\@img\\/sharp-libvips-linuxmusl-x64:1.3.3:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@img\\/sharp-libvips:\\@img\\/sharp_libvips_linuxmusl_x64:1.3.3:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@img\\/sharp_libvips:\\@img\\/sharp-libvips-linuxmusl-x64:1.3.3:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@img\\/sharp_libvips:\\@img\\/sharp_libvips_linuxmusl_x64:1.3.3:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@img\\/sharp:\\@img\\/sharp-libvips-linuxmusl-x64:1.3.3:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@img\\/sharp:\\@img\\/sharp_libvips_linuxmusl_x64:1.3.3:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:location:0:path",
+          "value": "\\pnpm-lock.yaml"
+        }
+      ],
+      "purl": "pkg:npm/%40img/sharp-libvips-linuxmusl-x64@1.3.3",
+      "type": "library",
+      "version": "1.3.3"
+    },
+    {
+      "bom-ref": "pkg:npm/%40img/sharp-linux-arm@0.35.4?package-id=0864ad7b0035be14",
+      "cpe": "cpe:2.3:a:\\@img\\/sharp-linux-arm:\\@img\\/sharp-linux-arm:0.35.4:*:*:*:*:*:*:*",
+      "name": "@img/sharp-linux-arm",
+      "properties": [
+        {
+          "name": "syft:package:foundBy",
+          "value": "javascript-lock-cataloger"
+        },
+        {
+          "name": "syft:package:language",
+          "value": "javascript"
+        },
+        {
+          "name": "syft:package:type",
+          "value": "npm"
+        },
+        {
+          "name": "syft:package:metadataType",
+          "value": "javascript-pnpm-lock-entry"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@img\\/sharp-linux-arm:\\@img\\/sharp_linux_arm:0.35.4:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@img\\/sharp_linux_arm:\\@img\\/sharp-linux-arm:0.35.4:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@img\\/sharp_linux_arm:\\@img\\/sharp_linux_arm:0.35.4:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@img\\/sharp-linux:\\@img\\/sharp-linux-arm:0.35.4:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@img\\/sharp-linux:\\@img\\/sharp_linux_arm:0.35.4:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@img\\/sharp_linux:\\@img\\/sharp-linux-arm:0.35.4:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@img\\/sharp_linux:\\@img\\/sharp_linux_arm:0.35.4:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@img\\/sharp:\\@img\\/sharp-linux-arm:0.35.4:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@img\\/sharp:\\@img\\/sharp_linux_arm:0.35.4:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:location:0:path",
+          "value": "\\pnpm-lock.yaml"
+        }
+      ],
+      "purl": "pkg:npm/%40img/sharp-linux-arm@0.35.4",
+      "type": "library",
+      "version": "0.35.4"
+    },
+    {
+      "bom-ref": "pkg:npm/%40img/sharp-linux-arm64@0.35.4?package-id=9857490613c9997b",
+      "cpe": "cpe:2.3:a:\\@img\\/sharp-linux-arm64:\\@img\\/sharp-linux-arm64:0.35.4:*:*:*:*:*:*:*",
+      "name": "@img/sharp-linux-arm64",
+      "properties": [
+        {
+          "name": "syft:package:foundBy",
+          "value": "javascript-lock-cataloger"
+        },
+        {
+          "name": "syft:package:language",
+          "value": "javascript"
+        },
+        {
+          "name": "syft:package:type",
+          "value": "npm"
+        },
+        {
+          "name": "syft:package:metadataType",
+          "value": "javascript-pnpm-lock-entry"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@img\\/sharp-linux-arm64:\\@img\\/sharp_linux_arm64:0.35.4:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@img\\/sharp_linux_arm64:\\@img\\/sharp-linux-arm64:0.35.4:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@img\\/sharp_linux_arm64:\\@img\\/sharp_linux_arm64:0.35.4:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@img\\/sharp-linux:\\@img\\/sharp-linux-arm64:0.35.4:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@img\\/sharp-linux:\\@img\\/sharp_linux_arm64:0.35.4:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@img\\/sharp_linux:\\@img\\/sharp-linux-arm64:0.35.4:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@img\\/sharp_linux:\\@img\\/sharp_linux_arm64:0.35.4:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@img\\/sharp:\\@img\\/sharp-linux-arm64:0.35.4:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@img\\/sharp:\\@img\\/sharp_linux_arm64:0.35.4:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:location:0:path",
+          "value": "\\pnpm-lock.yaml"
+        }
+      ],
+      "purl": "pkg:npm/%40img/sharp-linux-arm64@0.35.4",
+      "type": "library",
+      "version": "0.35.4"
+    },
+    {
+      "bom-ref": "pkg:npm/%40img/sharp-linux-ppc64@0.35.4?package-id=166ac9919111a29e",
+      "cpe": "cpe:2.3:a:\\@img\\/sharp-linux-ppc64:\\@img\\/sharp-linux-ppc64:0.35.4:*:*:*:*:*:*:*",
+      "name": "@img/sharp-linux-ppc64",
+      "properties": [
+        {
+          "name": "syft:package:foundBy",
+          "value": "javascript-lock-cataloger"
+        },
+        {
+          "name": "syft:package:language",
+          "value": "javascript"
+        },
+        {
+          "name": "syft:package:type",
+          "value": "npm"
+        },
+        {
+          "name": "syft:package:metadataType",
+          "value": "javascript-pnpm-lock-entry"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@img\\/sharp-linux-ppc64:\\@img\\/sharp_linux_ppc64:0.35.4:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@img\\/sharp_linux_ppc64:\\@img\\/sharp-linux-ppc64:0.35.4:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@img\\/sharp_linux_ppc64:\\@img\\/sharp_linux_ppc64:0.35.4:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@img\\/sharp-linux:\\@img\\/sharp-linux-ppc64:0.35.4:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@img\\/sharp-linux:\\@img\\/sharp_linux_ppc64:0.35.4:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@img\\/sharp_linux:\\@img\\/sharp-linux-ppc64:0.35.4:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@img\\/sharp_linux:\\@img\\/sharp_linux_ppc64:0.35.4:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@img\\/sharp:\\@img\\/sharp-linux-ppc64:0.35.4:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@img\\/sharp:\\@img\\/sharp_linux_ppc64:0.35.4:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:location:0:path",
+          "value": "\\pnpm-lock.yaml"
+        }
+      ],
+      "purl": "pkg:npm/%40img/sharp-linux-ppc64@0.35.4",
+      "type": "library",
+      "version": "0.35.4"
+    },
+    {
+      "bom-ref": "pkg:npm/%40img/sharp-linux-riscv64@0.35.4?package-id=0e2b643304b58ddd",
+      "cpe": "cpe:2.3:a:\\@img\\/sharp-linux-riscv64:\\@img\\/sharp-linux-riscv64:0.35.4:*:*:*:*:*:*:*",
+      "name": "@img/sharp-linux-riscv64",
+      "properties": [
+        {
+          "name": "syft:package:foundBy",
+          "value": "javascript-lock-cataloger"
+        },
+        {
+          "name": "syft:package:language",
+          "value": "javascript"
+        },
+        {
+          "name": "syft:package:type",
+          "value": "npm"
+        },
+        {
+          "name": "syft:package:metadataType",
+          "value": "javascript-pnpm-lock-entry"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@img\\/sharp-linux-riscv64:\\@img\\/sharp_linux_riscv64:0.35.4:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@img\\/sharp_linux_riscv64:\\@img\\/sharp-linux-riscv64:0.35.4:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@img\\/sharp_linux_riscv64:\\@img\\/sharp_linux_riscv64:0.35.4:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@img\\/sharp-linux:\\@img\\/sharp-linux-riscv64:0.35.4:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@img\\/sharp-linux:\\@img\\/sharp_linux_riscv64:0.35.4:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@img\\/sharp_linux:\\@img\\/sharp-linux-riscv64:0.35.4:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@img\\/sharp_linux:\\@img\\/sharp_linux_riscv64:0.35.4:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@img\\/sharp:\\@img\\/sharp-linux-riscv64:0.35.4:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@img\\/sharp:\\@img\\/sharp_linux_riscv64:0.35.4:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:location:0:path",
+          "value": "\\pnpm-lock.yaml"
+        }
+      ],
+      "purl": "pkg:npm/%40img/sharp-linux-riscv64@0.35.4",
+      "type": "library",
+      "version": "0.35.4"
+    },
+    {
+      "bom-ref": "pkg:npm/%40img/sharp-linux-s390x@0.35.4?package-id=778aabff27c06567",
+      "cpe": "cpe:2.3:a:\\@img\\/sharp-linux-s390x:\\@img\\/sharp-linux-s390x:0.35.4:*:*:*:*:*:*:*",
+      "name": "@img/sharp-linux-s390x",
+      "properties": [
+        {
+          "name": "syft:package:foundBy",
+          "value": "javascript-lock-cataloger"
+        },
+        {
+          "name": "syft:package:language",
+          "value": "javascript"
+        },
+        {
+          "name": "syft:package:type",
+          "value": "npm"
+        },
+        {
+          "name": "syft:package:metadataType",
+          "value": "javascript-pnpm-lock-entry"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@img\\/sharp-linux-s390x:\\@img\\/sharp_linux_s390x:0.35.4:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@img\\/sharp_linux_s390x:\\@img\\/sharp-linux-s390x:0.35.4:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@img\\/sharp_linux_s390x:\\@img\\/sharp_linux_s390x:0.35.4:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@img\\/sharp-linux:\\@img\\/sharp-linux-s390x:0.35.4:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@img\\/sharp-linux:\\@img\\/sharp_linux_s390x:0.35.4:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@img\\/sharp_linux:\\@img\\/sharp-linux-s390x:0.35.4:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@img\\/sharp_linux:\\@img\\/sharp_linux_s390x:0.35.4:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@img\\/sharp:\\@img\\/sharp-linux-s390x:0.35.4:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@img\\/sharp:\\@img\\/sharp_linux_s390x:0.35.4:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:location:0:path",
+          "value": "\\pnpm-lock.yaml"
+        }
+      ],
+      "purl": "pkg:npm/%40img/sharp-linux-s390x@0.35.4",
+      "type": "library",
+      "version": "0.35.4"
+    },
+    {
+      "bom-ref": "pkg:npm/%40img/sharp-linux-x64@0.35.4?package-id=2a356e616e21c6ae",
+      "cpe": "cpe:2.3:a:\\@img\\/sharp-linux-x64:\\@img\\/sharp-linux-x64:0.35.4:*:*:*:*:*:*:*",
+      "name": "@img/sharp-linux-x64",
+      "properties": [
+        {
+          "name": "syft:package:foundBy",
+          "value": "javascript-lock-cataloger"
+        },
+        {
+          "name": "syft:package:language",
+          "value": "javascript"
+        },
+        {
+          "name": "syft:package:type",
+          "value": "npm"
+        },
+        {
+          "name": "syft:package:metadataType",
+          "value": "javascript-pnpm-lock-entry"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@img\\/sharp-linux-x64:\\@img\\/sharp_linux_x64:0.35.4:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@img\\/sharp_linux_x64:\\@img\\/sharp-linux-x64:0.35.4:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@img\\/sharp_linux_x64:\\@img\\/sharp_linux_x64:0.35.4:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@img\\/sharp-linux:\\@img\\/sharp-linux-x64:0.35.4:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@img\\/sharp-linux:\\@img\\/sharp_linux_x64:0.35.4:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@img\\/sharp_linux:\\@img\\/sharp-linux-x64:0.35.4:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@img\\/sharp_linux:\\@img\\/sharp_linux_x64:0.35.4:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@img\\/sharp:\\@img\\/sharp-linux-x64:0.35.4:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@img\\/sharp:\\@img\\/sharp_linux_x64:0.35.4:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:location:0:path",
+          "value": "\\pnpm-lock.yaml"
+        }
+      ],
+      "purl": "pkg:npm/%40img/sharp-linux-x64@0.35.4",
+      "type": "library",
+      "version": "0.35.4"
+    },
+    {
+      "bom-ref": "pkg:npm/%40img/sharp-linuxmusl-arm64@0.35.4?package-id=5bb021386d3a3e2e",
+      "cpe": "cpe:2.3:a:\\@img\\/sharp-linuxmusl-arm64:\\@img\\/sharp-linuxmusl-arm64:0.35.4:*:*:*:*:*:*:*",
+      "name": "@img/sharp-linuxmusl-arm64",
+      "properties": [
+        {
+          "name": "syft:package:foundBy",
+          "value": "javascript-lock-cataloger"
+        },
+        {
+          "name": "syft:package:language",
+          "value": "javascript"
+        },
+        {
+          "name": "syft:package:type",
+          "value": "npm"
+        },
+        {
+          "name": "syft:package:metadataType",
+          "value": "javascript-pnpm-lock-entry"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@img\\/sharp-linuxmusl-arm64:\\@img\\/sharp_linuxmusl_arm64:0.35.4:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@img\\/sharp_linuxmusl_arm64:\\@img\\/sharp-linuxmusl-arm64:0.35.4:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@img\\/sharp_linuxmusl_arm64:\\@img\\/sharp_linuxmusl_arm64:0.35.4:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@img\\/sharp-linuxmusl:\\@img\\/sharp-linuxmusl-arm64:0.35.4:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@img\\/sharp-linuxmusl:\\@img\\/sharp_linuxmusl_arm64:0.35.4:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@img\\/sharp_linuxmusl:\\@img\\/sharp-linuxmusl-arm64:0.35.4:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@img\\/sharp_linuxmusl:\\@img\\/sharp_linuxmusl_arm64:0.35.4:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@img\\/sharp:\\@img\\/sharp-linuxmusl-arm64:0.35.4:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@img\\/sharp:\\@img\\/sharp_linuxmusl_arm64:0.35.4:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:location:0:path",
+          "value": "\\pnpm-lock.yaml"
+        }
+      ],
+      "purl": "pkg:npm/%40img/sharp-linuxmusl-arm64@0.35.4",
+      "type": "library",
+      "version": "0.35.4"
+    },
+    {
+      "bom-ref": "pkg:npm/%40img/sharp-linuxmusl-x64@0.35.4?package-id=cb348d40915ecb03",
+      "cpe": "cpe:2.3:a:\\@img\\/sharp-linuxmusl-x64:\\@img\\/sharp-linuxmusl-x64:0.35.4:*:*:*:*:*:*:*",
+      "name": "@img/sharp-linuxmusl-x64",
+      "properties": [
+        {
+          "name": "syft:package:foundBy",
+          "value": "javascript-lock-cataloger"
+        },
+        {
+          "name": "syft:package:language",
+          "value": "javascript"
+        },
+        {
+          "name": "syft:package:type",
+          "value": "npm"
+        },
+        {
+          "name": "syft:package:metadataType",
+          "value": "javascript-pnpm-lock-entry"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@img\\/sharp-linuxmusl-x64:\\@img\\/sharp_linuxmusl_x64:0.35.4:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@img\\/sharp_linuxmusl_x64:\\@img\\/sharp-linuxmusl-x64:0.35.4:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@img\\/sharp_linuxmusl_x64:\\@img\\/sharp_linuxmusl_x64:0.35.4:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@img\\/sharp-linuxmusl:\\@img\\/sharp-linuxmusl-x64:0.35.4:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@img\\/sharp-linuxmusl:\\@img\\/sharp_linuxmusl_x64:0.35.4:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@img\\/sharp_linuxmusl:\\@img\\/sharp-linuxmusl-x64:0.35.4:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@img\\/sharp_linuxmusl:\\@img\\/sharp_linuxmusl_x64:0.35.4:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@img\\/sharp:\\@img\\/sharp-linuxmusl-x64:0.35.4:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@img\\/sharp:\\@img\\/sharp_linuxmusl_x64:0.35.4:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:location:0:path",
+          "value": "\\pnpm-lock.yaml"
+        }
+      ],
+      "purl": "pkg:npm/%40img/sharp-linuxmusl-x64@0.35.4",
+      "type": "library",
+      "version": "0.35.4"
+    },
+    {
+      "bom-ref": "pkg:npm/%40img/sharp-wasm32@0.35.4?package-id=41bb8bbb5760725a",
+      "cpe": "cpe:2.3:a:\\@img\\/sharp-wasm32:\\@img\\/sharp-wasm32:0.35.4:*:*:*:*:*:*:*",
+      "name": "@img/sharp-wasm32",
+      "properties": [
+        {
+          "name": "syft:package:foundBy",
+          "value": "javascript-lock-cataloger"
+        },
+        {
+          "name": "syft:package:language",
+          "value": "javascript"
+        },
+        {
+          "name": "syft:package:type",
+          "value": "npm"
+        },
+        {
+          "name": "syft:package:metadataType",
+          "value": "javascript-pnpm-lock-entry"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@img\\/sharp-wasm32:\\@img\\/sharp_wasm32:0.35.4:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@img\\/sharp_wasm32:\\@img\\/sharp-wasm32:0.35.4:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@img\\/sharp_wasm32:\\@img\\/sharp_wasm32:0.35.4:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@img\\/sharp:\\@img\\/sharp-wasm32:0.35.4:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@img\\/sharp:\\@img\\/sharp_wasm32:0.35.4:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:location:0:path",
+          "value": "\\pnpm-lock.yaml"
+        }
+      ],
+      "purl": "pkg:npm/%40img/sharp-wasm32@0.35.4",
+      "type": "library",
+      "version": "0.35.4"
+    },
+    {
+      "bom-ref": "pkg:npm/%40img/sharp-webcontainers-wasm32@0.35.4?package-id=8d532daf92889b26",
+      "cpe": "cpe:2.3:a:\\@img\\/sharp-webcontainers-wasm32:\\@img\\/sharp-webcontainers-wasm32:0.35.4:*:*:*:*:*:*:*",
+      "name": "@img/sharp-webcontainers-wasm32",
+      "properties": [
+        {
+          "name": "syft:package:foundBy",
+          "value": "javascript-lock-cataloger"
+        },
+        {
+          "name": "syft:package:language",
+          "value": "javascript"
+        },
+        {
+          "name": "syft:package:type",
+          "value": "npm"
+        },
+        {
+          "name": "syft:package:metadataType",
+          "value": "javascript-pnpm-lock-entry"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@img\\/sharp-webcontainers-wasm32:\\@img\\/sharp_webcontainers_wasm32:0.35.4:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@img\\/sharp_webcontainers_wasm32:\\@img\\/sharp-webcontainers-wasm32:0.35.4:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@img\\/sharp_webcontainers_wasm32:\\@img\\/sharp_webcontainers_wasm32:0.35.4:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@img\\/sharp-webcontainers:\\@img\\/sharp-webcontainers-wasm32:0.35.4:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@img\\/sharp-webcontainers:\\@img\\/sharp_webcontainers_wasm32:0.35.4:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@img\\/sharp_webcontainers:\\@img\\/sharp-webcontainers-wasm32:0.35.4:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@img\\/sharp_webcontainers:\\@img\\/sharp_webcontainers_wasm32:0.35.4:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@img\\/sharp:\\@img\\/sharp-webcontainers-wasm32:0.35.4:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@img\\/sharp:\\@img\\/sharp_webcontainers_wasm32:0.35.4:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:location:0:path",
+          "value": "\\pnpm-lock.yaml"
+        }
+      ],
+      "purl": "pkg:npm/%40img/sharp-webcontainers-wasm32@0.35.4",
+      "type": "library",
+      "version": "0.35.4"
+    },
+    {
+      "bom-ref": "pkg:npm/%40img/sharp-win32-arm64@0.35.4?package-id=ea999b8e3175f22d",
+      "cpe": "cpe:2.3:a:\\@img\\/sharp-win32-arm64:\\@img\\/sharp-win32-arm64:0.35.4:*:*:*:*:*:*:*",
+      "name": "@img/sharp-win32-arm64",
+      "properties": [
+        {
+          "name": "syft:package:foundBy",
+          "value": "javascript-lock-cataloger"
+        },
+        {
+          "name": "syft:package:language",
+          "value": "javascript"
+        },
+        {
+          "name": "syft:package:type",
+          "value": "npm"
+        },
+        {
+          "name": "syft:package:metadataType",
+          "value": "javascript-pnpm-lock-entry"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@img\\/sharp-win32-arm64:\\@img\\/sharp_win32_arm64:0.35.4:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@img\\/sharp_win32_arm64:\\@img\\/sharp-win32-arm64:0.35.4:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@img\\/sharp_win32_arm64:\\@img\\/sharp_win32_arm64:0.35.4:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@img\\/sharp-win32:\\@img\\/sharp-win32-arm64:0.35.4:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@img\\/sharp-win32:\\@img\\/sharp_win32_arm64:0.35.4:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@img\\/sharp_win32:\\@img\\/sharp-win32-arm64:0.35.4:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@img\\/sharp_win32:\\@img\\/sharp_win32_arm64:0.35.4:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@img\\/sharp:\\@img\\/sharp-win32-arm64:0.35.4:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@img\\/sharp:\\@img\\/sharp_win32_arm64:0.35.4:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:location:0:path",
+          "value": "\\pnpm-lock.yaml"
+        }
+      ],
+      "purl": "pkg:npm/%40img/sharp-win32-arm64@0.35.4",
+      "type": "library",
+      "version": "0.35.4"
+    },
+    {
+      "bom-ref": "pkg:npm/%40img/sharp-win32-ia32@0.35.4?package-id=29dc83f851952988",
+      "cpe": "cpe:2.3:a:\\@img\\/sharp-win32-ia32:\\@img\\/sharp-win32-ia32:0.35.4:*:*:*:*:*:*:*",
+      "name": "@img/sharp-win32-ia32",
+      "properties": [
+        {
+          "name": "syft:package:foundBy",
+          "value": "javascript-lock-cataloger"
+        },
+        {
+          "name": "syft:package:language",
+          "value": "javascript"
+        },
+        {
+          "name": "syft:package:type",
+          "value": "npm"
+        },
+        {
+          "name": "syft:package:metadataType",
+          "value": "javascript-pnpm-lock-entry"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@img\\/sharp-win32-ia32:\\@img\\/sharp_win32_ia32:0.35.4:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@img\\/sharp_win32_ia32:\\@img\\/sharp-win32-ia32:0.35.4:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@img\\/sharp_win32_ia32:\\@img\\/sharp_win32_ia32:0.35.4:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@img\\/sharp-win32:\\@img\\/sharp-win32-ia32:0.35.4:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@img\\/sharp-win32:\\@img\\/sharp_win32_ia32:0.35.4:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@img\\/sharp_win32:\\@img\\/sharp-win32-ia32:0.35.4:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@img\\/sharp_win32:\\@img\\/sharp_win32_ia32:0.35.4:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@img\\/sharp:\\@img\\/sharp-win32-ia32:0.35.4:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@img\\/sharp:\\@img\\/sharp_win32_ia32:0.35.4:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:location:0:path",
+          "value": "\\pnpm-lock.yaml"
+        }
+      ],
+      "purl": "pkg:npm/%40img/sharp-win32-ia32@0.35.4",
+      "type": "library",
+      "version": "0.35.4"
+    },
+    {
+      "bom-ref": "pkg:npm/%40img/sharp-win32-x64@0.35.4?package-id=5f449fff9f8e1703",
+      "cpe": "cpe:2.3:a:\\@img\\/sharp-win32-x64:\\@img\\/sharp-win32-x64:0.35.4:*:*:*:*:*:*:*",
+      "name": "@img/sharp-win32-x64",
+      "properties": [
+        {
+          "name": "syft:package:foundBy",
+          "value": "javascript-lock-cataloger"
+        },
+        {
+          "name": "syft:package:language",
+          "value": "javascript"
+        },
+        {
+          "name": "syft:package:type",
+          "value": "npm"
+        },
+        {
+          "name": "syft:package:metadataType",
+          "value": "javascript-pnpm-lock-entry"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@img\\/sharp-win32-x64:\\@img\\/sharp_win32_x64:0.35.4:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@img\\/sharp_win32_x64:\\@img\\/sharp-win32-x64:0.35.4:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@img\\/sharp_win32_x64:\\@img\\/sharp_win32_x64:0.35.4:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@img\\/sharp-win32:\\@img\\/sharp-win32-x64:0.35.4:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@img\\/sharp-win32:\\@img\\/sharp_win32_x64:0.35.4:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@img\\/sharp_win32:\\@img\\/sharp-win32-x64:0.35.4:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@img\\/sharp_win32:\\@img\\/sharp_win32_x64:0.35.4:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@img\\/sharp:\\@img\\/sharp-win32-x64:0.35.4:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@img\\/sharp:\\@img\\/sharp_win32_x64:0.35.4:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:location:0:path",
+          "value": "\\pnpm-lock.yaml"
+        }
+      ],
+      "purl": "pkg:npm/%40img/sharp-win32-x64@0.35.4",
+      "type": "library",
+      "version": "0.35.4"
+    },
+    {
+      "bom-ref": "pkg:npm/%40next/env@15.5.25?package-id=bcd4a79f022ae7c1",
+      "cpe": "cpe:2.3:a:\\@next\\/env:\\@next\\/env:15.5.25:*:*:*:*:*:*:*",
+      "name": "@next/env",
+      "properties": [
+        {
+          "name": "syft:package:foundBy",
+          "value": "javascript-lock-cataloger"
+        },
+        {
+          "name": "syft:package:language",
+          "value": "javascript"
+        },
+        {
+          "name": "syft:package:type",
+          "value": "npm"
+        },
+        {
+          "name": "syft:package:metadataType",
+          "value": "javascript-pnpm-lock-entry"
+        },
+        {
+          "name": "syft:location:0:path",
+          "value": "\\pnpm-lock.yaml"
+        }
+      ],
+      "purl": "pkg:npm/%40next/env@15.5.25",
+      "type": "library",
+      "version": "15.5.25"
+    },
+    {
+      "bom-ref": "pkg:npm/%40next/swc-darwin-arm64@15.5.25?package-id=413e908dea61cf46",
+      "cpe": "cpe:2.3:a:\\@next\\/swc-darwin-arm64:\\@next\\/swc-darwin-arm64:15.5.25:*:*:*:*:*:*:*",
+      "name": "@next/swc-darwin-arm64",
+      "properties": [
+        {
+          "name": "syft:package:foundBy",
+          "value": "javascript-lock-cataloger"
+        },
+        {
+          "name": "syft:package:language",
+          "value": "javascript"
+        },
+        {
+          "name": "syft:package:type",
+          "value": "npm"
+        },
+        {
+          "name": "syft:package:metadataType",
+          "value": "javascript-pnpm-lock-entry"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@next\\/swc-darwin-arm64:\\@next\\/swc_darwin_arm64:15.5.25:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@next\\/swc_darwin_arm64:\\@next\\/swc-darwin-arm64:15.5.25:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@next\\/swc_darwin_arm64:\\@next\\/swc_darwin_arm64:15.5.25:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@next\\/swc-darwin:\\@next\\/swc-darwin-arm64:15.5.25:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@next\\/swc-darwin:\\@next\\/swc_darwin_arm64:15.5.25:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@next\\/swc_darwin:\\@next\\/swc-darwin-arm64:15.5.25:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@next\\/swc_darwin:\\@next\\/swc_darwin_arm64:15.5.25:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@next\\/swc:\\@next\\/swc-darwin-arm64:15.5.25:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@next\\/swc:\\@next\\/swc_darwin_arm64:15.5.25:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:location:0:path",
+          "value": "\\pnpm-lock.yaml"
+        }
+      ],
+      "purl": "pkg:npm/%40next/swc-darwin-arm64@15.5.25",
+      "type": "library",
+      "version": "15.5.25"
+    },
+    {
+      "bom-ref": "pkg:npm/%40next/swc-darwin-x64@15.5.25?package-id=238f599dd8626ab0",
+      "cpe": "cpe:2.3:a:\\@next\\/swc-darwin-x64:\\@next\\/swc-darwin-x64:15.5.25:*:*:*:*:*:*:*",
+      "name": "@next/swc-darwin-x64",
+      "properties": [
+        {
+          "name": "syft:package:foundBy",
+          "value": "javascript-lock-cataloger"
+        },
+        {
+          "name": "syft:package:language",
+          "value": "javascript"
+        },
+        {
+          "name": "syft:package:type",
+          "value": "npm"
+        },
+        {
+          "name": "syft:package:metadataType",
+          "value": "javascript-pnpm-lock-entry"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@next\\/swc-darwin-x64:\\@next\\/swc_darwin_x64:15.5.25:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@next\\/swc_darwin_x64:\\@next\\/swc-darwin-x64:15.5.25:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@next\\/swc_darwin_x64:\\@next\\/swc_darwin_x64:15.5.25:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@next\\/swc-darwin:\\@next\\/swc-darwin-x64:15.5.25:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@next\\/swc-darwin:\\@next\\/swc_darwin_x64:15.5.25:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@next\\/swc_darwin:\\@next\\/swc-darwin-x64:15.5.25:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@next\\/swc_darwin:\\@next\\/swc_darwin_x64:15.5.25:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@next\\/swc:\\@next\\/swc-darwin-x64:15.5.25:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@next\\/swc:\\@next\\/swc_darwin_x64:15.5.25:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:location:0:path",
+          "value": "\\pnpm-lock.yaml"
+        }
+      ],
+      "purl": "pkg:npm/%40next/swc-darwin-x64@15.5.25",
+      "type": "library",
+      "version": "15.5.25"
+    },
+    {
+      "bom-ref": "pkg:npm/%40next/swc-linux-arm64-gnu@15.5.25?package-id=385977e6b3ee53ba",
+      "cpe": "cpe:2.3:a:\\@next\\/swc-linux-arm64-gnu:\\@next\\/swc-linux-arm64-gnu:15.5.25:*:*:*:*:*:*:*",
+      "name": "@next/swc-linux-arm64-gnu",
+      "properties": [
+        {
+          "name": "syft:package:foundBy",
+          "value": "javascript-lock-cataloger"
+        },
+        {
+          "name": "syft:package:language",
+          "value": "javascript"
+        },
+        {
+          "name": "syft:package:type",
+          "value": "npm"
+        },
+        {
+          "name": "syft:package:metadataType",
+          "value": "javascript-pnpm-lock-entry"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@next\\/swc-linux-arm64-gnu:\\@next\\/swc_linux_arm64_gnu:15.5.25:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@next\\/swc_linux_arm64_gnu:\\@next\\/swc-linux-arm64-gnu:15.5.25:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@next\\/swc_linux_arm64_gnu:\\@next\\/swc_linux_arm64_gnu:15.5.25:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@next\\/swc-linux-arm64:\\@next\\/swc-linux-arm64-gnu:15.5.25:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@next\\/swc-linux-arm64:\\@next\\/swc_linux_arm64_gnu:15.5.25:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@next\\/swc_linux_arm64:\\@next\\/swc-linux-arm64-gnu:15.5.25:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@next\\/swc_linux_arm64:\\@next\\/swc_linux_arm64_gnu:15.5.25:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@next\\/swc-linux:\\@next\\/swc-linux-arm64-gnu:15.5.25:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@next\\/swc-linux:\\@next\\/swc_linux_arm64_gnu:15.5.25:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@next\\/swc_linux:\\@next\\/swc-linux-arm64-gnu:15.5.25:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@next\\/swc_linux:\\@next\\/swc_linux_arm64_gnu:15.5.25:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@next\\/swc:\\@next\\/swc-linux-arm64-gnu:15.5.25:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@next\\/swc:\\@next\\/swc_linux_arm64_gnu:15.5.25:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:location:0:path",
+          "value": "\\pnpm-lock.yaml"
+        }
+      ],
+      "purl": "pkg:npm/%40next/swc-linux-arm64-gnu@15.5.25",
+      "type": "library",
+      "version": "15.5.25"
+    },
+    {
+      "bom-ref": "pkg:npm/%40next/swc-linux-arm64-musl@15.5.25?package-id=63c56ada2e756d40",
+      "cpe": "cpe:2.3:a:\\@next\\/swc-linux-arm64-musl:\\@next\\/swc-linux-arm64-musl:15.5.25:*:*:*:*:*:*:*",
+      "name": "@next/swc-linux-arm64-musl",
+      "properties": [
+        {
+          "name": "syft:package:foundBy",
+          "value": "javascript-lock-cataloger"
+        },
+        {
+          "name": "syft:package:language",
+          "value": "javascript"
+        },
+        {
+          "name": "syft:package:type",
+          "value": "npm"
+        },
+        {
+          "name": "syft:package:metadataType",
+          "value": "javascript-pnpm-lock-entry"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@next\\/swc-linux-arm64-musl:\\@next\\/swc_linux_arm64_musl:15.5.25:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@next\\/swc_linux_arm64_musl:\\@next\\/swc-linux-arm64-musl:15.5.25:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@next\\/swc_linux_arm64_musl:\\@next\\/swc_linux_arm64_musl:15.5.25:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@next\\/swc-linux-arm64:\\@next\\/swc-linux-arm64-musl:15.5.25:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@next\\/swc-linux-arm64:\\@next\\/swc_linux_arm64_musl:15.5.25:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@next\\/swc_linux_arm64:\\@next\\/swc-linux-arm64-musl:15.5.25:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@next\\/swc_linux_arm64:\\@next\\/swc_linux_arm64_musl:15.5.25:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@next\\/swc-linux:\\@next\\/swc-linux-arm64-musl:15.5.25:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@next\\/swc-linux:\\@next\\/swc_linux_arm64_musl:15.5.25:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@next\\/swc_linux:\\@next\\/swc-linux-arm64-musl:15.5.25:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@next\\/swc_linux:\\@next\\/swc_linux_arm64_musl:15.5.25:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@next\\/swc:\\@next\\/swc-linux-arm64-musl:15.5.25:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@next\\/swc:\\@next\\/swc_linux_arm64_musl:15.5.25:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:location:0:path",
+          "value": "\\pnpm-lock.yaml"
+        }
+      ],
+      "purl": "pkg:npm/%40next/swc-linux-arm64-musl@15.5.25",
+      "type": "library",
+      "version": "15.5.25"
+    },
+    {
+      "bom-ref": "pkg:npm/%40next/swc-linux-x64-gnu@15.5.25?package-id=fda2cedebf8a6311",
+      "cpe": "cpe:2.3:a:\\@next\\/swc-linux-x64-gnu:\\@next\\/swc-linux-x64-gnu:15.5.25:*:*:*:*:*:*:*",
+      "name": "@next/swc-linux-x64-gnu",
+      "properties": [
+        {
+          "name": "syft:package:foundBy",
+          "value": "javascript-lock-cataloger"
+        },
+        {
+          "name": "syft:package:language",
+          "value": "javascript"
+        },
+        {
+          "name": "syft:package:type",
+          "value": "npm"
+        },
+        {
+          "name": "syft:package:metadataType",
+          "value": "javascript-pnpm-lock-entry"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@next\\/swc-linux-x64-gnu:\\@next\\/swc_linux_x64_gnu:15.5.25:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@next\\/swc_linux_x64_gnu:\\@next\\/swc-linux-x64-gnu:15.5.25:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@next\\/swc_linux_x64_gnu:\\@next\\/swc_linux_x64_gnu:15.5.25:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@next\\/swc-linux-x64:\\@next\\/swc-linux-x64-gnu:15.5.25:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@next\\/swc-linux-x64:\\@next\\/swc_linux_x64_gnu:15.5.25:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@next\\/swc_linux_x64:\\@next\\/swc-linux-x64-gnu:15.5.25:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@next\\/swc_linux_x64:\\@next\\/swc_linux_x64_gnu:15.5.25:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@next\\/swc-linux:\\@next\\/swc-linux-x64-gnu:15.5.25:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@next\\/swc-linux:\\@next\\/swc_linux_x64_gnu:15.5.25:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@next\\/swc_linux:\\@next\\/swc-linux-x64-gnu:15.5.25:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@next\\/swc_linux:\\@next\\/swc_linux_x64_gnu:15.5.25:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@next\\/swc:\\@next\\/swc-linux-x64-gnu:15.5.25:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@next\\/swc:\\@next\\/swc_linux_x64_gnu:15.5.25:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:location:0:path",
+          "value": "\\pnpm-lock.yaml"
+        }
+      ],
+      "purl": "pkg:npm/%40next/swc-linux-x64-gnu@15.5.25",
+      "type": "library",
+      "version": "15.5.25"
+    },
+    {
+      "bom-ref": "pkg:npm/%40next/swc-linux-x64-musl@15.5.25?package-id=98e4af875d0a97b0",
+      "cpe": "cpe:2.3:a:\\@next\\/swc-linux-x64-musl:\\@next\\/swc-linux-x64-musl:15.5.25:*:*:*:*:*:*:*",
+      "name": "@next/swc-linux-x64-musl",
+      "properties": [
+        {
+          "name": "syft:package:foundBy",
+          "value": "javascript-lock-cataloger"
+        },
+        {
+          "name": "syft:package:language",
+          "value": "javascript"
+        },
+        {
+          "name": "syft:package:type",
+          "value": "npm"
+        },
+        {
+          "name": "syft:package:metadataType",
+          "value": "javascript-pnpm-lock-entry"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@next\\/swc-linux-x64-musl:\\@next\\/swc_linux_x64_musl:15.5.25:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@next\\/swc_linux_x64_musl:\\@next\\/swc-linux-x64-musl:15.5.25:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@next\\/swc_linux_x64_musl:\\@next\\/swc_linux_x64_musl:15.5.25:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@next\\/swc-linux-x64:\\@next\\/swc-linux-x64-musl:15.5.25:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@next\\/swc-linux-x64:\\@next\\/swc_linux_x64_musl:15.5.25:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@next\\/swc_linux_x64:\\@next\\/swc-linux-x64-musl:15.5.25:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@next\\/swc_linux_x64:\\@next\\/swc_linux_x64_musl:15.5.25:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@next\\/swc-linux:\\@next\\/swc-linux-x64-musl:15.5.25:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@next\\/swc-linux:\\@next\\/swc_linux_x64_musl:15.5.25:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@next\\/swc_linux:\\@next\\/swc-linux-x64-musl:15.5.25:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@next\\/swc_linux:\\@next\\/swc_linux_x64_musl:15.5.25:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@next\\/swc:\\@next\\/swc-linux-x64-musl:15.5.25:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@next\\/swc:\\@next\\/swc_linux_x64_musl:15.5.25:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:location:0:path",
+          "value": "\\pnpm-lock.yaml"
+        }
+      ],
+      "purl": "pkg:npm/%40next/swc-linux-x64-musl@15.5.25",
+      "type": "library",
+      "version": "15.5.25"
+    },
+    {
+      "bom-ref": "pkg:npm/%40next/swc-win32-arm64-msvc@15.5.25?package-id=decc648850d85e5d",
+      "cpe": "cpe:2.3:a:\\@next\\/swc-win32-arm64-msvc:\\@next\\/swc-win32-arm64-msvc:15.5.25:*:*:*:*:*:*:*",
+      "name": "@next/swc-win32-arm64-msvc",
+      "properties": [
+        {
+          "name": "syft:package:foundBy",
+          "value": "javascript-lock-cataloger"
+        },
+        {
+          "name": "syft:package:language",
+          "value": "javascript"
+        },
+        {
+          "name": "syft:package:type",
+          "value": "npm"
+        },
+        {
+          "name": "syft:package:metadataType",
+          "value": "javascript-pnpm-lock-entry"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@next\\/swc-win32-arm64-msvc:\\@next\\/swc_win32_arm64_msvc:15.5.25:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@next\\/swc_win32_arm64_msvc:\\@next\\/swc-win32-arm64-msvc:15.5.25:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@next\\/swc_win32_arm64_msvc:\\@next\\/swc_win32_arm64_msvc:15.5.25:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@next\\/swc-win32-arm64:\\@next\\/swc-win32-arm64-msvc:15.5.25:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@next\\/swc-win32-arm64:\\@next\\/swc_win32_arm64_msvc:15.5.25:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@next\\/swc_win32_arm64:\\@next\\/swc-win32-arm64-msvc:15.5.25:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@next\\/swc_win32_arm64:\\@next\\/swc_win32_arm64_msvc:15.5.25:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@next\\/swc-win32:\\@next\\/swc-win32-arm64-msvc:15.5.25:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@next\\/swc-win32:\\@next\\/swc_win32_arm64_msvc:15.5.25:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@next\\/swc_win32:\\@next\\/swc-win32-arm64-msvc:15.5.25:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@next\\/swc_win32:\\@next\\/swc_win32_arm64_msvc:15.5.25:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@next\\/swc:\\@next\\/swc-win32-arm64-msvc:15.5.25:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@next\\/swc:\\@next\\/swc_win32_arm64_msvc:15.5.25:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:location:0:path",
+          "value": "\\pnpm-lock.yaml"
+        }
+      ],
+      "purl": "pkg:npm/%40next/swc-win32-arm64-msvc@15.5.25",
+      "type": "library",
+      "version": "15.5.25"
+    },
+    {
+      "bom-ref": "pkg:npm/%40next/swc-win32-x64-msvc@15.5.25?package-id=d913e01efca4af12",
+      "cpe": "cpe:2.3:a:\\@next\\/swc-win32-x64-msvc:\\@next\\/swc-win32-x64-msvc:15.5.25:*:*:*:*:*:*:*",
+      "name": "@next/swc-win32-x64-msvc",
+      "properties": [
+        {
+          "name": "syft:package:foundBy",
+          "value": "javascript-lock-cataloger"
+        },
+        {
+          "name": "syft:package:language",
+          "value": "javascript"
+        },
+        {
+          "name": "syft:package:type",
+          "value": "npm"
+        },
+        {
+          "name": "syft:package:metadataType",
+          "value": "javascript-pnpm-lock-entry"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@next\\/swc-win32-x64-msvc:\\@next\\/swc_win32_x64_msvc:15.5.25:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@next\\/swc_win32_x64_msvc:\\@next\\/swc-win32-x64-msvc:15.5.25:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@next\\/swc_win32_x64_msvc:\\@next\\/swc_win32_x64_msvc:15.5.25:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@next\\/swc-win32-x64:\\@next\\/swc-win32-x64-msvc:15.5.25:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@next\\/swc-win32-x64:\\@next\\/swc_win32_x64_msvc:15.5.25:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@next\\/swc_win32_x64:\\@next\\/swc-win32-x64-msvc:15.5.25:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@next\\/swc_win32_x64:\\@next\\/swc_win32_x64_msvc:15.5.25:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@next\\/swc-win32:\\@next\\/swc-win32-x64-msvc:15.5.25:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@next\\/swc-win32:\\@next\\/swc_win32_x64_msvc:15.5.25:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@next\\/swc_win32:\\@next\\/swc-win32-x64-msvc:15.5.25:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@next\\/swc_win32:\\@next\\/swc_win32_x64_msvc:15.5.25:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@next\\/swc:\\@next\\/swc-win32-x64-msvc:15.5.25:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@next\\/swc:\\@next\\/swc_win32_x64_msvc:15.5.25:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:location:0:path",
+          "value": "\\pnpm-lock.yaml"
+        }
+      ],
+      "purl": "pkg:npm/%40next/swc-win32-x64-msvc@15.5.25",
+      "type": "library",
+      "version": "15.5.25"
+    },
+    {
+      "bom-ref": "pkg:npm/%40pnpm/exe.android-arm64@12.5.1?package-id=a4e85ff149989f8e",
+      "cpe": "cpe:2.3:a:\\@pnpm\\/exe.android-arm64:\\@pnpm\\/exe.android-arm64:12.5.1:*:*:*:*:*:*:*",
+      "name": "@pnpm/exe.android-arm64",
+      "properties": [
+        {
+          "name": "syft:package:foundBy",
+          "value": "javascript-lock-cataloger"
+        },
+        {
+          "name": "syft:package:language",
+          "value": "javascript"
+        },
+        {
+          "name": "syft:package:type",
+          "value": "npm"
+        },
+        {
+          "name": "syft:package:metadataType",
+          "value": "javascript-pnpm-lock-entry"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@pnpm\\/exe.android-arm64:\\@pnpm\\/exe.android_arm64:12.5.1:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@pnpm\\/exe.android_arm64:\\@pnpm\\/exe.android-arm64:12.5.1:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@pnpm\\/exe.android_arm64:\\@pnpm\\/exe.android_arm64:12.5.1:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@pnpm\\/exe.android:\\@pnpm\\/exe.android-arm64:12.5.1:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@pnpm\\/exe.android:\\@pnpm\\/exe.android_arm64:12.5.1:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:location:0:path",
+          "value": "\\pnpm-lock.yaml"
+        }
+      ],
+      "purl": "pkg:npm/%40pnpm/exe.android-arm64@12.5.1",
+      "type": "library",
+      "version": "12.5.1"
+    },
+    {
+      "bom-ref": "pkg:npm/%40pnpm/exe.android-x64@12.5.1?package-id=3e8092537b03cc1f",
+      "cpe": "cpe:2.3:a:\\@pnpm\\/exe.android-x64:\\@pnpm\\/exe.android-x64:12.5.1:*:*:*:*:*:*:*",
+      "name": "@pnpm/exe.android-x64",
+      "properties": [
+        {
+          "name": "syft:package:foundBy",
+          "value": "javascript-lock-cataloger"
+        },
+        {
+          "name": "syft:package:language",
+          "value": "javascript"
+        },
+        {
+          "name": "syft:package:type",
+          "value": "npm"
+        },
+        {
+          "name": "syft:package:metadataType",
+          "value": "javascript-pnpm-lock-entry"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@pnpm\\/exe.android-x64:\\@pnpm\\/exe.android_x64:12.5.1:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@pnpm\\/exe.android_x64:\\@pnpm\\/exe.android-x64:12.5.1:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@pnpm\\/exe.android_x64:\\@pnpm\\/exe.android_x64:12.5.1:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@pnpm\\/exe.android:\\@pnpm\\/exe.android-x64:12.5.1:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@pnpm\\/exe.android:\\@pnpm\\/exe.android_x64:12.5.1:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:location:0:path",
+          "value": "\\pnpm-lock.yaml"
+        }
+      ],
+      "purl": "pkg:npm/%40pnpm/exe.android-x64@12.5.1",
+      "type": "library",
+      "version": "12.5.1"
+    },
+    {
+      "bom-ref": "pkg:npm/%40pnpm/exe.darwin-arm64@12.5.1?package-id=56d398f0b449a042",
+      "cpe": "cpe:2.3:a:\\@pnpm\\/exe.darwin-arm64:\\@pnpm\\/exe.darwin-arm64:12.5.1:*:*:*:*:*:*:*",
+      "name": "@pnpm/exe.darwin-arm64",
+      "properties": [
+        {
+          "name": "syft:package:foundBy",
+          "value": "javascript-lock-cataloger"
+        },
+        {
+          "name": "syft:package:language",
+          "value": "javascript"
+        },
+        {
+          "name": "syft:package:type",
+          "value": "npm"
+        },
+        {
+          "name": "syft:package:metadataType",
+          "value": "javascript-pnpm-lock-entry"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@pnpm\\/exe.darwin-arm64:\\@pnpm\\/exe.darwin_arm64:12.5.1:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@pnpm\\/exe.darwin_arm64:\\@pnpm\\/exe.darwin-arm64:12.5.1:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@pnpm\\/exe.darwin_arm64:\\@pnpm\\/exe.darwin_arm64:12.5.1:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@pnpm\\/exe.darwin:\\@pnpm\\/exe.darwin-arm64:12.5.1:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@pnpm\\/exe.darwin:\\@pnpm\\/exe.darwin_arm64:12.5.1:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:location:0:path",
+          "value": "\\pnpm-lock.yaml"
+        }
+      ],
+      "purl": "pkg:npm/%40pnpm/exe.darwin-arm64@12.5.1",
+      "type": "library",
+      "version": "12.5.1"
+    },
+    {
+      "bom-ref": "pkg:npm/%40pnpm/exe.darwin-x64@12.5.1?package-id=780eecb5fb385007",
+      "cpe": "cpe:2.3:a:\\@pnpm\\/exe.darwin-x64:\\@pnpm\\/exe.darwin-x64:12.5.1:*:*:*:*:*:*:*",
+      "name": "@pnpm/exe.darwin-x64",
+      "properties": [
+        {
+          "name": "syft:package:foundBy",
+          "value": "javascript-lock-cataloger"
+        },
+        {
+          "name": "syft:package:language",
+          "value": "javascript"
+        },
+        {
+          "name": "syft:package:type",
+          "value": "npm"
+        },
+        {
+          "name": "syft:package:metadataType",
+          "value": "javascript-pnpm-lock-entry"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@pnpm\\/exe.darwin-x64:\\@pnpm\\/exe.darwin_x64:12.5.1:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@pnpm\\/exe.darwin_x64:\\@pnpm\\/exe.darwin-x64:12.5.1:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@pnpm\\/exe.darwin_x64:\\@pnpm\\/exe.darwin_x64:12.5.1:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@pnpm\\/exe.darwin:\\@pnpm\\/exe.darwin-x64:12.5.1:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@pnpm\\/exe.darwin:\\@pnpm\\/exe.darwin_x64:12.5.1:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:location:0:path",
+          "value": "\\pnpm-lock.yaml"
+        }
+      ],
+      "purl": "pkg:npm/%40pnpm/exe.darwin-x64@12.5.1",
+      "type": "library",
+      "version": "12.5.1"
+    },
+    {
+      "bom-ref": "pkg:npm/%40pnpm/exe.freebsd-x64@12.5.1?package-id=4276ff9941bdd603",
+      "cpe": "cpe:2.3:a:\\@pnpm\\/exe.freebsd-x64:\\@pnpm\\/exe.freebsd-x64:12.5.1:*:*:*:*:*:*:*",
+      "name": "@pnpm/exe.freebsd-x64",
+      "properties": [
+        {
+          "name": "syft:package:foundBy",
+          "value": "javascript-lock-cataloger"
+        },
+        {
+          "name": "syft:package:language",
+          "value": "javascript"
+        },
+        {
+          "name": "syft:package:type",
+          "value": "npm"
+        },
+        {
+          "name": "syft:package:metadataType",
+          "value": "javascript-pnpm-lock-entry"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@pnpm\\/exe.freebsd-x64:\\@pnpm\\/exe.freebsd_x64:12.5.1:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@pnpm\\/exe.freebsd_x64:\\@pnpm\\/exe.freebsd-x64:12.5.1:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@pnpm\\/exe.freebsd_x64:\\@pnpm\\/exe.freebsd_x64:12.5.1:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@pnpm\\/exe.freebsd:\\@pnpm\\/exe.freebsd-x64:12.5.1:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@pnpm\\/exe.freebsd:\\@pnpm\\/exe.freebsd_x64:12.5.1:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:location:0:path",
+          "value": "\\pnpm-lock.yaml"
+        }
+      ],
+      "purl": "pkg:npm/%40pnpm/exe.freebsd-x64@12.5.1",
+      "type": "library",
+      "version": "12.5.1"
+    },
+    {
+      "bom-ref": "pkg:npm/%40pnpm/exe.linux-arm64@12.5.1?package-id=d577088d3aa437cb",
+      "cpe": "cpe:2.3:a:\\@pnpm\\/exe.linux-arm64:\\@pnpm\\/exe.linux-arm64:12.5.1:*:*:*:*:*:*:*",
+      "name": "@pnpm/exe.linux-arm64",
+      "properties": [
+        {
+          "name": "syft:package:foundBy",
+          "value": "javascript-lock-cataloger"
+        },
+        {
+          "name": "syft:package:language",
+          "value": "javascript"
+        },
+        {
+          "name": "syft:package:type",
+          "value": "npm"
+        },
+        {
+          "name": "syft:package:metadataType",
+          "value": "javascript-pnpm-lock-entry"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@pnpm\\/exe.linux-arm64:\\@pnpm\\/exe.linux_arm64:12.5.1:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@pnpm\\/exe.linux_arm64:\\@pnpm\\/exe.linux-arm64:12.5.1:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@pnpm\\/exe.linux_arm64:\\@pnpm\\/exe.linux_arm64:12.5.1:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@pnpm\\/exe.linux:\\@pnpm\\/exe.linux-arm64:12.5.1:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@pnpm\\/exe.linux:\\@pnpm\\/exe.linux_arm64:12.5.1:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:location:0:path",
+          "value": "\\pnpm-lock.yaml"
+        }
+      ],
+      "purl": "pkg:npm/%40pnpm/exe.linux-arm64@12.5.1",
+      "type": "library",
+      "version": "12.5.1"
+    },
+    {
+      "bom-ref": "pkg:npm/%40pnpm/exe.linux-arm64-musl@12.5.1?package-id=6260f3f7b7075b7f",
+      "cpe": "cpe:2.3:a:\\@pnpm\\/exe.linux-arm64-musl:\\@pnpm\\/exe.linux-arm64-musl:12.5.1:*:*:*:*:*:*:*",
+      "name": "@pnpm/exe.linux-arm64-musl",
+      "properties": [
+        {
+          "name": "syft:package:foundBy",
+          "value": "javascript-lock-cataloger"
+        },
+        {
+          "name": "syft:package:language",
+          "value": "javascript"
+        },
+        {
+          "name": "syft:package:type",
+          "value": "npm"
+        },
+        {
+          "name": "syft:package:metadataType",
+          "value": "javascript-pnpm-lock-entry"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@pnpm\\/exe.linux-arm64-musl:\\@pnpm\\/exe.linux_arm64_musl:12.5.1:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@pnpm\\/exe.linux_arm64_musl:\\@pnpm\\/exe.linux-arm64-musl:12.5.1:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@pnpm\\/exe.linux_arm64_musl:\\@pnpm\\/exe.linux_arm64_musl:12.5.1:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@pnpm\\/exe.linux-arm64:\\@pnpm\\/exe.linux-arm64-musl:12.5.1:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@pnpm\\/exe.linux-arm64:\\@pnpm\\/exe.linux_arm64_musl:12.5.1:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@pnpm\\/exe.linux_arm64:\\@pnpm\\/exe.linux-arm64-musl:12.5.1:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@pnpm\\/exe.linux_arm64:\\@pnpm\\/exe.linux_arm64_musl:12.5.1:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@pnpm\\/exe.linux:\\@pnpm\\/exe.linux-arm64-musl:12.5.1:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@pnpm\\/exe.linux:\\@pnpm\\/exe.linux_arm64_musl:12.5.1:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:location:0:path",
+          "value": "\\pnpm-lock.yaml"
+        }
+      ],
+      "purl": "pkg:npm/%40pnpm/exe.linux-arm64-musl@12.5.1",
+      "type": "library",
+      "version": "12.5.1"
+    },
+    {
+      "bom-ref": "pkg:npm/%40pnpm/exe.linux-ppc64@12.5.1?package-id=0249568c743ea0ee",
+      "cpe": "cpe:2.3:a:\\@pnpm\\/exe.linux-ppc64:\\@pnpm\\/exe.linux-ppc64:12.5.1:*:*:*:*:*:*:*",
+      "name": "@pnpm/exe.linux-ppc64",
+      "properties": [
+        {
+          "name": "syft:package:foundBy",
+          "value": "javascript-lock-cataloger"
+        },
+        {
+          "name": "syft:package:language",
+          "value": "javascript"
+        },
+        {
+          "name": "syft:package:type",
+          "value": "npm"
+        },
+        {
+          "name": "syft:package:metadataType",
+          "value": "javascript-pnpm-lock-entry"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@pnpm\\/exe.linux-ppc64:\\@pnpm\\/exe.linux_ppc64:12.5.1:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@pnpm\\/exe.linux_ppc64:\\@pnpm\\/exe.linux-ppc64:12.5.1:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@pnpm\\/exe.linux_ppc64:\\@pnpm\\/exe.linux_ppc64:12.5.1:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@pnpm\\/exe.linux:\\@pnpm\\/exe.linux-ppc64:12.5.1:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@pnpm\\/exe.linux:\\@pnpm\\/exe.linux_ppc64:12.5.1:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:location:0:path",
+          "value": "\\pnpm-lock.yaml"
+        }
+      ],
+      "purl": "pkg:npm/%40pnpm/exe.linux-ppc64@12.5.1",
+      "type": "library",
+      "version": "12.5.1"
+    },
+    {
+      "bom-ref": "pkg:npm/%40pnpm/exe.linux-riscv64@12.5.1?package-id=8661a3e4cf4dd57d",
+      "cpe": "cpe:2.3:a:\\@pnpm\\/exe.linux-riscv64:\\@pnpm\\/exe.linux-riscv64:12.5.1:*:*:*:*:*:*:*",
+      "name": "@pnpm/exe.linux-riscv64",
+      "properties": [
+        {
+          "name": "syft:package:foundBy",
+          "value": "javascript-lock-cataloger"
+        },
+        {
+          "name": "syft:package:language",
+          "value": "javascript"
+        },
+        {
+          "name": "syft:package:type",
+          "value": "npm"
+        },
+        {
+          "name": "syft:package:metadataType",
+          "value": "javascript-pnpm-lock-entry"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@pnpm\\/exe.linux-riscv64:\\@pnpm\\/exe.linux_riscv64:12.5.1:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@pnpm\\/exe.linux_riscv64:\\@pnpm\\/exe.linux-riscv64:12.5.1:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@pnpm\\/exe.linux_riscv64:\\@pnpm\\/exe.linux_riscv64:12.5.1:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@pnpm\\/exe.linux:\\@pnpm\\/exe.linux-riscv64:12.5.1:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@pnpm\\/exe.linux:\\@pnpm\\/exe.linux_riscv64:12.5.1:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:location:0:path",
+          "value": "\\pnpm-lock.yaml"
+        }
+      ],
+      "purl": "pkg:npm/%40pnpm/exe.linux-riscv64@12.5.1",
+      "type": "library",
+      "version": "12.5.1"
+    },
+    {
+      "bom-ref": "pkg:npm/%40pnpm/exe.linux-s390x@12.5.1?package-id=a7390722e1c83100",
+      "cpe": "cpe:2.3:a:\\@pnpm\\/exe.linux-s390x:\\@pnpm\\/exe.linux-s390x:12.5.1:*:*:*:*:*:*:*",
+      "name": "@pnpm/exe.linux-s390x",
+      "properties": [
+        {
+          "name": "syft:package:foundBy",
+          "value": "javascript-lock-cataloger"
+        },
+        {
+          "name": "syft:package:language",
+          "value": "javascript"
+        },
+        {
+          "name": "syft:package:type",
+          "value": "npm"
+        },
+        {
+          "name": "syft:package:metadataType",
+          "value": "javascript-pnpm-lock-entry"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@pnpm\\/exe.linux-s390x:\\@pnpm\\/exe.linux_s390x:12.5.1:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@pnpm\\/exe.linux_s390x:\\@pnpm\\/exe.linux-s390x:12.5.1:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@pnpm\\/exe.linux_s390x:\\@pnpm\\/exe.linux_s390x:12.5.1:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@pnpm\\/exe.linux:\\@pnpm\\/exe.linux-s390x:12.5.1:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@pnpm\\/exe.linux:\\@pnpm\\/exe.linux_s390x:12.5.1:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:location:0:path",
+          "value": "\\pnpm-lock.yaml"
+        }
+      ],
+      "purl": "pkg:npm/%40pnpm/exe.linux-s390x@12.5.1",
+      "type": "library",
+      "version": "12.5.1"
+    },
+    {
+      "bom-ref": "pkg:npm/%40pnpm/exe.linux-x64@12.5.1?package-id=80ee9efe9ed8fb4d",
+      "cpe": "cpe:2.3:a:\\@pnpm\\/exe.linux-x64:\\@pnpm\\/exe.linux-x64:12.5.1:*:*:*:*:*:*:*",
+      "name": "@pnpm/exe.linux-x64",
+      "properties": [
+        {
+          "name": "syft:package:foundBy",
+          "value": "javascript-lock-cataloger"
+        },
+        {
+          "name": "syft:package:language",
+          "value": "javascript"
+        },
+        {
+          "name": "syft:package:type",
+          "value": "npm"
+        },
+        {
+          "name": "syft:package:metadataType",
+          "value": "javascript-pnpm-lock-entry"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@pnpm\\/exe.linux-x64:\\@pnpm\\/exe.linux_x64:12.5.1:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@pnpm\\/exe.linux_x64:\\@pnpm\\/exe.linux-x64:12.5.1:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@pnpm\\/exe.linux_x64:\\@pnpm\\/exe.linux_x64:12.5.1:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@pnpm\\/exe.linux:\\@pnpm\\/exe.linux-x64:12.5.1:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@pnpm\\/exe.linux:\\@pnpm\\/exe.linux_x64:12.5.1:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:location:0:path",
+          "value": "\\pnpm-lock.yaml"
+        }
+      ],
+      "purl": "pkg:npm/%40pnpm/exe.linux-x64@12.5.1",
+      "type": "library",
+      "version": "12.5.1"
+    },
+    {
+      "bom-ref": "pkg:npm/%40pnpm/exe.linux-x64-musl@12.5.1?package-id=6459ed8984f4db43",
+      "cpe": "cpe:2.3:a:\\@pnpm\\/exe.linux-x64-musl:\\@pnpm\\/exe.linux-x64-musl:12.5.1:*:*:*:*:*:*:*",
+      "name": "@pnpm/exe.linux-x64-musl",
+      "properties": [
+        {
+          "name": "syft:package:foundBy",
+          "value": "javascript-lock-cataloger"
+        },
+        {
+          "name": "syft:package:language",
+          "value": "javascript"
+        },
+        {
+          "name": "syft:package:type",
+          "value": "npm"
+        },
+        {
+          "name": "syft:package:metadataType",
+          "value": "javascript-pnpm-lock-entry"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@pnpm\\/exe.linux-x64-musl:\\@pnpm\\/exe.linux_x64_musl:12.5.1:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@pnpm\\/exe.linux_x64_musl:\\@pnpm\\/exe.linux-x64-musl:12.5.1:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@pnpm\\/exe.linux_x64_musl:\\@pnpm\\/exe.linux_x64_musl:12.5.1:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@pnpm\\/exe.linux-x64:\\@pnpm\\/exe.linux-x64-musl:12.5.1:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@pnpm\\/exe.linux-x64:\\@pnpm\\/exe.linux_x64_musl:12.5.1:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@pnpm\\/exe.linux_x64:\\@pnpm\\/exe.linux-x64-musl:12.5.1:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@pnpm\\/exe.linux_x64:\\@pnpm\\/exe.linux_x64_musl:12.5.1:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@pnpm\\/exe.linux:\\@pnpm\\/exe.linux-x64-musl:12.5.1:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@pnpm\\/exe.linux:\\@pnpm\\/exe.linux_x64_musl:12.5.1:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:location:0:path",
+          "value": "\\pnpm-lock.yaml"
+        }
+      ],
+      "purl": "pkg:npm/%40pnpm/exe.linux-x64-musl@12.5.1",
+      "type": "library",
+      "version": "12.5.1"
+    },
+    {
+      "bom-ref": "pkg:npm/%40pnpm/exe.win32-arm64@12.5.1?package-id=421bdc8822977fd6",
+      "cpe": "cpe:2.3:a:\\@pnpm\\/exe.win32-arm64:\\@pnpm\\/exe.win32-arm64:12.5.1:*:*:*:*:*:*:*",
+      "name": "@pnpm/exe.win32-arm64",
+      "properties": [
+        {
+          "name": "syft:package:foundBy",
+          "value": "javascript-lock-cataloger"
+        },
+        {
+          "name": "syft:package:language",
+          "value": "javascript"
+        },
+        {
+          "name": "syft:package:type",
+          "value": "npm"
+        },
+        {
+          "name": "syft:package:metadataType",
+          "value": "javascript-pnpm-lock-entry"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@pnpm\\/exe.win32-arm64:\\@pnpm\\/exe.win32_arm64:12.5.1:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@pnpm\\/exe.win32_arm64:\\@pnpm\\/exe.win32-arm64:12.5.1:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@pnpm\\/exe.win32_arm64:\\@pnpm\\/exe.win32_arm64:12.5.1:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@pnpm\\/exe.win32:\\@pnpm\\/exe.win32-arm64:12.5.1:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@pnpm\\/exe.win32:\\@pnpm\\/exe.win32_arm64:12.5.1:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:location:0:path",
+          "value": "\\pnpm-lock.yaml"
+        }
+      ],
+      "purl": "pkg:npm/%40pnpm/exe.win32-arm64@12.5.1",
+      "type": "library",
+      "version": "12.5.1"
+    },
+    {
+      "bom-ref": "pkg:npm/%40pnpm/exe.win32-x64@12.5.1?package-id=425af39d759b721e",
+      "cpe": "cpe:2.3:a:\\@pnpm\\/exe.win32-x64:\\@pnpm\\/exe.win32-x64:12.5.1:*:*:*:*:*:*:*",
+      "name": "@pnpm/exe.win32-x64",
+      "properties": [
+        {
+          "name": "syft:package:foundBy",
+          "value": "javascript-lock-cataloger"
+        },
+        {
+          "name": "syft:package:language",
+          "value": "javascript"
+        },
+        {
+          "name": "syft:package:type",
+          "value": "npm"
+        },
+        {
+          "name": "syft:package:metadataType",
+          "value": "javascript-pnpm-lock-entry"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@pnpm\\/exe.win32-x64:\\@pnpm\\/exe.win32_x64:12.5.1:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@pnpm\\/exe.win32_x64:\\@pnpm\\/exe.win32-x64:12.5.1:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@pnpm\\/exe.win32_x64:\\@pnpm\\/exe.win32_x64:12.5.1:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@pnpm\\/exe.win32:\\@pnpm\\/exe.win32-x64:12.5.1:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@pnpm\\/exe.win32:\\@pnpm\\/exe.win32_x64:12.5.1:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:location:0:path",
+          "value": "\\pnpm-lock.yaml"
+        }
+      ],
+      "purl": "pkg:npm/%40pnpm/exe.win32-x64@12.5.1",
+      "type": "library",
+      "version": "12.5.1"
+    },
+    {
+      "bom-ref": "pkg:npm/%40swc/helpers@0.5.15?package-id=0714eab582bb3b41",
+      "cpe": "cpe:2.3:a:\\@swc\\/helpers:\\@swc\\/helpers:0.5.15:*:*:*:*:*:*:*",
+      "name": "@swc/helpers",
+      "properties": [
+        {
+          "name": "syft:package:foundBy",
+          "value": "javascript-lock-cataloger"
+        },
+        {
+          "name": "syft:package:language",
+          "value": "javascript"
+        },
+        {
+          "name": "syft:package:type",
+          "value": "npm"
+        },
+        {
+          "name": "syft:package:metadataType",
+          "value": "javascript-pnpm-lock-entry"
+        },
+        {
+          "name": "syft:location:0:path",
+          "value": "\\pnpm-lock.yaml"
+        }
+      ],
+      "purl": "pkg:npm/%40swc/helpers@0.5.15",
+      "type": "library",
+      "version": "0.5.15"
+    },
+    {
+      "bom-ref": "pkg:npm/%40types/node@22.9.0?package-id=fdf19081e4d882b8",
+      "cpe": "cpe:2.3:a:\\@types\\/node:\\@types\\/node:22.9.0:*:*:*:*:*:*:*",
+      "name": "@types/node",
+      "properties": [
+        {
+          "name": "syft:package:foundBy",
+          "value": "javascript-lock-cataloger"
+        },
+        {
+          "name": "syft:package:language",
+          "value": "javascript"
+        },
+        {
+          "name": "syft:package:type",
+          "value": "npm"
+        },
+        {
+          "name": "syft:package:metadataType",
+          "value": "javascript-pnpm-lock-entry"
+        },
+        {
+          "name": "syft:location:0:path",
+          "value": "\\pnpm-lock.yaml"
+        }
+      ],
+      "purl": "pkg:npm/%40types/node@22.9.0",
+      "type": "library",
+      "version": "22.9.0"
+    },
+    {
+      "bom-ref": "pkg:npm/%40types/prop-types@15.7.15?package-id=a0ce750aaa1eba8b",
+      "cpe": "cpe:2.3:a:\\@types\\/prop-types:\\@types\\/prop-types:15.7.15:*:*:*:*:*:*:*",
+      "name": "@types/prop-types",
+      "properties": [
+        {
+          "name": "syft:package:foundBy",
+          "value": "javascript-lock-cataloger"
+        },
+        {
+          "name": "syft:package:language",
+          "value": "javascript"
+        },
+        {
+          "name": "syft:package:type",
+          "value": "npm"
+        },
+        {
+          "name": "syft:package:metadataType",
+          "value": "javascript-pnpm-lock-entry"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@types\\/prop-types:\\@types\\/prop_types:15.7.15:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@types\\/prop_types:\\@types\\/prop-types:15.7.15:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@types\\/prop_types:\\@types\\/prop_types:15.7.15:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@types\\/prop:\\@types\\/prop-types:15.7.15:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@types\\/prop:\\@types\\/prop_types:15.7.15:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:location:0:path",
+          "value": "\\pnpm-lock.yaml"
+        }
+      ],
+      "purl": "pkg:npm/%40types/prop-types@15.7.15",
+      "type": "library",
+      "version": "15.7.15"
+    },
+    {
+      "bom-ref": "pkg:npm/%40types/react@18.3.12?package-id=01a0c1c6c55d078a",
+      "cpe": "cpe:2.3:a:\\@types\\/react:\\@types\\/react:18.3.12:*:*:*:*:*:*:*",
+      "name": "@types/react",
+      "properties": [
+        {
+          "name": "syft:package:foundBy",
+          "value": "javascript-lock-cataloger"
+        },
+        {
+          "name": "syft:package:language",
+          "value": "javascript"
+        },
+        {
+          "name": "syft:package:type",
+          "value": "npm"
+        },
+        {
+          "name": "syft:package:metadataType",
+          "value": "javascript-pnpm-lock-entry"
+        },
+        {
+          "name": "syft:location:0:path",
+          "value": "\\pnpm-lock.yaml"
+        }
+      ],
+      "purl": "pkg:npm/%40types/react@18.3.12",
+      "type": "library",
+      "version": "18.3.12"
+    },
+    {
+      "bom-ref": "pkg:npm/%40types/react-dom@18.3.1?package-id=1378b11ee97cc643",
+      "cpe": "cpe:2.3:a:\\@types\\/react-dom:\\@types\\/react-dom:18.3.1:*:*:*:*:*:*:*",
+      "name": "@types/react-dom",
+      "properties": [
+        {
+          "name": "syft:package:foundBy",
+          "value": "javascript-lock-cataloger"
+        },
+        {
+          "name": "syft:package:language",
+          "value": "javascript"
+        },
+        {
+          "name": "syft:package:type",
+          "value": "npm"
+        },
+        {
+          "name": "syft:package:metadataType",
+          "value": "javascript-pnpm-lock-entry"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@types\\/react-dom:\\@types\\/react_dom:18.3.1:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@types\\/react_dom:\\@types\\/react-dom:18.3.1:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@types\\/react_dom:\\@types\\/react_dom:18.3.1:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@types\\/react:\\@types\\/react-dom:18.3.1:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:\\@types\\/react:\\@types\\/react_dom:18.3.1:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:location:0:path",
+          "value": "\\pnpm-lock.yaml"
+        }
+      ],
+      "purl": "pkg:npm/%40types/react-dom@18.3.1",
+      "type": "library",
+      "version": "18.3.1"
+    },
+    {
+      "bom-ref": "d2b3c82e89d13b55",
+      "name": "\\node_modules\\.pnpm\\@img+sharp-win32-x64@0.35.4\\node_modules\\@img\\sharp-win32-x64\\lib\\libvips-42",
+      "properties": [
+        {
+          "name": "syft:package:foundBy",
+          "value": "pe-binary-package-cataloger"
+        },
+        {
+          "name": "syft:package:type",
+          "value": "binary"
+        },
+        {
+          "name": "syft:package:metadataType",
+          "value": "pe-binary"
+        },
+        {
+          "name": "syft:location:0:path",
+          "value": "\\node_modules\\.pnpm\\@img+sharp-win32-x64@0.35.4\\node_modules\\@img\\sharp-win32-x64\\lib\\libvips-42.dll"
+        }
+      ],
+      "type": "application",
+      "version": "UNKNOWN"
+    },
+    {
+      "bom-ref": "8230bc01eae512d3",
+      "name": "\\node_modules\\.pnpm\\@img+sharp-win32-x64@0.35.4\\node_modules\\@img\\sharp-win32-x64\\lib\\libvips-cpp-8.18.6",
+      "properties": [
+        {
+          "name": "syft:package:foundBy",
+          "value": "pe-binary-package-cataloger"
+        },
+        {
+          "name": "syft:package:type",
+          "value": "binary"
+        },
+        {
+          "name": "syft:package:metadataType",
+          "value": "pe-binary"
+        },
+        {
+          "name": "syft:location:0:path",
+          "value": "\\node_modules\\.pnpm\\@img+sharp-win32-x64@0.35.4\\node_modules\\@img\\sharp-win32-x64\\lib\\libvips-cpp-8.18.6.dll"
+        }
+      ],
+      "type": "application",
+      "version": "UNKNOWN"
+    },
+    {
+      "bom-ref": "pkg:github/actions/checkout@v6?package-id=d26bbe245f1b4daa",
+      "cpe": "cpe:2.3:a:actions\\/checkout:actions\\/checkout:v6:*:*:*:*:*:*:*",
+      "name": "actions/checkout",
+      "properties": [
+        {
+          "name": "syft:package:foundBy",
+          "value": "github-actions-usage-cataloger"
+        },
+        {
+          "name": "syft:package:type",
+          "value": "github-action"
+        },
+        {
+          "name": "syft:package:metadataType",
+          "value": "github-actions-use-statement"
+        },
+        {
+          "name": "syft:location:0:path",
+          "value": "\\.github\\workflows\\ci.yml"
+        }
+      ],
+      "purl": "pkg:github/actions/checkout@v6",
+      "type": "library",
+      "version": "v6"
+    },
+    {
+      "bom-ref": "pkg:github/actions/checkout@v6?package-id=c884ba67597e7ecd",
+      "cpe": "cpe:2.3:a:actions\\/checkout:actions\\/checkout:v6:*:*:*:*:*:*:*",
+      "name": "actions/checkout",
+      "properties": [
+        {
+          "name": "syft:package:foundBy",
+          "value": "github-actions-usage-cataloger"
+        },
+        {
+          "name": "syft:package:type",
+          "value": "github-action"
+        },
+        {
+          "name": "syft:package:metadataType",
+          "value": "github-actions-use-statement"
+        },
+        {
+          "name": "syft:location:0:path",
+          "value": "\\.github\\workflows\\eos-freshness.yml"
+        }
+      ],
+      "purl": "pkg:github/actions/checkout@v6",
+      "type": "library",
+      "version": "v6"
+    },
+    {
+      "bom-ref": "pkg:github/actions/setup-node@v6?package-id=044bfd614eea4632",
+      "cpe": "cpe:2.3:a:actions\\/setup-node:actions\\/setup-node:v6:*:*:*:*:*:*:*",
+      "name": "actions/setup-node",
+      "properties": [
+        {
+          "name": "syft:package:foundBy",
+          "value": "github-actions-usage-cataloger"
+        },
+        {
+          "name": "syft:package:type",
+          "value": "github-action"
+        },
+        {
+          "name": "syft:package:metadataType",
+          "value": "github-actions-use-statement"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:actions\\/setup-node:actions\\/setup_node:v6:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:actions\\/setup_node:actions\\/setup-node:v6:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:actions\\/setup_node:actions\\/setup_node:v6:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:actions\\/setup:actions\\/setup-node:v6:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:actions\\/setup:actions\\/setup_node:v6:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:location:0:path",
+          "value": "\\.github\\workflows\\ci.yml"
+        }
+      ],
+      "purl": "pkg:github/actions/setup-node@v6",
+      "type": "library",
+      "version": "v6"
+    },
+    {
+      "bom-ref": "pkg:github/actions/setup-python@v6?package-id=54839a935beb0bb6",
+      "cpe": "cpe:2.3:a:actions\\/setup-python:actions\\/setup-python:v6:*:*:*:*:*:*:*",
+      "name": "actions/setup-python",
+      "properties": [
+        {
+          "name": "syft:package:foundBy",
+          "value": "github-actions-usage-cataloger"
+        },
+        {
+          "name": "syft:package:type",
+          "value": "github-action"
+        },
+        {
+          "name": "syft:package:metadataType",
+          "value": "github-actions-use-statement"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:actions\\/setup-python:actions\\/setup_python:v6:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:actions\\/setup_python:actions\\/setup-python:v6:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:actions\\/setup_python:actions\\/setup_python:v6:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:actions\\/setup:actions\\/setup-python:v6:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:actions\\/setup:actions\\/setup_python:v6:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:location:0:path",
+          "value": "\\.github\\workflows\\ci.yml"
+        }
+      ],
+      "purl": "pkg:github/actions/setup-python@v6",
+      "type": "library",
+      "version": "v6"
+    },
+    {
+      "bom-ref": "pkg:github/actions/setup-python@v6?package-id=fd51f0a24b275cc9",
+      "cpe": "cpe:2.3:a:actions\\/setup-python:actions\\/setup-python:v6:*:*:*:*:*:*:*",
+      "name": "actions/setup-python",
+      "properties": [
+        {
+          "name": "syft:package:foundBy",
+          "value": "github-actions-usage-cataloger"
+        },
+        {
+          "name": "syft:package:type",
+          "value": "github-action"
+        },
+        {
+          "name": "syft:package:metadataType",
+          "value": "github-actions-use-statement"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:actions\\/setup-python:actions\\/setup_python:v6:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:actions\\/setup_python:actions\\/setup-python:v6:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:actions\\/setup_python:actions\\/setup_python:v6:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:actions\\/setup:actions\\/setup-python:v6:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:actions\\/setup:actions\\/setup_python:v6:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:location:0:path",
+          "value": "\\.github\\workflows\\eos-freshness.yml"
+        }
+      ],
+      "purl": "pkg:github/actions/setup-python@v6",
+      "type": "library",
+      "version": "v6"
+    },
+    {
+      "bom-ref": "pkg:npm/caniuse-lite@1.0.30001810?package-id=7e4fd84c9570b739",
+      "cpe": "cpe:2.3:a:caniuse-lite:caniuse-lite:1.0.30001810:*:*:*:*:*:*:*",
+      "name": "caniuse-lite",
+      "properties": [
+        {
+          "name": "syft:package:foundBy",
+          "value": "javascript-lock-cataloger"
+        },
+        {
+          "name": "syft:package:language",
+          "value": "javascript"
+        },
+        {
+          "name": "syft:package:type",
+          "value": "npm"
+        },
+        {
+          "name": "syft:package:metadataType",
+          "value": "javascript-pnpm-lock-entry"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:caniuse-lite:caniuse_lite:1.0.30001810:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:caniuse_lite:caniuse-lite:1.0.30001810:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:caniuse_lite:caniuse_lite:1.0.30001810:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:caniuse:caniuse-lite:1.0.30001810:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:caniuse:caniuse_lite:1.0.30001810:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:location:0:path",
+          "value": "\\pnpm-lock.yaml"
+        }
+      ],
+      "purl": "pkg:npm/caniuse-lite@1.0.30001810",
+      "type": "library",
+      "version": "1.0.30001810"
+    },
+    {
+      "bom-ref": "pkg:npm/client-only@0.0.1?package-id=11481b3ac2da3d14",
+      "cpe": "cpe:2.3:a:client-only:client-only:0.0.1:*:*:*:*:*:*:*",
+      "name": "client-only",
+      "properties": [
+        {
+          "name": "syft:package:foundBy",
+          "value": "javascript-lock-cataloger"
+        },
+        {
+          "name": "syft:package:language",
+          "value": "javascript"
+        },
+        {
+          "name": "syft:package:type",
+          "value": "npm"
+        },
+        {
+          "name": "syft:package:metadataType",
+          "value": "javascript-pnpm-lock-entry"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:client-only:client_only:0.0.1:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:client_only:client-only:0.0.1:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:client_only:client_only:0.0.1:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:client:client-only:0.0.1:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:client:client_only:0.0.1:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:location:0:path",
+          "value": "\\pnpm-lock.yaml"
+        }
+      ],
+      "purl": "pkg:npm/client-only@0.0.1",
+      "type": "library",
+      "version": "0.0.1"
+    },
+    {
+      "bom-ref": "pkg:npm/csstype@3.2.3?package-id=15eb40fa2c4d9ae0",
+      "cpe": "cpe:2.3:a:csstype:csstype:3.2.3:*:*:*:*:*:*:*",
+      "name": "csstype",
+      "properties": [
+        {
+          "name": "syft:package:foundBy",
+          "value": "javascript-lock-cataloger"
+        },
+        {
+          "name": "syft:package:language",
+          "value": "javascript"
+        },
+        {
+          "name": "syft:package:type",
+          "value": "npm"
+        },
+        {
+          "name": "syft:package:metadataType",
+          "value": "javascript-pnpm-lock-entry"
+        },
+        {
+          "name": "syft:location:0:path",
+          "value": "\\pnpm-lock.yaml"
+        }
+      ],
+      "purl": "pkg:npm/csstype@3.2.3",
+      "type": "library",
+      "version": "3.2.3"
+    },
+    {
+      "bom-ref": "pkg:npm/detect-libc@2.1.2?package-id=db89d9c2924c71ba",
+      "cpe": "cpe:2.3:a:detect-libc:detect-libc:2.1.2:*:*:*:*:*:*:*",
+      "name": "detect-libc",
+      "properties": [
+        {
+          "name": "syft:package:foundBy",
+          "value": "javascript-lock-cataloger"
+        },
+        {
+          "name": "syft:package:language",
+          "value": "javascript"
+        },
+        {
+          "name": "syft:package:type",
+          "value": "npm"
+        },
+        {
+          "name": "syft:package:metadataType",
+          "value": "javascript-pnpm-lock-entry"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:detect-libc:detect_libc:2.1.2:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:detect_libc:detect-libc:2.1.2:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:detect_libc:detect_libc:2.1.2:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:detect:detect-libc:2.1.2:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:detect:detect_libc:2.1.2:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:location:0:path",
+          "value": "\\pnpm-lock.yaml"
+        }
+      ],
+      "purl": "pkg:npm/detect-libc@2.1.2",
+      "type": "library",
+      "version": "2.1.2"
+    },
+    {
+      "bom-ref": "pkg:npm/js-tokens@4.0.0?package-id=d85816113f27b2f3",
+      "cpe": "cpe:2.3:a:js-tokens:js-tokens:4.0.0:*:*:*:*:*:*:*",
+      "name": "js-tokens",
+      "properties": [
+        {
+          "name": "syft:package:foundBy",
+          "value": "javascript-lock-cataloger"
+        },
+        {
+          "name": "syft:package:language",
+          "value": "javascript"
+        },
+        {
+          "name": "syft:package:type",
+          "value": "npm"
+        },
+        {
+          "name": "syft:package:metadataType",
+          "value": "javascript-pnpm-lock-entry"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:js-tokens:js_tokens:4.0.0:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:js_tokens:js-tokens:4.0.0:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:js_tokens:js_tokens:4.0.0:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:js:js-tokens:4.0.0:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:js:js_tokens:4.0.0:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:location:0:path",
+          "value": "\\pnpm-lock.yaml"
+        }
+      ],
+      "purl": "pkg:npm/js-tokens@4.0.0",
+      "type": "library",
+      "version": "4.0.0"
+    },
+    {
+      "bom-ref": "pkg:npm/loose-envify@1.4.0?package-id=ee07db51299a6f71",
+      "cpe": "cpe:2.3:a:loose-envify:loose-envify:1.4.0:*:*:*:*:*:*:*",
+      "name": "loose-envify",
+      "properties": [
+        {
+          "name": "syft:package:foundBy",
+          "value": "javascript-lock-cataloger"
+        },
+        {
+          "name": "syft:package:language",
+          "value": "javascript"
+        },
+        {
+          "name": "syft:package:type",
+          "value": "npm"
+        },
+        {
+          "name": "syft:package:metadataType",
+          "value": "javascript-pnpm-lock-entry"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:loose-envify:loose_envify:1.4.0:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:loose_envify:loose-envify:1.4.0:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:loose_envify:loose_envify:1.4.0:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:loose:loose-envify:1.4.0:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:loose:loose_envify:1.4.0:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:location:0:path",
+          "value": "\\pnpm-lock.yaml"
+        }
+      ],
+      "purl": "pkg:npm/loose-envify@1.4.0",
+      "type": "library",
+      "version": "1.4.0"
+    },
+    {
+      "bom-ref": "pkg:npm/nanoid@3.3.19?package-id=6a8c66052055a753",
+      "cpe": "cpe:2.3:a:nanoid_project:nanoid:3.3.19:*:*:*:*:node.js:*:*",
+      "name": "nanoid",
+      "properties": [
+        {
+          "name": "syft:package:foundBy",
+          "value": "javascript-lock-cataloger"
+        },
+        {
+          "name": "syft:package:language",
+          "value": "javascript"
+        },
+        {
+          "name": "syft:package:type",
+          "value": "npm"
+        },
+        {
+          "name": "syft:package:metadataType",
+          "value": "javascript-pnpm-lock-entry"
+        },
+        {
+          "name": "syft:location:0:path",
+          "value": "\\pnpm-lock.yaml"
+        }
+      ],
+      "purl": "pkg:npm/nanoid@3.3.19",
+      "type": "library",
+      "version": "3.3.19"
+    },
+    {
+      "bom-ref": "pkg:npm/next@15.5.25?package-id=4390500d689b506c",
+      "cpe": "cpe:2.3:a:vercel:next.js:15.5.25:*:*:*:*:node.js:*:*",
+      "name": "next",
+      "properties": [
+        {
+          "name": "syft:package:foundBy",
+          "value": "javascript-lock-cataloger"
+        },
+        {
+          "name": "syft:package:language",
+          "value": "javascript"
+        },
+        {
+          "name": "syft:package:type",
+          "value": "npm"
+        },
+        {
+          "name": "syft:package:metadataType",
+          "value": "javascript-pnpm-lock-entry"
+        },
+        {
+          "name": "syft:location:0:path",
+          "value": "\\pnpm-lock.yaml"
+        }
+      ],
+      "purl": "pkg:npm/next@15.5.25",
+      "type": "library",
+      "version": "15.5.25"
+    },
+    {
+      "bom-ref": "pkg:npm/picocolors@1.1.1?package-id=2e03c5960e1ef63b",
+      "cpe": "cpe:2.3:a:picocolors:picocolors:1.1.1:*:*:*:*:*:*:*",
+      "name": "picocolors",
+      "properties": [
+        {
+          "name": "syft:package:foundBy",
+          "value": "javascript-lock-cataloger"
+        },
+        {
+          "name": "syft:package:language",
+          "value": "javascript"
+        },
+        {
+          "name": "syft:package:type",
+          "value": "npm"
+        },
+        {
+          "name": "syft:package:metadataType",
+          "value": "javascript-pnpm-lock-entry"
+        },
+        {
+          "name": "syft:location:0:path",
+          "value": "\\pnpm-lock.yaml"
+        }
+      ],
+      "purl": "pkg:npm/picocolors@1.1.1",
+      "type": "library",
+      "version": "1.1.1"
+    },
+    {
+      "bom-ref": "pkg:npm/pnpm@12.5.1?package-id=bc11258a383b0c85",
+      "cpe": "cpe:2.3:a:pnpm:pnpm:12.5.1:*:*:*:*:node.js:*:*",
+      "name": "pnpm",
+      "properties": [
+        {
+          "name": "syft:package:foundBy",
+          "value": "javascript-lock-cataloger"
+        },
+        {
+          "name": "syft:package:language",
+          "value": "javascript"
+        },
+        {
+          "name": "syft:package:type",
+          "value": "npm"
+        },
+        {
+          "name": "syft:package:metadataType",
+          "value": "javascript-pnpm-lock-entry"
+        },
+        {
+          "name": "syft:location:0:path",
+          "value": "\\pnpm-lock.yaml"
+        }
+      ],
+      "purl": "pkg:npm/pnpm@12.5.1",
+      "type": "library",
+      "version": "12.5.1"
+    },
+    {
+      "bom-ref": "pkg:github/pnpm/action-setup@v6?package-id=40c409243adc83f9",
+      "cpe": "cpe:2.3:a:pnpm\\/action-setup:pnpm\\/action-setup:v6:*:*:*:*:*:*:*",
+      "name": "pnpm/action-setup",
+      "properties": [
+        {
+          "name": "syft:package:foundBy",
+          "value": "github-actions-usage-cataloger"
+        },
+        {
+          "name": "syft:package:type",
+          "value": "github-action"
+        },
+        {
+          "name": "syft:package:metadataType",
+          "value": "github-actions-use-statement"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:pnpm\\/action-setup:pnpm\\/action_setup:v6:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:pnpm\\/action_setup:pnpm\\/action-setup:v6:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:pnpm\\/action_setup:pnpm\\/action_setup:v6:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:pnpm\\/action:pnpm\\/action-setup:v6:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:pnpm\\/action:pnpm\\/action_setup:v6:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:location:0:path",
+          "value": "\\.github\\workflows\\ci.yml"
+        }
+      ],
+      "purl": "pkg:github/pnpm/action-setup@v6",
+      "type": "library",
+      "version": "v6"
+    },
+    {
+      "bom-ref": "pkg:npm/postcss@8.5.28?package-id=efad0430efc5ab02",
+      "cpe": "cpe:2.3:a:postcss:postcss:8.5.28:*:*:*:*:node.js:*:*",
+      "name": "postcss",
+      "properties": [
+        {
+          "name": "syft:package:foundBy",
+          "value": "javascript-lock-cataloger"
+        },
+        {
+          "name": "syft:package:language",
+          "value": "javascript"
+        },
+        {
+          "name": "syft:package:type",
+          "value": "npm"
+        },
+        {
+          "name": "syft:package:metadataType",
+          "value": "javascript-pnpm-lock-entry"
+        },
+        {
+          "name": "syft:location:0:path",
+          "value": "\\pnpm-lock.yaml"
+        }
+      ],
+      "purl": "pkg:npm/postcss@8.5.28",
+      "type": "library",
+      "version": "8.5.28"
+    },
+    {
+      "bom-ref": "pkg:npm/react@18.3.1?package-id=9201100976a8af12",
+      "cpe": "cpe:2.3:a:react:react:18.3.1:*:*:*:*:*:*:*",
+      "name": "react",
+      "properties": [
+        {
+          "name": "syft:package:foundBy",
+          "value": "javascript-lock-cataloger"
+        },
+        {
+          "name": "syft:package:language",
+          "value": "javascript"
+        },
+        {
+          "name": "syft:package:type",
+          "value": "npm"
+        },
+        {
+          "name": "syft:package:metadataType",
+          "value": "javascript-pnpm-lock-entry"
+        },
+        {
+          "name": "syft:location:0:path",
+          "value": "\\pnpm-lock.yaml"
+        }
+      ],
+      "purl": "pkg:npm/react@18.3.1",
+      "type": "library",
+      "version": "18.3.1"
+    },
+    {
+      "bom-ref": "pkg:npm/react-dom@18.3.1?package-id=6c541eea476370e0",
+      "cpe": "cpe:2.3:a:react-dom:react-dom:18.3.1:*:*:*:*:*:*:*",
+      "name": "react-dom",
+      "properties": [
+        {
+          "name": "syft:package:foundBy",
+          "value": "javascript-lock-cataloger"
+        },
+        {
+          "name": "syft:package:language",
+          "value": "javascript"
+        },
+        {
+          "name": "syft:package:type",
+          "value": "npm"
+        },
+        {
+          "name": "syft:package:metadataType",
+          "value": "javascript-pnpm-lock-entry"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:react-dom:react_dom:18.3.1:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:react_dom:react-dom:18.3.1:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:react_dom:react_dom:18.3.1:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:react:react-dom:18.3.1:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:react:react_dom:18.3.1:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:location:0:path",
+          "value": "\\pnpm-lock.yaml"
+        }
+      ],
+      "purl": "pkg:npm/react-dom@18.3.1",
+      "type": "library",
+      "version": "18.3.1"
+    },
+    {
+      "bom-ref": "pkg:npm/scheduler@0.23.2?package-id=59fc27dbb974a5b8",
+      "cpe": "cpe:2.3:a:scheduler:scheduler:0.23.2:*:*:*:*:*:*:*",
+      "name": "scheduler",
+      "properties": [
+        {
+          "name": "syft:package:foundBy",
+          "value": "javascript-lock-cataloger"
+        },
+        {
+          "name": "syft:package:language",
+          "value": "javascript"
+        },
+        {
+          "name": "syft:package:type",
+          "value": "npm"
+        },
+        {
+          "name": "syft:package:metadataType",
+          "value": "javascript-pnpm-lock-entry"
+        },
+        {
+          "name": "syft:location:0:path",
+          "value": "\\pnpm-lock.yaml"
+        }
+      ],
+      "purl": "pkg:npm/scheduler@0.23.2",
+      "type": "library",
+      "version": "0.23.2"
+    },
+    {
+      "bom-ref": "pkg:npm/semver@7.8.5?package-id=4d056a3948827825",
+      "cpe": "cpe:2.3:a:npmjs:semver:7.8.5:*:*:*:*:node.js:*:*",
+      "name": "semver",
+      "properties": [
+        {
+          "name": "syft:package:foundBy",
+          "value": "javascript-lock-cataloger"
+        },
+        {
+          "name": "syft:package:language",
+          "value": "javascript"
+        },
+        {
+          "name": "syft:package:type",
+          "value": "npm"
+        },
+        {
+          "name": "syft:package:metadataType",
+          "value": "javascript-pnpm-lock-entry"
+        },
+        {
+          "name": "syft:location:0:path",
+          "value": "\\pnpm-lock.yaml"
+        }
+      ],
+      "purl": "pkg:npm/semver@7.8.5",
+      "type": "library",
+      "version": "7.8.5"
+    },
+    {
+      "bom-ref": "pkg:npm/sharp@0.35.4?package-id=ebc3170399d9a5ba",
+      "cpe": "cpe:2.3:a:sharp_project:sharp:0.35.4:*:*:*:*:node.js:*:*",
+      "name": "sharp",
+      "properties": [
+        {
+          "name": "syft:package:foundBy",
+          "value": "javascript-lock-cataloger"
+        },
+        {
+          "name": "syft:package:language",
+          "value": "javascript"
+        },
+        {
+          "name": "syft:package:type",
+          "value": "npm"
+        },
+        {
+          "name": "syft:package:metadataType",
+          "value": "javascript-pnpm-lock-entry"
+        },
+        {
+          "name": "syft:location:0:path",
+          "value": "\\pnpm-lock.yaml"
+        }
+      ],
+      "purl": "pkg:npm/sharp@0.35.4",
+      "type": "library",
+      "version": "0.35.4"
+    },
+    {
+      "bom-ref": "pkg:npm/source-map-js@1.2.1?package-id=0ec565a3b4504f5f",
+      "cpe": "cpe:2.3:a:source-map-js:source-map-js:1.2.1:*:*:*:*:*:*:*",
+      "name": "source-map-js",
+      "properties": [
+        {
+          "name": "syft:package:foundBy",
+          "value": "javascript-lock-cataloger"
+        },
+        {
+          "name": "syft:package:language",
+          "value": "javascript"
+        },
+        {
+          "name": "syft:package:type",
+          "value": "npm"
+        },
+        {
+          "name": "syft:package:metadataType",
+          "value": "javascript-pnpm-lock-entry"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:source-map-js:source_map_js:1.2.1:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:source_map_js:source-map-js:1.2.1:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:source_map_js:source_map_js:1.2.1:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:source-map:source-map-js:1.2.1:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:source-map:source_map_js:1.2.1:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:source_map:source-map-js:1.2.1:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:source_map:source_map_js:1.2.1:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:source:source-map-js:1.2.1:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:source:source_map_js:1.2.1:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:location:0:path",
+          "value": "\\pnpm-lock.yaml"
+        }
+      ],
+      "purl": "pkg:npm/source-map-js@1.2.1",
+      "type": "library",
+      "version": "1.2.1"
+    },
+    {
+      "bom-ref": "pkg:npm/styled-jsx@5.1.6?package-id=ae37c1849b6fd058",
+      "cpe": "cpe:2.3:a:styled-jsx:styled-jsx:5.1.6:*:*:*:*:*:*:*",
+      "name": "styled-jsx",
+      "properties": [
+        {
+          "name": "syft:package:foundBy",
+          "value": "javascript-lock-cataloger"
+        },
+        {
+          "name": "syft:package:language",
+          "value": "javascript"
+        },
+        {
+          "name": "syft:package:type",
+          "value": "npm"
+        },
+        {
+          "name": "syft:package:metadataType",
+          "value": "javascript-pnpm-lock-entry"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:styled-jsx:styled_jsx:5.1.6:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:styled_jsx:styled-jsx:5.1.6:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:styled_jsx:styled_jsx:5.1.6:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:styled:styled-jsx:5.1.6:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:styled:styled_jsx:5.1.6:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:location:0:path",
+          "value": "\\pnpm-lock.yaml"
+        }
+      ],
+      "purl": "pkg:npm/styled-jsx@5.1.6",
+      "type": "library",
+      "version": "5.1.6"
+    },
+    {
+      "bom-ref": "pkg:npm/tslib@2.8.1?package-id=206a164399a50138",
+      "cpe": "cpe:2.3:a:tslib:tslib:2.8.1:*:*:*:*:*:*:*",
+      "name": "tslib",
+      "properties": [
+        {
+          "name": "syft:package:foundBy",
+          "value": "javascript-lock-cataloger"
+        },
+        {
+          "name": "syft:package:language",
+          "value": "javascript"
+        },
+        {
+          "name": "syft:package:type",
+          "value": "npm"
+        },
+        {
+          "name": "syft:package:metadataType",
+          "value": "javascript-pnpm-lock-entry"
+        },
+        {
+          "name": "syft:location:0:path",
+          "value": "\\pnpm-lock.yaml"
+        }
+      ],
+      "purl": "pkg:npm/tslib@2.8.1",
+      "type": "library",
+      "version": "2.8.1"
+    },
+    {
+      "bom-ref": "pkg:npm/typescript@5.6.3?package-id=9dbf2f6b3bf9f0e8",
+      "cpe": "cpe:2.3:a:typescript:typescript:5.6.3:*:*:*:*:*:*:*",
+      "name": "typescript",
+      "properties": [
+        {
+          "name": "syft:package:foundBy",
+          "value": "javascript-lock-cataloger"
+        },
+        {
+          "name": "syft:package:language",
+          "value": "javascript"
+        },
+        {
+          "name": "syft:package:type",
+          "value": "npm"
+        },
+        {
+          "name": "syft:package:metadataType",
+          "value": "javascript-pnpm-lock-entry"
+        },
+        {
+          "name": "syft:location:0:path",
+          "value": "\\pnpm-lock.yaml"
+        }
+      ],
+      "purl": "pkg:npm/typescript@5.6.3",
+      "type": "library",
+      "version": "5.6.3"
+    },
+    {
+      "bom-ref": "pkg:npm/undici-types@6.19.8?package-id=ec8fbdfc38ad0bb0",
+      "cpe": "cpe:2.3:a:undici-types:undici-types:6.19.8:*:*:*:*:*:*:*",
+      "name": "undici-types",
+      "properties": [
+        {
+          "name": "syft:package:foundBy",
+          "value": "javascript-lock-cataloger"
+        },
+        {
+          "name": "syft:package:language",
+          "value": "javascript"
+        },
+        {
+          "name": "syft:package:type",
+          "value": "npm"
+        },
+        {
+          "name": "syft:package:metadataType",
+          "value": "javascript-pnpm-lock-entry"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:undici-types:undici_types:6.19.8:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:undici_types:undici-types:6.19.8:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:undici_types:undici_types:6.19.8:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:undici:undici-types:6.19.8:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:undici:undici_types:6.19.8:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:location:0:path",
+          "value": "\\pnpm-lock.yaml"
+        }
+      ],
+      "purl": "pkg:npm/undici-types@6.19.8",
+      "type": "library",
+      "version": "6.19.8"
+    }
+  ],
+  "dependencies": [
+    {
+      "dependsOn": [
+        "pkg:npm/tslib@2.8.1?package-id=206a164399a50138"
+      ],
+      "ref": "pkg:npm/%40emnapi/runtime@1.11.3?package-id=7032d85f63180fab"
+    },
+    {
+      "dependsOn": [
+        "pkg:npm/%40img/sharp-wasm32@0.35.4?package-id=41bb8bbb5760725a"
+      ],
+      "ref": "pkg:npm/%40img/sharp-freebsd-wasm32@0.35.4?package-id=cc7befa540382106"
+    },
+    {
+      "dependsOn": [
+        "pkg:npm/%40emnapi/runtime@1.11.3?package-id=7032d85f63180fab"
+      ],
+      "ref": "pkg:npm/%40img/sharp-wasm32@0.35.4?package-id=41bb8bbb5760725a"
+    },
+    {
+      "dependsOn": [
+        "pkg:npm/%40img/sharp-wasm32@0.35.4?package-id=41bb8bbb5760725a"
+      ],
+      "ref": "pkg:npm/%40img/sharp-webcontainers-wasm32@0.35.4?package-id=8d532daf92889b26"
+    },
+    {
+      "dependsOn": [
+        "pkg:npm/tslib@2.8.1?package-id=206a164399a50138"
+      ],
+      "ref": "pkg:npm/%40swc/helpers@0.5.15?package-id=0714eab582bb3b41"
+    },
+    {
+      "dependsOn": [
+        "pkg:npm/undici-types@6.19.8?package-id=ec8fbdfc38ad0bb0"
+      ],
+      "ref": "pkg:npm/%40types/node@22.9.0?package-id=fdf19081e4d882b8"
+    },
+    {
+      "dependsOn": [
+        "pkg:npm/%40types/react@18.3.12?package-id=01a0c1c6c55d078a"
+      ],
+      "ref": "pkg:npm/%40types/react-dom@18.3.1?package-id=1378b11ee97cc643"
+    },
+    {
+      "dependsOn": [
+        "pkg:npm/%40types/prop-types@15.7.15?package-id=a0ce750aaa1eba8b",
+        "pkg:npm/csstype@3.2.3?package-id=15eb40fa2c4d9ae0"
+      ],
+      "ref": "pkg:npm/%40types/react@18.3.12?package-id=01a0c1c6c55d078a"
+    },
+    {
+      "dependsOn": [
+        "pkg:npm/js-tokens@4.0.0?package-id=d85816113f27b2f3"
+      ],
+      "ref": "pkg:npm/loose-envify@1.4.0?package-id=ee07db51299a6f71"
+    },
+    {
+      "dependsOn": [
+        "pkg:npm/%40next/env@15.5.25?package-id=bcd4a79f022ae7c1",
+        "pkg:npm/%40swc/helpers@0.5.15?package-id=0714eab582bb3b41",
+        "pkg:npm/caniuse-lite@1.0.30001810?package-id=7e4fd84c9570b739",
+        "pkg:npm/postcss@8.5.28?package-id=efad0430efc5ab02",
+        "pkg:npm/react-dom@18.3.1?package-id=6c541eea476370e0",
+        "pkg:npm/react@18.3.1?package-id=9201100976a8af12",
+        "pkg:npm/styled-jsx@5.1.6?package-id=ae37c1849b6fd058"
+      ],
+      "ref": "pkg:npm/next@15.5.25?package-id=4390500d689b506c"
+    },
+    {
+      "dependsOn": [
+        "pkg:npm/nanoid@3.3.19?package-id=6a8c66052055a753",
+        "pkg:npm/picocolors@1.1.1?package-id=2e03c5960e1ef63b",
+        "pkg:npm/source-map-js@1.2.1?package-id=0ec565a3b4504f5f"
+      ],
+      "ref": "pkg:npm/postcss@8.5.28?package-id=efad0430efc5ab02"
+    },
+    {
+      "dependsOn": [
+        "pkg:npm/loose-envify@1.4.0?package-id=ee07db51299a6f71",
+        "pkg:npm/react@18.3.1?package-id=9201100976a8af12",
+        "pkg:npm/scheduler@0.23.2?package-id=59fc27dbb974a5b8"
+      ],
+      "ref": "pkg:npm/react-dom@18.3.1?package-id=6c541eea476370e0"
+    },
+    {
+      "dependsOn": [
+        "pkg:npm/loose-envify@1.4.0?package-id=ee07db51299a6f71"
+      ],
+      "ref": "pkg:npm/react@18.3.1?package-id=9201100976a8af12"
+    },
+    {
+      "dependsOn": [
+        "pkg:npm/loose-envify@1.4.0?package-id=ee07db51299a6f71"
+      ],
+      "ref": "pkg:npm/scheduler@0.23.2?package-id=59fc27dbb974a5b8"
+    },
+    {
+      "dependsOn": [
+        "pkg:npm/%40img/colour@1.1.0?package-id=0c239e69c8478c26",
+        "pkg:npm/detect-libc@2.1.2?package-id=db89d9c2924c71ba",
+        "pkg:npm/semver@7.8.5?package-id=4d056a3948827825"
+      ],
+      "ref": "pkg:npm/sharp@0.35.4?package-id=ebc3170399d9a5ba"
+    },
+    {
+      "dependsOn": [
+        "pkg:npm/client-only@0.0.1?package-id=11481b3ac2da3d14",
+        "pkg:npm/react@18.3.1?package-id=9201100976a8af12"
+      ],
+      "ref": "pkg:npm/styled-jsx@5.1.6?package-id=ae37c1849b6fd058"
+    }
+  ],
+  "metadata": {
+    "component": {
+      "bom-ref": "af63bd4c8601b7f1",
+      "name": ".",
+      "type": "file"
+    },
+    "timestamp": "2026-09-23T02:32:39-05:00",
+    "tools": {
+      "components": [
+        {
+          "author": "anchore",
+          "name": "syft",
+          "type": "application",
+          "version": "1.52.0"
+        }
+      ]
+    }
+  },
+  "specVersion": "1.7",
+  "version": 1
+}
