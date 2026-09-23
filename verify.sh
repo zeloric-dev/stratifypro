@@ -237,6 +237,23 @@ else echo "    clean"; fi
 # exemption becomes a hole rather than a trade.
 run "the attestation is SPEC.md Step 11, verbatim"     python3 scripts/check-attestation.py
 
+# SPEC.md 2A.5. The model tier is 2A.1 and does not exist yet, which is exactly
+# when to build this: a containment test written afterwards has to be shaped
+# around whatever was already done, and every exception it grants is one
+# somebody already depends on.
+#
+# Half of it bites today regardless of 2A.1: an `import OpenAI from 'openai'`
+# anywhere reachable from the severity path or the attestation fails the build
+# now.
+run "no model call reaches a severity, the attestation, or a bundle"     python3 scripts/check-model-boundary.py
+# SPEC.md 2A.5 does not accept the guard existing. "Then plant a violating
+# import and confirm it goes red", and under VERIFY, "the containment test has
+# been seen to fail". The fourth plant is the one that matters: a model tier
+# that nothing protected imports MUST still pass, because 2A.1 exists to add
+# one and a guard that forbade it outright would be deleted the day somebody
+# needed it.
+run "the model wall is not blind (mutation test)"     python3 scripts/model-boundary-mutation-test.py
+
 echo "--- the banned list is not restated in CLAUDE.md"
 # CLAUDE.md must POINT AT docs/banned-phrases.txt and never restate any of it. A
 # restated list is a second policy that nobody updates, which is exactly how the old

@@ -16,6 +16,7 @@ It exists because of a specific mistake, recorded below.
 | 2.4 | White-label report: firm logo, firm footer, no mention of us | done |
 | 2.5 | Evidence bundle | **not started, and deliberately so** |
 | 2.7 | Scope of attestation stated verbatim | **partial**, see below |
+| 2A.5 | CI guard: no model call reaches a severity or the attestation | done |
 
 **Gate 2 has not passed, and Phase 2 is being built anyway.** SPEC.md's Gate 2
 is "the pilot firm runs it on a real client engagement and describes the
@@ -45,6 +46,32 @@ that gets emailed to a regulator and opened from disk, so a `javascript:` or
 browser, delivered by the firm, with the firm's name on it. Only an https URL
 or a real image data URI is accepted; anything else renders no image at all
 rather than a broken one.
+
+### 2A.5, built before the thing it contains
+
+The model tier is 2A.1 and does not exist. That is the right moment for a
+containment test: one written afterwards has to be shaped around whatever was
+already done, and every exception it grants is one somebody already depends on.
+
+The wall fails the build if the model tier or any known model SDK is reachable
+in the import graph from the severity assignment path, the attestation text, or
+the evidence bundle route. The third does not exist yet and is declared anyway,
+so the wall is standing when 2.5 arrives rather than being retrofitted around
+it. Half of this bites today regardless of 2A.1: an `import OpenAI` anywhere
+reachable from the severity path fails now.
+
+Seen to fail, which is what SPEC.md 2A.5 actually asks for. Four plants: a
+model SDK in the severity path, one in the attestation, the model tier reached
+two hops away through `assert.ts` where a direct-import grep would see nothing,
+and a fourth that **must still pass** because a model tier nothing protected
+imports is exactly what 2A.1 will build. A guard that forbade the model
+outright would be deleted the day somebody needed it.
+
+The walker reports how many imports it resolved and names any it could not
+follow rather than dropping them. The first run named six, all deep imports
+into `packages/rules`, which ships data and has no `src/index.ts`. It would
+have been easy to silence them; an import the wall cannot follow is a hole in
+the wall.
 
 ### 2.7 is partial, and calling it done would have repeated this session's own criticism
 
