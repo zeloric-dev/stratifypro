@@ -271,6 +271,17 @@ run "the SSDF attestation cites only things that exist"     python3 scripts/chec
 # problem no test will otherwise find.
 run "the breach and KEV windows say the same thing everywhere"     python3 scripts/check-commitments.py
 
+# Dogfooding one rule from our own pack against ourselves. CISA-CD-006 is
+# "Component License is present, or explicitly unknown", and not one of the
+# twelve package.json files in this workspace declared a licence field until
+# somebody asked what a customer does if we disappear. An SBOM generated from
+# this repository would have failed this project's own rule on every component.
+#
+# It also keeps docs/continuity.md true: that document's whole argument is that
+# the licence you already hold is worth more than an escrow agreement, and it
+# depends on the licence actually being declared where tooling reads it.
+run "our own packages declare the licence we ship"     python3 scripts/check-own-licence.py
+
 echo "--- the banned list is not restated in CLAUDE.md"
 # CLAUDE.md must POINT AT docs/banned-phrases.txt and never restate any of it. A
 # restated list is a second policy that nobody updates, which is exactly how the old

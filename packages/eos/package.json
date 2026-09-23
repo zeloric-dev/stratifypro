@@ -2,6 +2,7 @@
   "name": "@stratifypro/eos",
   "version": "0.0.0",
   "private": true,
+  "license": "Apache-2.0",
   "type": "module",
   "description": "End-of-support dates, with their source and capture date.",
   "main": "./dist/index.js",
