@@ -16,7 +16,7 @@ It exists because of a specific mistake, recorded below.
 | 2.4 | White-label report: firm logo, firm footer, no mention of us | done |
 | 2.5 | Evidence bundle | built, **unsealed** |
 | 2.7 | Scope of attestation stated verbatim | done, the bundle states it |
-| 2A.3 | Supplier document to draft SBOM | csv and xlsx done, **PDF not built** |
+| 2A.3 | Supplier document to draft SBOM | csv, xlsx and PDF done |
 | 2A.5 | CI guard: no model call reaches a severity or the attestation | done |
 | 2.8 | Source escrow + continuity plan | **partial**, plan written, no escrow |
 | 2.11 | Texas SB 2610 security program, mapped to CIS IG1 | **drafted, unsigned, unreviewed** |
@@ -269,7 +269,38 @@ the distinction is worth stating rather than quietly correcting. An xlsx file
 is a zip of XML with a defined schema: reading it is careful work. A PDF is a
 page-description language where a table is lines and glyphs at coordinates, and
 recovering columns from it is inference. One can be correct; the other can only
-be usually right. **PDF is still not built.**
+be usually right.
+
+**PDF is now built, and that paragraph is still true.** What changed is not the
+judgement, it is what the tool does with it. `packages/pdf` reads the file
+exactly, and the one part that is inference is confined to a single file whose
+output says so: a PDF draft reports how many columns it found, how many pieces
+of text reached no column, and whether the document's own index had to be
+rebuilt. The CLI prints that every run, including the sentence that these
+columns are a reading of the page rather than a fact in it.
+
+Three refusals carry the rest. A scan is refused by name, because a component
+list produced by running optical character recognition over pixels is invented
+content in a regulatory submission. An encrypted file is refused, because a
+reader that ignored `/Encrypt` returns confident rubbish. A page with no
+recurring column positions produces no components rather than a plausible list
+assembled out of running prose.
+
+Two producers were used for the fixtures rather than one, and the second earned
+its place. Chrome writes PDF 1.4 with a classic cross-reference table; Excel
+writes PDF 1.7 with cross-reference streams and object streams, and it clips
+text that overflows a cell instead of shortening it. The Excel file is what
+showed that sorting a line's text by horizontal position interleaves an
+overflowing cell with its neighbours: the supplier of the first component came
+out as "The OpenSSApL Pachrojece-2t.0". Nothing in the Chrome file could have
+revealed that, because Chrome never overflows a cell. The fix was to stop
+sorting and use the order the page draws its text in, which is how a producer
+groups cells in the first place.
+
+One test is worth more than the rest of them together: `supplier-sheet-excel.pdf`
+is `packages/draft`'s own `supplier.xlsx`, printed by Excel. The same sheet is
+read through both paths and the components must match. If the two disagree, one
+of them is wrong, and that is the only check here that can say so.
 
 The zip reader moved out of `apps/sync` into `packages/zip` to make xlsx
 possible, because a package cannot depend on an app and the alternative was a

@@ -27,7 +27,17 @@ import { openMirror } from '@stratifypro/mirror';
 import { componentsFrom, run as runMatch } from '@stratifypro/vulnmatch';
 import { loadDictionary, renderResolve, resolveOne } from './resolve-cmd.js';
 import { checkIdFor, renderBundle, writeBundle } from './bundle-cmd.js';
-import { draftFromCsv, draftFromXlsx, isDraft, looksLikeXlsx } from '@stratifypro/draft';
+import {
+  draftFromCsv,
+  draftFromPdf,
+  draftFromXlsx,
+  isDraft,
+  looksLikePdf,
+  looksLikeXlsx,
+  EncryptedPdf,
+  NoTextLayer,
+  type PdfDraftResult,
+} from '@stratifypro/draft';
 import { CliError, Errors, EXIT, type ExitCode } from './errors.js';
 import { renderText, SEVERITY_RANK } from './render.js';
 
@@ -594,7 +604,26 @@ function cmdDraft(args: Args): ExitCode {
   // and reading a zip as text produces a draft full of mojibake rather than an
   // error somebody can act on.
   let draft;
-  if (looksLikeXlsx(raw)) {
+  let pdf: PdfDraftResult | undefined;
+  if (looksLikePdf(raw)) {
+    try {
+      pdf = draftFromPdf(raw, { sourceName: file, timestamp });
+      draft = pdf;
+    } catch (e) {
+      // These two say what to do next, which "could not read file" does not.
+      // A scan needs a different file from the supplier; an encrypted PDF
+      // needs the password. Both are the user's next action, not ours.
+      if (e instanceof NoTextLayer || e instanceof EncryptedPdf) {
+        process.stderr.write(`
+  ${file}
+  ${e.message}
+
+`);
+        return EXIT.PACK;
+      }
+      throw Errors.unreadableSpreadsheet(file, e instanceof Error ? e.message : String(e));
+    }
+  } else if (looksLikeXlsx(raw)) {
     try {
       draft = draftFromXlsx(raw, { sourceName: file, timestamp });
     } catch (e) {
@@ -624,6 +653,26 @@ function cmdDraft(args: Args): ExitCode {
     notes.push(`  ${draft.skipped.length} row(s) produced no component:`);
     for (const sk of draft.skipped.slice(0, 5)) notes.push(`    line ${sk.line}: ${sk.why}`);
   }
+  if (pdf) {
+    // A PDF has one more thing to answer for than a spreadsheet: whether the
+    // table was read from the file or inferred from where the ink landed.
+    if (pdf.source.kind === 'attachment') {
+      notes.push(`  read from ${pdf.source.fileName}, a file attached to the PDF. Nothing was inferred.`);
+    } else {
+      notes.push(
+        `  inferred from the layout of ${pdf.source.pageCount} page(s), ` +
+          `${pdf.source.columns} column(s) found. A PDF has no table in it, only text at`,
+      );
+      notes.push('  coordinates, so these columns are a reading of the page, not a fact in it.');
+      if (pdf.source.recovered) {
+        notes.push('  the file is damaged; its index was rebuilt by scanning. Check it closely.');
+      }
+    }
+    if (pdf.droppedText.length > 0) {
+      notes.push(`  ${pdf.droppedText.length} piece(s) of text reached no column, and were not read:`);
+      for (const t of pdf.droppedText.slice(0, 5)) notes.push(`    ${t.slice(0, 90)}`);
+    }
+  }
   notes.push('');
   notes.push('  THIS IS A DRAFT. Nothing here was confirmed by a person, no identifier was');
   notes.push('  invented, and the document carries a property saying so. `bundle` refuses it.');
@@ -643,8 +692,8 @@ function cmdHelp(): ExitCode {
       '                 [--overrides <file>]   change a severity, with a reason, on the record',
       '    advisories <file> [--mirror <dir>] [--format text|json]',
       '                 advisories the file did not declare, from a local mirror',
-      '    draft <file.csv|file.xlsx> [--out <file>] [--timestamp <iso8601>]',
-      '                 a supplier spreadsheet transcribed into a CycloneDX draft',
+      '    draft <file.csv|file.xlsx|file.pdf> [--out <file>] [--timestamp <iso8601>]',
+      '                 a supplier document transcribed into a CycloneDX draft',
       '    bundle <file> [--pack <id>] [--out <dir>] [--timestamp <iso8601>]',
       '                 the evidence bundle: report, result, manifest, attestation',
       '    resolve <name> [--dictionary <file>] [--min-observations <n>]',

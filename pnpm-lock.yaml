@@ -262,6 +262,9 @@ importers:
 
   packages/draft:
     dependencies:
+      '@stratifypro/pdf':
+        specifier: workspace:*
+        version: link:../pdf
       '@stratifypro/zip':
         specifier: workspace:*
         version: link:../zip
@@ -301,6 +304,12 @@ importers:
       '@stratifypro/engine':
         specifier: workspace:*
         version: link:../engine
+    devDependencies:
+      '@types/node':
+        specifier: 22.9.0
+        version: 22.9.0
+
+  packages/pdf:
     devDependencies:
       '@types/node':
         specifier: 22.9.0

@@ -1,10 +1,10 @@
 {
-  "name": "@stratifypro/draft",
+  "name": "@stratifypro/pdf",
   "version": "0.0.0",
   "private": true,
   "license": "Apache-2.0",
   "type": "module",
-  "description": "Supplier spreadsheet in, a CycloneDX draft out. Never evidence.",
+  "description": "Just enough of PDF to read a supplier parts table, and to refuse a scan clearly.",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "exports": {
@@ -23,9 +23,5 @@
   },
   "devDependencies": {
     "@types/node": "22.9.0"
-  },
-  "dependencies": {
-    "@stratifypro/pdf": "workspace:*",
-    "@stratifypro/zip": "workspace:*"
   }
 }

@@ -34,6 +34,15 @@ import { readXlsx } from './xlsx.js';
 export const PACKAGE_NAME = '@stratifypro/draft' as const;
 export { parseCsv, type CsvTable } from './csv.js';
 export { readXlsx, looksLikeXlsx, columnIndex, rowNumber, type XlsxTable } from './xlsx.js';
+export {
+  draftFromPdf,
+  NoTextLayer,
+  EncryptedPdf,
+  NotAPdf,
+  looksLikePdf,
+  type PdfDraftResult,
+  type PdfSource,
+} from './pdf.js';
 
 /** The property that marks a document as a draft, and the check that reads it. */
 export const DRAFT_PROPERTY = 'stratifypro:draft';
@@ -129,7 +138,16 @@ export function draftFromXlsx(buf: Buffer, opts: DraftOptions): DraftResult {
   return draftFromTable({ header, rows: rows.slice(1), ragged: [] }, opts);
 }
 
-function draftFromTable(
+/**
+ * The shared transcriber. Every input format reduces to a header and rows
+ * before it gets here.
+ *
+ * Exported because packages/draft/src/pdf.ts is a fourth caller and the
+ * alternative was a second copy of the column aliases and the refusal to
+ * invent an identifier. Two transcribers with two sets of rules would be two
+ * things to keep honest.
+ */
+export function draftFromTable(
   table: { header: string[]; rows: string[][]; ragged: Array<{ line: number; cells: number }> },
   opts: DraftOptions,
 ): DraftResult {

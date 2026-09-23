@@ -52,10 +52,16 @@ manufacturer's bill of materials to a third party one component at a time, befor
 filed. Three answers, never two: affected, clear, and *not examined*, because a component
 nobody could look up must not read as clean.
 
-**Transcribes a supplier spreadsheet.** `draft <file.csv|file.xlsx>` turns the document a
-supplier actually sends into a CycloneDX draft. No model is involved and no identifier is
-invented. The output carries a property marking it a draft, and `bundle` refuses to make
-evidence out of one.
+**Transcribes a supplier document.** `draft <file.csv|file.xlsx|file.pdf>` turns the
+document a supplier actually sends into a CycloneDX draft. No model is involved and no
+identifier is invented. The output carries a property marking it a draft, and `bundle`
+refuses to make evidence out of one.
+
+A PDF is the hard case and is treated as one. A PDF has no table in it, only text at
+coordinates, so the columns are a reading of the page and the command says so every run,
+along with how many columns it found and every piece of text that reached none of them.
+A scan is refused rather than guessed at: there is no text in it to read, and a parts
+list assembled from pixels is invented content in a regulatory submission.
 
 **Produces an evidence bundle.** `bundle <file>` writes the report, the result, a manifest,
 the scope of attestation and instructions for verifying it. The submitted file is **not** in
@@ -144,7 +150,8 @@ of those.
 | `packages/vulnmatch` | Components against the mirror. Three answers, never two |
 | `packages/eos` | End-of-support dates, and how rarely one is available |
 | `packages/ledger` | The evidence bundle |
-| `packages/draft` | A supplier spreadsheet in, a CycloneDX draft out |
+| `packages/draft` | A supplier document in, a CycloneDX draft out |
+| `packages/pdf` | Just enough of PDF to read a parts table, and to refuse a scan |
 | `packages/zip` | Just enough of PKZIP to read an OSV export or a workbook |
 | `apps/cli` | The command line tool and its exit-code contract |
 | `apps/sync` | The only code here that touches the network |
