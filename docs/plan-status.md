@@ -16,6 +16,7 @@ It exists because of a specific mistake, recorded below.
 | 2.4 | White-label report: firm logo, firm footer, no mention of us | done |
 | 2.5 | Evidence bundle | built, **unsealed** |
 | 2.7 | Scope of attestation stated verbatim | done, the bundle states it |
+| 2A.3 | Supplier document to draft SBOM | **csv done**, xlsx and PDF not built |
 | 2A.5 | CI guard: no model call reaches a severity or the attestation | done |
 | 2.8 | Source escrow + continuity plan | **partial**, plan written, no escrow |
 | 2.11 | Texas SB 2610 security program, mapped to CIS IG1 | **drafted, unsigned, unreviewed** |
@@ -220,6 +221,45 @@ signed it" and failed because the paragraph line-wrapped, and it failed the
 build for the sentence "There is no `SECURITY.md`", which would have pushed the
 document towards claiming the file exists. A check that punishes an honest gap
 is worse than no check.
+
+### 2A.3, the half that needs no model
+
+SPEC.md records why this matters: 39 percent of surveyed firms never receive a
+bill of materials from a supplier and only 2 percent always do. What arrives is
+a document somebody retypes by hand into a format they then have to defend, and
+no SBOM-specific extraction tool exists anywhere.
+
+**The csv path needs no model at all.** A spreadsheet is already structured;
+what it needs is a careful reader. xlsx and PDF are named by 2A.3 and are **not
+built**, listed as gaps rather than half-implemented, because an extractor that
+usually works is the exact shape of tool this project refuses to ship.
+
+The parser is written properly rather than splitting on commas, because a
+supplier sheet is the document that breaks a naive one. A licence field reading
+`Apache-2.0, OpenSSL`, a component called `libcurl, bundled`, a note with a
+newline in it: each shifts every later column by one, and the result is a draft
+where versions sit in the supplier field. It still parses, still renders, and is
+wrong about a device. Excel's byte order mark is stripped too, because without
+that the first column is called `﻿name`, matches nothing, and a sheet from
+Excel silently produces zero components.
+
+**Nothing is invented.** No package URL is constructed from a name and a
+version; one appears only when the supplier supplied one. A licence is recorded
+as a `name` rather than an `id`, because `id` asserts the string is a valid SPDX
+identifier and nobody validated it. Columns that were not understood, rows that
+produced nothing, and rows with the wrong cell count are all reported rather
+than dropped.
+
+**"Never bundled" is enforced, not warned about.** 2A.3 accepts on "output
+always labelled a draft. Never signed, never bundled, never filed without human
+confirmation". A console warning does not travel with a file that gets emailed,
+renamed and handed to another command a week later, so the marker lives in the
+document and `stratifypro bundle` reads it back and refuses. A test renames a
+draft to `final-approved-sbom.json` and confirms it is still refused.
+
+The escape hatch is deliberate: remove the property and it bundles. A person
+checks the draft against the source and takes responsibility. What must not
+happen is that it slips through unnoticed.
 
 ### 2A.5, built before the thing it contains
 

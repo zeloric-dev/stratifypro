@@ -60,6 +60,18 @@ export class CliError extends Error {
 }
 
 export const Errors = {
+  refusesDraft: (path: string) =>
+    new CliError(
+      'SP-DRAFT-001',
+      EXIT.PARSE,
+      `${path} is a draft, and a draft cannot be made into evidence.`,
+      'It was transcribed from a supplier document and no person has confirmed it. '
+        + 'An evidence bundle asserts that a file presenting a given hash was checked; '
+        + 'building one around an unconfirmed transcription would attest to somebody '
+        + "else's typing.",
+      'Have a person check it against the source, remove the stratifypro:draft '
+        + 'property, and bundle the confirmed document.',
+    ),
   badMinObservations: (given: string) =>
     new CliError(
       'SP-INPUT-004',

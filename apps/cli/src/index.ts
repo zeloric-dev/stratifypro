@@ -5,7 +5,7 @@
  * The exit-code contract is an API. CI pipelines depend on it being stable.
  */
 import { createHash } from 'node:crypto';
-import { readdirSync, readFileSync } from 'node:fs';
+import { readdirSync, readFileSync, writeFileSync } from 'node:fs';
 import { dirname, join, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import {
@@ -27,6 +27,7 @@ import { openMirror } from '@stratifypro/mirror';
 import { componentsFrom, run as runMatch } from '@stratifypro/vulnmatch';
 import { loadDictionary, renderResolve, resolveOne } from './resolve-cmd.js';
 import { checkIdFor, renderBundle, writeBundle } from './bundle-cmd.js';
+import { draftFromCsv, isDraft } from '@stratifypro/draft';
 import { CliError, Errors, EXIT, type ExitCode } from './errors.js';
 import { renderText, SEVERITY_RANK } from './render.js';
 
@@ -494,6 +495,13 @@ function cmdBundle(args: Args): ExitCode {
   const pack = readPack(packId);
   const { doc, sha256 } = readDoc(file);
 
+  // SPEC.md 2A.3: a draft is "never signed, never bundled, never filed without
+  // human confirmation". Enforced here rather than left to a console warning,
+  // because the draft is a file that gets emailed and renamed, and the console
+  // output does not travel with it. The document carries the marker; this
+  // reads it back.
+  if (isDraft(doc)) throw Errors.refusesDraft(file);
+
   try {
     const { format, spec } = detectFormat(doc as never);
     if (!isSupportedVersion(format, spec)) {
@@ -553,6 +561,63 @@ function cmdBundle(args: Args): ExitCode {
   return EXIT.CLEAN;
 }
 
+/**
+ * `draft <file.csv>` — SPEC.md 2A.3, the csv half.
+ *
+ * A supplier spreadsheet in, a CycloneDX draft out. No model is involved: a
+ * spreadsheet is already structured and needs a careful reader rather than a
+ * guess. PDF and xlsx are named by 2A.3 and are NOT built, because an
+ * extractor that usually works is the shape of tool this project refuses.
+ *
+ * What it could not read is printed every run. A draft that silently dropped
+ * four rows is worse than one that reads nothing.
+ */
+function cmdDraft(args: Args): ExitCode {
+  const file = args.positional[0];
+  if (!file) {
+    process.stderr.write('usage: draft <file.csv> [--out <file>] [--timestamp <iso8601>]\n');
+    return EXIT.PACK;
+  }
+
+  let text: string;
+  try {
+    text = readFileSync(file, 'utf8');
+  } catch (e) {
+    throw Errors.fileUnreadable(file, e instanceof Error ? e.message : String(e));
+  }
+
+  const timestamp = args.flags.get('timestamp') ?? new Date().toISOString();
+  const draft = draftFromCsv(text, { sourceName: file, timestamp });
+  const json = `${JSON.stringify(draft.document, null, 2)}\n`;
+
+  const out = args.flags.get('out');
+  if (out) writeFileSync(out, json, 'utf8');
+  else process.stdout.write(json);
+
+  // To stderr, so that piping the document somewhere does not silently lose
+  // the account of what could not be read.
+  const notes: string[] = ['', `  ${draft.componentCount} component(s) drafted from ${file}`];
+  if (draft.unmappedColumns.length > 0) {
+    notes.push(`  ${draft.unmappedColumns.length} column(s) not understood, and left out:`);
+    for (const c of draft.unmappedColumns) notes.push(`    ${c}`);
+  }
+  if (draft.ragged.length > 0) {
+    notes.push(`  ${draft.ragged.length} row(s) had the wrong number of cells:`);
+    for (const r of draft.ragged.slice(0, 5)) notes.push(`    line ${r.line}: ${r.cells} cells`);
+  }
+  if (draft.skipped.length > 0) {
+    notes.push(`  ${draft.skipped.length} row(s) produced no component:`);
+    for (const sk of draft.skipped.slice(0, 5)) notes.push(`    line ${sk.line}: ${sk.why}`);
+  }
+  notes.push('');
+  notes.push('  THIS IS A DRAFT. Nothing here was confirmed by a person, no identifier was');
+  notes.push('  invented, and the document carries a property saying so. `bundle` refuses it.');
+  notes.push('  Check it against the supplier document before it goes anywhere.');
+  notes.push('');
+  process.stderr.write(notes.join('\n'));
+  return EXIT.CLEAN;
+}
+
 function cmdHelp(): ExitCode {
   process.stdout.write(
     [
@@ -563,6 +628,8 @@ function cmdHelp(): ExitCode {
       '                 [--overrides <file>]   change a severity, with a reason, on the record',
       '    advisories <file> [--mirror <dir>] [--format text|json]',
       '                 advisories the file did not declare, from a local mirror',
+      '    draft <file.csv> [--out <file>] [--timestamp <iso8601>]',
+      '                 a supplier spreadsheet transcribed into a CycloneDX draft',
       '    bundle <file> [--pack <id>] [--out <dir>] [--timestamp <iso8601>]',
       '                 the evidence bundle: report, result, manifest, attestation',
       '    resolve <name> [--dictionary <file>] [--min-observations <n>]',
@@ -595,6 +662,8 @@ function main(): ExitCode {
       return cmdResolve(args);
     case 'bundle':
       return cmdBundle(args);
+    case 'draft':
+      return cmdDraft(args);
     case 'help':
     case '--help':
     case '-h':
