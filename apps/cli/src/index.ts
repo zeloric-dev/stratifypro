@@ -10,6 +10,7 @@ import { dirname, join, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import {
   check,
+  coverage,
   detectFormat,
   explainRule,
   isSupportedVersion,
@@ -21,9 +22,11 @@ import {
   type Severity,
   SUPPORTED,
 } from '@stratifypro/engine';
+import { attestationText, renderHtml } from '@stratifypro/report';
 import { openMirror } from '@stratifypro/mirror';
 import { componentsFrom, run as runMatch } from '@stratifypro/vulnmatch';
 import { loadDictionary, renderResolve, resolveOne } from './resolve-cmd.js';
+import { checkIdFor, renderBundle, writeBundle } from './bundle-cmd.js';
 import { CliError, Errors, EXIT, type ExitCode } from './errors.js';
 import { renderText, SEVERITY_RANK } from './render.js';
 
@@ -124,7 +127,10 @@ interface Args {
  * a file the user never typed; the second silently ignored an argument they
  * did type.
  */
-const VALUE_FLAGS = new Set(['pack', 'fail-on', 'format', 'overrides', 'mirror', 'dictionary', 'min-observations']);
+const VALUE_FLAGS = new Set([
+  'pack', 'fail-on', 'format', 'overrides', 'mirror', 'dictionary',
+  'min-observations', 'out', 'timestamp',
+]);
 
 function parseArgs(argv: string[]): Args {
   const [command = 'help', ...rest] = argv;
@@ -467,6 +473,86 @@ function cmdResolve(args: Args): ExitCode {
   return EXIT.CLEAN;
 }
 
+/**
+ * `bundle <file>` — SPEC.md Step 11, the evidence bundle.
+ *
+ * Runs the same check `check` runs, renders the same report, and writes the
+ * five files a firm hands over. The submitted file is hashed and not copied:
+ * attestation.txt says it was not retained, and a bundle containing it would
+ * make its own attestation false in the same directory.
+ */
+function cmdBundle(args: Args): ExitCode {
+  const file = args.positional[0];
+  if (!file) {
+    process.stderr.write(
+      'usage: bundle <file> [--pack <id>] [--out <dir>] [--timestamp <iso8601>]\n',
+    );
+    return EXIT.PACK;
+  }
+
+  const packId = args.flags.get('pack') ?? DEFAULT_PACK;
+  const pack = readPack(packId);
+  const { doc, sha256 } = readDoc(file);
+
+  try {
+    const { format, spec } = detectFormat(doc as never);
+    if (!isSupportedVersion(format, spec)) {
+      throw Errors.unsupportedVersion(
+        file,
+        format === 'cyclonedx' ? 'CycloneDX' : 'SPDX',
+        spec,
+        SUPPORTED[format].label,
+      );
+    }
+  } catch (e) {
+    if (e instanceof CliError) throw e;
+    throw Errors.formatUnknown(file);
+  }
+
+  // An argument, not a clock read. Two people bundling the same file with the
+  // same pack and the same timestamp must get byte-identical directories, or
+  // a customer cannot compare the copy they kept against the one we hold.
+  const timestamp = args.flags.get('timestamp') ?? new Date().toISOString();
+  const engineVersion = '0.0.0';
+  const result = check(doc, pack, { fileSha256: sha256, engineVersion });
+
+  const cov = coverage(doc as never);
+  const reportHtml = renderHtml(result, {
+    fileName: file,
+    generatedAt: timestamp,
+    componentsTotal: cov.total,
+    componentsResolved: cov.identified,
+    inputs: { engineVersion, rulePackId: pack.id, rulePackVersion: pack.version },
+  });
+
+  const written = writeBundle({
+    outDir: args.flags.get('out') ?? process.cwd(),
+    input: {
+      checkId: checkIdFor(sha256, pack.id, pack.version, timestamp),
+      timestamp,
+      fileSha256: sha256,
+      fileName: file,
+      engineVersion,
+      packId: pack.id,
+      packVersion: pack.version,
+      reportHtml,
+      result,
+      attestation: attestationText({
+        date: timestamp.slice(0, 10),
+        sha256,
+        engineVersion,
+        packId: pack.id,
+        packVersion: pack.version,
+      }),
+    },
+  });
+
+  process.stdout.write(renderBundle(written, false));
+  // Exit 0. Writing a bundle succeeded even when the findings inside it are
+  // bad; `check` is the command whose exit code is about findings.
+  return EXIT.CLEAN;
+}
+
 function cmdHelp(): ExitCode {
   process.stdout.write(
     [
@@ -477,6 +563,8 @@ function cmdHelp(): ExitCode {
       '                 [--overrides <file>]   change a severity, with a reason, on the record',
       '    advisories <file> [--mirror <dir>] [--format text|json]',
       '                 advisories the file did not declare, from a local mirror',
+      '    bundle <file> [--pack <id>] [--out <dir>] [--timestamp <iso8601>]',
+      '                 the evidence bundle: report, result, manifest, attestation',
       '    resolve <name> [--dictionary <file>] [--min-observations <n>]',
       '                 what a component name is, or why it cannot be said',
       '    explain <ruleId> [--pack <id>]',
@@ -505,6 +593,8 @@ function main(): ExitCode {
       return cmdAdvisories(args);
     case 'resolve':
       return cmdResolve(args);
+    case 'bundle':
+      return cmdBundle(args);
     case 'help':
     case '--help':
     case '-h':

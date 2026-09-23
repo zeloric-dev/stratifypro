@@ -14,13 +14,46 @@ It exists because of a specific mistake, recorded below.
 | 2.2 | Supabase schema + RLS | blocked, no credentials |
 | 2.3 | Check history, projects, per-seat usage | blocked on 2.1 and 2.2 |
 | 2.4 | White-label report: firm logo, firm footer, no mention of us | done |
-| 2.5 | Evidence bundle | **not started, and deliberately so** |
-| 2.7 | Scope of attestation stated verbatim | **partial**, see below |
+| 2.5 | Evidence bundle | built, **unsealed** |
+| 2.7 | Scope of attestation stated verbatim | done, the bundle states it |
 | 2A.5 | CI guard: no model call reaches a severity or the attestation | done |
 | 2.8 | Source escrow + continuity plan | **partial**, plan written, no escrow |
 | 2.11 | Texas SB 2610 security program, mapped to CIS IG1 | **drafted, unsigned, unreviewed** |
 | 2.9 | Written incident response plan | **partial**, never rehearsed |
 | 2.10 | NIST SSDF self-attestation | **drafted, unsigned** |
+
+**2.5 was built after all.** The gate below has still not passed; the
+instruction to proceed was given three times and is recorded rather than
+re-argued. What changed the priority is that 2.7 was stuck at partial for a
+reason only 2.5 could fix: the attestation text existed, pinned to the
+specification and guarded by a check, and was **stated to nobody**. A bundle is
+where SPEC.md puts it. `stratifypro bundle <file>` now writes it, and an
+end-to-end test asserts the wording lands in a file on disk rather than in an
+export nothing calls.
+
+The bundle does **not** contain the submitted file, and that is the design
+rather than an omission: `attestation.txt` says the file was not retained, so a
+bundle carrying it would make its own attestation false in the same directory.
+What is recorded is the SHA-256, which is what lets a submitter prove later
+that the artifact they hold is the one that was checked. A test asserts a
+distinctive run of the real document appears in none of the five files.
+
+It is **not sealed**, and the command says so every time it runs: the files
+hash to what the manifest says, which detects accidental change, and nothing
+in the directory proves who produced it. SPEC.md's VERIFY asks for
+`cosign verify-blob` against a published key, which needs a key that does not
+exist. The half underneath the seal is tested: alter one byte of any covered
+file and verification fails, with the failure naming the file.
+
+It is also deterministic. Two runs of the same check produce byte-identical
+directories, because a customer comparing their eighteen-month-old copy against
+a fresh one is the reason to keep an evidence bundle at all. Every object is
+serialised with sorted keys, and the timestamp is an argument rather than a
+clock read.
+
+And the model containment wall declared `packages/ledger/src/bundle.ts` as the
+evidence bundle route three changes before that file existed, reporting it as
+"declared and waiting". It now guards real code.
 
 **Gate 2 has not passed, and Phase 2 is being built anyway.** SPEC.md's Gate 2
 is "the pilot firm runs it on a real client engagement and describes the

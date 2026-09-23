@@ -6,3 +6,5 @@
  * engine and the rule packs alone.
  */
 export const PACKAGE_NAME = '@stratifypro/ledger' as const;
+
+export * from './bundle.js';
