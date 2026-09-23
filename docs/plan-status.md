@@ -17,6 +17,7 @@ It exists because of a specific mistake, recorded below.
 | 2.5 | Evidence bundle | **not started, and deliberately so** |
 | 2.7 | Scope of attestation stated verbatim | **partial**, see below |
 | 2A.5 | CI guard: no model call reaches a severity or the attestation | done |
+| 2.8 | Source escrow + continuity plan | **partial**, plan written, no escrow |
 | 2.9 | Written incident response plan | **partial**, never rehearsed |
 | 2.10 | NIST SSDF self-attestation | **drafted, unsigned** |
 
@@ -48,6 +49,35 @@ that gets emailed to a regulator and opened from disk, so a `javascript:` or
 browser, delivered by the firm, with the firm's name on it. Only an https URL
 or a real image data URI is accepted; anything else renders no image at all
 rather than a broken one.
+
+### 2.8, and the licence gap it turned up
+
+`docs/continuity.md` is written. The escrow agreement is not signed, because
+SPEC.md requires it before the first paid contract and there is no paid
+contract, and there is no company to hold one.
+
+The document argues that escrow matters less here than it usually does: escrow
+exists so a customer can reach source they cannot inspect, and this repository
+is public under Apache-2.0, so the thing escrow normally protects is already in
+their hands. Claiming escrow as the protection while the real protection is the
+licence would be selling the wrong thing.
+
+**That argument only holds if the licence is actually declared**, which is what
+sent somebody to look. `LICENSE` is Apache-2.0 and GitHub reports it. **Not one
+of the twelve package.json files in this workspace declared a licence field.**
+
+That is not a nit. `cisa-2026-v2.1` contains CISA-CD-006, "Component License is
+present, or explicitly unknown". An SBOM generated from this repository would
+have failed this project's own rule on every component, and a checker for
+exactly that failure is the product. Tooling reads the package.json field
+rather than the file at the repository root, and a package with no license
+field is treated as unlicensed, which means a consumer has no permission to use
+it.
+
+All twelve now declare Apache-2.0, and `scripts/check-own-licence.py` reads the
+expected identifier out of the `LICENSE` file rather than hard-coding it, so
+changing the licence cannot leave twelve manifests quietly claiming the old
+one.
 
 ### 2.9 closes three SSDF gaps and leaves its own open
 

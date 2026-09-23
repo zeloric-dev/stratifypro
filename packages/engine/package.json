@@ -2,6 +2,7 @@
   "name": "@stratifypro/engine",
   "version": "0.0.0",
   "private": true,
+  "license": "Apache-2.0",
   "type": "module",
   "description": "Rule evaluation. Pure TypeScript, zero runtime dependencies.",
   "main": "./dist/index.js",

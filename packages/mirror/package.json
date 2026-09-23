@@ -2,6 +2,7 @@
   "name": "@stratifypro/mirror",
   "version": "0.0.0",
   "private": true,
+  "license": "Apache-2.0",
   "type": "module",
   "description": "Local advisory index. No third-party call at query time.",
   "main": "./dist/index.js",

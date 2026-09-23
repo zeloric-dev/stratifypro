@@ -2,6 +2,7 @@
   "name": "@stratifypro/vulnmatch",
   "version": "0.0.0",
   "private": true,
+  "license": "Apache-2.0",
   "type": "module",
   "description": "Cross-references resolved components against the local advisory mirror.",
   "main": "./dist/index.js",

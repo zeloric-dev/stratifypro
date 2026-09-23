@@ -2,9 +2,14 @@
   "name": "@stratifypro/rules",
   "version": "0.0.0",
   "private": true,
+  "license": "Apache-2.0",
   "type": "module",
   "description": "Rule packs, their schema, fixtures, and the golden reference results. Data, not code.",
-  "files": ["packs", "schema", "data"],
+  "files": [
+    "packs",
+    "schema",
+    "data"
+  ],
   "exports": {
     "./packs/*": "./packs/*",
     "./schema/*": "./schema/*",

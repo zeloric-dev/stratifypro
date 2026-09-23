@@ -2,6 +2,7 @@
   "name": "@stratifypro/web",
   "version": "0.0.0",
   "private": true,
+  "license": "Apache-2.0",
   "description": "The public checker. Everything here runs in the browser: nothing is uploaded.",
   "scripts": {
     "dev": "next dev",

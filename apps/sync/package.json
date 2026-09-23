@@ -2,6 +2,7 @@
   "name": "@stratifypro/sync",
   "version": "0.0.0",
   "private": true,
+  "license": "Apache-2.0",
   "type": "module",
   "description": "Scheduled refresh of the advisory mirror and end-of-support dataset.",
   "scripts": {
