@@ -112,6 +112,19 @@ jobs:
       - name: A firm cannot reach another firm's rows, and the suite has been seen to fail
         run: python3 scripts/rls-mutation-test.py
 
+      # SPEC.md 1.2 accepts on reading SPDX 2.2 to 3.0.1. SPDX 3.0 is a graph,
+      # so it is converted into the shape the rules read, and the risk of that
+      # conversion is silent: a field the converter misses and a field the
+      # supplier omitted produce the same finding, and only one of them is the
+      # supplier's fault.
+      #
+      # The equivalence test says the same SBOM in 2.3 and 3.0.1 must give
+      # identical findings. That is also satisfied by two documents which both
+      # fail everything, so this removes each mapping in turn and requires the
+      # suite to notice.
+      - name: The SPDX 3 converter loses nothing, and the test has been seen to fail
+        run: python3 scripts/spdx3-mutation-test.py
+
       # The dogfood. A checker whose own bill of materials has never been
       # checked is selling something it has not tried. This re-runs the engine
       # over the committed SBOM of this repository and fails if the published

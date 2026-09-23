@@ -506,14 +506,40 @@ not a paraphrase.
 
 ### The five that are not done, and why each one is not a typo
 
-**1.2 is narrower than its acceptance says.** The acceptance is "CycloneDX
-1.4-1.7 and SPDX 2.2-3.0.1". The engine supports CycloneDX 1.2 to 1.7 and SPDX
-2.2 to 2.3, and **refuses SPDX 3.0 deliberately**: 3.0 is JSON-LD with an
-`@graph` and no `spdxVersion` key, so the selectors written for 2.x address
-nothing in it. An earlier build accepted 3.0 documents and told their authors
-"this file parsed, but it lists no components", which is false about the file.
-Refusing by name is the better failure. The acceptance test is the thing that
-is wrong here, and it should be amended rather than met.
+**1.2 now meets its acceptance, and the route there is worth recording.** The
+acceptance is "CycloneDX 1.4-1.7 and SPDX 2.2-3.0.1". This paragraph used to
+say the acceptance was wrong and should be amended rather than met, because
+3.0 is JSON-LD with an `@graph` and no `spdxVersion` key and the selectors
+written for 2.x address nothing in it. An earlier build had accepted 3.0
+documents and told their authors "this file parsed, but it lists no
+components", which is false about the file, so the claim was withdrawn and
+3.0 was refused by name.
+
+It is met now because the reading exists rather than because the claim was
+restored. `packages/engine/src/spdx3.ts` converts a 3.0 graph into the shape
+the rules already read. The rules were left alone on purpose: each one maps to
+a CISA element or an FDA expectation and asks a question about information,
+not about syntax. "Does this document state who supplies each component" is
+the same question whether the answer sits in `packages[].supplier` or behind a
+`suppliedBy` reference to an Agent somewhere else in the graph. Teaching
+thirty-nine regulatory rules a third file format would have put file syntax
+into the artefact that holds regulatory meaning.
+
+**The dangerous failure here is not a crash.** If the converter misses a field
+the document really carries, every rule reading that field reports a missing
+CISA element, and the report tells a supplier their submission is short of a
+regulatory requirement when it is not. Three things guard it. The result
+carries `normalisation`, naming every element type and package key the
+converter did not use, so what was ignored is countable. A constructed pair
+says the same SBOM in 2.3 and in 3.0.1 and a test requires identical findings
+from both. And `scripts/spdx3-mutation-test.py` removes each mapping in turn
+and requires the suite to notice, because an equivalence test is also
+satisfied by two documents that both fail everything.
+
+That guard earned itself immediately. The SPDX project's own 3.0.1 example
+writes `originatedBy` as an array; the first draft of the converter read only
+a scalar and silently dropped the originator from every package in the file.
+Nothing but running it against a real document would have found it.
 
 **1.5's second acceptance is met, and this paragraph said otherwise for
 several changes after it stopped being true.** "Every rule in the pack maps to

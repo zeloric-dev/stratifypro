@@ -1,5 +1,6 @@
 import { evaluate, type Assertion } from './assert.js';
 import { jsonPathNodes, type Json } from './jsonpath.js';
+import { isSpdx3, normaliseSpdx3 } from './spdx3.js';
 import { validateOverrides } from './overrides.js';
 import type {
   CheckOptions,
@@ -53,6 +54,14 @@ export function detectFormat(doc: Json): DetectResult {
   if (!isRecord(doc)) throw new Error('not an object: expected a parsed SBOM document');
   if (typeof doc['spdxVersion'] === 'string') {
     return { format: 'spdx', spec: doc['spdxVersion'].replace(/^SPDX-/, '') };
+  }
+  // SPEC.md: "SPDX 2.x by spdxVersion, 3.x by the JSON-LD @context". This is
+  // checked before SPDXID because a 3.0 document has no spdxVersion at all,
+  // and the old order reported such a file as an undetectable format while
+  // the error text claimed 3.0 was supported.
+  if (isSpdx3(doc)) {
+    const n = normaliseSpdx3(doc);
+    return { format: 'spdx', spec: n.spec };
   }
   if ('SPDXID' in doc) return { format: 'spdx', spec: 'unknown' };
   if (doc['bomFormat'] === 'CycloneDX') {
@@ -138,6 +147,25 @@ export function check(
 ): CheckResult {
   const { format, spec } = detectFormat(doc);
 
+  // An SPDX 3 document is a graph, and every SPDX selector in both packs names
+  // a 2.x path. Converting here, once, is what lets thirty-nine rules that
+  // encode regulatory meaning stay free of file syntax. What the conversion
+  // did not use is carried on the result rather than dropped, because a field
+  // this converter missed and a field the supplier omitted produce the same
+  // finding, and only one of them is the supplier's fault.
+  let evaluated: Json = doc;
+  let normalisation: CheckResult['normalisation'];
+  if (format === 'spdx' && isSpdx3(doc)) {
+    const n = normaliseSpdx3(doc);
+    evaluated = n.view;
+    normalisation = {
+      from: `SPDX ${n.spec} (JSON-LD)`,
+      unmappedTypes: n.unmappedTypes,
+      unmappedPackageKeys: n.unmappedPackageKeys,
+      counts: n.counts,
+    };
+  }
+
   // Before anything is evaluated. A bad override file checks nothing rather
   // than checking most of the document and failing at the end, for the same
   // reason packInvalid refuses to check anything: a partial result on a
@@ -174,7 +202,7 @@ export function check(
       recordInert(rule.id, `the rule ${reason}, so there was no severity to change`);
       continue;
     }
-    const paths = ruleFailures(doc, rule, format);
+    const paths = ruleFailures(evaluated, rule, format);
     if (paths === null) {
       const reason = `${format} has no path for this rule, or the rule declares onEmptySelector: skip`;
       skippedRules.push({ ruleId: rule.id, reason, kind: 'no-path' });
@@ -205,7 +233,7 @@ export function check(
     if (applied) overrides.push({ ...applied, from: rule.severity });
 
     for (const path of paths) {
-      const component = labelFor(doc, path);
+      const component = labelFor(evaluated, path);
       findings.push({
         ruleId: rule.id,
         title: rule.title,
@@ -245,5 +273,6 @@ export function check(
     overrides,
     inertOverrides,
     ...(opts.overridesSource === undefined ? {} : { overridesSource: opts.overridesSource }),
+    ...(normalisation === undefined ? {} : { normalisation }),
   };
 }
