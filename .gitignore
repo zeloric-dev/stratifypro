@@ -30,6 +30,8 @@ Thumbs.db
 .cache/
 coverage/
 .turbo/
+# Assistant session snapshots. Notes about how the work was done, not the work.
+.context/
 
 # Generated reports, never the source of truth
 /tmp/
