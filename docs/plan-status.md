@@ -407,7 +407,7 @@ not a paraphrase.
 | 1.2 | `packages/engine` parse and detect both formats | done, **narrower than the acceptance** |
 | 1.3 | Rule pack schema + loader with mandatory `severityJustification` | done |
 | 1.4 | `cisa-2026-v2.1` pack, 17 fields + 6 practices | done |
-| 1.5 | `fda-524b` pack, built against the teardown gaps | pack done, **second acceptance unmet** |
+| 1.5 | `fda-524b` pack, built against the teardown gaps | done |
 | 1.6 | `packages/report` renders standalone HTML, no network | done |
 | 1.7 | `apps/cli` published to npm | **not done** |
 | 1.8 | `apps/web` free checker at `stratifypro.io` | software done, **not at that domain** |
@@ -431,11 +431,18 @@ nothing in it. An earlier build accepted 3.0 documents and told their authors
 Refusing by name is the better failure. The acceptance test is the thing that
 is wrong here, and it should be amended rather than met.
 
-**1.5's second acceptance is unmet.** "Every rule in the pack maps to a row in
-`docs/teardown.md`." That file does not exist. The pack was built against real
-gaps, but the document that would let anyone check that claim was never
-written, so right now the mapping is an assertion. Writing it needs the
-teardown itself, which is research, not code.
+**1.5's second acceptance is met, and this paragraph said otherwise for
+several changes after it stopped being true.** "Every rule in the pack maps to
+a row in `docs/teardown.md`." That document now exists, `scripts/teardown.py`
+generates it from tools that were actually run, and `verify.sh` fails the build
+if any `fda-524b` rule has no row. The gate is mutation-tested: a planted rule
+is refused by name.
+
+The status was written when it was accurate, the work landed in a later change,
+and nobody came back. In this file, which opens by promising to say which steps
+are "actually done, as opposed to claimed". There is now a build gate for the exact
+shape this rot took: `scripts/check-plan-status.py` fails when this document
+reports a file absent while that file is sitting on disk.
 
 **1.7 has not happened.** `apps/cli/package.json` is `"private": true` at
 version `0.0.0`. The acceptance is `npx @stratifypro/cli check file.json` on a
