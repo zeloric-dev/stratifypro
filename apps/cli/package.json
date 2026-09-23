@@ -15,7 +15,8 @@
     "@stratifypro/report": "workspace:*",
     "@stratifypro/mirror": "workspace:*",
     "@stratifypro/vulnmatch": "workspace:*",
-    "@stratifypro/resolve": "workspace:*"
+    "@stratifypro/resolve": "workspace:*",
+    "@stratifypro/ledger": "workspace:*"
   },
   "bin": {
     "stratifypro": "./dist/index.js"
