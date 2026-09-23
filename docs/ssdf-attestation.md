@@ -50,7 +50,7 @@ are machine-checked.
 | PS.1.1 | Code is stored securely and access-controlled | partial | Public repository, GitHub access control. No branch protection rules configured |
 | PS.2.1 | Integrity verification is made available to consumers | **not met** | Nothing published is signed. SPEC.md Step 11 is the plan; it is gated behind Gate 2 and unbuilt |
 | PS.3.1 | Each release is archived and provenance recorded | **not met** | Nothing has been released. `apps/cli` is `private: true` at version 0.0.0 |
-| PS.3.2 | An SBOM is provided for each release | **not met** | Same. This is the one a reader will notice, and it should be noticed |
+| PS.3.2 | An SBOM is provided for each release | partial | `docs/self/stratifypro.cdx.json` is generated and checked by `scripts/self-sbom.py`. There are no releases to attach it to |
 
 ## PW: Produce Well-Secured Software
 
