@@ -117,3 +117,4 @@ export function resolveToPurl(input: string, dict: AliasDictionary, opts?: Resol
 }
 
 export * from './slug.js';
+export { whyNot, METHOD_EXPLAINS } from './explain.js';
