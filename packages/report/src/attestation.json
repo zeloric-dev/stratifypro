@@ -1,0 +1,8 @@
+{
+  "$comment": "SPEC.md Step 11, verbatim. Not prose to edit: scripts/check-attestation.py compares this to the blockquote in SPEC.md character for character and fails the build on any difference. Placeholders are substituted by attestation.ts and by nothing else.",
+  "paragraphs": [
+    "On {date} a file presenting SHA-256 {sha256} was submitted to StratifyPro engine version {engineVersion} and evaluated against rule pack {packId}@{packVersion}, producing the findings recorded in result.json.",
+    "StratifyPro did not retain the submitted file and cannot reproduce its contents. This record attests to the integrity of an artifact held by the submitter, not to what that artifact contained.",
+    "This is not a statement that the software described is safe, that it complies with any regulation, or that any regulatory submission will be accepted. It is not an electronic signature within the meaning of 21 CFR 11.3(b)(7)."
+  ]
+}

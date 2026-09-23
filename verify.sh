@@ -202,13 +202,18 @@ SCAN_EXCLUDE="--exclude-dir=node_modules --exclude-dir=.next --exclude-dir=dist 
 # contained", and "it is not an electronic signature within the meaning of 21
 # CFR 11.3(b)(7)". A grep cannot tell a claim from its own denial.
 #
-# So the text lives alone in packages/report/src/attestation.ts, that file is
-# skipped here, and scripts/check-attestation.py replaces this scan with a
-# stricter one: the text must equal SPEC.md's blockquote character for
-# character, and neither word may appear in that file outside the mandated
-# wording. Before that check existed the attestation was never compared to the
-# specification at all, so the exemption is narrower than what it replaces.
-SCAN_EXCLUDE="$SCAN_EXCLUDE --exclude=attestation.ts"
+# So the wording lives alone in packages/report/src/attestation.json, rendered
+# by attestation.ts, those two files are skipped here, and
+# scripts/check-attestation.py replaces this scan with a stricter one: the text
+# must equal SPEC.md's blockquote character for character, and neither word may
+# appear in either file outside the mandated wording. Before that check existed
+# the attestation was never compared to the specification at all, so the
+# exemption is narrower than what it replaces.
+#
+# The wording is in JSON rather than in the TypeScript so that the replacement
+# check needs no build. verify.sh runs first in CI, before anything is
+# compiled, and a gate that only passes on an already-built tree is not a gate.
+SCAN_EXCLUDE="$SCAN_EXCLUDE --exclude=attestation.ts --exclude=attestation.json"
 # Test files are excluded for the same reason the network scan excludes them:
 # they are not product copy and they do not ship. A test whose whole job is to
 # assert that the output NEVER claims a file "contained" anything has to write
