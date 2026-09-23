@@ -62,6 +62,19 @@ run "coverage baseline regenerates from the corpus" \
 run "the published corpus results are the engine's own output" \
     python3 scripts/corpus-results.py --check
 
+# SPEC.md 0.1 is the competitor teardown, marked "Blocking: no build starts
+# until this exists", and it did not exist until long after the build started.
+# SPEC.md 1.5's second acceptance is "every rule in the pack maps to a row in
+# docs/teardown.md", which nothing enforced either.
+#
+# Offline: the tools were run once and their output is committed at
+# docs/teardown-data/. This regenerates the document from that data and fails
+# if it has drifted, and fails if any fda-524b rule has no row. Adding a rule
+# to the pack without saying whether anyone else checks it now breaks the
+# build, which is the only way that claim stays true.
+run "every FDA rule has a row in the competitor teardown" \
+    python3 scripts/teardown.py --check
+
 run "the web app's copy is the approved copy, not a paraphrase"     python3 scripts/check-copy.py
 
 echo "--- the file checker cannot upload anything"

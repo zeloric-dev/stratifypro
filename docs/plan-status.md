@@ -6,6 +6,67 @@ this file is the one being maintained.
 
 It exists because of a specific mistake, recorded below.
 
+## Phase 0, which was supposed to block everything
+
+SPEC.md's Phase 0 is headed "No product code." Two of its tasks are marked
+blocking, and line 794 repeats one of them: "Do not start Step 1 until
+`docs/teardown.md` exists."
+
+| # | Task | Status |
+|---|---|---|
+| 0.1 | Competitor teardown, a row per tool per finding class | **done late**, see below |
+| 0.2 | Crosswalk repo public, CC BY 4.0 | done |
+| 0.3 | Strip every CRA and refuse-to-accept claim | done in substance, see below |
+| 0.4 | Google Workspace on `stratifypro.io` | **not done**, blocked on DNS |
+| 0.5 | Email eight firms, tracked in `docs/outreach.md` | **not done**, no such file |
+| 0.6 | Corpus of 20+ files with provenance | done, 21 files |
+| 0.7 | Verify the CISA 2026 element list (blocking) | done, `docs/cisa-2026-elements.md` |
+| 0.8 | Identifier coverage baseline | done, `docs/coverage-baseline.md` |
+
+**0.1 was blocking and the build ignored it.** The engine, both rule packs, the
+resolver, the benchmark, the crosswalk, the site, the advisory mirror and the
+matcher were all built before anyone ran a competing tool once. The teardown now
+exists, `verify.sh` gates on it, and the document says on its own first screen
+that it arrived late. Recording that is cheaper than pretending the order was
+followed.
+
+What it found, having actually run the tools rather than assumed:
+
+- **7 of the 16 `fda-524b` rules are asked by neither tool.** Level of support,
+  end-of-support date, known vulnerabilities, justification for missing
+  information, the form the SBOM is provided in, traceability to the threat
+  model, and whether the document enumerates commercial, open-source and
+  off-the-shelf components. Those are what a submission comes back over.
+- **The third tool SPEC.md names does not exist.** There is no `sbom-tools
+  --standard fda` on PyPI and no repository publishing that flag. The teardown
+  was specified against an assumption about the market rather than a survey of
+  it.
+- **`sbomqs` evaluates no element of the CISA 2026 Practices group**, while
+  reporting itself as "NTIA Minimum Elements (2026)". It covers the two data
+  groups well. Coverage, Distribution and Delivery, Frequency, and Explicitly
+  Identifying Unknown Information are the six-element group nobody checks.
+- **One malformed field discarded a 1,160-component document.** `sbomqs`
+  returned nothing at all for `spdx__grype-sbom.spdx.json` because a single
+  `Originator` reads `Georg Brandl <georg@python.org>` without the `Person:`
+  prefix SPDX 2.2 requires. The file is at fault and the tool is right to
+  notice, but the user learns only that something somewhere failed to parse.
+  This engine reads the same file and produces 3,484 findings.
+
+**0.3 is done in substance and fails its own literal test.** The acceptance is
+that `grep -ri "cyber resilience\|refuse to accept"` returns nothing outside a
+historical note. It returns four files. All four are accurate citations rather
+than claims: `fda-524b.json` explains that Refuse to Accept applies to statutory
+absence and says in terms "Never describe a deficiency as a rejection", and
+`build_crosswalk.py` cites the Federal Register notice and the CRA by its
+regulation number. The grep is too blunt to tell a claim from a citation. The
+acceptance test should be narrowed rather than the citations removed.
+
+**0.5 has not happened and it is the one that matters.** Gate 1 is "one firm
+agrees to a pilot on a live engagement", and its failure branch reads: "zero
+replies after two follow-ups means the channel is wrong. Stop. Do not build."
+No email has been sent, so the gate has neither passed nor failed. Everything
+built so far has been built through a gate that was never opened.
+
 ## Phase 1, numbered as SPEC.md numbers it
 
 SPEC.md is the authority. Every row below is its step and its acceptance test,
