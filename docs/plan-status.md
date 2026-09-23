@@ -12,7 +12,8 @@ It exists because of a specific mistake, recorded below.
 |---|---|---|
 | 2.1 | Clerk auth + Organizations | blocked, no credentials |
 | 2.2 | Supabase schema + RLS | **policies built and proven, not deployed** |
-| 2.3 | Check history, projects, per-seat usage | blocked on 2.1 and 2.2 |
+| 2.3 | Check history, projects, per-seat usage | **queries built and proven, no UI** |
+| R8 | Immutable audit log of administrative actions | **built, append-only enforced** |
 | 2.4 | White-label report: firm logo, firm footer, no mention of us | done |
 | 2.5 | Evidence bundle | built, **unsealed** |
 | 2.7 | Scope of attestation stated verbatim | done, the bundle states it |
@@ -85,6 +86,57 @@ defend it.
 
 It is **not deployed**. No Supabase project exists, so nothing has run these
 migrations against a hosted database.
+
+**2.3's queries exist and its screens do not.** SPEC.md 2.3 accepts on "a firm
+sees its own checks only, sorted newest first", and that sentence is now proven
+against real Postgres: check history, projects with their check counts, and
+seat usage, each run as the `authenticated` role with the policies in force.
+There is no interface on top, so the step is queries-and-proof rather than
+done.
+
+**No query takes a firm id, and that is the design.** SPEC.md's security table
+has a row reading "No client-supplied `firm_id` trusted", and the natural way
+to break it is an application helper like `checksFor(firmId)`: honest-looking,
+easy to call, and the moment one caller passes a value from a request body
+every policy in `0002_rls.sql` has been routed around by the application
+itself. The queries name no firm, the policies resolve it from the verified
+token, and a test greps every statement the package ships to confirm none of
+them compares `firm_id` to a parameter.
+
+Two choices worth stating because the alternative looked reasonable. A seat is
+a person who has RUN a check, not a Clerk membership: counting memberships
+bills a firm for the four people it added on the first afternoon and never
+heard from again, and undercounting in the customer's favour is the safe
+direction for a number that appears on an invoice. And `seats_used` is allowed
+to exceed `seats`, because a firm over its allowance needs to see that it is
+over.
+
+### R8, and a control that was briefly off while looking correct
+
+SPEC.md names an immutable audit log as the **compensating control** for the
+fact that a one-person company cannot separate duties. Every framework asking
+for segregation of duties assumes two people; when there is one, the honest
+answer is not to claim the control but to record what the one person did in a
+way that person cannot later alter.
+
+**The control is the absence of a policy.** Row-level security denies by
+default, so with it enabled and forced, an operation no policy permits is
+refused. `audit_log` therefore has a SELECT policy and an INSERT policy and
+deliberately no UPDATE and no DELETE policy. There is nothing to disable and no
+flag to flip. A log the logger can edit is a diary.
+
+That absence was undone within the hour by something that looked unrelated.
+The test harness applies grants AFTER the migrations, and the grants said
+`grant select, insert, update, delete on all tables in schema public`, which
+handed back the two verbs the migration had just revoked. The migration still
+read correctly in the repository; the control was simply off. Grants are now
+written one table at a time, so a new table arrives with none and fails closed
+rather than inheriting whatever the blanket line happened to say.
+
+`scripts/rls-mutation-test.py` now removes seven guarantees rather than four,
+including that one, and `scripts/check-rls-policies.py` reads the policy text
+for a `for all`, `for update` or `for delete` policy on the audit log and
+refuses it however correctly it is otherwise written.
 
 **Gate 2 has not passed, and Phase 2 is being built anyway.** SPEC.md's Gate 2
 is "the pilot firm runs it on a real client engagement and describes the

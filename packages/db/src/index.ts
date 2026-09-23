@@ -103,12 +103,36 @@ export function bootstrapStatements(): Array<{ name: string; sql: string }> {
   ];
 }
 
-/** Grants matching what Supabase gives the request roles. */
+/**
+ * Grants matching what Supabase gives the request roles.
+ *
+ * EVERY TABLE IS NAMED, and `on all tables in schema public` is deliberately
+ * not used. It was, and it was a trap: these grants run AFTER the migrations,
+ * so the blanket form silently re-granted `update, delete` on `audit_log`
+ * moments after 0003 revoked them. The append-only control would have been off
+ * in the test harness while the migration that establishes it sat in the
+ * repository looking correct.
+ *
+ * Naming each table means a new one arrives with no grant at all and fails
+ * closed, which forces the decision to be made rather than inherited.
+ */
 export const GRANTS = `
 grant usage on schema public to authenticated, anon;
-grant select, insert, update, delete on all tables in schema public to authenticated;
-grant select on public_metrics to anon;
+
+grant select, insert, update, delete on firms, projects, checks, evidence_bundles
+  to authenticated;
+
+-- Append only. R8's control is that nobody can edit the record of what they
+-- did, so this line must never grow an update or a delete.
+grant select, insert on audit_log to authenticated;
+
+grant select on public_metrics to anon, authenticated;
+
 grant usage, select on all sequences in schema public to authenticated;
+
+-- Belt and braces for the claim above: if a future change reintroduces a
+-- blanket grant anywhere, this still takes the two verbs away.
+revoke update, delete on audit_log from authenticated;
 `;
 
 /**
@@ -121,6 +145,15 @@ grant usage, select on all sequences in schema public to authenticated;
 export function claimsForOrg(clerkOrgId: string, clerkUserId = 'user_test'): string {
   return JSON.stringify({ sub: clerkUserId, o: { id: clerkOrgId } });
 }
+
+/**
+ * The workspace's reads and writes. SPEC.md 2.3.
+ *
+ * Re-exported here so one import reaches the schema and the statements that
+ * run against it, and so that nobody is tempted to write a second set of
+ * queries beside this package rather than inside it.
+ */
+export * from './queries.js';
 
 /** What this harness does and does not prove. Printed by the test suite. */
 export function connectionNotes(): string[] {
