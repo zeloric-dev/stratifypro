@@ -41,15 +41,15 @@ exemption worth granting.
     python3 scripts/check-attestation.py
 """
 import io
+import json
 import os
 import re
-import subprocess
 import sys
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SPEC = os.path.join(ROOT, "SPEC.md")
 SRC = os.path.join(ROOT, "packages", "report", "src", "attestation.ts")
-DIST = os.path.join(ROOT, "packages", "report", "dist", "attestation.js")
+DATA = os.path.join(ROOT, "packages", "report", "src", "attestation.json")
 
 BANNED_HERE = ["contained", "signature"]
 
@@ -81,27 +81,37 @@ def spec_paragraphs():
 
 
 def rendered_template():
-    """ATTESTATION_TEMPLATE, read out of the module that actually ships.
+    """The mandated wording, read from the data file the renderer uses.
 
-    An earlier version of this function parsed the TypeScript with a regular
-    expression and concatenated the string literals it found. That dropped the
-    paragraph separator, so the check reported a mismatch that existed only in
-    the checker. Reading the built module removes the guesswork: what is
-    compared is what callers get.
+    NO BUILD STEP. Two earlier versions got this wrong in opposite directions.
+    The first parsed the TypeScript with a regular expression and concatenated
+    the string literals, which dropped the paragraph separator and reported a
+    mismatch that existed only in the checker. The second read the compiled
+    JavaScript, which was correct but needed `pnpm build` to have run: verify.sh
+    runs FIRST in CI, before anything is built, so the check failed there with
+    "build @stratifypro/report first" while passing on an already-built local
+    tree. A gate that only works on a warm machine is not a gate.
+
+    So the wording lives in attestation.json, this reads that file, and
+    attestation.ts renders from the same file. There is nothing between the
+    specification and the text being compared.
     """
-    if not os.path.exists(DIST):
+    if not os.path.exists(DATA):
+        print("    FAILED: %s is missing" % os.path.relpath(DATA, ROOT))
         return None
-    url = "file:///" + DIST.replace("\\", "/")
-    r = subprocess.run(
-        [os.environ.get("NODE", "node"), "--input-type=module", "-e",
-         'const m = await import(process.argv[1]); process.stdout.write(m.ATTESTATION_TEMPLATE);',
-         url],
-        capture_output=True, text=True,
-    )
-    if r.returncode != 0:
-        print("    FAILED: could not read the built attestation: %s" % r.stderr.strip()[:200])
-        return None
-    return re.sub(r"\s+", " ", r.stdout).strip()
+    d = json.load(io.open(DATA, encoding="utf-8"))
+    paragraphs = d.get("paragraphs") or []
+    text = " ".join(paragraphs)
+    # attestation.ts substitutes these; SPEC.md writes its own placeholders.
+    for key, placeholder in (
+        ("{date}", "<date>"),
+        ("{sha256}", "<hash>"),
+        ("{engineVersion}", "<v>"),
+        ("{packId}", "<id>"),
+        ("{packVersion}", "<version>"),
+    ):
+        text = text.replace(key, placeholder)
+    return re.sub(r"\s+", " ", text).strip()
 
 
 def main():
@@ -138,7 +148,7 @@ def main():
     # The exemption must not become a hiding place. Every occurrence of a
     # banned word in this file has to be inside the mandated wording or the
     # comment that explains why the wording uses it.
-    src = io.open(SRC, encoding="utf-8").read()
+    src = io.open(SRC, encoding="utf-8").read() + io.open(DATA, encoding="utf-8").read()
     for word in BANNED_HERE:
         for m in re.finditer(r"\b%s\b" % word, src, re.IGNORECASE):
             line_start = src.rfind("\n", 0, m.start()) + 1
@@ -157,9 +167,18 @@ def main():
             #
             # So: find the quoted literal this occurrence sits inside, and
             # require THAT to be part of the mandated wording.
+            # Double quotes are in this pattern because the wording now lives
+            # in JSON. Leaving them out made every paragraph in attestation.json
+            # invisible to this loop, so the mandated text itself was reported
+            # as a banned word "outside the mandated wording". That is the same
+            # miss scripts/check-copy.py already recorded: its literal
+            # extractor matched '...' and `...` and not "...", and a
+            # double-quoted string went unseen.
             in_text = False
-            for lit in re.findall(r"'((?:[^'\\]|\\.)*)'|`((?:[^`\\]|\\.)*)`", line):
-                text = (lit[0] or lit[1])
+            for lit in re.findall(
+                r"'((?:[^'\\]|\\.)*)'|`((?:[^`\\]|\\.)*)`|\"((?:[^\"\\]|\\.)*)\"", line
+            ):
+                text = (lit[0] or lit[1] or lit[2])
                 if not text or word.lower() not in text.lower():
                     continue
                 normalised = re.sub(r"\s+", " ", text).strip()

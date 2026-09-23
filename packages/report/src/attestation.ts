@@ -42,6 +42,8 @@
  *    for no benefit whatsoever.
  */
 
+import data from './attestation.json' with { type: 'json' };
+
 export interface AttestationInput {
   /** The date the check ran, ISO 8601. */
   date: string;
@@ -62,24 +64,31 @@ export interface AttestationInput {
  * version of it with the engine removed would attest to nothing.
  */
 export function attestationText(input: AttestationInput): string {
-  return [
-    `On ${input.date} a file presenting SHA-256 ${input.sha256} was submitted to StratifyPro ` +
-      `engine version ${input.engineVersion} and evaluated against rule pack ` +
-      `${input.packId}@${input.packVersion}, producing the findings recorded in result.json.`,
-
-    'StratifyPro did not retain the submitted file and cannot reproduce its contents. ' +
-      'This record attests to the integrity of an artifact held by the submitter, not to ' +
-      'what that artifact contained.',
-
-    'This is not a statement that the software described is safe, that it complies with ' +
-      'any regulation, or that any regulatory submission will be accepted. It is not an ' +
-      'electronic signature within the meaning of 21 CFR 11.3(b)(7).',
-  ].join('\n\n');
+  const values: Record<string, string> = {
+    date: input.date,
+    sha256: input.sha256,
+    engineVersion: input.engineVersion,
+    packId: input.packId,
+    packVersion: input.packVersion,
+  };
+  return (data as { paragraphs: string[] }).paragraphs
+    .map((p) => p.replace(/\{(\w+)\}/g, (whole, key: string) => values[key] ?? whole))
+    .join('\n\n');
 }
 
 /**
- * The same text with SPEC.md's placeholders left in, for comparing against the
- * specification without needing a real check to have happened.
+ * The same text with SPEC.md's placeholders left in.
+ *
+ * The wording itself lives in attestation.json, NOT in this file, and that is
+ * the point rather than tidiness. scripts/check-attestation.py compares that
+ * data file to SPEC.md directly, with no build step between them, so the check
+ * runs in verify.sh alongside the banned-phrase exemption it justifies.
+ *
+ * The first version kept the prose here and the checker read the compiled
+ * JavaScript. verify.sh runs FIRST in CI, before anything is built, so the
+ * check failed there with "build @stratifypro/report first" while passing
+ * locally on an already-built tree. A gate that only works on a warm machine
+ * is not a gate.
  */
 export const ATTESTATION_TEMPLATE = attestationText({
   date: '<date>',
