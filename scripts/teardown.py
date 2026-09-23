@@ -107,7 +107,7 @@ COVERAGE = {
     },
     "FDA-NTIA-001": {
         "sbomqs": ("checks", "Element 2.4 Producer, per component"),
-        "ntia-conformance-checker": ("checks", "supplierNames, with the non-conformant components listed"),
+        "ntia-conformance-checker": ("checks", "componentSuppliers, with the non-conformant components listed"),
     },
     "FDA-NTIA-002": {
         "sbomqs": ("checks", "Element 2.1 Name, per component"),
@@ -205,6 +205,8 @@ def run_tools(sbomqs):
                     e["zero"] += 1
             entry["tools"]["sbomqs"] = {
                 "ok": True,
+                "vocabulary": sorted({s["section_data_field"] for s in d.get("sections", [])}
+                                     | {s["section_id"] for s in d.get("sections", [])}),
                 "revision": d.get("revision"),
                 "score": round(d.get("summary", {}).get("total_score", 0), 2),
                 "maxScore": d.get("summary", {}).get("max_score"),
@@ -220,6 +222,7 @@ def run_tools(sbomqs):
             d = json.loads(r.stdout)
             entry["tools"]["ntia-conformance-checker"] = {
                 "ok": True,
+                "vocabulary": sorted(d.keys()),
                 "conformant": d.get("isNtiaConformant", d.get("isConformant")),
                 "components": d.get("totalNumberComponents"),
                 "checked": {
@@ -474,6 +477,30 @@ def check():
         for t in d["tools"]:
             if t not in per_tool:
                 print("    FAILED: %s has no verdict for %s" % (rid, t))
+                fail = 1
+
+    # EVERY CITED ELEMENT MUST EXIST. A `checks` verdict claims the tool
+    # reports something answering the same question, and names it so a reader
+    # can verify the claim. The first version of this file cited
+    # `supplierNames` for ntia-conformance-checker, which is not a field it
+    # emits; the real key is `componentSuppliers`. That is a fabricated
+    # citation in a published document, and nothing would have caught it,
+    # because prose is not checked by anything.
+    #
+    # So the vocabulary each tool actually emitted is recorded at run time and
+    # a citation has to use it.
+    vocab = {}
+    for e in d["results"].values():
+        for t, r in e["tools"].items():
+            if r.get("ok"):
+                vocab.setdefault(t, set()).update(r.get("vocabulary", []))
+    for rid, per_tool in COVERAGE.items():
+        for t, (verdict, why) in per_tool.items():
+            if verdict != "checks" or t not in vocab:
+                continue
+            if not any(term and term in why for term in vocab[t]):
+                print("    FAILED: %s cites nothing %s actually reports: %r" % (rid, t, why))
+                print("             it emits: %s" % ", ".join(sorted(vocab[t])[:12]))
                 fail = 1
 
     if not os.path.exists(OUT):
