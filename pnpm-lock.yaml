@@ -184,6 +184,9 @@ importers:
       '@stratifypro/report':
         specifier: workspace:*
         version: link:../../packages/report
+      '@stratifypro/resolve':
+        specifier: workspace:*
+        version: link:../../packages/resolve
       '@stratifypro/vulnmatch':
         specifier: workspace:*
         version: link:../../packages/vulnmatch

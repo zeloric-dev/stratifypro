@@ -23,6 +23,7 @@ import {
 } from '@stratifypro/engine';
 import { openMirror } from '@stratifypro/mirror';
 import { componentsFrom, run as runMatch } from '@stratifypro/vulnmatch';
+import { loadDictionary, renderResolve, resolveOne } from './resolve-cmd.js';
 import { CliError, Errors, EXIT, type ExitCode } from './errors.js';
 import { renderText, SEVERITY_RANK } from './render.js';
 
@@ -123,7 +124,7 @@ interface Args {
  * a file the user never typed; the second silently ignored an argument they
  * did type.
  */
-const VALUE_FLAGS = new Set(['pack', 'fail-on', 'format', 'overrides', 'mirror']);
+const VALUE_FLAGS = new Set(['pack', 'fail-on', 'format', 'overrides', 'mirror', 'dictionary', 'min-observations']);
 
 function parseArgs(argv: string[]): Args {
   const [command = 'help', ...rest] = argv;
@@ -419,6 +420,53 @@ function cmdAdvisories(args: Args): ExitCode {
   return result.tally.affected > 0 ? EXIT.FINDINGS : EXIT.CLEAN;
 }
 
+function cmdResolve(args: Args): ExitCode {
+  const name = args.positional.join(' ').trim();
+  if (!name) {
+    process.stderr.write(
+      'usage: resolve <name> [--dictionary <file>] [--min-observations <n>] [--format text|json]\n',
+    );
+    return EXIT.PACK;
+  }
+  const format = args.flags.get('format') ?? 'text';
+  if (format !== 'text' && format !== 'json') throw Errors.badFormat(String(format));
+
+  const dictPath =
+    args.flags.get('dictionary') ??
+    resolve(HERE, '..', '..', '..', 'packages', 'rules', 'data', 'alias-dictionary.json');
+
+  let dict;
+  try {
+    dict = loadDictionary(dictPath);
+  } catch (e) {
+    throw Errors.fileUnreadable(dictPath, e instanceof Error ? e.message : String(e));
+  }
+
+  const rawMin = args.flags.get('min-observations');
+  let minObservations: number | undefined;
+  if (rawMin !== undefined) {
+    // Refused rather than coerced. `--min-observations two` becoming NaN and
+    // then behaving like zero would loosen precision without saying so.
+    //
+    // The empty string is checked FIRST and separately, because Number('') is
+    // 0, not NaN. `--min-observations "$THRESHOLD"` with THRESHOLD unset would
+    // otherwise pass the integer test and silently mean "trust every
+    // dictionary hit, however weak". A test caught this; nothing else would
+    // have. It is the same family as the flag bug recorded in VALUE_FLAGS,
+    // where a flag with nothing after it collapsed to the string "true".
+    const n = rawMin.trim() === '' ? Number.NaN : Number(rawMin);
+    if (!Number.isInteger(n) || n < 0) throw Errors.badMinObservations(rawMin);
+    minObservations = n;
+  }
+
+  const out = resolveOne(name, dict, minObservations);
+  process.stdout.write(format === 'json' ? `${JSON.stringify(out, null, 2)}\n` : renderResolve(out));
+  // Exit 0 either way. An abstention is a successful run: it is this product's
+  // most distinctive output, and a nonzero exit would make every script that
+  // wraps it treat "I do not know" as a crash.
+  return EXIT.CLEAN;
+}
+
 function cmdHelp(): ExitCode {
   process.stdout.write(
     [
@@ -429,6 +477,8 @@ function cmdHelp(): ExitCode {
       '                 [--overrides <file>]   change a severity, with a reason, on the record',
       '    advisories <file> [--mirror <dir>] [--format text|json]',
       '                 advisories the file did not declare, from a local mirror',
+      '    resolve <name> [--dictionary <file>] [--min-observations <n>]',
+      '                 what a component name is, or why it cannot be said',
       '    explain <ruleId> [--pack <id>]',
       '    packs',
       '',
@@ -453,6 +503,8 @@ function main(): ExitCode {
       return cmdPacks();
     case 'advisories':
       return cmdAdvisories(args);
+    case 'resolve':
+      return cmdResolve(args);
     case 'help':
     case '--help':
     case '-h':

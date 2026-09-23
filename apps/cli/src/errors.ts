@@ -60,6 +60,14 @@ export class CliError extends Error {
 }
 
 export const Errors = {
+  badMinObservations: (given: string) =>
+    new CliError(
+      'SP-INPUT-004',
+      EXIT.PACK,
+      `--min-observations must be a whole number, not ${JSON.stringify(given)}.`,
+      'Coercing it would quietly behave like zero and loosen precision without saying so.',
+      'Pass a non-negative integer, for example --min-observations 3.',
+    ),
   noMirror: (dir: string, detail: string) =>
     new CliError(
       'SP-MIRROR-001',

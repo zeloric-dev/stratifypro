@@ -242,9 +242,21 @@ the browser bundle, so wiring Sentry would turn the gate red by design. Somebody
 has to decide which of the two promises wins. Until then, neither is built, and
 that is a decision recorded rather than a task forgotten.
 
-`resolve` is not yet a CLI subcommand, though the CLI has `check`, `explain`,
-`packs` and now `advisories`. The library and the web app both use it; the
-command is missing.
+`resolve` is now a CLI subcommand. It carried the note above for most of this
+project's life: the resolver is what the benchmark is built on and what
+publishes 441 `/name/<slug>` pages, and a person at a terminal could not reach
+it. Third time this session that a capability existed everywhere except where
+somebody could invoke it.
+
+**An abstention exits 0.** "I do not know" is this product's most distinctive
+output, and a nonzero exit would make every script wrapping the command treat
+an honest answer as a crash. The next person would add `|| true` and lose the
+failures that are real. A question that could not be asked, a missing name or
+an unreadable dictionary, still exits nonzero.
+
+`whyNot` and `METHOD_EXPLAINS` moved from `apps/web/app/resolver.ts` into
+`packages/resolve`, because a second caller arrived and copying fourteen lines
+into the CLI is how an explanation drifts into two versions of itself.
 
 ## The numbering in this file was wrong, and this is the correction
 
