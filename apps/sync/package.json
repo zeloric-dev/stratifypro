@@ -13,7 +13,8 @@
   },
   "dependencies": {
     "@stratifypro/mirror": "workspace:*",
-    "@stratifypro/eos": "workspace:*"
+    "@stratifypro/eos": "workspace:*",
+    "@stratifypro/zip": "workspace:*"
   },
   "devDependencies": {
     "@types/node": "22.9.0"

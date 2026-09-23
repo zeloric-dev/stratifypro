@@ -60,6 +60,15 @@ export class CliError extends Error {
 }
 
 export const Errors = {
+  unreadableSpreadsheet: (path: string, detail: string) =>
+    new CliError(
+      'SP-DRAFT-002',
+      EXIT.PARSE,
+      `${path} looks like a spreadsheet but could not be read.`,
+      detail,
+      'Open it and export the first sheet as CSV, then run draft on that. A '
+        + 'transcription this cannot make is better refused than guessed at.',
+    ),
   refusesDraft: (path: string) =>
     new CliError(
       'SP-DRAFT-001',

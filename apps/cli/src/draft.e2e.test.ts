@@ -122,7 +122,12 @@ test('a missing file is a usage error', () => {
   assert.match(r.stderr, /usage: draft/);
 });
 
-test('the command appears in help, once', () => {
+test('the command appears in help, once, and names both formats it reads', () => {
   const r = run(['help']);
-  assert.equal(r.stdout.split('\n').filter((l) => l.includes('draft <file.csv>')).length, 1);
+  const lines = r.stdout.split('\n').filter((l) => /^\s+draft </.test(l));
+  assert.equal(lines.length, 1);
+  // Both, because a person with a workbook should not have to guess whether
+  // this command will take it.
+  assert.match(lines[0] as string, /file\.csv/);
+  assert.match(lines[0] as string, /file\.xlsx/);
 });

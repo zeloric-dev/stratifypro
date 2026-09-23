@@ -37,7 +37,7 @@ import { createHash } from 'node:crypto';
 import { mkdirSync, writeFileSync, rmSync } from 'node:fs';
 import { join } from 'node:path';
 import { ecosystemSlug, SCHEMA, type Advisory, type Manifest, type SourceRecord } from '@stratifypro/mirror';
-import { readZip } from './zip.js';
+import { readZip } from '@stratifypro/zip';
 
 export const APP_NAME = '@stratifypro/sync' as const;
 

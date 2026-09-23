@@ -27,7 +27,7 @@ import { openMirror } from '@stratifypro/mirror';
 import { componentsFrom, run as runMatch } from '@stratifypro/vulnmatch';
 import { loadDictionary, renderResolve, resolveOne } from './resolve-cmd.js';
 import { checkIdFor, renderBundle, writeBundle } from './bundle-cmd.js';
-import { draftFromCsv, isDraft } from '@stratifypro/draft';
+import { draftFromCsv, draftFromXlsx, isDraft, looksLikeXlsx } from '@stratifypro/draft';
 import { CliError, Errors, EXIT, type ExitCode } from './errors.js';
 import { renderText, SEVERITY_RANK } from './render.js';
 
@@ -575,19 +575,34 @@ function cmdBundle(args: Args): ExitCode {
 function cmdDraft(args: Args): ExitCode {
   const file = args.positional[0];
   if (!file) {
-    process.stderr.write('usage: draft <file.csv> [--out <file>] [--timestamp <iso8601>]\n');
+    process.stderr.write(
+      'usage: draft <file.csv|file.xlsx> [--out <file>] [--timestamp <iso8601>]\n',
+    );
     return EXIT.PACK;
   }
 
-  let text: string;
+  let raw: Buffer;
   try {
-    text = readFileSync(file, 'utf8');
+    raw = readFileSync(file);
   } catch (e) {
     throw Errors.fileUnreadable(file, e instanceof Error ? e.message : String(e));
   }
 
   const timestamp = args.flags.get('timestamp') ?? new Date().toISOString();
-  const draft = draftFromCsv(text, { sourceName: file, timestamp });
+  // Detected from the bytes, not the extension. A supplier who emails a
+  // spreadsheet named `components.csv` that is actually a workbook is common,
+  // and reading a zip as text produces a draft full of mojibake rather than an
+  // error somebody can act on.
+  let draft;
+  if (looksLikeXlsx(raw)) {
+    try {
+      draft = draftFromXlsx(raw, { sourceName: file, timestamp });
+    } catch (e) {
+      throw Errors.unreadableSpreadsheet(file, e instanceof Error ? e.message : String(e));
+    }
+  } else {
+    draft = draftFromCsv(raw.toString('utf8'), { sourceName: file, timestamp });
+  }
   const json = `${JSON.stringify(draft.document, null, 2)}\n`;
 
   const out = args.flags.get('out');
@@ -628,7 +643,7 @@ function cmdHelp(): ExitCode {
       '                 [--overrides <file>]   change a severity, with a reason, on the record',
       '    advisories <file> [--mirror <dir>] [--format text|json]',
       '                 advisories the file did not declare, from a local mirror',
-      '    draft <file.csv> [--out <file>] [--timestamp <iso8601>]',
+      '    draft <file.csv|file.xlsx> [--out <file>] [--timestamp <iso8601>]',
       '                 a supplier spreadsheet transcribed into a CycloneDX draft',
       '    bundle <file> [--pack <id>] [--out <dir>] [--timestamp <iso8601>]',
       '                 the evidence bundle: report, result, manifest, attestation',
