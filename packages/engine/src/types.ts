@@ -196,6 +196,22 @@ export interface CheckResult {
   /** The file the overrides came from, present whenever one was supplied. */
   overridesSource?: OverridesSource;
   sources?: SourceStatus[];
+  /**
+   * Present only when the document was SPDX 3.x and had to be converted before
+   * any rule could read it.
+   *
+   * It is on the result rather than in a log because a reader of the report is
+   * entitled to know that the findings were produced from a converted view of
+   * their file and not from the file itself. `unmappedTypes` and
+   * `unmappedPackageKeys` are the honest part: they name what the converter did
+   * not use, which is where a false "missing element" would come from.
+   */
+  normalisation?: {
+    from: string;
+    unmappedTypes: string[];
+    unmappedPackageKeys: string[];
+    counts: { packages: number; relationships: number; agents: number; annotations: number };
+  };
 }
 
 export interface CheckOptions {

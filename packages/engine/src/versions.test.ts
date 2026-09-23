@@ -19,7 +19,7 @@ import { isSupportedVersion, SUPPORTED } from './versions.js';
 
 test('the documented ranges are the implemented ranges', () => {
   assert.equal(SUPPORTED.cyclonedx.label, 'CycloneDX 1.2 to 1.7');
-  assert.equal(SUPPORTED.spdx.label, 'SPDX 2.2 to 2.3');
+  assert.equal(SUPPORTED.spdx.label, 'SPDX 2.2 to 3.0.1');
 });
 
 test('the ends of each range are inside it', () => {
@@ -44,13 +44,27 @@ test('versions above the ceiling are refused rather than assumed compatible', ()
   assert.equal(isSupportedVersion('spdx', '3.1'), false);
 });
 
-test('SPDX 3.0 is refused, because nothing here can read its shape', () => {
-  // 3.0 is JSON-LD: elements live under @graph, not a packages array, and every
-  // SPDX selector in both packs is a 2.x shape. This range said 3.0.1 for a
-  // while and the result was a file being told it lists no components.
-  assert.equal(isSupportedVersion('spdx', '3.0'), false);
-  assert.equal(isSupportedVersion('spdx', '3.0.1'), false);
-  assert.equal(isSupportedVersion('spdx', 'SPDX-3.0.1'), false);
+test('SPDX 3.0 is read, because something here now reads its shape', () => {
+  // This test asserted the opposite for several changes, and was right to.
+  // 3.0 is JSON-LD: elements live under @graph, not a packages array, and
+  // every SPDX selector in both packs is a 2.x shape, so the range was cut
+  // back to 2.3 after a 3.0 file was told it lists no components.
+  //
+  // It reads now because packages/engine/src/spdx3.ts converts the graph into
+  // the shape the rules address, not because the claim was restored. The
+  // equivalence test in spdx3.test.ts is what makes that claim checkable.
+  assert.ok(isSupportedVersion('spdx', '3.0'));
+  assert.ok(isSupportedVersion('spdx', '3.0.1'));
+  assert.ok(isSupportedVersion('spdx', 'SPDX-3.0.1'));
+});
+
+test('a version past the ceiling is still refused, whatever its number', () => {
+  // The lesson from the round trip above: a larger version number is not
+  // evidence that anything can read it.
+  assert.equal(isSupportedVersion('spdx', '3.0.2'), false);
+  assert.equal(isSupportedVersion('spdx', '3.1'), false);
+  assert.equal(isSupportedVersion('spdx', '4.0'), false);
+  assert.equal(isSupportedVersion('cyclonedx', '1.8'), false);
 });
 
 test('the SPDX- prefix is tolerated, because that is how documents write it', () => {
@@ -61,11 +75,14 @@ test('the SPDX- prefix is tolerated, because that is how documents write it', ()
 
 test('a version with more segments than the bound still compares correctly', () => {
   // Segment-count asymmetry in both directions. "2.3.0" must read as equal to
-  // the "2.3" ceiling, not as unparseable or as above it.
+  // "2.3", not as unparseable or as above it.
   assert.ok(isSupportedVersion('spdx', '2.3.0'));
   assert.ok(isSupportedVersion('spdx', '2.2.0.0'));
   assert.ok(isSupportedVersion('cyclonedx', '1.2.0'));
-  assert.equal(isSupportedVersion('spdx', '2.3.1'), false);
+  // "3.0.1" is the ceiling, so "3.0.1.0" must read as equal to it and
+  // "3.0.2" as above it.
+  assert.ok(isSupportedVersion('spdx', '3.0.1.0'));
+  assert.equal(isSupportedVersion('spdx', '3.0.2'), false);
 });
 
 test('a version string that is not a version is refused, never assumed', () => {

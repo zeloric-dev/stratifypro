@@ -58,14 +58,14 @@ export const COPY = {
     heading: 'This does not look like a bill of materials',
     body:
       'The file parsed, but it has no CycloneDX or SPDX markers. StratifyPro reads CycloneDX ' +
-      '1.2 to 1.7 and SPDX 2.2 to 2.3. If this is a supplier’s own spreadsheet or PDF, ' +
+      '1.2 to 1.7 and SPDX 2.2 to 3.0.1. If this is a supplier’s own spreadsheet or PDF, ' +
       'that is a different job and the workspace can take a run at it.',
   }),
 
   unsupportedVersion: (format: string, version: string): Message => ({
     heading: `That is ${format} ${version}, which this engine does not read yet`,
     body:
-      'Supported today: CycloneDX 1.2 to 1.7, SPDX 2.2 to 2.3. Nothing was sent anywhere. ' +
+      'Supported today: CycloneDX 1.2 to 1.7, SPDX 2.2 to 3.0.1. Nothing was sent anywhere. ' +
       'If you need this version, say so and it moves up the list.',
   }),
 

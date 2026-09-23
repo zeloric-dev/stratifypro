@@ -245,6 +245,7 @@ ${result.evaluatedRules.length} rules ran against this file.</div>`
 <dt>File</dt><dd>${e(opts.fileName)}</dd>
 <dt>SHA-256</dt><dd class="path">${e(result.fileSha256)}</dd>
 <dt>Format</dt><dd>${e(result.sourceFormat)} ${e(result.sourceSpec)}</dd>
+${result.normalisation ? `<dt>Converted</dt><dd>read as ${e(result.normalisation.from)} and converted before checking${result.normalisation.unmappedPackageKeys.length > 0 ? `; fields not used: ${e(result.normalisation.unmappedPackageKeys.join(', '))}` : ''}</dd>` : ''}
 <dt>Engine</dt><dd>${e(i.engineVersion ?? result.engineVersion)}</dd>
 <dt>Rule pack</dt><dd>${e(result.rulePackId)} ${e(result.rulePackVersion)}</dd>
 ${i.dictionaryVersion ? `<dt>Alias dictionary</dt><dd>${e(i.dictionaryVersion)}</dd>` : ''}

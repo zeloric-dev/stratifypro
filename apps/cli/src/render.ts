@@ -70,6 +70,22 @@ export function renderText(result: CheckResult, opts: { packId: string; maxInsta
 
   lines.push('');
   lines.push(`  ${result.sourceFormat} ${result.sourceSpec}   pack ${opts.packId} ${result.rulePackVersion}`);
+  // An SPDX 3 document is a graph and had to be converted before any rule
+  // could read it. Whoever reads these findings is entitled to know they came
+  // from a converted view of their file rather than from the file itself, and
+  // to see what the converter did not use, because a field it missed and a
+  // field the supplier omitted produce the same finding.
+  const n = result.normalisation;
+  if (n) {
+    lines.push(`  read as ${n.from}, converted to be checked: ${n.counts.packages} package(s), ` +
+      `${n.counts.relationships} relationship(s)`);
+    if (n.unmappedTypes.length > 0) {
+      lines.push(`  element types not used: ${n.unmappedTypes.join(', ')}`);
+    }
+    if (n.unmappedPackageKeys.length > 0) {
+      lines.push(`  package fields not used: ${n.unmappedPackageKeys.join(', ')}`);
+    }
+  }
   lines.push(
     // Three numbers, not two. "Skipped" used to cover both a rule that does not
     // apply to this format and a rule that applies and found no node to look
