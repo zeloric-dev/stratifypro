@@ -29,8 +29,33 @@ import re
 import sys
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-DOC = os.path.join(ROOT, "docs", "ssdf-attestation.md")
+# Both unsigned representation documents. They share a shape: a title that
+# says DRAFT and UNSIGNED, tables whose third cell is a status and fourth cell
+# is the evidence, and a gap list. A second near-identical script would have
+# been the easy thing and would have drifted from this one within a week.
+DOCS = [
+    os.path.join(ROOT, "docs", "ssdf-attestation.md"),
+    os.path.join(ROOT, "docs", "security-program.md"),
+]
 VERIFY = os.path.join(ROOT, "verify.sh")
+
+# How many rows in each document may say "not applicable", pinned.
+#
+# `n/a` was added so the security program could say honestly that a business
+# with no IT estate has no network to monitor. It immediately became a place to
+# hide a gap: a mutation test relabelled "Penetration testing: not met, none
+# has been done" as "n/a, no estate" and the check PASSED, which is precisely
+# what the document's own text says must not happen.
+#
+# A pin rather than a cleverer rule, for the reason scripts/check-copy.py uses
+# one: judging whether a control "really" applies is not something a script can
+# do, and a keyword list pretending to would be a check that looks stronger
+# than it is. Widening a gap now requires editing this number, which is a
+# deliberate act somebody has to justify in a diff.
+EXPECTED_NA = {
+    "ssdf-attestation.md": 0,
+    "security-program.md": 2,  # CIS controls 12 and 13: no network to manage
+}
 
 # A backticked token is a citation when it looks like a path. Prose in
 # backticks, such as `met`, is not.
@@ -72,7 +97,7 @@ def verify_checks():
     return set(names)
 
 
-def main():
+def check_one(DOC):
     if not os.path.exists(DOC):
         print("    FAILED: %s does not exist" % os.path.relpath(DOC, ROOT))
         return 1
@@ -123,6 +148,13 @@ def main():
         if len(cells) < 4:
             continue
         status, evidence = cells[2].lower(), cells[3]
+        # `n/a, no estate` is a third answer, not a quiet `not met`, and not a
+        # `met` with thin evidence. The security program uses it where a
+        # control genuinely does not apply to a business with no IT estate,
+        # and conflating it with either of the other two would misstate the
+        # program in the direction a reader cares about.
+        if status.startswith("n/a"):
+            continue
         if "met" in status and "not met" not in status and len(evidence) < 12:
             print("    FAILED: %s claims met and names nothing: %r" % (cells[0], evidence))
             fail = 1
@@ -140,12 +172,37 @@ def main():
         print("    arrived at silently.")
         fail = 1
 
+    # 5. The number of not-applicable rows is pinned. See EXPECTED_NA.
+    name = os.path.basename(DOC)
+    na = [
+        [c.strip() for c in r.strip().strip("|").split("|")][0]
+        for r in rows
+        if len([c.strip() for c in r.strip().strip("|").split("|")]) >= 3
+        and [c.strip() for c in r.strip().strip("|").split("|")][2].lower().startswith("n/a")
+    ]
+    expected = EXPECTED_NA.get(name)
+    if expected is not None and len(na) != expected:
+        print("    FAILED: %s has %d rows marked not applicable, expected %d: %s"
+              % (name, len(na), expected, ", ".join(na)))
+        print("            `n/a` is not a quieter way of writing `not met`. If a control")
+        print("            genuinely stopped applying, change EXPECTED_NA in this script")
+        print("            in the same commit and say why.")
+        fail = 1
+
     if fail:
         return 1
-    checks = verify_checks()
-    print("    %d evidence path(s) all exist, %d practice(s) honestly not met, "
-          "still an unsigned draft" % (len(evidence_paths(text)), len(not_met)))
-    print("    (%d verify.sh checks available as evidence)" % len(checks))
+    print("    %-26s %2d evidence path(s) exist, %d honestly not met, unsigned"
+          % (os.path.basename(DOC), len(evidence_paths(text)), len(not_met)))
+    return 0
+
+
+def main():
+    fail = 0
+    for doc in DOCS:
+        fail |= check_one(doc)
+    if fail:
+        return 1
+    print("    (%d verify.sh checks available as evidence)" % len(verify_checks()))
     return 0
 
 
