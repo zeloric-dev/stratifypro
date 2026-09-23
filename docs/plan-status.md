@@ -17,6 +17,7 @@ It exists because of a specific mistake, recorded below.
 | 2.5 | Evidence bundle | **not started, and deliberately so** |
 | 2.7 | Scope of attestation stated verbatim | **partial**, see below |
 | 2A.5 | CI guard: no model call reaches a severity or the attestation | done |
+| 2.10 | NIST SSDF self-attestation | **drafted, unsigned** |
 
 **Gate 2 has not passed, and Phase 2 is being built anyway.** SPEC.md's Gate 2
 is "the pilot firm runs it on a real client engagement and describes the
@@ -46,6 +47,32 @@ that gets emailed to a regulator and opened from disk, so a `javascript:` or
 browser, delivered by the firm, with the firm's name on it. Only an https URL
 or a real image data URI is accepted; anything else renders no image at all
 rather than a broken one.
+
+### 2.10 is drafted and deliberately not signed
+
+`docs/ssdf-attestation.md` exists. Nobody has signed it, and the document says
+so in its title.
+
+A signed SSDF self-attestation is a representation by a named individual and
+carries False Claims Act exposure under the CISA Secure Software Development
+Attestation Form. That is why roughly half the practices are marked **not met**
+rather than argued into a yes: nothing is signed or released, so PS.2.1, PS.3.1
+and PS.3.2 all fail together; there is no `SECURITY.md` and no address to send
+a vulnerability report to; no incident response process exists; and review is
+real but not independent, because one person writes and reviews.
+
+Every `met` row names the thing that makes it true, and
+`scripts/check-ssdf.py` fails the build if that thing stops existing, if a met
+row names nothing, or if the document quietly stops calling itself a draft.
+Mutation-tested five ways, including flipping every not-met row to met, which
+is refused.
+
+The check itself got two things wrong first, both the same species: it tested
+the wording instead of the property. It required the exact phrase "nobody has
+signed it" and failed because the paragraph line-wrapped, and it failed the
+build for the sentence "There is no `SECURITY.md`", which would have pushed the
+document towards claiming the file exists. A check that punishes an honest gap
+is worse than no check.
 
 ### 2A.5, built before the thing it contains
 
