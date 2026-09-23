@@ -40,7 +40,7 @@ The distinction matters: `n/a` is not a quieter way of writing `not met`.
 | 5 | Account management | partial | Individual accounts with unique credentials. No account inventory, because there is no estate |
 | 6 | Access control management | partial | Multi-factor on GitHub. No formal grant and revoke process, and nobody to grant to |
 | 7 | Continuous vulnerability management | met | `pnpm audit --prod` gates every build; a local advisory mirror; a weekly end-of-support freshness job |
-| 8 | Audit log management | partial | Git history and GitHub audit log. No log aggregation or retention policy |
+| 8 | Audit log management | partial | Git history and GitHub audit log. The product carries an append-only `audit_log` table, enforced by the absence of any UPDATE or DELETE policy and checked by `scripts/rls-mutation-test.py`. No log aggregation or retention policy, and no administrative action is written to it yet because no administrative interface exists |
 | 9 | Email and web browser protections | partial | Managed provider defaults. Nothing configured deliberately |
 | 10 | Malware defences | partial | Operating system defaults. No dependency may run install scripts, enforced by `verify.sh` |
 | 11 | Data recovery | partial | Everything of value is in a public git repository with distributed copies. No tested restore procedure |

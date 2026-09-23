@@ -185,17 +185,49 @@ test('row-level security is FORCED, so the owner is not exempt', async () => {
   }
 });
 
-test('every policy has a WITH CHECK, not only a USING', async () => {
+test('every policy that can write carries a WITH CHECK', async () => {
   // The structural version of the write tests above, so a policy added later
   // cannot quietly omit it.
-  const r = await db.query<{ tablename: string; policyname: string; with_check: string | null }>(
-    `select tablename, policyname, with_check from pg_policies
+  //
+  // IT IS PER COMMAND, and this test said "every policy" until audit_log
+  // arrived. A SELECT policy writes nothing and cannot carry a WITH CHECK, so
+  // the blanket form failed the moment an append-only table existed. The
+  // tempting fix was to give audit_log a `for all` policy so it would satisfy
+  // the test, which is exactly the shape R8 forbids: it would have permitted
+  // the edit the audit log exists to prevent, in order to keep a test green.
+  const r = await db.query<{
+    tablename: string;
+    policyname: string;
+    cmd: string;
+    qual: string | null;
+    with_check: string | null;
+  }>(
+    `select tablename, policyname, cmd, qual, with_check from pg_policies
      where schemaname = 'public' and tablename <> 'public_metrics'`,
   );
-  assert.ok(r.rows.length >= 4);
+  assert.ok(r.rows.length >= 5);
   for (const p of r.rows) {
-    assert.ok(p.with_check, `policy ${p.policyname} on ${p.tablename} has no WITH CHECK`);
+    const cmd = p.cmd.toUpperCase();
+    const where = `policy ${p.policyname} on ${p.tablename} (for ${cmd})`;
+    if (['ALL', 'INSERT', 'UPDATE'].includes(cmd)) {
+      assert.ok(p.with_check, `${where} can write and has no WITH CHECK`);
+    }
+    if (['ALL', 'SELECT', 'UPDATE', 'DELETE'].includes(cmd)) {
+      assert.ok(p.qual, `${where} reads and has no USING`);
+    }
   }
+});
+
+test('R8: no policy on the audit log permits an edit', async () => {
+  // The control is the ABSENCE of a policy: row-level security denies what
+  // nothing permits. So this asserts the absence rather than a behaviour, and
+  // fails the moment a migration adds an UPDATE, DELETE or ALL policy, even
+  // one written correctly in every other respect.
+  const r = await db.query<{ cmd: string }>(
+    `select cmd from pg_policies where schemaname = 'public' and tablename = 'audit_log'`,
+  );
+  const cmds = r.rows.map((x) => x.cmd.toUpperCase()).sort();
+  assert.deepEqual(cmds, ['INSERT', 'SELECT']);
 });
 
 test('the schema has nowhere to put an uploaded file', async () => {

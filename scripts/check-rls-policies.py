@@ -24,9 +24,11 @@ break a recursion by bypassing row-level security. The migrations FORCE
 row-level security precisely so the owner is not exempt, so a definer helper
 would undo the guarantee from inside the thing that states it.
 
-THE CHECK IS SELF-TESTED. Eight policies that must be rejected and four that
-must be accepted run on every invocation, because a checker that accepts
-everything prints the same output as a clean tree.
+THE CHECK IS SELF-TESTED. Nineteen policies, each one either required to be
+rejected or required to be accepted, run on every invocation. A checker that
+accepts everything prints the same output as a clean tree, and half of these
+exist to catch the opposite mistake: a rule strict enough to reject the
+append-only policies that R8 depends on.
 
     python3 scripts/check-rls-policies.py
 """
@@ -41,7 +43,13 @@ MIGRATIONS = os.path.join(ROOT, "packages", "db", "migrations")
 
 # Tables holding one firm's data. public_metrics is deliberately not here: it
 # is world-readable by design and carries no customer data.
-CUSTOMER_TABLES = ("firms", "projects", "checks", "evidence_bundles")
+CUSTOMER_TABLES = ("firms", "projects", "checks", "evidence_bundles", "audit_log")
+
+# R8's compensating control, asserted by name rather than left to the reader.
+# audit_log must carry no UPDATE and no DELETE policy: row-level security
+# denies what no policy permits, so the ABSENCE is the control. A future
+# migration that adds one has removed it.
+APPEND_ONLY_TABLES = ("audit_log",)
 
 # The only session setting PostgREST fills from a verified signature.
 TRUSTED_CLAIM = "request.jwt.claims"
@@ -59,6 +67,7 @@ POLICY_RE = re.compile(
     r"create\s+policy\s+(?P<name>\w+)\s+on\s+(?P<table>\w+)(?P<body>.*?);",
     re.IGNORECASE | re.DOTALL,
 )
+FOR_RE = re.compile(r"\bfor\s+(all|select|insert|update|delete)\b", re.IGNORECASE)
 USING_RE = re.compile(r"\busing\s*\((?P<expr>.*?)\)\s*(?=with\s+check|$|;)", re.IGNORECASE | re.DOTALL)
 CHECK_RE = re.compile(r"\bwith\s+check\s*\((?P<expr>.*?)\)\s*$", re.IGNORECASE | re.DOTALL)
 
@@ -99,6 +108,7 @@ def audit(sql):
     faults = []
     seen_tables = set()
 
+    commands_by_table = {}
     for m in POLICY_RE.finditer(sql):
         table = m.group("table").lower()
         if table not in CUSTOMER_TABLES:
@@ -108,18 +118,45 @@ def audit(sql):
         u = USING_RE.search(body)
         c = CHECK_RE.search(body.rstrip())
 
-        if not u:
-            faults.append("%s on %s has no USING" % (name, table))
-        else:
+        # Which commands the policy covers decides which clauses it must carry.
+        # An INSERT has no existing row, so it cannot have a USING; a SELECT
+        # writes nothing, so it cannot have a WITH CHECK. Requiring both of
+        # every policy, as this check first did, makes an append-only table
+        # impossible to express and would have pushed audit_log's policies into
+        # a `for all` shape that permits exactly the edit R8 forbids.
+        fm = FOR_RE.search(body)
+        cmd = (fm.group(1) if fm else "all").lower()
+        commands_by_table.setdefault(table, set()).add(cmd)
+
+        needs_using = cmd in ("all", "select", "update", "delete")
+        needs_check = cmd in ("all", "insert", "update")
+
+        if needs_using and not u:
+            faults.append("%s on %s (for %s) has no USING" % (name, table, cmd))
+        if u and not needs_using:
+            faults.append("%s on %s (for %s) has a USING, which that command ignores"
+                          % (name, table, cmd))
+        if u:
             faults += ["%s on %s: %s" % (name, table, f)
                        for f in faults_in_expression("USING", u.group("expr"))]
 
-        if not c:
-            faults.append("%s on %s has no WITH CHECK, so it filters reads and "
-                          "permits a write into another firm" % (name, table))
-        else:
+        if needs_check and not c:
+            faults.append("%s on %s (for %s) has no WITH CHECK, so it filters reads and "
+                          "permits a write into another firm" % (name, table, cmd))
+        if c and not needs_check:
+            faults.append("%s on %s (for %s) has a WITH CHECK, which that command ignores"
+                          % (name, table, cmd))
+        if c:
             faults += ["%s on %s: %s" % (name, table, f)
                        for f in faults_in_expression("WITH CHECK", c.group("expr"))]
+
+    for t in APPEND_ONLY_TABLES:
+        cmds = commands_by_table.get(t, set())
+        for forbidden in ("all", "update", "delete"):
+            if forbidden in cmds:
+                faults.append(
+                    "%s has a `for %s` policy. That table is append-only by R8: the "
+                    "control is that no policy permits an edit." % (t, forbidden))
 
     # A helper used inside a policy must not bypass row-level security.
     for m in re.finditer(r"create\s+(or\s+replace\s+)?function\s+(\w+)(.*?)\$\$",
@@ -178,6 +215,37 @@ SELF_TESTS = [
      "create function app_current_firm_id() returns uuid language sql "
      "stable security invoker as $$ select 1 $$;",
      False),
+
+    # The per-command branches. A SELECT writes nothing and an INSERT has no
+    # existing row, so demanding both clauses of every policy makes an
+    # append-only table impossible to express.
+    ("a read-only policy, which cannot have a WITH CHECK",
+     "create policy p on audit_log for select using (firm_id = app_current_firm_id());",
+     False),
+    ("an append-only policy, which cannot have a USING",
+     "create policy p on audit_log for insert with check (firm_id = app_current_firm_id());",
+     False),
+    ("a read policy carrying a WITH CHECK the command ignores",
+     "create policy p on checks for select using (firm_id = app_current_firm_id()) "
+     "with check (firm_id = app_current_firm_id());",
+     True),
+    ("an update policy with only a USING",
+     "create policy p on checks for update using (firm_id = app_current_firm_id());",
+     True),
+
+    # R8. The control on audit_log is that NO policy permits an edit, so these
+    # three are rejected however correctly they are written.
+    ("a for all policy on the append-only table",
+     "create policy p on audit_log for all using (firm_id = app_current_firm_id()) "
+     "with check (firm_id = app_current_firm_id());",
+     True),
+    ("an update policy on the append-only table",
+     "create policy p on audit_log for update using (firm_id = app_current_firm_id()) "
+     "with check (firm_id = app_current_firm_id());",
+     True),
+    ("a delete policy on the append-only table",
+     "create policy p on audit_log for delete using (firm_id = app_current_firm_id());",
+     True),
 ]
 
 
