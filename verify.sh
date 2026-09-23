@@ -193,6 +193,33 @@ if [ -z "$PATTERN" ]; then echo "    FAILED: docs/banned-phrases.txt is empty"; 
 # apps/web existed, .next/cache turned this check red on a webpack pack file.
 # A check that fires on something the developer cannot edit gets muted.
 SCAN_EXCLUDE="--exclude-dir=node_modules --exclude-dir=.next --exclude-dir=dist --exclude-dir=build --exclude-dir=.turbo"
+# ONE FILE IS EXEMPT, and it is exempt because the specification overrides the
+# list rather than because the list is inconvenient.
+#
+# SPEC.md Step 11 mandates the scope-of-attestation wording and says in bold
+# that it is not open to paraphrase. That wording uses "contained" and
+# "signature" to say the OPPOSITE of a claim: "not to what that artifact
+# contained", and "it is not an electronic signature within the meaning of 21
+# CFR 11.3(b)(7)". A grep cannot tell a claim from its own denial.
+#
+# So the text lives alone in packages/report/src/attestation.ts, that file is
+# skipped here, and scripts/check-attestation.py replaces this scan with a
+# stricter one: the text must equal SPEC.md's blockquote character for
+# character, and neither word may appear in that file outside the mandated
+# wording. Before that check existed the attestation was never compared to the
+# specification at all, so the exemption is narrower than what it replaces.
+SCAN_EXCLUDE="$SCAN_EXCLUDE --exclude=attestation.ts"
+# Test files are excluded for the same reason the network scan excludes them:
+# they are not product copy and they do not ship. A test whose whole job is to
+# assert that the output NEVER claims a file "contained" anything has to write
+# the word down to assert on it, and failing the build for that is the check
+# refusing its own enforcement.
+#
+# The residual risk is a banned claim sitting in a test and never being seen.
+# It is small: a .test.ts file is a leaf, nothing imports it, and nothing in it
+# reaches a user. The claim that matters is the one in the document a firm
+# sends to a regulator, and that is still scanned.
+SCAN_EXCLUDE="$SCAN_EXCLUDE --exclude=*.test.ts --exclude=*.test.tsx"
 SCAN_PATHS=""
 for p in apps packages/*/src README.md; do [ -e "$p" ] && SCAN_PATHS="$SCAN_PATHS $p"; done
 if [ -z "$SCAN_PATHS" ]; then
@@ -200,6 +227,10 @@ if [ -z "$SCAN_PATHS" ]; then
 elif grep -rniEI $SCAN_EXCLUDE "$PATTERN" $SCAN_PATHS 2>/dev/null; then
   echo "    FAILED: banned claim found in product copy"; fail=1
 else echo "    clean"; fi
+
+# The other half of the exemption above. If this check disappears, the
+# exemption becomes a hole rather than a trade.
+run "the attestation is SPEC.md Step 11, verbatim"     python3 scripts/check-attestation.py
 
 echo "--- the banned list is not restated in CLAUDE.md"
 # CLAUDE.md must POINT AT docs/banned-phrases.txt and never restate any of it. A
