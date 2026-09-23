@@ -282,6 +282,18 @@ run "the breach and KEV windows say the same thing everywhere"     python3 scrip
 # depends on the licence actually being declared where tooling reads it.
 run "our own packages declare the licence we ship"     python3 scripts/check-own-licence.py
 
+# docs/plan-status.md opens by promising to say which steps are "actually done,
+# as opposed to claimed", and it went stale anyway: it said docs/teardown.md
+# did not exist for several changes after that file was built, gated and
+# mutation-tested. The status was written when it was true and nobody came
+# back.
+#
+# This catches one specific shape, which is the shape that happened: the
+# document naming a file and saying nearby that it is absent, while the file
+# sits on disk. It cannot tell that a "partial" became done, and it is not a
+# substitute for reading the file.
+run "the plan status does not call a file missing while it exists"     python3 scripts/check-plan-status.py
+
 echo "--- the banned list is not restated in CLAUDE.md"
 # CLAUDE.md must POINT AT docs/banned-phrases.txt and never restate any of it. A
 # restated list is a second policy that nobody updates, which is exactly how the old
