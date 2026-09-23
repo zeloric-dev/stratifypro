@@ -1,0 +1,473 @@
+{
+  "missingTool": {
+    "finding": "No package by this name exists on PyPI, and no repository matching it publishes an `--standard fda` flag. The nearest match by name is Microsoft's `sbom-tool`, which GENERATES SPDX documents and does not validate them against any standard. SPEC.md 0.1 names a tool that does not appear to exist, which is worth recording: the teardown was specified against an assumption about the market rather than a survey of it.",
+    "name": "sbom-tools --standard fda"
+  },
+  "results": {
+    "cyclonedx__ghidra-sbom-cdx.json": {
+      "file": "cyclonedx__ghidra-sbom-cdx.json",
+      "tools": {
+        "ntia-conformance-checker": {
+          "error": "ERROR: Could not determine SPDX version from SBOM.",
+          "ok": false
+        },
+        "sbomqs": {
+          "elements": {
+            "1.1 Data Format": {
+              "n": 1,
+              "required": true,
+              "zero": 0
+            },
+            "1.10 Signature": {
+              "n": 1,
+              "required": false,
+              "zero": 1
+            },
+            "1.2 Spec Version": {
+              "n": 1,
+              "required": true,
+              "zero": 0
+            },
+            "1.3 Author": {
+              "n": 1,
+              "required": true,
+              "zero": 1
+            },
+            "1.4 Tool Name": {
+              "n": 1,
+              "required": true,
+              "zero": 1
+            },
+            "1.5 Tool Version": {
+              "n": 1,
+              "required": true,
+              "zero": 1
+            },
+            "1.6 SBOM Version": {
+              "n": 1,
+              "required": true,
+              "zero": 1
+            },
+            "1.7 Timestamp": {
+              "n": 1,
+              "required": true,
+              "zero": 1
+            },
+            "1.8 Generation Context": {
+              "n": 1,
+              "required": true,
+              "zero": 1
+            },
+            "1.9 Relationships": {
+              "n": 1,
+              "required": true,
+              "zero": 1
+            },
+            "2.1 Name": {
+              "n": 105,
+              "required": true,
+              "zero": 0
+            },
+            "2.2 Version": {
+              "n": 105,
+              "required": true,
+              "zero": 16
+            },
+            "2.3 Unique ID": {
+              "n": 105,
+              "required": true,
+              "zero": 47
+            },
+            "2.4 Producer": {
+              "n": 105,
+              "required": true,
+              "zero": 105
+            },
+            "2.5 Hash Value": {
+              "n": 105,
+              "required": true,
+              "zero": 0
+            },
+            "2.6 Hash Algorithm": {
+              "n": 105,
+              "required": true,
+              "zero": 0
+            },
+            "2.7 License": {
+              "n": 105,
+              "required": true,
+              "zero": 105
+            }
+          },
+          "maxScore": 10,
+          "ok": true,
+          "revision": "NTIA 2026 Minimum Elements",
+          "score": 6.24
+        }
+      }
+    },
+    "cyclonedx__redis-commander-sbom-cdx.json": {
+      "file": "cyclonedx__redis-commander-sbom-cdx.json",
+      "tools": {
+        "ntia-conformance-checker": {
+          "error": "ERROR: Could not determine SPDX version from SBOM.",
+          "ok": false
+        },
+        "sbomqs": {
+          "elements": {
+            "1.1 Data Format": {
+              "n": 1,
+              "required": true,
+              "zero": 0
+            },
+            "1.10 Signature": {
+              "n": 1,
+              "required": false,
+              "zero": 1
+            },
+            "1.2 Spec Version": {
+              "n": 1,
+              "required": true,
+              "zero": 0
+            },
+            "1.3 Author": {
+              "n": 1,
+              "required": true,
+              "zero": 1
+            },
+            "1.4 Tool Name": {
+              "n": 1,
+              "required": true,
+              "zero": 0
+            },
+            "1.5 Tool Version": {
+              "n": 1,
+              "required": true,
+              "zero": 0
+            },
+            "1.6 SBOM Version": {
+              "n": 1,
+              "required": true,
+              "zero": 1
+            },
+            "1.7 Timestamp": {
+              "n": 1,
+              "required": true,
+              "zero": 0
+            },
+            "1.8 Generation Context": {
+              "n": 1,
+              "required": true,
+              "zero": 1
+            },
+            "1.9 Relationships": {
+              "n": 1,
+              "required": true,
+              "zero": 0
+            },
+            "2.1 Name": {
+              "n": 515,
+              "required": true,
+              "zero": 0
+            },
+            "2.2 Version": {
+              "n": 515,
+              "required": true,
+              "zero": 0
+            },
+            "2.3 Unique ID": {
+              "n": 515,
+              "required": true,
+              "zero": 0
+            },
+            "2.4 Producer": {
+              "n": 515,
+              "required": true,
+              "zero": 77
+            },
+            "2.5 Hash Value": {
+              "n": 515,
+              "required": true,
+              "zero": 83
+            },
+            "2.6 Hash Algorithm": {
+              "n": 515,
+              "required": true,
+              "zero": 83
+            },
+            "2.7 License": {
+              "n": 515,
+              "required": true,
+              "zero": 3
+            }
+          },
+          "maxScore": 10,
+          "ok": true,
+          "revision": "NTIA 2026 Minimum Elements",
+          "score": 9.29
+        }
+      }
+    },
+    "spdx__grype-sbom.spdx.json": {
+      "file": "spdx__grype-sbom.spdx.json",
+      "tools": {
+        "ntia-conformance-checker": {
+          "checked": {
+            "authorNameProvided": false,
+            "componentIdentifiers": true,
+            "componentNames": true,
+            "componentSuppliers": true,
+            "componentVersions": true,
+            "dependencyRelationshipsProvided": false,
+            "timestampProvided": false
+          },
+          "components": 0,
+          "conformant": false,
+          "ok": true
+        },
+        "sbomqs": {
+          "error": "Error: failed to parse Originator 'Georg Brandl <georg@python.org>'",
+          "ok": false
+        }
+      }
+    },
+    "spdx__julia.spdx.json": {
+      "file": "spdx__julia.spdx.json",
+      "tools": {
+        "ntia-conformance-checker": {
+          "checked": {
+            "authorNameProvided": true,
+            "componentIdentifiers": true,
+            "componentNames": true,
+            "componentSuppliers": false,
+            "componentVersions": false,
+            "dependencyRelationshipsProvided": true,
+            "timestampProvided": true
+          },
+          "components": 34,
+          "conformant": false,
+          "ok": true
+        },
+        "sbomqs": {
+          "elements": {
+            "1.1 Data Format": {
+              "n": 1,
+              "required": true,
+              "zero": 0
+            },
+            "1.10 Signature": {
+              "n": 1,
+              "required": false,
+              "zero": 1
+            },
+            "1.2 Spec Version": {
+              "n": 1,
+              "required": true,
+              "zero": 0
+            },
+            "1.3 Author": {
+              "n": 1,
+              "required": true,
+              "zero": 0
+            },
+            "1.4 Tool Name": {
+              "n": 1,
+              "required": true,
+              "zero": 1
+            },
+            "1.5 Tool Version": {
+              "n": 1,
+              "required": true,
+              "zero": 1
+            },
+            "1.6 SBOM Version": {
+              "n": 1,
+              "required": true,
+              "zero": 1
+            },
+            "1.7 Timestamp": {
+              "n": 1,
+              "required": true,
+              "zero": 0
+            },
+            "1.8 Generation Context": {
+              "n": 1,
+              "required": true,
+              "zero": 1
+            },
+            "1.9 Relationships": {
+              "n": 1,
+              "required": true,
+              "zero": 1
+            },
+            "2.1 Name": {
+              "n": 34,
+              "required": true,
+              "zero": 0
+            },
+            "2.2 Version": {
+              "n": 34,
+              "required": true,
+              "zero": 33
+            },
+            "2.3 Unique ID": {
+              "n": 34,
+              "required": true,
+              "zero": 34
+            },
+            "2.4 Producer": {
+              "n": 34,
+              "required": true,
+              "zero": 32
+            },
+            "2.5 Hash Value": {
+              "n": 34,
+              "required": true,
+              "zero": 34
+            },
+            "2.6 Hash Algorithm": {
+              "n": 34,
+              "required": true,
+              "zero": 34
+            },
+            "2.7 License": {
+              "n": 34,
+              "required": true,
+              "zero": 0
+            }
+          },
+          "maxScore": 10,
+          "ok": true,
+          "revision": "NTIA 2026 Minimum Elements",
+          "score": 3.05
+        }
+      }
+    },
+    "spdx__lab-syft.json": {
+      "file": "spdx__lab-syft.json",
+      "tools": {
+        "ntia-conformance-checker": {
+          "checked": {
+            "authorNameProvided": true,
+            "componentIdentifiers": true,
+            "componentNames": true,
+            "componentSuppliers": false,
+            "componentVersions": false,
+            "dependencyRelationshipsProvided": false,
+            "timestampProvided": true
+          },
+          "components": 380,
+          "conformant": false,
+          "ok": true
+        },
+        "sbomqs": {
+          "elements": {
+            "1.1 Data Format": {
+              "n": 1,
+              "required": true,
+              "zero": 0
+            },
+            "1.10 Signature": {
+              "n": 1,
+              "required": false,
+              "zero": 1
+            },
+            "1.2 Spec Version": {
+              "n": 1,
+              "required": true,
+              "zero": 0
+            },
+            "1.3 Author": {
+              "n": 1,
+              "required": true,
+              "zero": 0
+            },
+            "1.4 Tool Name": {
+              "n": 1,
+              "required": true,
+              "zero": 0
+            },
+            "1.5 Tool Version": {
+              "n": 1,
+              "required": true,
+              "zero": 0
+            },
+            "1.6 SBOM Version": {
+              "n": 1,
+              "required": true,
+              "zero": 1
+            },
+            "1.7 Timestamp": {
+              "n": 1,
+              "required": true,
+              "zero": 0
+            },
+            "1.8 Generation Context": {
+              "n": 1,
+              "required": true,
+              "zero": 1
+            },
+            "1.9 Relationships": {
+              "n": 1,
+              "required": true,
+              "zero": 1
+            },
+            "2.1 Name": {
+              "n": 380,
+              "required": true,
+              "zero": 0
+            },
+            "2.2 Version": {
+              "n": 380,
+              "required": true,
+              "zero": 16
+            },
+            "2.3 Unique ID": {
+              "n": 380,
+              "required": true,
+              "zero": 0
+            },
+            "2.4 Producer": {
+              "n": 380,
+              "required": true,
+              "zero": 280
+            },
+            "2.5 Hash Value": {
+              "n": 380,
+              "required": true,
+              "zero": 105
+            },
+            "2.6 Hash Algorithm": {
+              "n": 380,
+              "required": true,
+              "zero": 105
+            },
+            "2.7 License": {
+              "n": 380,
+              "required": true,
+              "zero": 299
+            }
+          },
+          "maxScore": 10,
+          "ok": true,
+          "revision": "NTIA 2026 Minimum Elements",
+          "score": 6.95
+        }
+      }
+    }
+  },
+  "tools": {
+    "ntia-conformance-checker": {
+      "formats": "SPDX only",
+      "invocation": "ntia-checker -c ntia -r json --skip-validation",
+      "standards": "NTIA minimum elements, FSCT v3 minimum",
+      "version": "5.0.3"
+    },
+    "sbomqs": {
+      "formats": "SPDX and CycloneDX",
+      "invocation": "sbomqs compliance --ntia --json",
+      "standards": "NTIA (2021 and CISA 2026), BSI TR-03183-2, FSCT v3, OpenChain Telco",
+      "version": "v2.1.2"
+    }
+  }
+}
