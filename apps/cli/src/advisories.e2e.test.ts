@@ -16,7 +16,7 @@
  */
 import assert from 'node:assert/strict';
 import { spawnSync } from 'node:child_process';
-import { mkdtempSync } from 'node:fs';
+import { mkdtempSync, writeFileSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { join, resolve } from 'node:path';
 import { test } from 'node:test';
@@ -96,6 +96,60 @@ test('a missing mirror explains how to build one instead of reporting nothing fo
   assert.notEqual(r.status, 0, 'a missing mirror must not look like a clean result');
   assert.match(r.stderr, /No advisory mirror/);
   assert.match(r.stderr, /pnpm --filter @stratifypro\/sync start/);
+});
+
+test('a declared advisory drops out of the undeclared count, through the real command', () => {
+  // The whole of SPEC 1.14's "advisories the file did not declare", end to
+  // end: document on disk, real binary, real mirror. Every other test of this
+  // feature passes `declared: [...]` straight into the matcher and never
+  // exercises the code that reads a `vulnerabilities` array, and no corpus
+  // file declares anything, so without this the declaring half of that
+  // sentence is untested outside unit tests of the walker.
+  //
+  // The declaration here is a CVE and the advisory it silences is a GHSA. A
+  // supplier who declared the CVE has declared the GHSA that aliases it, and
+  // matching only on the primary id would accuse them of an omission they did
+  // not make.
+  const dir = mkdtempSync(join(tmpdir(), 'declared-'));
+  const component = {
+    type: 'library',
+    'bom-ref': 'l4j',
+    name: 'log4j-core',
+    version: '2.17.1',
+    purl: 'pkg:maven/org.apache.logging.log4j/log4j-core@2.17.1',
+  };
+  const base = { bomFormat: 'CycloneDX', specVersion: '1.5', version: 1, components: [component] };
+
+  const silent = join(dir, 'silent.json');
+  const declaring = join(dir, 'declaring.json');
+  writeFileSync(silent, JSON.stringify(base));
+
+  const first = JSON.parse(
+    run(['advisories', silent, '--mirror', MIRROR, '--format', 'json']).stdout,
+  ) as { tally: { undeclared: number; affected: number }; results: Array<{ verdict: { hits?: Array<{ id: string; aliases: string[] }> } }> };
+  assert.ok(first.tally.undeclared > 0, 'nothing to declare, so nothing to test');
+
+  // Declare ONE of them, by an alias rather than by its id.
+  const hit = first.results[0]?.verdict.hits?.find((h) => h.aliases.length > 0);
+  assert.ok(hit, 'no advisory with an alias to declare');
+  writeFileSync(
+    declaring,
+    JSON.stringify({
+      ...base,
+      vulnerabilities: [{ id: hit.aliases[0], affects: [{ ref: 'l4j' }] }],
+    }),
+  );
+
+  const second = JSON.parse(
+    run(['advisories', declaring, '--mirror', MIRROR, '--format', 'json']).stdout,
+  ) as { tally: { undeclared: number; affected: number } };
+
+  assert.equal(
+    second.tally.undeclared,
+    first.tally.undeclared - 1,
+    'declaring one advisory by its alias must remove exactly one from the undeclared count',
+  );
+  assert.equal(second.tally.affected, first.tally.affected, 'the component is still affected');
 });
 
 test('an unknown format is refused by name', () => {
