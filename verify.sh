@@ -263,6 +263,14 @@ run "the model wall is not blind (mutation test)"     python3 scripts/model-boun
 # draft.
 run "the SSDF attestation cites only things that exist"     python3 scripts/check-ssdf.py
 
+# SPEC.md 2.9's windows appear in SPEC.md, SECURITY.md and the incident
+# response plan. Three copies of a commitment is how a commitment drifts, and
+# unlike most drift here this kind is contractual: a device manufacturer's
+# security questionnaire asks for these numbers by name, and a supplier
+# promising two different things depending on which document was read has a
+# problem no test will otherwise find.
+run "the breach and KEV windows say the same thing everywhere"     python3 scripts/check-commitments.py
+
 echo "--- the banned list is not restated in CLAUDE.md"
 # CLAUDE.md must POINT AT docs/banned-phrases.txt and never restate any of it. A
 # restated list is a second policy that nobody updates, which is exactly how the old

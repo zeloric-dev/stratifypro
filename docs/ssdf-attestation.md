@@ -76,10 +76,10 @@ are machine-checked.
 | SSDF | Practice | Status | What makes it true |
 |---|---|---|---|
 | RV.1.1 | Vulnerability information is gathered | partial | `pnpm audit --prod` in CI and a local advisory mirror. Nothing watches our own published artifacts, because nothing is published |
-| RV.1.2 | A policy for receiving reports exists | **not met** | There is no `SECURITY.md` and no disclosure address |
+| RV.1.2 | A policy for receiving reports exists | met | `SECURITY.md`, and GitHub private vulnerability reporting is enabled on the repository |
 | RV.1.3 | Root cause analysis is performed | met | Every defect found this project has a written record naming the cause, in `docs/plan-status.md` or in the check that now prevents it |
-| RV.2.1 | Vulnerabilities are assessed and prioritised | **not met** | No process exists, because no report has ever arrived |
-| RV.2.2 | Remediation is planned and executed | **not met** | Same |
+| RV.2.1 | Vulnerabilities are assessed and prioritised | partial | `docs/incident-response.md` defines the process. No report has ever arrived, so it is untested |
+| RV.2.2 | Remediation is planned and executed | partial | Same plan. Step 6 requires a check be added with every fix, which is how this repository has actually worked |
 | RV.3.1 | Root causes are analysed to find similar problems | met | The recurring pattern is recorded and acted on: a check nobody has watched fail is not trusted, and six mutation tests exist because of it |
 | RV.3.3 | The SDLC is reviewed and updated | met | `docs/plan-status.md` exists to record where the process failed, including where this file's own headings were wrong |
 
@@ -92,11 +92,15 @@ Anyone reading this should read this section first.
 1. **Nothing is signed and nothing is released.** PS.2.1, PS.3.1 and PS.3.2 are
    all not met for the same reason: there is no release. The CLI is private at
    version 0.0.0.
-2. **There is no `SECURITY.md`** and no address to send a vulnerability report
-   to. RV.1.2 is not met and it is the cheapest gap here to close.
-3. **No incident response process exists.** RV.2.1 and RV.2.2. SPEC.md 2.9
-   specifies one, committing to 5-day breach notice and 3-business-day CISA KEV
-   disclosure. It has not been written.
+2. ~~There is no `SECURITY.md`.~~ **Closed.** `SECURITY.md` exists and GitHub
+   private vulnerability reporting is enabled, so a reporter does not have to
+   find an address or trust that one is read.
+3. **The incident response plan has never been rehearsed.** `docs/incident-response.md`
+   exists and commits to a 5-day breach notice and 3-business-day CISA KEV
+   disclosure, matching MC2 v2 clauses 33 and 35. SPEC.md 2.9 also asks for a
+   tabletop walkthrough, and that has not happened. RV.2.1 and RV.2.2 are
+   partial rather than met for that reason: a plan nobody has rehearsed is a
+   document, not a capability.
 4. **Review is not independent.** One person writes and reviews. Every review on
    this repository has found a real defect, which argues the review is real; it
    does not make it independent.
@@ -108,8 +112,8 @@ Anyone reading this should read this section first.
 
 ## What this document is worth
 
-Roughly half of SSDF is met and enforced by something that fails the build when
-it stops being true, which is more than a form asking for yes or no would
+A little over half of SSDF is met and enforced by something that fails the
+build when it stops being true, which is more than a form asking for yes or no would
 capture. The other half is honestly not met, and most of it is not met because
 this is one person who has not shipped a release yet.
 
