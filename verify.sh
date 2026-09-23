@@ -254,6 +254,15 @@ run "no model call reaches a severity, the attestation, or a bundle"     python3
 # needed it.
 run "the model wall is not blind (mutation test)"     python3 scripts/model-boundary-mutation-test.py
 
+# SPEC.md 2.10. A signed SSDF self-attestation is a representation by a named
+# individual and carries False Claims Act exposure under the CISA form, so the
+# difference between "we do this" and "we did this once and deleted it" is not
+# academic. Every practice claimed as met names the thing that makes it true,
+# and this fails the build if that thing has stopped existing, if a met row
+# names nothing, or if the document quietly stops calling itself an unsigned
+# draft.
+run "the SSDF attestation cites only things that exist"     python3 scripts/check-ssdf.py
+
 echo "--- the banned list is not restated in CLAUDE.md"
 # CLAUDE.md must POINT AT docs/banned-phrases.txt and never restate any of it. A
 # restated list is a second policy that nobody updates, which is exactly how the old
