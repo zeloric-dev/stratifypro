@@ -17,6 +17,7 @@ It exists because of a specific mistake, recorded below.
 | 2.5 | Evidence bundle | **not started, and deliberately so** |
 | 2.7 | Scope of attestation stated verbatim | **partial**, see below |
 | 2A.5 | CI guard: no model call reaches a severity or the attestation | done |
+| 2.9 | Written incident response plan | **partial**, never rehearsed |
 | 2.10 | NIST SSDF self-attestation | **drafted, unsigned** |
 
 **Gate 2 has not passed, and Phase 2 is being built anyway.** SPEC.md's Gate 2
@@ -47,6 +48,31 @@ that gets emailed to a regulator and opened from disk, so a `javascript:` or
 browser, delivered by the firm, with the firm's name on it. Only an https URL
 or a real image data URI is accepted; anything else renders no image at all
 rather than a broken one.
+
+### 2.9 closes three SSDF gaps and leaves its own open
+
+`SECURITY.md` exists, and GitHub private vulnerability reporting is enabled on
+the repository, so a reporter does not have to find an email address or trust
+that one is being read. That closes RV.1.2.
+
+`docs/incident-response.md` commits to a 5-day breach notice and a
+3-business-day CISA KEV disclosure, matching MC2 v2 clauses 33 and 35. Days for
+the breach notice means calendar days, which is the stricter reading: a
+supplier quietly reading five days as seven working days has taken an extra
+weekend out of a customer's response time.
+
+**The tabletop walkthrough has not happened**, which is half of 2.9's
+acceptance, so RV.2.1 and RV.2.2 are partial rather than met. A plan nobody has
+rehearsed is a document.
+
+Those windows now appear in three files, so `scripts/check-commitments.py`
+requires them to agree. Unlike most drift here this kind is contractual: a
+questionnaire asks for these numbers by name. The check was wrong first in a
+way worth recording, because it is the third instance of the same mistake this
+session: it asked whether the phrase appeared anywhere in the file rather than
+whether the row about that commitment carried it, so replacing the KEV row with
+"as soon as practical" passed while "3 business days" still sat in the
+acknowledgement row above it. Presence is not binding.
 
 ### 2.10 is drafted and deliberately not signed
 
