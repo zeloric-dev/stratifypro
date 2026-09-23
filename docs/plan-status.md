@@ -11,7 +11,7 @@ It exists because of a specific mistake, recorded below.
 | # | Step | Status |
 |---|---|---|
 | 2.1 | Clerk auth + Organizations | blocked, no credentials |
-| 2.2 | Supabase schema + RLS | blocked, no credentials |
+| 2.2 | Supabase schema + RLS | **policies built and proven, not deployed** |
 | 2.3 | Check history, projects, per-seat usage | blocked on 2.1 and 2.2 |
 | 2.4 | White-label report: firm logo, firm footer, no mention of us | done |
 | 2.5 | Evidence bundle | built, **unsealed** |
@@ -55,6 +55,36 @@ clock read.
 And the model containment wall declared `packages/ledger/src/bundle.ts` as the
 evidence bundle route three changes before that file existed, reporting it as
 "declared and waiting". It now guards real code.
+
+**2.2 was not actually blocked on credentials.** It was recorded as blocked for
+several days on the assumption that testing row-level security needed a
+Supabase project. It does not. Row-level security is a Postgres feature, and
+Supabase's `auth.jwt()` is an ordinary SQL function over the
+`request.jwt.claims` session setting. `packages/db` defines the same function
+the same way and runs the real migrations against PGlite, which is Postgres
+compiled to WebAssembly, so SPEC.md's acceptance test runs on every CI job with
+no account, no Docker and no network.
+
+What is proven: a firm reading, writing, updating or deleting through the
+`authenticated` role reaches zero rows of any other firm, across `firms`,
+`projects`, `checks` and `evidence_bundles`. What is not: PostgREST's request
+handling, Supabase's JWT verification, and storage rules. `connectionNotes()`
+in `packages/db` prints that distinction at the top of every test run, so the
+limit is stated where somebody reading a green suite will see it.
+
+Two defects were found by running it rather than by reading it. The suite was
+first written to connect as the table owner, which `enable row level security`
+exempts; every isolation test passed without one policy being consulted. And
+the `firms` policy called a helper that reads `firms`, which is infinitely
+recursive. The usual fix for the recursion is to mark the helper
+`security definer` so its read bypasses row-level security, which would have
+quietly undone the `force` flag; the policy states its condition directly
+against the token instead. `scripts/rls-mutation-test.py` weakens the policies
+four ways and requires each weakening to be caught by the test that claims to
+defend it.
+
+It is **not deployed**. No Supabase project exists, so nothing has run these
+migrations against a hosted database.
 
 **Gate 2 has not passed, and Phase 2 is being built anyway.** SPEC.md's Gate 2
 is "the pilot firm runs it on a real client engagement and describes the

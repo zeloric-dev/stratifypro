@@ -97,6 +97,21 @@ jobs:
       - name: The advisory matcher makes no outbound call, and the scan proves it
         run: python3 scripts/mirror-mutation-test.py
 
+      # SPEC.md 2.2 accepts on "a direct PostgREST call with firm A's token
+      # returns zero of firm B's rows". packages/db/src/rls.test.ts asserts
+      # that against real Postgres (PGlite) as a non-owner role; this weakens
+      # the policies four ways and requires each weakening to be caught by the
+      # test that claims to defend it.
+      #
+      # It is here rather than in verify.sh because it runs the built suite.
+      #
+      # An isolation test is the easiest kind to write wrong, because a broken
+      # one passes. Connecting as the table owner, or writing a policy that
+      # shows nobody anything, both satisfy "firm A sees zero of firm B's
+      # rows" while proving nothing.
+      - name: A firm cannot reach another firm's rows, and the suite has been seen to fail
+        run: python3 scripts/rls-mutation-test.py
+
       # The dogfood. A checker whose own bill of materials has never been
       # checked is selling something it has not tried. This re-runs the engine
       # over the committed SBOM of this repository and fails if the published
