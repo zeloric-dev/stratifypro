@@ -18,6 +18,15 @@ node apps/cli/dist/index.js resolve "openssl 1.1.1k.tar.gz"
 node apps/cli/dist/index.js explain FDA-STAT-001
 ```
 
+Those three commands were run from a fresh clone before this paragraph was
+written: 40 seconds from `git clone` to a working `check`, on Node 22 and pnpm 12.
+
+**On Windows, clone somewhere short.** pnpm writes task state under a long path
+inside `node_modules`, and in a deeply nested directory it exceeds the 260-character
+limit and `pnpm build` fails with `The system cannot find the path specified`. That
+is a path-length limit rather than anything wrong with the build, and it is
+confusing enough to be worth the warning.
+
 The README used to open with `npx stratifypro check sbom.json`. The package is
 private at version 0.0.0 and has never been published, so the first thing a reader
 tried was the first thing that failed. `scripts/check-readme.py` now fails the build
