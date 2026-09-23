@@ -6,6 +6,73 @@ this file is the one being maintained.
 
 It exists because of a specific mistake, recorded below.
 
+## Phase 2, started out of order and knowingly
+
+| # | Step | Status |
+|---|---|---|
+| 2.1 | Clerk auth + Organizations | blocked, no credentials |
+| 2.2 | Supabase schema + RLS | blocked, no credentials |
+| 2.3 | Check history, projects, per-seat usage | blocked on 2.1 and 2.2 |
+| 2.4 | White-label report: firm logo, firm footer, no mention of us | done |
+| 2.5 | Evidence bundle | **not started, and deliberately so** |
+| 2.7 | Scope of attestation stated verbatim | done, and now gated |
+
+**Gate 2 has not passed, and Phase 2 is being built anyway.** SPEC.md's Gate 2
+is "the pilot firm runs it on a real client engagement and describes the
+experience", and Step 11 says in terms: "Phase 2 only. Build nothing here until
+Gate 2 has passed." No firm has been contacted, so the gate has neither passed
+nor failed. This was raised and the decision was to proceed. It is recorded
+here rather than discovered later.
+
+Because of that, the work chosen first is the work that survives a "no" at the
+gate: the report a firm hands over, and the wording that limits what it claims.
+**2.5, the evidence bundle, is the step Step 11 explicitly gates, and it has
+not been built.**
+
+### 2.4, and the one thing branding cannot do
+
+A firm supplies a name, a logo and a closing line, and may remove every mention
+of StratifyPro. What it cannot remove are the two sentences that limit what the
+document claims: that the report records what a named rule pack found in a file
+presenting a given hash, and that no regulator has reviewed the tool. A white
+label is a change of letterhead, not a licence to turn a conformance check into
+an endorsement, and a test asserts those sentences survive every combination of
+branding options.
+
+The logo is validated rather than interpolated. The report is a standalone file
+that gets emailed to a regulator and opened from disk, so a `javascript:` or
+`data:text/html` value in `src` would be code execution in the reader's
+browser, delivered by the firm, with the firm's name on it. Only an https URL
+or a real image data URI is accepted; anything else renders no image at all
+rather than a broken one.
+
+### 2.7, where a check and the specification collided
+
+SPEC.md Step 11 mandates the scope-of-attestation wording and marks it in bold
+as not open to paraphrase. That wording uses "contained" and "signature", both
+of which `docs/banned-phrases.txt` forbids, to say the **opposite** of a claim:
+"not to what that artifact contained", and "it is not an electronic signature
+within the meaning of 21 CFR 11.3(b)(7)".
+
+A grep cannot tell a claim from its own denial. There were two easy ways out,
+and both were wrong: paraphrase the text, which the specification forbids for
+FTC Act reasons rather than stylistic ones, or exempt the file and lose the
+check.
+
+Instead the text lives alone in `packages/report/src/attestation.ts`, that one
+file is excluded from the scan, and `scripts/check-attestation.py` replaces the
+exclusion with something stricter. The rendered text must equal SPEC.md's
+blockquote character for character, and neither banned word may appear in that
+file outside the mandated wording. **Before this, the attestation was never
+compared to the specification at all**, so the exemption is narrower than what
+it replaces.
+
+Both halves were mutation-tested. A paraphrase is refused with the exact
+character that differs. A planted `SEAL_LABEL = 'a digital signature from
+StratifyPro'` is refused by name, and the first version of that guard let it
+through, because it only asked whether the word appeared somewhere in the
+mandated text rather than whether this particular string was part of it.
+
 ## Phase 0, which was supposed to block everything
 
 SPEC.md's Phase 0 is headed "No product code." Two of its tasks are marked

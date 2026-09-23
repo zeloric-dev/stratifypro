@@ -13,6 +13,11 @@
  */
 import type { CheckResult, Finding, Severity } from '@stratifypro/engine';
 
+// The attestation lives in its own file so the banned-phrase scan can exempt
+// that file alone. See attestation.ts for why the exemption is narrower than
+// the check it replaces.
+export { attestationText, ATTESTATION_TEMPLATE, type AttestationInput } from './attestation.js';
+
 export interface ReportInputs {
   /** Version-pinned inputs. Without these the artifact is not re-runnable. */
   engineVersion: string;
@@ -32,6 +37,48 @@ export interface ReportOptions {
   inputs?: Partial<ReportInputs>;
   /** Partner branding. Absent for the free layer. */
   firmName?: string;
+  /**
+   * The firm's mark, as a data URI or an absolute https URL.
+   *
+   * SPEC.md 2.4 asks for a firm logo. It is NOT interpolated as a URL without
+   * checking: this report is a standalone HTML file a firm sends to a
+   * regulator, and a `javascript:` or `data:text/html` value here would
+   * execute when it is opened. `firmLogoSafe` below decides what is allowed,
+   * and anything else is dropped rather than rendered.
+   */
+  firmLogo?: string;
+  /** The firm's own closing text, replacing the default sentence about the tool. */
+  firmFooter?: string;
+  /**
+   * Remove every mention of StratifyPro from the rendered document.
+   *
+   * SPEC.md 2.4: "no mention of us unless they want it". A consultancy sending
+   * a deliverable to its own client has not agreed to advertise its
+   * subcontractor, and a white label that leaks the vendor's name into the
+   * footer is not a white label.
+   *
+   * This does NOT touch the attestation text. See ATTESTATION: that wording
+   * names the engine because it is a statement about what produced the
+   * findings, and a firm cannot both hand over the attestation and delete the
+   * name of the thing being attested to.
+   */
+  whiteLabel?: boolean;
+}
+
+/**
+ * Whether a logo value may be placed in a `src` attribute.
+ *
+ * Allowed: an https URL, or a data URI for a real image type. Everything else
+ * is dropped. The report is a file that gets emailed to a regulator and opened
+ * from disk, so `javascript:` and `data:text/html` are code execution in the
+ * reader's browser, delivered by the firm, with the firm's name on it.
+ */
+export function firmLogoSafe(value: string | undefined): string | null {
+  if (!value) return null;
+  const v = value.trim();
+  if (/^https:\/\/[^\s"'<>]+$/i.test(v)) return v;
+  if (/^data:image\/(png|jpeg|gif|webp|svg\+xml);base64,[A-Za-z0-9+/=]+$/i.test(v)) return v;
+  return null;
 }
 
 /**
@@ -120,6 +167,7 @@ vertical-align:top;word-break:break-all}
 .clean{border:1px solid var(--line);padding:18px;text-align:center;color:var(--ink-2)}
 dl{display:grid;grid-template-columns:auto 1fr;gap:3px 16px;margin:0;font-size:12.5px}
 dt{color:var(--ink-3)}dd{margin:0;color:var(--ink-2);word-break:break-all}
+.firm-logo{max-height:48px;max-width:220px;display:block;margin-bottom:10px}
 footer{margin-top:28px;padding-top:12px;border-top:1px solid var(--line);
 color:var(--ink-3);font-size:11.5px}
 @media print{body{padding:0}.rule{break-inside:avoid}}
@@ -239,13 +287,37 @@ ${
           .join('')}</tbody></table>`
       : '';
 
+  // The firm's mark, when it passes firmLogoSafe. A rejected value renders
+  // nothing rather than a broken image: a firm that pasted something odd
+  // should get a report without a logo, not a report that looks damaged.
+  const safeLogo = firmLogoSafe(opts.firmLogo);
+  const logo = safeLogo
+    ? `<img class="firm-logo" src="${e(safeLogo)}" alt="${e(opts.firmName ?? 'Firm')}">\n`
+    : '';
+
+  // SPEC.md 2.4: "firm footer, no mention of us unless they want it."
+  //
+  // The two sentences that are NOT optional are the ones that limit what this
+  // document claims: that it records what a rule pack found in a file
+  // presenting that hash, and that nobody has reviewed the tool. A firm may
+  // replace our name and add its own words. It may not quietly turn a
+  // conformance check into an endorsement by deleting the limits.
+  const limits = opts.whiteLabel
+    ? 'This report records what the named rule pack found in a file presenting the SHA-256 above. ' +
+      'The file was not retained and cannot be reproduced from this report. ' +
+      'Checks against the published minimum elements. No regulator has reviewed this tool.'
+    : 'This report records what the named rule pack found in a file presenting the SHA-256 above. ' +
+      'StratifyPro did not retain the submitted file and cannot reproduce its contents. ' +
+      'Checks against the published minimum elements. No regulator has reviewed this tool.';
+  const footer = opts.firmFooter ? `${e(opts.firmFooter)}<br>${limits}` : limits;
+
   return `<!doctype html>
 <html lang="en"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>SBOM check: ${e(opts.fileName)}</title>
 <style>${STYLE}</style></head>
 <body>
-<h1>Software bill of materials check</h1>
+${logo}<h1>Software bill of materials check</h1>
 <p class="sub">${e(opts.fileName)}${opts.firmName ? ` &middot; prepared by ${e(opts.firmName)}` : ''}</p>
 ${coverage}
 <h2>Findings</h2>
@@ -254,8 +326,6 @@ ${overrides}
 ${inert}
 <h2>What was checked</h2>
 ${provenance}
-<footer>This report records what the named rule pack found in a file presenting the SHA-256 above.
-StratifyPro did not retain the submitted file and cannot reproduce its contents.
-Checks against the published minimum elements. No regulator has reviewed this tool.</footer>
+<footer>${footer}</footer>
 </body></html>`;
 }
