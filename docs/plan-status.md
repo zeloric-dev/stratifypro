@@ -15,7 +15,7 @@ It exists because of a specific mistake, recorded below.
 | 2.3 | Check history, projects, per-seat usage | blocked on 2.1 and 2.2 |
 | 2.4 | White-label report: firm logo, firm footer, no mention of us | done |
 | 2.5 | Evidence bundle | **not started, and deliberately so** |
-| 2.7 | Scope of attestation stated verbatim | done, and now gated |
+| 2.7 | Scope of attestation stated verbatim | **partial**, see below |
 
 **Gate 2 has not passed, and Phase 2 is being built anyway.** SPEC.md's Gate 2
 is "the pilot firm runs it on a real client engagement and describes the
@@ -46,7 +46,28 @@ browser, delivered by the firm, with the firm's name on it. Only an https URL
 or a real image data URI is accepted; anything else renders no image at all
 rather than a broken one.
 
-### 2.7, where a check and the specification collided
+### 2.7 is partial, and calling it done would have repeated this session's own criticism
+
+The wording exists, is pinned character for character to SPEC.md, and is
+guarded by a mutation-tested check. It is **stated to nobody**.
+`attestationText` is exported and called by nothing, and the rendered report
+contains no attestation. This file said "done" until a review of the pull
+request asked who calls it, which is the same question that exposed
+`packages/mirror` and `packages/vulnmatch` shipping with 254 tests and no way
+for a person to reach them.
+
+It is not wired into the report on purpose, because 2.4 and 2.7 pull against
+each other. The attestation names StratifyPro, since it is a statement about
+which engine produced the findings. 2.4 says a white-labelled report carries no
+mention of us. Forcing the name into a document a firm has white-labelled would
+break the promise 2.4 just made.
+
+SPEC.md puts the attestation in two places, and neither exists yet: the
+evidence bundle, which is Step 11 and gated behind Gate 2, and the terms, which
+is 2.6 and needs a lawyer. So the text waits for one of those rather than being
+pushed somewhere it creates a contradiction.
+
+### The check itself, where a specification and a gate collided
 
 SPEC.md Step 11 mandates the scope-of-attestation wording and marks it in bold
 as not open to paraphrase. That wording uses "contained" and "signature", both
