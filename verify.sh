@@ -294,6 +294,16 @@ run "our own packages declare the licence we ship"     python3 scripts/check-own
 # substitute for reading the file.
 run "the plan status does not call a file missing while it exists"     python3 scripts/check-plan-status.py
 
+# The README is the front door, and it was broken. Its first code block told a
+# reader to `npx stratifypro check sbom.json`; apps/cli is private at version
+# 0.0.0 and has never been published, so the first thing a stranger tried was
+# the first thing that failed. SPEC.md's Phase 1 gate is "a person who is not
+# the founder completes a resolution unaided".
+#
+# It also claimed 23 checks when there were 34, named three of seven commands,
+# and listed five of twelve packages.
+run "the README describes the tool that exists"     python3 scripts/check-readme.py
+
 echo "--- the banned list is not restated in CLAUDE.md"
 # CLAUDE.md must POINT AT docs/banned-phrases.txt and never restate any of it. A
 # restated list is a second policy that nobody updates, which is exactly how the old
