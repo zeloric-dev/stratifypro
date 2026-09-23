@@ -16,7 +16,7 @@
 import assert from 'node:assert/strict';
 import { deflateRawSync } from 'node:zlib';
 import { test } from 'node:test';
-import { readZip } from './zip.js';
+import { readZip } from './index.js';
 
 interface Written {
   name: string;

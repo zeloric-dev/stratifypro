@@ -29,9 +29,11 @@
  * that. A purl appears only when the supplier supplied one.
  */
 import { parseCsv } from './csv.js';
+import { readXlsx } from './xlsx.js';
 
 export const PACKAGE_NAME = '@stratifypro/draft' as const;
 export { parseCsv, type CsvTable } from './csv.js';
+export { readXlsx, looksLikeXlsx, columnIndex, rowNumber, type XlsxTable } from './xlsx.js';
 
 /** The property that marks a document as a draft, and the check that reads it. */
 export const DRAFT_PROPERTY = 'stratifypro:draft';
@@ -100,7 +102,37 @@ export interface DraftOptions {
 
 /** Convert a supplier spreadsheet into a draft CycloneDX document. */
 export function draftFromCsv(text: string, opts: DraftOptions): DraftResult {
-  const table = parseCsv(text);
+  return draftFromTable(parseCsv(text), opts);
+}
+
+/**
+ * The same, from an xlsx file.
+ *
+ * Both formats reduce to a header and rows, so everything downstream of the
+ * reader is shared: the same column aliases, the same refusal to invent an
+ * identifier, the same draft marker. Two transcribers with two sets of rules
+ * would be two things to keep honest.
+ */
+export function draftFromXlsx(buf: Buffer, opts: DraftOptions): DraftResult {
+  const sheet = readXlsx(buf);
+  const rows = sheet.rows.filter((r) => r.some((c) => c.trim() !== ''));
+  if (rows.length === 0) {
+    return {
+      document: emptyDocument(opts, 'the first worksheet has no rows'),
+      unmappedColumns: [],
+      skipped: [{ line: 1, why: 'the first worksheet is empty' }],
+      ragged: [],
+      componentCount: 0,
+    };
+  }
+  const header = (rows[0] as string[]).map((h) => h.trim());
+  return draftFromTable({ header, rows: rows.slice(1), ragged: [] }, opts);
+}
+
+function draftFromTable(
+  table: { header: string[]; rows: string[][]; ragged: Array<{ line: number; cells: number }> },
+  opts: DraftOptions,
+): DraftResult {
   const { map, unmapped } = mapColumns(table.header);
   const skipped: Array<{ line: number; why: string }> = [];
   const components: DraftComponent[] = [];

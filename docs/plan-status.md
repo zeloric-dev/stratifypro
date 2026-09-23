@@ -16,7 +16,7 @@ It exists because of a specific mistake, recorded below.
 | 2.4 | White-label report: firm logo, firm footer, no mention of us | done |
 | 2.5 | Evidence bundle | built, **unsealed** |
 | 2.7 | Scope of attestation stated verbatim | done, the bundle states it |
-| 2A.3 | Supplier document to draft SBOM | **csv done**, xlsx and PDF not built |
+| 2A.3 | Supplier document to draft SBOM | csv and xlsx done, **PDF not built** |
 | 2A.5 | CI guard: no model call reaches a severity or the attestation | done |
 | 2.8 | Source escrow + continuity plan | **partial**, plan written, no escrow |
 | 2.11 | Texas SB 2610 security program, mapped to CIS IG1 | **drafted, unsigned, unreviewed** |
@@ -229,10 +229,33 @@ bill of materials from a supplier and only 2 percent always do. What arrives is
 a document somebody retypes by hand into a format they then have to defend, and
 no SBOM-specific extraction tool exists anywhere.
 
-**The csv path needs no model at all.** A spreadsheet is already structured;
-what it needs is a careful reader. xlsx and PDF are named by 2A.3 and are **not
-built**, listed as gaps rather than half-implemented, because an extractor that
-usually works is the exact shape of tool this project refuses to ship.
+**Neither the csv nor the xlsx path needs a model.** A spreadsheet is already
+structured; what it needs is a careful reader.
+
+When csv shipped, this paragraph said xlsx and PDF were both unbuilt for the
+same reason, that "an extractor that usually works is the exact shape of tool
+this project refuses". That was right about PDF and **wrong about xlsx**, and
+the distinction is worth stating rather than quietly correcting. An xlsx file
+is a zip of XML with a defined schema: reading it is careful work. A PDF is a
+page-description language where a table is lines and glyphs at coordinates, and
+recovering columns from it is inference. One can be correct; the other can only
+be usually right. **PDF is still not built.**
+
+The zip reader moved out of `apps/sync` into `packages/zip` to make xlsx
+possible, because a package cannot depend on an app and the alternative was a
+second copy of a parser whose entire job is to refuse a short read. Two copies
+of that is how one of them quietly stops refusing.
+
+The xlsx reader is tested against a workbook **openpyxl wrote**, not one
+hand-assembled here, for the reason the advisory mirror's fixture is real: a
+fixture built by the same person as the reader encodes their assumptions and
+agrees with whatever the reader does. It contains a row with a missing
+supplier, a row with no name, and a decoy second sheet.
+
+The gap case is the one that matters. An empty cell is usually **absent** from
+the XML rather than present and empty, so a reader taking cells in document
+order shifts every later column left and puts the licence in the supplier
+field. The table still looks fine. Cells are placed by their reference instead.
 
 The parser is written properly rather than splitting on commas, because a
 supplier sheet is the document that breaks a naive one. A licence field reading
