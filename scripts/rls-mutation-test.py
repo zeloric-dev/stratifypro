@@ -71,9 +71,18 @@ MUTATIONS = [
 
 def run_suite():
     """Return (ok, failing test names). The suite reads the .sql at run time,
-    so a mutation needs no rebuild."""
+    so a mutation needs no rebuild.
+
+    The reporter is pinned to TAP rather than left to default. Node picks its
+    default from whether stdout is a terminal and from its own version, so the
+    first draft of this parser matched the local run's `✖ name` lines and
+    matched nothing at all on CI, where the same command emitted TAP. Every
+    mutation was still detected by exit code, so the script reported that all
+    four were "caught by the wrong test" rather than reporting a broken
+    parser. Pinning the format removes the difference rather than handling it.
+    """
     p = subprocess.run(
-        ["node", "--test", SUITE],
+        ["node", "--test", "--test-reporter=tap", SUITE],
         cwd=ROOT,
         stdout=subprocess.PIPE,
         stderr=subprocess.STDOUT,
@@ -81,9 +90,14 @@ def run_suite():
     out = p.stdout.decode("utf-8", "replace")
     names = set()
     for line in out.splitlines():
-        m = re.match(r"^✖ (.+?) \(\d", line)
+        m = re.match(r"^not ok \d+ - (.+?)\s*$", line)
         if m:
             names.add(m.group(1))
+    if p.returncode != 0 and not names:
+        # Red with nothing parsed means the suite did not start, or the format
+        # moved again. Either way the run proves nothing, so say so.
+        raise RuntimeError("the suite failed but no TAP failure lines were "
+                           "parsed; output was:\n" + out[-2000:])
     return p.returncode == 0, names
 
 

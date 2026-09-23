@@ -237,6 +237,15 @@ else echo "    clean"; fi
 # exemption becomes a hole rather than a trade.
 run "the attestation is SPEC.md Step 11, verbatim"     python3 scripts/check-attestation.py
 
+# SPEC.md's security table, the row "No client-supplied firm_id trusted", names
+# a grep test. packages/db/src/rls.test.ts proves the behaviour, but a
+# behavioural test can only fail on a policy something exercises: a policy
+# added later that reads a request header would pass every test in that file,
+# because no test sends a header. This reads the policy text instead.
+#
+# It lives here rather than in the CI job because it needs no build.
+run "no policy trusts anything a client can set"     python3 scripts/check-rls-policies.py
+
 # SPEC.md 2A.5. The model tier is 2A.1 and does not exist yet, which is exactly
 # when to build this: a containment test written afterwards has to be shaped
 # around whatever was already done, and every exception it grants is one
