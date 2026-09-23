@@ -18,6 +18,7 @@ It exists because of a specific mistake, recorded below.
 | 2.7 | Scope of attestation stated verbatim | **partial**, see below |
 | 2A.5 | CI guard: no model call reaches a severity or the attestation | done |
 | 2.8 | Source escrow + continuity plan | **partial**, plan written, no escrow |
+| 2.11 | Texas SB 2610 security program, mapped to CIS IG1 | **drafted, unsigned, unreviewed** |
 | 2.9 | Written incident response plan | **partial**, never rehearsed |
 | 2.10 | NIST SSDF self-attestation | **drafted, unsigned** |
 
@@ -49,6 +50,36 @@ that gets emailed to a regulator and opened from disk, so a `javascript:` or
 browser, delivered by the firm, with the firm's name on it. Only an https URL
 or a real image data URI is accepted; anything else renders no image at all
 rather than a broken one.
+
+### 2.11, and a hole I put there myself
+
+`docs/security-program.md` maps this business against CIS Controls IG1. It is
+unsigned for the reason the SSDF attestation is, and it carries a second
+disclaimer the SSDF one does not need: **nobody qualified has confirmed that
+Texas SB 2610 applies, which tier it would apply at, or whether this satisfies
+it.** There is no company, which is also why 2.8's escrow is unsigned.
+
+Two controls are met rather than partial, and they are the two that matter for
+a software supplier: application software security and continuous vulnerability
+management. That is not an accident of effort. The product is a conformance
+checker, so the checks that keep it honest are the same discipline turned
+inward.
+
+Three are weak and the weakness is structural: training, penetration testing
+and a rehearsed incident response all need somebody other than the author.
+
+**A third status was introduced and immediately became a hiding place.** The
+program needs to say that a business with no IT estate has no network to
+monitor, which is `n/a` rather than `not met`, and the document says in terms
+that "`n/a` is not a quieter way of writing `not met`". Then a mutation test
+relabelled "Penetration testing: not met, none has been done" as "n/a, no
+estate" and the checker **passed**.
+
+Fixed with a pinned count rather than a cleverer rule, the same way
+`scripts/check-copy.py` pins its string count. A script cannot judge whether a
+control really applies, and a keyword list pretending to would look stronger
+than it is. Widening a gap now means editing a number in the checker, in the
+same commit, where somebody has to justify it.
 
 ### The dogfood, and a finding this project manufactured for itself
 
