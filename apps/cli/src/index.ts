@@ -5,7 +5,7 @@
  * The exit-code contract is an API. CI pipelines depend on it being stable.
  */
 import { createHash } from 'node:crypto';
-import { readdirSync, readFileSync, writeFileSync } from 'node:fs';
+import { existsSync, mkdirSync, readdirSync, readFileSync, writeFileSync } from 'node:fs';
 import { dirname, join, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import {
@@ -27,6 +27,7 @@ import { openMirror } from '@stratifypro/mirror';
 import { componentsFrom, run as runMatch } from '@stratifypro/vulnmatch';
 import { loadDictionary, renderResolve, resolveOne } from './resolve-cmd.js';
 import { checkIdFor, renderBundle, writeBundle } from './bundle-cmd.js';
+import { fingerprintOf, generateSealingKey, publicKeyFrom } from '@stratifypro/ledger';
 import {
   draftFromCsv,
   draftFromPdf,
@@ -140,7 +141,7 @@ interface Args {
  */
 const VALUE_FLAGS = new Set([
   'pack', 'fail-on', 'format', 'overrides', 'mirror', 'dictionary',
-  'min-observations', 'out', 'timestamp',
+  'min-observations', 'out', 'timestamp', 'key',
 ]);
 
 function parseArgs(argv: string[]): Args {
@@ -543,9 +544,32 @@ function cmdBundle(args: Args): ExitCode {
     inputs: { engineVersion, rulePackId: pack.id, rulePackVersion: pack.version },
   });
 
+  // Read before the bundle is built, because README.txt has to name the key's
+  // fingerprint and the README is written during the build.
+  const keyPath = args.flags.get('key');
+  let privateKeyPem: string | undefined;
+  let sealFingerprint: string | undefined;
+  if (keyPath) {
+    try {
+      privateKeyPem = readFileSync(keyPath, 'utf8');
+    } catch (e) {
+      throw Errors.fileUnreadable(keyPath, e instanceof Error ? e.message : String(e));
+    }
+    try {
+      sealFingerprint = fingerprintOf(publicKeyFrom(privateKeyPem));
+    } catch (e) {
+      throw Errors.sealKeyUnusable(keyPath, e instanceof Error ? e.message : String(e));
+    }
+  }
+
   const written = writeBundle({
     outDir: args.flags.get('out') ?? process.cwd(),
+    // Spread conditionally: exactOptionalPropertyTypes distinguishes an absent
+    // property from one explicitly set to undefined, and an unsealed bundle
+    // should not carry a key field at all.
+    ...(privateKeyPem === undefined ? {} : { privateKeyPem }),
     input: {
+      ...(sealFingerprint === undefined ? {} : { sealPublicKeyFingerprint: sealFingerprint }),
       checkId: checkIdFor(sha256, pack.id, pack.version, timestamp),
       timestamp,
       fileSha256: sha256,
@@ -565,7 +589,7 @@ function cmdBundle(args: Args): ExitCode {
     },
   });
 
-  process.stdout.write(renderBundle(written, false));
+  process.stdout.write(renderBundle(written, written.sealed));
   // Exit 0. Writing a bundle succeeded even when the findings inside it are
   // bad; `check` is the command whose exit code is about findings.
   return EXIT.CLEAN;
@@ -694,17 +718,86 @@ function cmdHelp(): ExitCode {
       '                 advisories the file did not declare, from a local mirror',
       '    draft <file.csv|file.xlsx|file.pdf> [--out <file>] [--timestamp <iso8601>]',
       '                 a supplier document transcribed into a CycloneDX draft',
-      '    bundle <file> [--pack <id>] [--out <dir>] [--timestamp <iso8601>]',
-      '                 the evidence bundle: report, result, manifest, attestation',
+      '    bundle <file> [--pack <id>] [--out <dir>] [--timestamp <iso8601>] [--key <file>]',
+      '                 the evidence bundle: report, result, manifest, attestation.',
+      '                 --key seals the manifest; without it the bundle says it is unsealed',
       '    resolve <name> [--dictionary <file>] [--min-observations <n>]',
       '                 what a component name is, or why it cannot be said',
       '    explain <ruleId> [--pack <id>]',
       '    packs',
+      '    keygen --out <dir>',
+      '                 make the EC P-256 key that seals evidence bundles',
       '',
       `    default pack: ${DEFAULT_PACK}`,
       '',
       '  Exit codes: 0 no findings at threshold, 1 findings, 2 could not parse,',
       '  3 could not load the pack, 70 internal error.',
+      '',
+    ].join('\n'),
+  );
+  return EXIT.CLEAN;
+}
+
+/**
+ * `keygen` - make the key that seals evidence bundles.
+ *
+ * SEPARATE FROM `bundle` ON PURPOSE. A key generated per bundle would seal
+ * nothing worth having: the point of a seal is that the same key signs many
+ * records over years, so a recipient who has checked the fingerprint once can
+ * check every later bundle against it. Generating one is a rare, deliberate
+ * act, so it gets its own command and refuses to overwrite.
+ *
+ * The private key is written with no password. That is a real limitation and
+ * it is printed rather than hidden: cosign encrypts its own key file with a
+ * passphrase, and matching that would mean implementing scrypt and NaCl
+ * secretbox here for a file this tool only ever reads. What protects the key
+ * is where it is kept, and the output says so in the one place somebody is
+ * looking at it.
+ */
+function cmdKeygen(args: Args): ExitCode {
+  const outDir = args.flags.get('out');
+  if (!outDir) {
+    process.stderr.write('usage: keygen --out <directory>\n');
+    return EXIT.PACK;
+  }
+
+  const privatePath = join(outDir, 'cosign.key');
+  const publicPath = join(outDir, 'cosign.pub');
+
+  // Never overwrite. Replacing a signing key silently invalidates every
+  // fingerprint anybody has recorded, and the person who typed this twice by
+  // accident is exactly the person who would not notice.
+  for (const p of [privatePath, publicPath]) {
+    if (existsSync(p)) throw Errors.keyExists(p);
+  }
+
+  const key = generateSealingKey();
+  mkdirSync(outDir, { recursive: true });
+  // 0o600 where the platform honours it. Windows ignores the mode, which is
+  // why the printed warning below is not conditional on it.
+  writeFileSync(privatePath, key.privateKeyPem, { encoding: 'utf8', mode: 0o600 });
+  writeFileSync(publicPath, key.publicKeyPem, 'utf8');
+
+  process.stdout.write(
+    [
+      '',
+      `  ${privatePath}`,
+      `  ${publicPath}`,
+      '',
+      `  fingerprint: ${key.fingerprint}`,
+      '',
+      '  PUBLISH cosign.pub, AND PUBLISH THE FINGERPRINT WITH IT. A seal verifies',
+      '  against whatever key it is handed, so a recipient who takes the public key',
+      '  from the same place they took the bundle has checked nothing. The',
+      '  fingerprint has to reach them by a route an attacker does not control.',
+      '',
+      '  cosign.key is the private key, it is NOT password-protected, and anyone',
+      '  holding it can seal a bundle in your name. Keep it out of the repository',
+      '  and out of backups that others can read.',
+      '',
+      '  Seal a bundle with it:',
+      '',
+      `    stratifypro bundle <file> --key ${privatePath}`,
       '',
     ].join('\n'),
   );
@@ -728,6 +821,8 @@ function main(): ExitCode {
       return cmdBundle(args);
     case 'draft':
       return cmdDraft(args);
+    case 'keygen':
+      return cmdKeygen(args);
     case 'help':
     case '--help':
     case '-h':

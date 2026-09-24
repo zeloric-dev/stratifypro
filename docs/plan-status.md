@@ -15,7 +15,7 @@ It exists because of a specific mistake, recorded below.
 | 2.3 | Check history, projects, per-seat usage | **queries built and proven, no UI** |
 | R8 | Immutable audit log of administrative actions | **built, append-only enforced** |
 | 2.4 | White-label report: firm logo, firm footer, no mention of us | done |
-| 2.5 | Evidence bundle | built, **unsealed** |
+| 2.5 | Evidence bundle | **built and sealable**, key is the operator's |
 | 2.7 | Scope of attestation stated verbatim | done, the bundle states it |
 | 2A.3 | Supplier document to draft SBOM | csv, xlsx and PDF done |
 | 2A.5 | CI guard: no model call reaches a severity or the attestation | done |
@@ -40,12 +40,50 @@ What is recorded is the SHA-256, which is what lets a submitter prove later
 that the artifact they hold is the one that was checked. A test asserts a
 distinctive run of the real document appears in none of the five files.
 
-It is **not sealed**, and the command says so every time it runs: the files
-hash to what the manifest says, which detects accidental change, and nothing
-in the directory proves who produced it. SPEC.md's VERIFY asks for
-`cosign verify-blob` against a published key, which needs a key that does not
-exist. The half underneath the seal is tested: alter one byte of any covered
-file and verification fails, with the failure naming the file.
+**It can now be sealed, and the missing piece was never the code.** This
+paragraph used to say the bundle was unsealed because `cosign verify-blob`
+needs a published key and no key existed. That was true and it was also the
+wrong thing to wait for: the key belongs to whoever publishes the bundles, not
+to this repository, and it was never going to appear here. What was missing was
+the machinery to make one and use it.
+
+`stratifypro keygen` writes an EC P-256 key pair, which is what
+`cosign generate-key-pair` produces, and `stratifypro bundle --key` seals the
+manifest. Because the manifest lists a SHA-256 for every other file, one seal
+covers all of them. Without `--key` the bundle is unsealed and says so in the
+terminal and in its own README, which is the same behaviour as before.
+
+**The interoperability claim is checked by something that is not ours.**
+Signing with this code and verifying with this code passes if both halves share
+a mistake, and the available mistakes are exactly that kind: signing the wrong
+bytes, using a hash the ecosystem does not expect, or emitting a container
+nothing else reads. All three produce a self-consistent seal that cosign would
+reject. `scripts/check-seal-interop.py` therefore drives the real CLI end to
+end and hands the result to OpenSSL, which implements the same primitive and
+knows nothing about this repository. Two planted defects in the signer, a wrong
+hash algorithm and signing the wrong bytes, were both caught by it.
+
+**cosign itself has not been run here**, because it is a 189 MB binary and is
+not installed. The script runs it when it is present and prints which verifier
+actually ran, so a green line never implies more than what happened. That is
+the one part of SPEC.md's acceptance sentence still taken on construction
+rather than execution.
+
+The seal is the only part of a bundle that is not reproducible. ECDSA draws a
+random nonce, so sealing the same manifest twice produces two different files,
+both valid. The five files a customer compares against their kept copy remain
+byte-identical, and a test asserts both halves of that so nobody later
+"fixes" the non-determinism by making the bundle read a clock.
+
+**A private key can now be created by this tool, so the repository now checks
+that one has not been committed.** SPEC.md's security table has always said
+"No secrets in the repo" with nothing enforcing it, which was survivable while
+nothing here could produce a key. `keygen --out .` followed by `git add -A`
+is a one-keystroke accident on a public repository.
+`scripts/check-no-private-keys.py` scans tracked files for PEM private-key
+blocks, and is careful to match the container rather than the words, because
+`packages/ledger/src/seal.ts` discusses private keys at length and must keep
+doing so.
 
 It is also deterministic. Two runs of the same check produce byte-identical
 directories, because a customer comparing their eighteen-month-old copy against

@@ -13,7 +13,7 @@
     "test": "pnpm -r test",
     "check": "node apps/cli/dist/index.js check",
     "verify": "bash verify.sh",
-    "ci": "pnpm build && pnpm -r typecheck && pnpm -r test && pnpm audit --prod && python3 scripts/bench-publish.py --check && python3 scripts/mirror-mutation-test.py && python3 scripts/rls-mutation-test.py && python3 scripts/spdx3-mutation-test.py && python3 scripts/self-sbom.py --check"
+    "ci": "pnpm build && pnpm -r typecheck && pnpm -r test && pnpm audit --prod && python3 scripts/bench-publish.py --check && python3 scripts/mirror-mutation-test.py && python3 scripts/rls-mutation-test.py && python3 scripts/spdx3-mutation-test.py && python3 scripts/check-seal-interop.py && python3 scripts/self-sbom.py --check"
   },
   "devDependencies": {
     "typescript": "5.6.3"

@@ -68,7 +68,20 @@ the scope of attestation and instructions for verifying it. The submitted file i
 it: the attestation says the file was not retained, so a bundle containing it would make its
 own attestation false.
 
-All seven commands: `check`, `advisories`, `draft`, `bundle`, `resolve`, `explain`, `packs`.
+**Seals it, with a key you hold.** `keygen --out <dir>` makes an EC P-256 key pair, and
+`bundle <file> --key <key>` writes a cryptographic seal over the manifest. The manifest
+lists a hash for every other file, so the seal covers all of them. The format is cosign's,
+so a recipient verifies with `cosign verify-blob` or with `openssl dgst -verify`, neither of
+which is ours. Without `--key` the bundle is unsealed and says so, in the terminal and in
+its own README.
+
+A seal verifies against whatever key it is handed, so the bundle records the **fingerprint**
+of the key that sealed it and tells the recipient to check it. A seal made by an attacker
+verifies perfectly against that attacker's key; the fingerprint is the part that ties a
+record to a person.
+
+All eight commands: `check`, `advisories`, `draft`, `bundle`, `keygen`, `resolve`,
+`explain`, `packs`.
 
 ## What it does not do
 

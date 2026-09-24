@@ -112,6 +112,28 @@ export const Errors = {
       'The advisories command renders as readable text or as JSON, nothing else.',
       'Use --format text or --format json.',
     ),
+  keyExists: (path: string) =>
+    new CliError(
+      'SP-SEAL-002',
+      EXIT.PACK,
+      `${path} already exists`,
+      'keygen will not overwrite a sealing key.',
+      'Replacing a signing key silently invalidates every fingerprint anybody has ' +
+        'recorded for it. Choose a different --out directory, or move the existing ' +
+        'key aside deliberately if you really mean to rotate it.',
+    ),
+
+  sealKeyUnusable: (path: string, detail: string) =>
+    new CliError(
+      'SP-SEAL-001',
+      EXIT.PARSE,
+      `Could not use ${path} as a sealing key`,
+      detail,
+      'A sealing key is an EC P-256 private key in PKCS#8 PEM form. Generate one ' +
+        'with `stratifypro keygen --out <dir>`. If this is a cosign key file, it is ' +
+        'password-encrypted and has to be exported before it can be used here.',
+    ),
+
   fileUnreadable: (path: string, detail: string) =>
     new CliError(
       'SP-INPUT-001',
