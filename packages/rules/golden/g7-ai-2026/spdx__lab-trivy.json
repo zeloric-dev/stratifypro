@@ -1,0 +1,7 @@
+{
+  "corpusFile": "spdx__lab-trivy.json",
+  "format": "spdx",
+  "rulePackId": "g7-ai-2026",
+  "rulePackVersion": "1.0.0",
+  "findingsByRule": {}
+}

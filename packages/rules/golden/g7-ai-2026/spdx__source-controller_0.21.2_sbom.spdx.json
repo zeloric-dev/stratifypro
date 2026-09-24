@@ -1,0 +1,7 @@
+{
+  "corpusFile": "spdx__source-controller_0.21.2_sbom.spdx.json",
+  "format": "spdx",
+  "rulePackId": "g7-ai-2026",
+  "rulePackVersion": "1.0.0",
+  "findingsByRule": {}
+}

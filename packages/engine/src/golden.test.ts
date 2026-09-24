@@ -2,7 +2,7 @@
  * The differential test.
  *
  * packages/rules/golden holds one result file per corpus document per pack,
- * produced by the Python reference implementation: 42 files recording 24,421
+ * produced by the Python reference implementation: 63 files recording 24,747
  * failing JSONPaths. This engine must reproduce every one of them.
  *
  * The fixture suite proves each rule CAN fire. It does not prove WHICH nodes it
@@ -84,7 +84,15 @@ for (const packId of packDirs) {
 test('the differential actually compared something', () => {
   // A test suite that silently compares nothing passes. This asserts the
   // scale the golden artifact is documented to have.
-  assert.equal(comparedFiles, 42, 'expected 42 golden files');
+  // Pinned, and it earned its keep: adding the G7 pack moved this from 42 to
+  // 63 and the test said so rather than quietly comparing fewer files. A
+  // golden suite that counts whatever it finds proves nothing about what it
+  // did not find.
+  assert.equal(comparedFiles, 63, 'expected 63 golden files');
   assert.ok(comparedRules > 600, `only ${comparedRules} rule comparisons`);
-  assert.equal(comparedPaths, 24421, 'expected 24,421 recorded failing paths');
+  // 24,421 of these come from the two software packs and are unchanged. The
+  // G7 pack adds 326 over the same corpus, which is small because that corpus
+  // holds no AI SBOM: most G7 rules find no model component and fire once at
+  // the document rather than per component.
+  assert.equal(comparedPaths, 24747, 'expected 24,747 recorded failing paths');
 });

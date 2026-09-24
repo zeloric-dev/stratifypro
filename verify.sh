@@ -6,9 +6,19 @@ fail=0
 run() { echo "--- $1"; shift; "$@" || { echo "    FAILED"; fail=1; }; }
 
 run "rule packs validate against the schema" \
-    python3 packages/rules/src/validate.py packages/rules/packs/cisa-2026-v2.1.json packages/rules/packs/fda-524b.json
+    python3 packages/rules/src/validate.py packages/rules/packs/cisa-2026-v2.1.json packages/rules/packs/fda-524b.json packages/rules/packs/g7-ai-2026.json
 run "the validator is not blind (mutation test)" \
     python3 packages/rules/src/mutation-test.py
+# SPEC.md 3.1: the g7-ai-2026 pack is GENERATED from
+# docs/crosswalk/data/ai-sbom-crosswalk.json, so the pack and its 100 fixtures
+# are build output that happens to be committed. This regenerates both and
+# fails if either has drifted, which is what stops somebody editing a rule by
+# hand and having the next regeneration discard it.
+#
+# It also refuses a rule naming a crosswalk element that does not exist, and a
+# crosswalk element with no rule. "All 50 elements" is the acceptance, and a
+# count is the easiest thing in this repository to be quietly wrong about.
+run "the G7 pack still matches the crosswalk it is generated from"     python3 scripts/build-g7-pack.py --check
 run "every fail fixture fires, no rule fires on its pass fixture" \
     python3 packages/rules/src/reference-engine.py
 # The fixture check above proves each rule CAN fire. It does not prove WHICH
@@ -102,6 +112,15 @@ echo "--- the file checker cannot upload anything"
 #      mutation test for the Phase 2 matcher and running it against this
 #      pattern; nothing else would have found it, because the check had never
 #      been watched failing.
+#
+# WHY THIS IS NOT NEGOTIATED DOWN. SPEC.md 1.10 asks for five analytics events
+# and 1.11 for Sentry, which cannot coexist with the sentence above. Both were
+# WITHDRAWN rather than deferred, and docs/measurement.md records the argument.
+# The part that matters here: a narrower promise, "only these two requests and
+# only after a click", would have to be enforced by this check deciding which
+# call is which. It decides "is there a network primitive", which is a question
+# a grep can answer. The four failures listed above were all it getting that
+# easier question wrong. Do not add an allowlist to this check.
 #
 # So: scan everything that can reach the bundle, and match the bare identifiers
 # rather than a call shape. An alias still has to name the function once, and

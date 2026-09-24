@@ -19,6 +19,7 @@ SPEC.md asks for this document to be dated. The date below is the date of the IN
 | Corpus, 21 files | measured 2026-09-20 | `2bd3cb1608b47efd` |
 | `cisa-2026-v2.1` | 1.0.0 | `12d07a05dc8692ad` |
 | `fda-524b` | 1.0.0 | `972fdd9ed88dc7a0` |
+| `g7-ai-2026` | 1.0.0 | `f51c7c10f3d8c98e` |
 
 ## Totals
 
@@ -26,34 +27,35 @@ SPEC.md asks for this document to be dated. The date below is the date of the IN
 |---|---|---|---|---|---|
 | CISA 2026 Minimum Elements for a Software Bill of Materials, v2.1 | 0 | 9996 | 881 | 0 | 10877 |
 | FDA section 524B premarket submission profile | 0 | 13532 | 12 | 0 | 13544 |
+| G7 SBOM for AI, minimum elements | 0 | 105 | 221 | 0 | 326 |
 
-21 files, 2 rule packs. A finding is one rule against one failing node, so a file with 1,160 components can produce 1,160 findings from a single rule; the per-rule table below is where that becomes visible.
+21 files, 3 rule packs. A finding is one rule against one failing node, so a file with 1,160 components can produce 1,160 findings from a single rule; the per-rule table below is where that becomes visible.
 
 ## Per file
 
-| File | Format | Components | CISA 2026 Minimum Elements for a Software Bill of Materials, v2.1 | FDA section 524B premarket submission profile |
-|---|---|---|---|---|
-| `cyclonedx__ascii-boxes-sbom-cdx.json` | cyclonedx 1.4 | 2 | 15 | 14 |
-| `cyclonedx__ghidra-sbom-cdx.json` | cyclonedx 1.4 | 109 | 292 | 398 |
-| `cyclonedx__harp-darwin-amd64.sbom.json` | cyclonedx 1.4 | 156 | 473 | 472 |
-| `cyclonedx__joc-cockpit-sbom-cdx.json` | cyclonedx 1.3 | 160 | 168 | 485 |
-| `cyclonedx__kawipiko-sbom-cdx.json` | cyclonedx 1.4 | 27 | 58 | 85 |
-| `cyclonedx__obsidian-sailboat-sbom-cdx.json` | cyclonedx 1.2 | 141 | 10 | 290 |
-| `cyclonedx__redis-commander-sbom-cdx.json` | cyclonedx 1.4 | 435 | 521 | 1309 |
-| `cyclonedx__text-statistician-cdx.json` | cyclonedx 1.3 | 141 | 147 | 428 |
-| `spdx__grype-sbom.spdx.json` | spdx SPDX-2.2 | 1160 | 3482 | 3484 |
-| `spdx__helm-controller_0.16.0_sbom.spdx.json` | spdx SPDX-2.2 | 173 | 527 | 524 |
-| `spdx__image-automation-controller_0.20.0_sbom.spdx.json` | spdx SPDX-2.2 | 134 | 410 | 407 |
-| `spdx__image-reflector-controller_0.16.0_sbom.spdx.json` | spdx SPDX-2.2 | 112 | 344 | 341 |
-| `spdx__julia.spdx.json` | spdx SPDX-2.2 | 34 | 158 | 169 |
-| `spdx__jx-darwin-arm64.tar.gz.sbom.json` | spdx SPDX-2.2 | 84 | 172 | 254 |
-| `spdx__lab-syft.json` | spdx SPDX-2.3 | 380 | 707 | 1059 |
-| `spdx__lab-tern.json` | spdx SPDX-2.2 | 175 | 674 | 708 |
-| `spdx__lab-trivy.json` | spdx SPDX-2.2 | 363 | 1005 | 1095 |
-| `spdx__microsoft-sbom-tool.spdx.json` | spdx SPDX-2.2 | 123 | 374 | 361 |
-| `spdx__missionlz.spdx.json` | spdx SPDX-2.2 | 2 | 11 | 7 |
-| `spdx__powershell.spdx.json` | spdx SPDX-2.2 | 331 | 667 | 995 |
-| `spdx__source-controller_0.21.2_sbom.spdx.json` | spdx SPDX-2.2 | 218 | 662 | 659 |
+| File | Format | Components | CISA 2026 Minimum Elements for a Software Bill of Materials, v2.1 | FDA section 524B premarket submission profile | G7 SBOM for AI, minimum elements |
+|---|---|---|---|---|---|
+| `cyclonedx__ascii-boxes-sbom-cdx.json` | cyclonedx 1.4 | 2 | 15 | 14 | 41 |
+| `cyclonedx__ghidra-sbom-cdx.json` | cyclonedx 1.4 | 109 | 292 | 398 | 45 |
+| `cyclonedx__harp-darwin-amd64.sbom.json` | cyclonedx 1.4 | 156 | 473 | 472 | 39 |
+| `cyclonedx__joc-cockpit-sbom-cdx.json` | cyclonedx 1.3 | 160 | 168 | 485 | 39 |
+| `cyclonedx__kawipiko-sbom-cdx.json` | cyclonedx 1.4 | 27 | 58 | 85 | 39 |
+| `cyclonedx__obsidian-sailboat-sbom-cdx.json` | cyclonedx 1.2 | 141 | 10 | 290 | 45 |
+| `cyclonedx__redis-commander-sbom-cdx.json` | cyclonedx 1.4 | 435 | 521 | 1309 | 39 |
+| `cyclonedx__text-statistician-cdx.json` | cyclonedx 1.3 | 141 | 147 | 428 | 39 |
+| `spdx__grype-sbom.spdx.json` | spdx SPDX-2.2 | 1160 | 3482 | 3484 | 0 |
+| `spdx__helm-controller_0.16.0_sbom.spdx.json` | spdx SPDX-2.2 | 173 | 527 | 524 | 0 |
+| `spdx__image-automation-controller_0.20.0_sbom.spdx.json` | spdx SPDX-2.2 | 134 | 410 | 407 | 0 |
+| `spdx__image-reflector-controller_0.16.0_sbom.spdx.json` | spdx SPDX-2.2 | 112 | 344 | 341 | 0 |
+| `spdx__julia.spdx.json` | spdx SPDX-2.2 | 34 | 158 | 169 | 0 |
+| `spdx__jx-darwin-arm64.tar.gz.sbom.json` | spdx SPDX-2.2 | 84 | 172 | 254 | 0 |
+| `spdx__lab-syft.json` | spdx SPDX-2.3 | 380 | 707 | 1059 | 0 |
+| `spdx__lab-tern.json` | spdx SPDX-2.2 | 175 | 674 | 708 | 0 |
+| `spdx__lab-trivy.json` | spdx SPDX-2.2 | 363 | 1005 | 1095 | 0 |
+| `spdx__microsoft-sbom-tool.spdx.json` | spdx SPDX-2.2 | 123 | 374 | 361 | 0 |
+| `spdx__missionlz.spdx.json` | spdx SPDX-2.2 | 2 | 11 | 7 | 0 |
+| `spdx__powershell.spdx.json` | spdx SPDX-2.2 | 331 | 667 | 995 | 0 |
+| `spdx__source-controller_0.21.2_sbom.spdx.json` | spdx SPDX-2.2 | 218 | 662 | 659 | 0 |
 
 ## Where the findings are
 
@@ -92,6 +94,23 @@ The largest groups, by total instances across the corpus. Two rules produce more
 | `FDA-NTIA-006` | warning | 8 | 8 | Author of the SBOM data is present |
 | `FDA-TRACE-001` | info | 8 | 8 | The SBOM can be traced to the threat model and risk assessment |
 | `FDA-USER-001` | info | 4 | 4 | The SBOM is in a form that can be provided to users continuously |
+
+### G7 SBOM for AI, minimum elements
+
+| Rule | Severity | Instances | Files | Title |
+|---|---|---|---|---|
+| `G7-DS-001` | warning | 8 | 8 | Dataset name is stated |
+| `G7-DS-002` | info | 8 | 8 | Dataset description is stated |
+| `G7-DS-003` | info | 8 | 8 | Dataset content is stated |
+| `G7-DS-004` | warning | 8 | 8 | Dataset identifier is stated |
+| `G7-DS-005` | info | 8 | 8 | Dataset hash is stated |
+| `G7-DS-006` | info | 8 | 8 | Dataset provenance is stated |
+| `G7-DS-007` | info | 8 | 8 | Dataset statistical properties is stated |
+| `G7-DS-008` | warning | 8 | 8 | Dataset sensitivity is stated |
+| `G7-DS-010` | info | 8 | 8 | Dataset license is stated |
+| `G7-INF-002` | info | 8 | 8 | Infrastructure hardware is stated |
+| `G7-KPI-001` | info | 8 | 8 | Security metrics is stated |
+| `G7-KPI-002` | info | 8 | 8 | Operational performance KPIs is stated |
 
 ## What the corpus does not say
 

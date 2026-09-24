@@ -53,6 +53,18 @@
       "items": {
         "$ref": "#/$defs/rule"
       }
+    },
+    "generatedBy": {
+      "type": "string",
+      "$comment": "The script that wrote this pack. A generated file that does not name its generator invites hand edits that the next regeneration silently discards."
+    },
+    "generatedFrom": {
+      "type": "string",
+      "$comment": "The data file this pack was generated from."
+    },
+    "coverageNote": {
+      "type": "string",
+      "$comment": "What the pack covers and what it does not, in the pack itself rather than only in a commit message."
     }
   },
   "$defs": {
@@ -206,7 +218,8 @@
       "properties": {
         "id": {
           "type": "string",
-          "pattern": "^[A-Z]{2,6}-[A-Z]{2,6}-\\d{3}$"
+          "pattern": "^[A-Z][A-Z0-9]{1,5}-[A-Z]{2,6}-\\d{3}$",
+          "$comment": "The first segment names the source document and may carry a digit after its first letter, because a source can have one in its name: the G7 AI pack is G7-*. It was letters only, which made that document uncitable."
         },
         "title": {
           "type": "string",
@@ -216,7 +229,11 @@
           "$ref": "#/$defs/severity"
         },
         "onEmptySelector": {
-          "enum": ["fire", "skip", "pass"],
+          "enum": [
+            "fire",
+            "skip",
+            "pass"
+          ],
           "description": "What the engine does when this rule's selector matches zero nodes in a document whose format does support that path. This is a third case, distinct from the two already specified elsewhere: a rule whose appliesTo excludes the detected format is skipped, and a rule referencing a path the format lacks entirely is skipped. Neither covers a CycloneDX document that simply carries no hashes, which is the common case. fire means the absence is itself the violation. skip means the rule cannot speak to this document and is reported in skippedRules. pass means the assertion is vacuously satisfied. Left undeclared, an implementer has to guess, and the Python reference and a reader of docs/copy.md would guess differently."
         },
         "onEmptySelectorJustification": {
@@ -306,6 +323,47 @@
             "additionalProperties": false
           },
           "description": "Secondary references. Never counted when deciding whether error severity is permitted."
+        },
+        "element": {
+          "$comment": "Present on a generated pack. Which source element this rule implements, copied verbatim from the document the pack was generated from, so a reviewer can check the rule against its element without holding both files open. Absent on a hand-written pack.",
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "id",
+            "captures"
+          ],
+          "properties": {
+            "id": {
+              "type": "string"
+            },
+            "index": {
+              "type": "integer"
+            },
+            "cluster": {
+              "type": "string"
+            },
+            "captures": {
+              "type": "string"
+            },
+            "statedConstraint": {
+              "type": "string"
+            },
+            "conformance": {
+              "type": "string"
+            },
+            "formatFit": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "formatPaths": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          }
         }
       }
     }

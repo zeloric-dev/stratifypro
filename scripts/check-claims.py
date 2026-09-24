@@ -59,6 +59,10 @@ def missing_fields(entries, fields):
 expect = {
     "cisa-2026-v2.1": (23, {"warning": 15, "info": 8}),
     "fda-524b":       (16, {"error": 2, "warning": 12, "info": 2}),
+    # 50 elements, one rule each, and not one of them may be an error: the
+    # source says its elements are not mandatory, so normativeLanguage is
+    # false and the loader refuses `error` on every rule citing it.
+    "g7-ai-2026":     (50, {"warning": 17, "info": 33}),
 }
 total_rules = 0
 for name, (n, dist) in expect.items():
@@ -82,7 +86,18 @@ check("cisa pack has zero error-severity rules",
 fixdir = os.path.join(root, "packages/rules/fixtures")
 rule_dirs = sorted(os.listdir(fixdir))
 check("fixture directories equal total rules", len(rule_dirs), total_rules)
-check("fixture files", sum(len(fs) for _, _, fs in os.walk(fixdir)), total_rules * 4)
+# Two files per rule PER FORMAT the rule applies to, not four per rule. The
+# flat multiplier was right while every pack covered both formats and became
+# wrong the moment one did not: g7-ai-2026 is CycloneDX only, so it contributes
+# two files per rule rather than four.
+expected_files = sum(
+    2 * len(r["appliesTo"])
+    for name in expect
+    for r in json.load(
+        open(os.path.join(root, "packages/rules/packs/%s.json" % name), encoding="utf-8")
+    )["rules"]
+)
+check("fixture files", sum(len(fs) for _, _, fs in os.walk(fixdir)), expected_files)
 
 # 4. the reference validator really does have six numbered checks
 import re

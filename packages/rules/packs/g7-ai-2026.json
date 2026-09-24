@@ -1,0 +1,1665 @@
+{
+  "$schema": "../schema/rule-pack-1.json",
+  "id": "g7-ai-2026",
+  "version": "1.0.0",
+  "title": "G7 SBOM for AI, minimum elements",
+  "compiled": "2026-08-29",
+  "generatedBy": "scripts/build-g7-pack.py",
+  "generatedFrom": "docs/crosswalk/data/ai-sbom-crosswalk.json",
+  "sourceDocuments": [
+    {
+      "id": "g7-ai-2026",
+      "title": "Software Bill of Materials for AI - Minimum Elements",
+      "publisher": "G7 Cybersecurity Working Group, published by BSI (Germany), ACN (Italy), ANSSI (France), CSE (Canada), CISA (United States), NCSC (United Kingdom), NCO (Japan)",
+      "published": "2026-05-12",
+      "version": "0.1.0",
+      "url": "https://www.bsi.bund.de/SharedDocs/Downloads/EN/BSI/KI/SBOM-for-AI_minimum-elements.pdf",
+      "retrievedNote": "cisa.gov returns HTTP 403 to automated requests. BSI is a co-publisher and hosts the identical original.",
+      "normativeLanguage": false,
+      "normativeLanguageEvidence": "The document states of itself: \"These minimum elements are not mandatory; do not create requirements, standards, or legislation.\" It assigns no required, optional or recommended level to any element and uses no RFC 2119 keywords, so every element in the crosswalk is marked 'unspecified'. The loader must refuse severity 'error' on any rule citing it.",
+      "sitsOnTopOf": {
+        "title": "2026 Minimum Elements for a Software Bill of Materials (SBOM)",
+        "version": "2.1",
+        "published": "2026-07-29",
+        "sourceUrl": "https://www.ic3.gov/CSA/2026/260729.pdf",
+        "quote": "The minimum elements in an SBOM for AI are in addition to the general SBOM minimum elements."
+      }
+    }
+  ],
+  "severityModel": {
+    "default": "advisory",
+    "justification": "The source assigns no conformance level to any of its 50 elements and says in terms that they are not mandatory. Every severity here is StratifyPro's judgement about what a consumer of the SBOM cannot work around, never a quotation of an obligation. Firms may override any of them.",
+    "overridable": true,
+    "maxSeverityFromThisSource": "warning",
+    "maxSeverityNote": "normativeLanguage is false, so the loader refuses 'error' on every rule in this pack. Nothing here escalates by citing a different source: a rule that needs 'error' is making a claim this document does not support."
+  },
+  "conformanceNote": "The source specification assigns no required, optional or recommended level to any element, and uses no RFC 2119 keywords. Every element here is marked 'unspecified'. Any conformance policy is the implementer's own and should be declared as such.",
+  "coverageNote": "One rule per element, 50 of 50. CycloneDX only: the crosswalk maps 44 elements into SPDX 3.0.1, and the engine reads SPDX 3 by normalising it, which the reference engine used to prove fixtures does not yet do. CycloneDX carries all 50 elements, so the element list is complete either way.",
+  "rules": [
+    {
+      "id": "G7-MD-001",
+      "title": "SBOM author is stated",
+      "severity": "warning",
+      "severityJustification": "Warning rather than info because a consumer of this SBOM cannot work around the absence: there is no other field to read it from and no inference that recovers it. Never error, because the source document states that its elements are not mandatory.",
+      "onEmptySelector": "fire",
+      "onEmptySelectorJustification": "The selector walks a collection and the assertion asks whether each member carries something. A document with zero members has not satisfied that, it has avoided being measured against it, and reporting nothing would let an absent collection read as a clean result.",
+      "appliesTo": [
+        "cyclonedx"
+      ],
+      "selector": {
+        "cyclonedx": "$"
+      },
+      "assert": {
+        "exists": "metadata.authors[*].name|metadata.manufacturer.name"
+      },
+      "fix": "Name the organisation or person that generated this SBOM, in full. This is distinct from the producer of the system it describes.",
+      "sourceDocument": "g7-ai-2026",
+      "sourceLocation": "Metadata cluster, element 1 of 50: SBOM author",
+      "element": {
+        "id": "metadata.sbom-author",
+        "index": 1,
+        "cluster": "metadata",
+        "captures": "Entity that generated the SBOM. Distinct from the producer of the thing described.",
+        "statedConstraint": "String. Full names, no acronyms unless official.",
+        "conformance": "unspecified",
+        "formatFit": "direct",
+        "formatPaths": [
+          "metadata.authors[] (organizationalContact)",
+          "metadata.manufacturer"
+        ]
+      }
+    },
+    {
+      "id": "G7-MD-002",
+      "title": "SBOM version is stated",
+      "severity": "info",
+      "severityJustification": "Info because the element is useful and its absence is recoverable: a reader can ask for it, or proceed without it, without misreading the document. The source assigns no conformance level to any element, so nothing here is a finding about obligation.",
+      "onEmptySelector": "fire",
+      "onEmptySelectorJustification": "The selector walks a collection and the assertion asks whether each member carries something. A document with zero members has not satisfied that, it has avoided being measured against it, and reporting nothing would let an absent collection read as a clean result.",
+      "appliesTo": [
+        "cyclonedx"
+      ],
+      "selector": {
+        "cyclonedx": "$"
+      },
+      "assert": {
+        "exists": "version"
+      },
+      "fix": "State which revision of this SBOM this is, so a later one can be told from an earlier.",
+      "sourceDocument": "g7-ai-2026",
+      "sourceLocation": "Metadata cluster, element 2 of 50: SBOM version",
+      "element": {
+        "id": "metadata.sbom-version",
+        "index": 2,
+        "cluster": "metadata",
+        "captures": "Version of the SBOM document itself, per component name/version pair.",
+        "statedConstraint": "SemVer 2.0.0 (major SHOULD be 1) or RFC 9562 UUID.",
+        "conformance": "unspecified",
+        "formatFit": "partial",
+        "formatPaths": [
+          "version (integer at BOM root)"
+        ]
+      }
+    },
+    {
+      "id": "G7-MD-003",
+      "title": "SBOM data format name is stated",
+      "severity": "info",
+      "severityJustification": "Info because the element is useful and its absence is recoverable: a reader can ask for it, or proceed without it, without misreading the document. The source assigns no conformance level to any element, so nothing here is a finding about obligation.",
+      "onEmptySelector": "fire",
+      "onEmptySelectorJustification": "The selector walks a collection and the assertion asks whether each member carries something. A document with zero members has not satisfied that, it has avoided being measured against it, and reporting nothing would let an absent collection read as a clean result.",
+      "appliesTo": [
+        "cyclonedx"
+      ],
+      "selector": {
+        "cyclonedx": "$"
+      },
+      "assert": {
+        "exists": "bomFormat|spdxVersion|@context"
+      },
+      "fix": "State the format this document is written in.",
+      "sourceDocument": "g7-ai-2026",
+      "sourceLocation": "Metadata cluster, element 3 of 50: SBOM data format name",
+      "element": {
+        "id": "metadata.sbom-data-format-name",
+        "index": 3,
+        "cluster": "metadata",
+        "captures": "Which format this SBOM is written in.",
+        "statedConstraint": "Free text.",
+        "conformance": "unspecified",
+        "formatFit": "direct",
+        "formatPaths": [
+          "bomFormat (const 'CycloneDX')"
+        ]
+      }
+    },
+    {
+      "id": "G7-MD-004",
+      "title": "SBOM data format version is stated",
+      "severity": "info",
+      "severityJustification": "Info because the element is useful and its absence is recoverable: a reader can ask for it, or proceed without it, without misreading the document. The source assigns no conformance level to any element, so nothing here is a finding about obligation.",
+      "onEmptySelector": "fire",
+      "onEmptySelectorJustification": "The selector walks a collection and the assertion asks whether each member carries something. A document with zero members has not satisfied that, it has avoided being measured against it, and reporting nothing would let an absent collection read as a clean result.",
+      "appliesTo": [
+        "cyclonedx"
+      ],
+      "selector": {
+        "cyclonedx": "$"
+      },
+      "assert": {
+        "exists": "specVersion|spdxVersion"
+      },
+      "fix": "State which version of the format this document follows.",
+      "sourceDocument": "g7-ai-2026",
+      "sourceLocation": "Metadata cluster, element 4 of 50: SBOM data format version",
+      "element": {
+        "id": "metadata.sbom-data-format-version",
+        "index": 4,
+        "cluster": "metadata",
+        "captures": "Version of that format. Deprecated versions should not be used.",
+        "statedConstraint": "Free text. Deprecation rule.",
+        "conformance": "unspecified",
+        "formatFit": "direct",
+        "formatPaths": [
+          "specVersion (e.g. '1.7')"
+        ]
+      }
+    },
+    {
+      "id": "G7-MD-005",
+      "title": "SBOM author signature is stated",
+      "severity": "info",
+      "severityJustification": "Info because the element is useful and its absence is recoverable: a reader can ask for it, or proceed without it, without misreading the document. The source assigns no conformance level to any element, so nothing here is a finding about obligation.",
+      "onEmptySelector": "fire",
+      "onEmptySelectorJustification": "The selector walks a collection and the assertion asks whether each member carries something. A document with zero members has not satisfied that, it has avoided being measured against it, and reporting nothing would let an absent collection read as a clean result.",
+      "appliesTo": [
+        "cyclonedx"
+      ],
+      "selector": {
+        "cyclonedx": "$"
+      },
+      "assert": {
+        "exists": "signature|declarations.signature"
+      },
+      "fix": "Attach the author's signature over the document, so a recipient can tell it has not been altered since it was issued.",
+      "sourceDocument": "g7-ai-2026",
+      "sourceLocation": "Metadata cluster, element 5 of 50: SBOM author signature",
+      "element": {
+        "id": "metadata.sbom-author-signature",
+        "index": 5,
+        "cluster": "metadata",
+        "captures": "Digital signature of the SBOM author, for integrity and authenticity.",
+        "statedConstraint": "Algorithm approved by NIST DSS, ISO/IEC 14888-4:2024 or ENISA. No format named.",
+        "conformance": "unspecified",
+        "formatFit": "direct",
+        "formatPaths": [
+          "signature (JSF, jsf-0.82 schema)",
+          "also declarations[].signature and citation[].signature"
+        ]
+      }
+    },
+    {
+      "id": "G7-MD-006",
+      "title": "SBOM tool name is stated",
+      "severity": "info",
+      "severityJustification": "Info because the element is useful and its absence is recoverable: a reader can ask for it, or proceed without it, without misreading the document. The source assigns no conformance level to any element, so nothing here is a finding about obligation.",
+      "onEmptySelector": "fire",
+      "onEmptySelectorJustification": "The selector walks a collection and the assertion asks whether each member carries something. A document with zero members has not satisfied that, it has avoided being measured against it, and reporting nothing would let an absent collection read as a clean result.",
+      "appliesTo": [
+        "cyclonedx"
+      ],
+      "selector": {
+        "cyclonedx": "$"
+      },
+      "assert": {
+        "exists": "metadata.tools.components[*].name"
+      },
+      "fix": "Name the tool that produced this SBOM. A reader weighing how much to trust it needs to know what generated it.",
+      "sourceDocument": "g7-ai-2026",
+      "sourceLocation": "Metadata cluster, element 6 of 50: SBOM tool name",
+      "element": {
+        "id": "metadata.sbom-tool-name",
+        "index": 6,
+        "cluster": "metadata",
+        "captures": "Tool the author used to build the SBOM.",
+        "statedConstraint": "String, full names.",
+        "conformance": "unspecified",
+        "formatFit": "direct",
+        "formatPaths": [
+          "metadata.tools.components[].name"
+        ]
+      }
+    },
+    {
+      "id": "G7-MD-007",
+      "title": "SBOM tool version is stated",
+      "severity": "info",
+      "severityJustification": "Info because the element is useful and its absence is recoverable: a reader can ask for it, or proceed without it, without misreading the document. The source assigns no conformance level to any element, so nothing here is a finding about obligation.",
+      "onEmptySelector": "fire",
+      "onEmptySelectorJustification": "The selector walks a collection and the assertion asks whether each member carries something. A document with zero members has not satisfied that, it has avoided being measured against it, and reporting nothing would let an absent collection read as a clean result.",
+      "appliesTo": [
+        "cyclonedx"
+      ],
+      "selector": {
+        "cyclonedx": "$"
+      },
+      "assert": {
+        "exists": "metadata.tools.components[*].version"
+      },
+      "fix": "State the version of the generating tool, because two versions of one tool do not produce the same document.",
+      "sourceDocument": "g7-ai-2026",
+      "sourceLocation": "Metadata cluster, element 7 of 50: SBOM tool version",
+      "element": {
+        "id": "metadata.sbom-tool-version",
+        "index": 7,
+        "cluster": "metadata",
+        "captures": "Version of that tool. If none, say 'unknown'.",
+        "statedConstraint": "String. Explicit 'unknown' required if absent.",
+        "conformance": "unspecified",
+        "formatFit": "direct",
+        "formatPaths": [
+          "metadata.tools.components[].version"
+        ]
+      }
+    },
+    {
+      "id": "G7-MD-008",
+      "title": "SBOM generation context is stated",
+      "severity": "info",
+      "severityJustification": "Info because the element is useful and its absence is recoverable: a reader can ask for it, or proceed without it, without misreading the document. The source assigns no conformance level to any element, so nothing here is a finding about obligation.",
+      "onEmptySelector": "fire",
+      "onEmptySelectorJustification": "The selector walks a collection and the assertion asks whether each member carries something. A document with zero members has not satisfied that, it has avoided being measured against it, and reporting nothing would let an absent collection read as a clean result.",
+      "appliesTo": [
+        "cyclonedx"
+      ],
+      "selector": {
+        "cyclonedx": "$"
+      },
+      "assert": {
+        "exists": "metadata.lifecycles[*].phase"
+      },
+      "fix": "State the lifecycle phase this SBOM describes. A build-time inventory and a runtime one answer different questions.",
+      "sourceDocument": "g7-ai-2026",
+      "sourceLocation": "Metadata cluster, element 8 of 50: SBOM generation context",
+      "element": {
+        "id": "metadata.sbom-generation-context",
+        "index": 8,
+        "cluster": "metadata",
+        "captures": "Lifecycle phase at which the SBOM was made.",
+        "statedConstraint": "Open list. Examples: before build, build, after build.",
+        "conformance": "unspecified",
+        "formatFit": "partial",
+        "formatPaths": [
+          "metadata.lifecycles[].phase (design, pre-build, build, post-build, operations, discovery, decommission)"
+        ]
+      }
+    },
+    {
+      "id": "G7-MD-009",
+      "title": "SBOM timestamp is stated",
+      "severity": "warning",
+      "severityJustification": "Warning rather than info because a consumer of this SBOM cannot work around the absence: there is no other field to read it from and no inference that recovers it. Never error, because the source document states that its elements are not mandatory.",
+      "onEmptySelector": "fire",
+      "onEmptySelectorJustification": "The selector walks a collection and the assertion asks whether each member carries something. A document with zero members has not satisfied that, it has avoided being measured against it, and reporting nothing would let an absent collection read as a clean result.",
+      "appliesTo": [
+        "cyclonedx"
+      ],
+      "selector": {
+        "cyclonedx": "$"
+      },
+      "assert": {
+        "exists": "metadata.timestamp"
+      },
+      "fix": "Timestamp the document. Without it an SBOM cannot be placed against a vulnerability disclosure date, which is most of what it is read for.",
+      "sourceDocument": "g7-ai-2026",
+      "sourceLocation": "Metadata cluster, element 9 of 50: SBOM timestamp",
+      "element": {
+        "id": "metadata.sbom-timestamp",
+        "index": 9,
+        "cluster": "metadata",
+        "captures": "When the SBOM data was last changed. Every version gets a new one.",
+        "statedConstraint": "RFC 9557 (extended timestamps with bracketed suffixes).",
+        "conformance": "unspecified",
+        "formatFit": "partial",
+        "formatPaths": [
+          "metadata.timestamp (JSON Schema format: date-time)"
+        ]
+      }
+    },
+    {
+      "id": "G7-MD-010",
+      "title": "SBOM dependency relationship is stated",
+      "severity": "warning",
+      "severityJustification": "Warning rather than info because a consumer of this SBOM cannot work around the absence: there is no other field to read it from and no inference that recovers it. Never error, because the source document states that its elements are not mandatory.",
+      "onEmptySelector": "fire",
+      "onEmptySelectorJustification": "The selector walks a collection and the assertion asks whether each member carries something. A document with zero members has not satisfied that, it has avoided being measured against it, and reporting nothing would let an absent collection read as a clean result.",
+      "appliesTo": [
+        "cyclonedx"
+      ],
+      "selector": {
+        "cyclonedx": "$"
+      },
+      "assert": {
+        "exists": "dependencies[*].ref|relationships[*].spdxElementId"
+      },
+      "fix": "State how the listed things relate to each other. A flat list of components does not say which is part of what.",
+      "sourceDocument": "g7-ai-2026",
+      "sourceLocation": "Metadata cluster, element 10 of 50: SBOM dependency relationship",
+      "element": {
+        "id": "metadata.sbom-dependency-relationship",
+        "index": 10,
+        "cluster": "metadata",
+        "captures": "Component X includes Y; or Y is derived from or a descendant of Z.",
+        "statedConstraint": "Values: includes, included in, plus derived-from and descendant-of semantics.",
+        "conformance": "unspecified",
+        "formatFit": "direct",
+        "formatPaths": [
+          "dependencies[] (ref, dependsOn, provides)",
+          "pedigree.ancestors/descendants/variants for derivation"
+        ]
+      }
+    },
+    {
+      "id": "G7-SYS-001",
+      "title": "System name is stated",
+      "severity": "warning",
+      "severityJustification": "Warning rather than info because a consumer of this SBOM cannot work around the absence: there is no other field to read it from and no inference that recovers it. Never error, because the source document states that its elements are not mandatory.",
+      "onEmptySelector": "fire",
+      "onEmptySelectorJustification": "The selector walks a collection and the assertion asks whether each member carries something. A document with zero members has not satisfied that, it has avoided being measured against it, and reporting nothing would let an absent collection read as a clean result.",
+      "appliesTo": [
+        "cyclonedx"
+      ],
+      "selector": {
+        "cyclonedx": "$"
+      },
+      "assert": {
+        "exists": "metadata.component.name"
+      },
+      "fix": "Name the AI system this SBOM is about, at the top of the document.",
+      "sourceDocument": "g7-ai-2026",
+      "sourceLocation": "System Level Properties cluster, element 11 of 50: System name",
+      "element": {
+        "id": "system-level-properties.system-name",
+        "index": 11,
+        "cluster": "system-level-properties",
+        "captures": "Human-readable name of the whole AI system.",
+        "statedConstraint": "Multi-valued: alternate names should be capturable.",
+        "conformance": "unspecified",
+        "formatFit": "partial",
+        "formatPaths": [
+          "metadata.component.name"
+        ]
+      }
+    },
+    {
+      "id": "G7-SYS-002",
+      "title": "System components is stated",
+      "severity": "warning",
+      "severityJustification": "Warning rather than info because a consumer of this SBOM cannot work around the absence: there is no other field to read it from and no inference that recovers it. Never error, because the source document states that its elements are not mandatory.",
+      "onEmptySelector": "fire",
+      "onEmptySelectorJustification": "The selector walks a collection and the assertion asks whether each member carries something. A document with zero members has not satisfied that, it has avoided being measured against it, and reporting nothing would let an absent collection read as a clean result.",
+      "appliesTo": [
+        "cyclonedx"
+      ],
+      "selector": {
+        "cyclonedx": "$"
+      },
+      "assert": {
+        "minLength": {
+          "field": "components|packages",
+          "min": 1
+        }
+      },
+      "fix": "List the components the system is built from. An SBOM listing none describes nothing.",
+      "sourceDocument": "g7-ai-2026",
+      "sourceLocation": "System Level Properties cluster, element 12 of 50: System components",
+      "element": {
+        "id": "system-level-properties.system-components",
+        "index": 12,
+        "cluster": "system-level-properties",
+        "captures": "Everything included in the AI system: models, databases, tools.",
+        "statedConstraint": "Free.",
+        "conformance": "unspecified",
+        "formatFit": "direct",
+        "formatPaths": [
+          "metadata.component.components[]",
+          "components[] + dependencies[]"
+        ]
+      }
+    },
+    {
+      "id": "G7-SYS-003",
+      "title": "System producer is stated",
+      "severity": "warning",
+      "severityJustification": "Warning rather than info because a consumer of this SBOM cannot work around the absence: there is no other field to read it from and no inference that recovers it. Never error, because the source document states that its elements are not mandatory.",
+      "onEmptySelector": "fire",
+      "onEmptySelectorJustification": "The selector walks a collection and the assertion asks whether each member carries something. A document with zero members has not satisfied that, it has avoided being measured against it, and reporting nothing would let an absent collection read as a clean result.",
+      "appliesTo": [
+        "cyclonedx"
+      ],
+      "selector": {
+        "cyclonedx": "$"
+      },
+      "assert": {
+        "exists": "metadata.component.manufacturer.name|metadata.component.supplier.name"
+      },
+      "fix": "Name who produces the system, separately from who wrote this SBOM.",
+      "sourceDocument": "g7-ai-2026",
+      "sourceLocation": "System Level Properties cluster, element 13 of 50: System producer",
+      "element": {
+        "id": "system-level-properties.system-producer",
+        "index": 13,
+        "cluster": "system-level-properties",
+        "captures": "Entity that creates, defines and identifies the system.",
+        "statedConstraint": "Free.",
+        "conformance": "unspecified",
+        "formatFit": "direct",
+        "formatPaths": [
+          "metadata.component.manufacturer / .supplier"
+        ]
+      }
+    },
+    {
+      "id": "G7-SYS-004",
+      "title": "System version is stated",
+      "severity": "warning",
+      "severityJustification": "Warning rather than info because a consumer of this SBOM cannot work around the absence: there is no other field to read it from and no inference that recovers it. Never error, because the source document states that its elements are not mandatory.",
+      "onEmptySelector": "fire",
+      "onEmptySelectorJustification": "The selector walks a collection and the assertion asks whether each member carries something. A document with zero members has not satisfied that, it has avoided being measured against it, and reporting nothing would let an absent collection read as a clean result.",
+      "appliesTo": [
+        "cyclonedx"
+      ],
+      "selector": {
+        "cyclonedx": "$"
+      },
+      "assert": {
+        "exists": "metadata.component.version"
+      },
+      "fix": "State the system's version. Without it this document cannot be tied to a release.",
+      "sourceDocument": "g7-ai-2026",
+      "sourceLocation": "System Level Properties cluster, element 14 of 50: System version",
+      "element": {
+        "id": "system-level-properties.system-version",
+        "index": 14,
+        "cluster": "system-level-properties",
+        "captures": "Version of the system. If none, say 'unknown'.",
+        "statedConstraint": "Explicit 'unknown' required if absent.",
+        "conformance": "unspecified",
+        "formatFit": "direct",
+        "formatPaths": [
+          "metadata.component.version"
+        ]
+      }
+    },
+    {
+      "id": "G7-SYS-005",
+      "title": "System timestamp is stated",
+      "severity": "info",
+      "severityJustification": "Info because the element is useful and its absence is recoverable: a reader can ask for it, or proceed without it, without misreading the document. The source assigns no conformance level to any element, so nothing here is a finding about obligation. CycloneDX has no field for this at the system level, so it is read from a property and falls back to the document timestamp.",
+      "onEmptySelector": "fire",
+      "onEmptySelectorJustification": "The selector walks a collection and the assertion asks whether each member carries something. A document with zero members has not satisfied that, it has avoided being measured against it, and reporting nothing would let an absent collection read as a clean result.",
+      "appliesTo": [
+        "cyclonedx"
+      ],
+      "selector": {
+        "cyclonedx": "$"
+      },
+      "assert": {
+        "exists": "metadata.component.properties[?(@.name=='stratifypro:system-timestamp')]|metadata.timestamp"
+      },
+      "fix": "Record when the system itself was built or released, which is not the same moment as when this SBOM was written.",
+      "sourceDocument": "g7-ai-2026",
+      "sourceLocation": "System Level Properties cluster, element 15 of 50: System timestamp",
+      "element": {
+        "id": "system-level-properties.system-timestamp",
+        "index": 15,
+        "cluster": "system-level-properties",
+        "captures": "Last update to the system, including model or software updates.",
+        "statedConstraint": "No RFC constraint stated (unlike SBOM timestamp).",
+        "conformance": "unspecified",
+        "formatFit": "partial",
+        "formatPaths": []
+      }
+    },
+    {
+      "id": "G7-SYS-006",
+      "title": "System data flow is stated",
+      "severity": "info",
+      "severityJustification": "Info because the element is useful and its absence is recoverable: a reader can ask for it, or proceed without it, without misreading the document. The source assigns no conformance level to any element, so nothing here is a finding about obligation.",
+      "onEmptySelector": "fire",
+      "onEmptySelectorJustification": "The selector walks a collection and the assertion asks whether each member carries something. A document with zero members has not satisfied that, it has avoided being measured against it, and reporting nothing would let an absent collection read as a clean result.",
+      "appliesTo": [
+        "cyclonedx"
+      ],
+      "selector": {
+        "cyclonedx": "$"
+      },
+      "assert": {
+        "exists": "services[*].data[*].flow|services[*].endpoints[*]"
+      },
+      "fix": "Describe what data enters and leaves the system, and in which direction.",
+      "sourceDocument": "g7-ai-2026",
+      "sourceLocation": "System Level Properties cluster, element 16 of 50: System data flow",
+      "element": {
+        "id": "system-level-properties.system-data-flow",
+        "index": 16,
+        "cluster": "system-level-properties",
+        "captures": "Data movement between components: endpoints, APIs, agent protocols, external services.",
+        "statedConstraint": "Link, reference or description.",
+        "conformance": "unspecified",
+        "formatFit": "direct",
+        "formatPaths": [
+          "services[].endpoints[]",
+          "services[].data[] with flow (inbound, outbound, bi-directional, unknown) and classification"
+        ]
+      }
+    },
+    {
+      "id": "G7-SYS-007",
+      "title": "System data usage is stated",
+      "severity": "info",
+      "severityJustification": "Info because the element is useful and its absence is recoverable: a reader can ask for it, or proceed without it, without misreading the document. The source assigns no conformance level to any element, so nothing here is a finding about obligation.",
+      "onEmptySelector": "fire",
+      "onEmptySelectorJustification": "The selector walks a collection and the assertion asks whether each member carries something. A document with zero members has not satisfied that, it has avoided being measured against it, and reporting nothing would let an absent collection read as a clean result.",
+      "appliesTo": [
+        "cyclonedx"
+      ],
+      "selector": {
+        "cyclonedx": "$"
+      },
+      "assert": {
+        "exists": "services[*].data[*].classification"
+      },
+      "fix": "State how the data the system handles is classified, so a reader knows what is at stake if it leaks.",
+      "sourceDocument": "g7-ai-2026",
+      "sourceLocation": "System Level Properties cluster, element 17 of 50: System data usage",
+      "element": {
+        "id": "system-level-properties.system-data-usage",
+        "index": 17,
+        "cluster": "system-level-properties",
+        "captures": "How data is processed and consumed, including logging and derived metadata.",
+        "statedConstraint": "Link to documentation.",
+        "conformance": "unspecified",
+        "formatFit": "partial",
+        "formatPaths": [
+          "services[].data[].classification",
+          "externalReferences[]"
+        ]
+      }
+    },
+    {
+      "id": "G7-SYS-008",
+      "title": "System input/output properties is stated",
+      "severity": "info",
+      "severityJustification": "Info because the element is useful and its absence is recoverable: a reader can ask for it, or proceed without it, without misreading the document. The source assigns no conformance level to any element, so nothing here is a finding about obligation.",
+      "onEmptySelector": "fire",
+      "onEmptySelectorJustification": "Fires on a document with no model component at all. That is the intended reading: this pack's subject is an SBOM for an AI system, and a document listing no model has not described one. Run a software pack against a software SBOM.",
+      "appliesTo": [
+        "cyclonedx"
+      ],
+      "selector": {
+        "cyclonedx": "$.components[?(@.type=='machine-learning-model')]"
+      },
+      "assert": {
+        "exists": "modelCard.modelParameters.inputs[*].format|modelCard.modelParameters.outputs[*].format"
+      },
+      "fix": "State what the system takes in and gives out, in formats a reader can act on.",
+      "sourceDocument": "g7-ai-2026",
+      "sourceLocation": "System Level Properties cluster, element 18 of 50: System input/output properties",
+      "element": {
+        "id": "system-level-properties.system-input-output-properties",
+        "index": 18,
+        "cluster": "system-level-properties",
+        "captures": "Input and output types, modality, preprocessing, tokenizer.",
+        "statedConstraint": "Free.",
+        "conformance": "unspecified",
+        "formatFit": "partial",
+        "formatPaths": [
+          "modelCard.modelParameters.inputs[].format / outputs[].format"
+        ]
+      }
+    },
+    {
+      "id": "G7-SYS-009",
+      "title": "Intended application area is stated",
+      "severity": "warning",
+      "severityJustification": "Warning rather than info because a consumer of this SBOM cannot work around the absence: there is no other field to read it from and no inference that recovers it. Never error, because the source document states that its elements are not mandatory.",
+      "onEmptySelector": "fire",
+      "onEmptySelectorJustification": "Fires on a document with no model component at all. That is the intended reading: this pack's subject is an SBOM for an AI system, and a document listing no model has not described one. Run a software pack against a software SBOM.",
+      "appliesTo": [
+        "cyclonedx"
+      ],
+      "selector": {
+        "cyclonedx": "$.components[?(@.type=='machine-learning-model')]"
+      },
+      "assert": {
+        "exists": "modelCard.considerations.useCases[*]"
+      },
+      "fix": "State what the system is for. An AI component with no stated intended use cannot be assessed for use outside it, which is the question a reviewer actually asks.",
+      "sourceDocument": "g7-ai-2026",
+      "sourceLocation": "System Level Properties cluster, element 19 of 50: Intended application area",
+      "element": {
+        "id": "system-level-properties.intended-application-area",
+        "index": 19,
+        "cluster": "system-level-properties",
+        "captures": "Domain the system is deployed in: healthcare, finance, cybersecurity, real time.",
+        "statedConstraint": "Free.",
+        "conformance": "unspecified",
+        "formatFit": "partial",
+        "formatPaths": [
+          "modelCard.considerations.useCases[]"
+        ]
+      }
+    },
+    {
+      "id": "G7-MOD-001",
+      "title": "Model name is stated",
+      "severity": "warning",
+      "severityJustification": "Warning rather than info because a consumer of this SBOM cannot work around the absence: there is no other field to read it from and no inference that recovers it. Never error, because the source document states that its elements are not mandatory.",
+      "onEmptySelector": "fire",
+      "onEmptySelectorJustification": "Fires on a document with no model component at all. That is the intended reading: this pack's subject is an SBOM for an AI system, and a document listing no model has not described one. Run a software pack against a software SBOM.",
+      "appliesTo": [
+        "cyclonedx"
+      ],
+      "selector": {
+        "cyclonedx": "$.components[?(@.type=='machine-learning-model')]"
+      },
+      "assert": {
+        "exists": "name"
+      },
+      "fix": "Name every model the system uses.",
+      "sourceDocument": "g7-ai-2026",
+      "sourceLocation": "Models cluster, element 20 of 50: Model name",
+      "element": {
+        "id": "models.model-name",
+        "index": 20,
+        "cluster": "models",
+        "captures": "Human-readable model name.",
+        "statedConstraint": "Multi-valued: alternate names should be capturable.",
+        "conformance": "unspecified",
+        "formatFit": "partial",
+        "formatPaths": [
+          "components[].name (type: machine-learning-model)"
+        ]
+      }
+    },
+    {
+      "id": "G7-MOD-002",
+      "title": "Model identifier is stated",
+      "severity": "warning",
+      "severityJustification": "Warning rather than info because a consumer of this SBOM cannot work around the absence: there is no other field to read it from and no inference that recovers it. Never error, because the source document states that its elements are not mandatory.",
+      "onEmptySelector": "fire",
+      "onEmptySelectorJustification": "Fires on a document with no model component at all. That is the intended reading: this pack's subject is an SBOM for an AI system, and a document listing no model has not described one. Run a software pack against a software SBOM.",
+      "appliesTo": [
+        "cyclonedx"
+      ],
+      "selector": {
+        "cyclonedx": "$.components[?(@.type=='machine-learning-model')]"
+      },
+      "assert": {
+        "exists": "purl|cpe|swid|omniborId|swhid|bom-ref"
+      },
+      "fix": "Give each model an identifier somebody else can resolve, not only a name.",
+      "sourceDocument": "g7-ai-2026",
+      "sourceLocation": "Models cluster, element 21 of 50: Model identifier",
+      "element": {
+        "id": "models.model-identifier",
+        "index": 21,
+        "cluster": "models",
+        "captures": "One or more machine-readable identifiers.",
+        "statedConstraint": "CPE, PURL, UUID, org IDs, commit hashes, OmniBOR, SWHID. Include ALL of them.",
+        "conformance": "unspecified",
+        "formatFit": "direct",
+        "formatPaths": [
+          "components[].purl, .cpe, .swid, .omniborId, .swhid, .bom-ref"
+        ]
+      }
+    },
+    {
+      "id": "G7-MOD-003",
+      "title": "Model version is stated",
+      "severity": "warning",
+      "severityJustification": "Warning rather than info because a consumer of this SBOM cannot work around the absence: there is no other field to read it from and no inference that recovers it. Never error, because the source document states that its elements are not mandatory.",
+      "onEmptySelector": "fire",
+      "onEmptySelectorJustification": "Fires on a document with no model component at all. That is the intended reading: this pack's subject is an SBOM for an AI system, and a document listing no model has not described one. Run a software pack against a software SBOM.",
+      "appliesTo": [
+        "cyclonedx"
+      ],
+      "selector": {
+        "cyclonedx": "$.components[?(@.type=='machine-learning-model')]"
+      },
+      "assert": {
+        "exists": "version"
+      },
+      "fix": "State each model's version. Two weights files under one name are two different models.",
+      "sourceDocument": "g7-ai-2026",
+      "sourceLocation": "Models cluster, element 22 of 50: Model version",
+      "element": {
+        "id": "models.model-version",
+        "index": 22,
+        "cluster": "models",
+        "captures": "Model version. If none, say 'unknown'.",
+        "statedConstraint": "Explicit 'unknown' required if absent.",
+        "conformance": "unspecified",
+        "formatFit": "direct",
+        "formatPaths": [
+          "components[].version"
+        ]
+      }
+    },
+    {
+      "id": "G7-MOD-004",
+      "title": "Model timestamp is stated",
+      "severity": "info",
+      "severityJustification": "Info because the element is useful and its absence is recoverable: a reader can ask for it, or proceed without it, without misreading the document. The source assigns no conformance level to any element, so nothing here is a finding about obligation.",
+      "onEmptySelector": "fire",
+      "onEmptySelectorJustification": "Fires on a document with no model component at all. That is the intended reading: this pack's subject is an SBOM for an AI system, and a document listing no model has not described one. Run a software pack against a software SBOM.",
+      "appliesTo": [
+        "cyclonedx"
+      ],
+      "selector": {
+        "cyclonedx": "$.components[?(@.type=='machine-learning-model')]"
+      },
+      "assert": {
+        "exists": "releaseNotes.timestamp"
+      },
+      "fix": "Record when the model was released or last trained.",
+      "sourceDocument": "g7-ai-2026",
+      "sourceLocation": "Models cluster, element 23 of 50: Model timestamp",
+      "element": {
+        "id": "models.model-timestamp",
+        "index": 23,
+        "cluster": "models",
+        "captures": "Last update to the model, or its production release date.",
+        "statedConstraint": "Free.",
+        "conformance": "unspecified",
+        "formatFit": "partial",
+        "formatPaths": [
+          "components[].releaseNotes.timestamp"
+        ]
+      }
+    },
+    {
+      "id": "G7-MOD-005",
+      "title": "Model producer is stated",
+      "severity": "warning",
+      "severityJustification": "Warning rather than info because a consumer of this SBOM cannot work around the absence: there is no other field to read it from and no inference that recovers it. Never error, because the source document states that its elements are not mandatory.",
+      "onEmptySelector": "fire",
+      "onEmptySelectorJustification": "Fires on a document with no model component at all. That is the intended reading: this pack's subject is an SBOM for an AI system, and a document listing no model has not described one. Run a software pack against a software SBOM.",
+      "appliesTo": [
+        "cyclonedx"
+      ],
+      "selector": {
+        "cyclonedx": "$.components[?(@.type=='machine-learning-model')]"
+      },
+      "assert": {
+        "exists": "manufacturer.name|supplier.name|publisher|authors[*].name"
+      },
+      "fix": "Name who produced each model. For a model obtained from a third party this is the only route back to whoever can answer questions about it.",
+      "sourceDocument": "g7-ai-2026",
+      "sourceLocation": "Models cluster, element 24 of 50: Model producer",
+      "element": {
+        "id": "models.model-producer",
+        "index": 24,
+        "cluster": "models",
+        "captures": "Who pre-trained, post-trained or fine-tuned the model. Also the security point of contact.",
+        "statedConstraint": "Multi-valued.",
+        "conformance": "unspecified",
+        "formatFit": "direct",
+        "formatPaths": [
+          "components[].manufacturer, .supplier, .authors[], .publisher"
+        ]
+      }
+    },
+    {
+      "id": "G7-MOD-006",
+      "title": "Model description is stated",
+      "severity": "info",
+      "severityJustification": "Info because the element is useful and its absence is recoverable: a reader can ask for it, or proceed without it, without misreading the document. The source assigns no conformance level to any element, so nothing here is a finding about obligation.",
+      "onEmptySelector": "fire",
+      "onEmptySelectorJustification": "Fires on a document with no model component at all. That is the intended reading: this pack's subject is an SBOM for an AI system, and a document listing no model has not described one. Run a software pack against a software SBOM.",
+      "appliesTo": [
+        "cyclonedx"
+      ],
+      "selector": {
+        "cyclonedx": "$.components[?(@.type=='machine-learning-model')]"
+      },
+      "assert": {
+        "exists": "description|modelCard.considerations.technicalLimitations[*]"
+      },
+      "fix": "Describe what the model does and where it should not be used.",
+      "sourceDocument": "g7-ai-2026",
+      "sourceLocation": "Models cluster, element 25 of 50: Model description",
+      "element": {
+        "id": "models.model-description",
+        "index": 25,
+        "cluster": "models",
+        "captures": "Capabilities, known limitations, and lineage including the predecessor model.",
+        "statedConstraint": "Free.",
+        "conformance": "unspecified",
+        "formatFit": "partial",
+        "formatPaths": [
+          "components[].description",
+          "modelCard.considerations.technicalLimitations[]",
+          "pedigree.ancestors[]"
+        ]
+      }
+    },
+    {
+      "id": "G7-MOD-007",
+      "title": "Model hash value is stated",
+      "severity": "warning",
+      "severityJustification": "Warning rather than info because a consumer of this SBOM cannot work around the absence: there is no other field to read it from and no inference that recovers it. Never error, because the source document states that its elements are not mandatory.",
+      "onEmptySelector": "fire",
+      "onEmptySelectorJustification": "Fires on a document with no model component at all. That is the intended reading: this pack's subject is an SBOM for an AI system, and a document listing no model has not described one. Run a software pack against a software SBOM.",
+      "appliesTo": [
+        "cyclonedx"
+      ],
+      "selector": {
+        "cyclonedx": "$.components[?(@.type=='machine-learning-model')]"
+      },
+      "assert": {
+        "exists": "hashes[*].content"
+      },
+      "fix": "Record a hash of the model artifact. It is the only way a recipient can confirm the weights they hold are the weights this document describes.",
+      "sourceDocument": "g7-ai-2026",
+      "sourceLocation": "Models cluster, element 26 of 50: Model hash value",
+      "element": {
+        "id": "models.model-hash-value",
+        "index": 26,
+        "cluster": "models",
+        "captures": "Hash of the weights or model file.",
+        "statedConstraint": "ASCII-formatted value.",
+        "conformance": "unspecified",
+        "formatFit": "direct",
+        "formatPaths": [
+          "components[].hashes[].content"
+        ]
+      }
+    },
+    {
+      "id": "G7-MOD-008",
+      "title": "Model hash algorithm is stated",
+      "severity": "info",
+      "severityJustification": "Info because the element is useful and its absence is recoverable: a reader can ask for it, or proceed without it, without misreading the document. The source assigns no conformance level to any element, so nothing here is a finding about obligation.",
+      "onEmptySelector": "fire",
+      "onEmptySelectorJustification": "Fires on a document with no model component at all. That is the intended reading: this pack's subject is an SBOM for an AI system, and a document listing no model has not described one. Run a software pack against a software SBOM.",
+      "appliesTo": [
+        "cyclonedx"
+      ],
+      "selector": {
+        "cyclonedx": "$.components[?(@.type=='machine-learning-model')]"
+      },
+      "assert": {
+        "exists": "hashes[*].alg"
+      },
+      "fix": "State which algorithm produced each hash. A bare digest cannot be checked.",
+      "sourceDocument": "g7-ai-2026",
+      "sourceLocation": "Models cluster, element 27 of 50: Model hash algorithm",
+      "element": {
+        "id": "models.model-hash-algorithm",
+        "index": 27,
+        "cluster": "models",
+        "captures": "Algorithm that produced the hash.",
+        "statedConstraint": "IANA Hash Function Textual Names. NIST-approved.",
+        "conformance": "unspecified",
+        "formatFit": "partial",
+        "formatPaths": [
+          "components[].hashes[].alg (closed enum: MD5, SHA-1, SHA-256/384/512, SHA3-*, BLAKE2b-*, BLAKE3)"
+        ]
+      }
+    },
+    {
+      "id": "G7-MOD-009",
+      "title": "Model properties is stated",
+      "severity": "info",
+      "severityJustification": "Info because the element is useful and its absence is recoverable: a reader can ask for it, or proceed without it, without misreading the document. The source assigns no conformance level to any element, so nothing here is a finding about obligation.",
+      "onEmptySelector": "fire",
+      "onEmptySelectorJustification": "Fires on a document with no model component at all. That is the intended reading: this pack's subject is an SBOM for an AI system, and a document listing no model has not described one. Run a software pack against a software SBOM.",
+      "appliesTo": [
+        "cyclonedx"
+      ],
+      "selector": {
+        "cyclonedx": "$.components[?(@.type=='machine-learning-model')]"
+      },
+      "assert": {
+        "exists": "modelCard.modelParameters.approach.type|modelCard.modelParameters.task|modelCard.modelParameters.architectureFamily"
+      },
+      "fix": "State what kind of model this is: its learning approach, its task, its architecture.",
+      "sourceDocument": "g7-ai-2026",
+      "sourceLocation": "Models cluster, element 28 of 50: Model properties",
+      "element": {
+        "id": "models.model-properties",
+        "index": 28,
+        "cluster": "models",
+        "captures": "Architecture, parameter count, network type, hyperparameters. Explicitly nestable.",
+        "statedConstraint": "May contain sub-elements.",
+        "conformance": "unspecified",
+        "formatFit": "direct",
+        "formatPaths": [
+          "modelCard.modelParameters.approach.type (enum: supervised, unsupervised, reinforcement-learning, semi-supervised, self-supervised), .task, .architectureFamily, .modelArchitecture",
+          "plus cdx:ai-ml:model:parameter:count and :hyperparameter:* taxonomy"
+        ]
+      }
+    },
+    {
+      "id": "G7-MOD-010",
+      "title": "Model input-output properties is stated",
+      "severity": "info",
+      "severityJustification": "Info because the element is useful and its absence is recoverable: a reader can ask for it, or proceed without it, without misreading the document. The source assigns no conformance level to any element, so nothing here is a finding about obligation.",
+      "onEmptySelector": "fire",
+      "onEmptySelectorJustification": "Fires on a document with no model component at all. That is the intended reading: this pack's subject is an SBOM for an AI system, and a document listing no model has not described one. Run a software pack against a software SBOM.",
+      "appliesTo": [
+        "cyclonedx"
+      ],
+      "selector": {
+        "cyclonedx": "$.components[?(@.type=='machine-learning-model')]"
+      },
+      "assert": {
+        "exists": "modelCard.modelParameters.inputs[*]|modelCard.modelParameters.outputs[*]"
+      },
+      "fix": "State the model's input and output shapes or formats.",
+      "sourceDocument": "g7-ai-2026",
+      "sourceLocation": "Models cluster, element 29 of 50: Model input-output properties",
+      "element": {
+        "id": "models.model-input-output-properties",
+        "index": 29,
+        "cluster": "models",
+        "captures": "Input and output types, context length, modality, tokenizer.",
+        "statedConstraint": "Free.",
+        "conformance": "unspecified",
+        "formatFit": "partial",
+        "formatPaths": [
+          "modelCard.modelParameters.inputs[].format / outputs[].format only"
+        ]
+      }
+    },
+    {
+      "id": "G7-MOD-011",
+      "title": "Model training properties is stated",
+      "severity": "info",
+      "severityJustification": "Info because the element is useful and its absence is recoverable: a reader can ask for it, or proceed without it, without misreading the document. The source assigns no conformance level to any element, so nothing here is a finding about obligation.",
+      "onEmptySelector": "fire",
+      "onEmptySelectorJustification": "Fires on a document with no model component at all. That is the intended reading: this pack's subject is an SBOM for an AI system, and a document listing no model has not described one. Run a software pack against a software SBOM.",
+      "appliesTo": [
+        "cyclonedx"
+      ],
+      "selector": {
+        "cyclonedx": "$.components[?(@.type=='machine-learning-model')]"
+      },
+      "assert": {
+        "exists": "modelCard.modelParameters.datasets[*]|properties[?(@.name=='cdx:ai-ml:model:parameter:tune_method')]"
+      },
+      "fix": "Say what the model was trained or tuned on, and how.",
+      "sourceDocument": "g7-ai-2026",
+      "sourceLocation": "Models cluster, element 30 of 50: Model training properties",
+      "element": {
+        "id": "models.model-training-properties",
+        "index": 30,
+        "cluster": "models",
+        "captures": "All training: pre-training, fine-tuning, continual learning, RLHF, DPO, PPO, GRPO.",
+        "statedConstraint": "Free, link to model card.",
+        "conformance": "unspecified",
+        "formatFit": "partial",
+        "formatPaths": [
+          "modelCard.modelParameters.approach.type",
+          "formulation[].workflows[] for the training run",
+          "cdx:ai-ml:model:parameter:tune_method (full, sft, rlhf, adapter, prompt, lora, alora, qlora)"
+        ]
+      }
+    },
+    {
+      "id": "G7-MOD-012",
+      "title": "Model license is stated",
+      "severity": "info",
+      "severityJustification": "Info because the element is useful and its absence is recoverable: a reader can ask for it, or proceed without it, without misreading the document. The source assigns no conformance level to any element, so nothing here is a finding about obligation.",
+      "onEmptySelector": "fire",
+      "onEmptySelectorJustification": "Fires on a document with no model component at all. That is the intended reading: this pack's subject is an SBOM for an AI system, and a document listing no model has not described one. Run a software pack against a software SBOM.",
+      "appliesTo": [
+        "cyclonedx"
+      ],
+      "selector": {
+        "cyclonedx": "$.components[?(@.type=='machine-learning-model')]"
+      },
+      "assert": {
+        "exists": "licenses[*].license|licenses[*].expression"
+      },
+      "fix": "State each model's licence. Model weights carry terms that are often narrower than the surrounding code's.",
+      "sourceDocument": "g7-ai-2026",
+      "sourceLocation": "Models cluster, element 31 of 50: Model license",
+      "element": {
+        "id": "models.model-license",
+        "index": 31,
+        "cluster": "models",
+        "captures": "Licence type, and whether open weight, open architecture, open data or open training.",
+        "statedConstraint": "Link to licence doc, or the SPDX/CDX licence fields.",
+        "conformance": "unspecified",
+        "formatFit": "partial",
+        "formatPaths": [
+          "components[].licenses[] (SPDX expression)"
+        ]
+      }
+    },
+    {
+      "id": "G7-MOD-013",
+      "title": "Model external references is stated",
+      "severity": "info",
+      "severityJustification": "Info because the element is useful and its absence is recoverable: a reader can ask for it, or proceed without it, without misreading the document. The source assigns no conformance level to any element, so nothing here is a finding about obligation.",
+      "onEmptySelector": "fire",
+      "onEmptySelectorJustification": "Fires on a document with no model component at all. That is the intended reading: this pack's subject is an SBOM for an AI system, and a document listing no model has not described one. Run a software pack against a software SBOM.",
+      "appliesTo": [
+        "cyclonedx"
+      ],
+      "selector": {
+        "cyclonedx": "$.components[?(@.type=='machine-learning-model')]"
+      },
+      "assert": {
+        "exists": "externalReferences[*].url"
+      },
+      "fix": "Link out to the model card, documentation or assessment that sits behind this entry.",
+      "sourceDocument": "g7-ai-2026",
+      "sourceLocation": "Models cluster, element 32 of 50: Model external references",
+      "element": {
+        "id": "models.model-external-references",
+        "index": 32,
+        "cluster": "models",
+        "captures": "Links to model cards, system cards, papers, documentation.",
+        "statedConstraint": "Link/URL.",
+        "conformance": "unspecified",
+        "formatFit": "direct",
+        "formatPaths": [
+          "components[].externalReferences[] (47-value type enum incl. model-card, documentation, attestation, threat-model, adversary-model, risk-assessment, certification-report, pentest-report)"
+        ]
+      }
+    },
+    {
+      "id": "G7-DS-001",
+      "title": "Dataset name is stated",
+      "severity": "warning",
+      "severityJustification": "Warning rather than info because a consumer of this SBOM cannot work around the absence: there is no other field to read it from and no inference that recovers it. Never error, because the source document states that its elements are not mandatory.",
+      "onEmptySelector": "fire",
+      "onEmptySelectorJustification": "The selector walks a collection and the assertion asks whether each member carries something. A document with zero members has not satisfied that, it has avoided being measured against it, and reporting nothing would let an absent collection read as a clean result.",
+      "appliesTo": [
+        "cyclonedx"
+      ],
+      "selector": {
+        "cyclonedx": "$.components[?(@.type=='data')]"
+      },
+      "assert": {
+        "exists": "data[*].name|name"
+      },
+      "fix": "Name every dataset the models were trained or evaluated on.",
+      "sourceDocument": "g7-ai-2026",
+      "sourceLocation": "Datasets Properties cluster, element 33 of 50: Dataset name",
+      "element": {
+        "id": "datasets-properties.dataset-name",
+        "index": 33,
+        "cluster": "datasets-properties",
+        "captures": "Name given by the dataset creator.",
+        "statedConstraint": "Free.",
+        "conformance": "unspecified",
+        "formatFit": "direct",
+        "formatPaths": [
+          "componentData.name",
+          "or components[].name with type: data"
+        ]
+      }
+    },
+    {
+      "id": "G7-DS-002",
+      "title": "Dataset description is stated",
+      "severity": "info",
+      "severityJustification": "Info because the element is useful and its absence is recoverable: a reader can ask for it, or proceed without it, without misreading the document. The source assigns no conformance level to any element, so nothing here is a finding about obligation.",
+      "onEmptySelector": "fire",
+      "onEmptySelectorJustification": "The selector walks a collection and the assertion asks whether each member carries something. A document with zero members has not satisfied that, it has avoided being measured against it, and reporting nothing would let an absent collection read as a clean result.",
+      "appliesTo": [
+        "cyclonedx"
+      ],
+      "selector": {
+        "cyclonedx": "$.components[?(@.type=='data')]"
+      },
+      "assert": {
+        "exists": "data[*].description"
+      },
+      "fix": "Describe what each dataset contains.",
+      "sourceDocument": "g7-ai-2026",
+      "sourceLocation": "Datasets Properties cluster, element 34 of 50: Dataset description",
+      "element": {
+        "id": "datasets-properties.dataset-description",
+        "index": 34,
+        "cluster": "datasets-properties",
+        "captures": "What the dataset is for: pre-training, fine-tuning, benchmark, evaluation. Public or private.",
+        "statedConstraint": "Free.",
+        "conformance": "unspecified",
+        "formatFit": "direct",
+        "formatPaths": [
+          "componentData.description"
+        ]
+      }
+    },
+    {
+      "id": "G7-DS-003",
+      "title": "Dataset content is stated",
+      "severity": "info",
+      "severityJustification": "Info because the element is useful and its absence is recoverable: a reader can ask for it, or proceed without it, without misreading the document. The source assigns no conformance level to any element, so nothing here is a finding about obligation.",
+      "onEmptySelector": "fire",
+      "onEmptySelectorJustification": "The selector walks a collection and the assertion asks whether each member carries something. A document with zero members has not satisfied that, it has avoided being measured against it, and reporting nothing would let an absent collection read as a clean result.",
+      "appliesTo": [
+        "cyclonedx"
+      ],
+      "selector": {
+        "cyclonedx": "$.components[?(@.type=='data')]"
+      },
+      "assert": {
+        "exists": "data[*].type|data[*].contents"
+      },
+      "fix": "State what kind of data this is and where it can be found.",
+      "sourceDocument": "g7-ai-2026",
+      "sourceLocation": "Datasets Properties cluster, element 35 of 50: Dataset content",
+      "element": {
+        "id": "datasets-properties.dataset-content",
+        "index": 35,
+        "cluster": "datasets-properties",
+        "captures": "What is in it and in what shape: financial, medical, image, audio, JSON, XML.",
+        "statedConstraint": "Free.",
+        "conformance": "unspecified",
+        "formatFit": "partial",
+        "formatPaths": [
+          "componentData.type (enum: source-code, configuration, dataset, definition, other)",
+          ".contents.{attachment,url,properties}"
+        ]
+      }
+    },
+    {
+      "id": "G7-DS-004",
+      "title": "Dataset identifier is stated",
+      "severity": "warning",
+      "severityJustification": "Warning rather than info because a consumer of this SBOM cannot work around the absence: there is no other field to read it from and no inference that recovers it. Never error, because the source document states that its elements are not mandatory.",
+      "onEmptySelector": "fire",
+      "onEmptySelectorJustification": "The selector walks a collection and the assertion asks whether each member carries something. A document with zero members has not satisfied that, it has avoided being measured against it, and reporting nothing would let an absent collection read as a clean result.",
+      "appliesTo": [
+        "cyclonedx"
+      ],
+      "selector": {
+        "cyclonedx": "$.components[?(@.type=='data')]"
+      },
+      "assert": {
+        "exists": "purl|bom-ref|data[*].bom-ref"
+      },
+      "fix": "Give each dataset a resolvable identifier, so a later document can refer to the same one rather than to a name that has been reused.",
+      "sourceDocument": "g7-ai-2026",
+      "sourceLocation": "Datasets Properties cluster, element 36 of 50: Dataset identifier",
+      "element": {
+        "id": "datasets-properties.dataset-identifier",
+        "index": 36,
+        "cluster": "datasets-properties",
+        "captures": "Unique identification of the dataset.",
+        "statedConstraint": "URL, URI.",
+        "conformance": "unspecified",
+        "formatFit": "direct",
+        "formatPaths": [
+          "componentData.bom-ref",
+          "components[].purl"
+        ]
+      }
+    },
+    {
+      "id": "G7-DS-005",
+      "title": "Dataset hash is stated",
+      "severity": "info",
+      "severityJustification": "Info because the element is useful and its absence is recoverable: a reader can ask for it, or proceed without it, without misreading the document. The source assigns no conformance level to any element, so nothing here is a finding about obligation.",
+      "onEmptySelector": "fire",
+      "onEmptySelectorJustification": "The selector walks a collection and the assertion asks whether each member carries something. A document with zero members has not satisfied that, it has avoided being measured against it, and reporting nothing would let an absent collection read as a clean result.",
+      "appliesTo": [
+        "cyclonedx"
+      ],
+      "selector": {
+        "cyclonedx": "$.components[?(@.type=='data')]"
+      },
+      "assert": {
+        "exists": "hashes[*].content"
+      },
+      "fix": "Record a hash of the dataset, so a reader can tell whether they hold the same corpus.",
+      "sourceDocument": "g7-ai-2026",
+      "sourceLocation": "Datasets Properties cluster, element 37 of 50: Dataset hash",
+      "element": {
+        "id": "datasets-properties.dataset-hash",
+        "index": 37,
+        "cluster": "datasets-properties",
+        "captures": "Hash over the dataset file.",
+        "statedConstraint": "No algorithm field is defined (unlike Models).",
+        "conformance": "unspecified",
+        "formatFit": "partial",
+        "formatPaths": [
+          "components[].hashes[] on the wrapping component only"
+        ]
+      }
+    },
+    {
+      "id": "G7-DS-006",
+      "title": "Dataset provenance is stated",
+      "severity": "info",
+      "severityJustification": "Info because the element is useful and its absence is recoverable: a reader can ask for it, or proceed without it, without misreading the document. The source assigns no conformance level to any element, so nothing here is a finding about obligation.",
+      "onEmptySelector": "fire",
+      "onEmptySelectorJustification": "The selector walks a collection and the assertion asks whether each member carries something. A document with zero members has not satisfied that, it has avoided being measured against it, and reporting nothing would let an absent collection read as a clean result.",
+      "appliesTo": [
+        "cyclonedx"
+      ],
+      "selector": {
+        "cyclonedx": "$.components[?(@.type=='data')]"
+      },
+      "assert": {
+        "exists": "data[*].governance|data[*].contents.url"
+      },
+      "fix": "State where the data came from and who is responsible for it.",
+      "sourceDocument": "g7-ai-2026",
+      "sourceLocation": "Datasets Properties cluster, element 38 of 50: Dataset provenance",
+      "element": {
+        "id": "datasets-properties.dataset-provenance",
+        "index": 38,
+        "cluster": "datasets-properties",
+        "captures": "Origin, collection method (web crawl, commercial agreement), post-processing, curation, labelling, creator, synthetic-data method.",
+        "statedConstraint": "Free.",
+        "conformance": "unspecified",
+        "formatFit": "partial",
+        "formatPaths": [
+          "componentData.governance.{custodians,stewards,owners}",
+          ".contents.url",
+          "formulation[] for the pipeline"
+        ]
+      }
+    },
+    {
+      "id": "G7-DS-007",
+      "title": "Dataset statistical properties is stated",
+      "severity": "info",
+      "severityJustification": "Info because the element is useful and its absence is recoverable: a reader can ask for it, or proceed without it, without misreading the document. The source assigns no conformance level to any element, so nothing here is a finding about obligation. CycloneDX has no purpose-built field, so this is read from the dataset's property bag, which the crosswalk records as properties-only.",
+      "onEmptySelector": "fire",
+      "onEmptySelectorJustification": "The selector walks a collection and the assertion asks whether each member carries something. A document with zero members has not satisfied that, it has avoided being measured against it, and reporting nothing would let an absent collection read as a clean result.",
+      "appliesTo": [
+        "cyclonedx"
+      ],
+      "selector": {
+        "cyclonedx": "$.components[?(@.type=='data')]"
+      },
+      "assert": {
+        "exists": "data[*].properties[*]|data[*].graphics"
+      },
+      "fix": "Describe the shape of the data: size, balance, distribution across the groups that matter for the task.",
+      "sourceDocument": "g7-ai-2026",
+      "sourceLocation": "Datasets Properties cluster, element 39 of 50: Dataset statistical properties",
+      "element": {
+        "id": "datasets-properties.dataset-statistical-properties",
+        "index": 39,
+        "cluster": "datasets-properties",
+        "captures": "Mean, variance, median, mode, range, skewness across the dataset lifecycle.",
+        "statedConstraint": "Free.",
+        "conformance": "unspecified",
+        "formatFit": "properties-only",
+        "formatPaths": [
+          "componentData.properties[] or .graphics"
+        ]
+      }
+    },
+    {
+      "id": "G7-DS-008",
+      "title": "Dataset sensitivity is stated",
+      "severity": "warning",
+      "severityJustification": "Warning rather than info because a consumer of this SBOM cannot work around the absence: there is no other field to read it from and no inference that recovers it. Never error, because the source document states that its elements are not mandatory.",
+      "onEmptySelector": "fire",
+      "onEmptySelectorJustification": "The selector walks a collection and the assertion asks whether each member carries something. A document with zero members has not satisfied that, it has avoided being measured against it, and reporting nothing would let an absent collection read as a clean result.",
+      "appliesTo": [
+        "cyclonedx"
+      ],
+      "selector": {
+        "cyclonedx": "$.components[?(@.type=='data')]"
+      },
+      "assert": {
+        "exists": "data[*].sensitiveData[*]|data[*].classification"
+      },
+      "fix": "State whether the training data contains sensitive or personal information. A reader cannot infer this from a dataset name, and getting it wrong has consequences outside the software.",
+      "sourceDocument": "g7-ai-2026",
+      "sourceLocation": "Datasets Properties cluster, element 40 of 50: Dataset sensitivity",
+      "element": {
+        "id": "datasets-properties.dataset-sensitivity",
+        "index": 40,
+        "cluster": "datasets-properties",
+        "captures": "Whether it contains PII, freely accessible, copyright-protected, sensitive (financial, medical) or national-security data.",
+        "statedConstraint": "Free.",
+        "conformance": "unspecified",
+        "formatFit": "partial",
+        "formatPaths": [
+          "componentData.sensitiveData[] (free-text array)",
+          ".classification (unconstrained string)"
+        ]
+      }
+    },
+    {
+      "id": "G7-DS-009",
+      "title": "Dataset dependency relationship is stated",
+      "severity": "info",
+      "severityJustification": "Info because the element is useful and its absence is recoverable: a reader can ask for it, or proceed without it, without misreading the document. The source assigns no conformance level to any element, so nothing here is a finding about obligation.",
+      "onEmptySelector": "fire",
+      "onEmptySelectorJustification": "The selector walks a collection and the assertion asks whether each member carries something. A document with zero members has not satisfied that, it has avoided being measured against it, and reporting nothing would let an absent collection read as a clean result.",
+      "appliesTo": [
+        "cyclonedx"
+      ],
+      "selector": {
+        "cyclonedx": "$"
+      },
+      "assert": {
+        "exists": "dependencies[*].dependsOn[*]|relationships[*].relatedSpdxElement"
+      },
+      "fix": "Say which model was trained on which dataset, rather than listing both and leaving the link to be guessed.",
+      "sourceDocument": "g7-ai-2026",
+      "sourceLocation": "Datasets Properties cluster, element 41 of 50: Dataset dependency relationship",
+      "element": {
+        "id": "datasets-properties.dataset-dependency-relationship",
+        "index": 41,
+        "cluster": "datasets-properties",
+        "captures": "Software used to create, modify and maintain the dataset. Derivation from another dataset.",
+        "statedConstraint": "Free.",
+        "conformance": "unspecified",
+        "formatFit": "partial",
+        "formatPaths": [
+          "dependencies[] on the data component",
+          "formulation[].components[] for the tooling"
+        ]
+      }
+    },
+    {
+      "id": "G7-DS-010",
+      "title": "Dataset license is stated",
+      "severity": "info",
+      "severityJustification": "Info because the element is useful and its absence is recoverable: a reader can ask for it, or proceed without it, without misreading the document. The source assigns no conformance level to any element, so nothing here is a finding about obligation.",
+      "onEmptySelector": "fire",
+      "onEmptySelectorJustification": "The selector walks a collection and the assertion asks whether each member carries something. A document with zero members has not satisfied that, it has avoided being measured against it, and reporting nothing would let an absent collection read as a clean result.",
+      "appliesTo": [
+        "cyclonedx"
+      ],
+      "selector": {
+        "cyclonedx": "$.components[?(@.type=='data')]"
+      },
+      "assert": {
+        "exists": "licenses[*].license|licenses[*].expression"
+      },
+      "fix": "State each dataset's licence. Training-data terms frequently restrict redistribution of anything derived from them.",
+      "sourceDocument": "g7-ai-2026",
+      "sourceLocation": "Datasets Properties cluster, element 42 of 50: Dataset license",
+      "element": {
+        "id": "datasets-properties.dataset-license",
+        "index": 42,
+        "cluster": "datasets-properties",
+        "captures": "Licence type of the dataset.",
+        "statedConstraint": "Link to licence doc.",
+        "conformance": "unspecified",
+        "formatFit": "direct",
+        "formatPaths": [
+          "components[].licenses[]"
+        ]
+      }
+    },
+    {
+      "id": "G7-INF-001",
+      "title": "Infrastructure software is stated",
+      "severity": "info",
+      "severityJustification": "Info because the element is useful and its absence is recoverable: a reader can ask for it, or proceed without it, without misreading the document. The source assigns no conformance level to any element, so nothing here is a finding about obligation.",
+      "onEmptySelector": "fire",
+      "onEmptySelectorJustification": "The selector walks a collection and the assertion asks whether each member carries something. A document with zero members has not satisfied that, it has avoided being measured against it, and reporting nothing would let an absent collection read as a clean result.",
+      "appliesTo": [
+        "cyclonedx"
+      ],
+      "selector": {
+        "cyclonedx": "$"
+      },
+      "assert": {
+        "exists": "components[?(@.type=='library')].name|components[?(@.type=='framework')].name|components[?(@.type=='container')].name|components[?(@.type=='operating-system')].name"
+      },
+      "fix": "List the runtime the model executes on. An inference stack is where most of the reachable vulnerabilities actually are.",
+      "sourceDocument": "g7-ai-2026",
+      "sourceLocation": "Infrastructure cluster, element 43 of 50: Infrastructure software",
+      "element": {
+        "id": "infrastructure.infrastructure-software",
+        "index": 43,
+        "cluster": "infrastructure",
+        "captures": "Firmware, package managers, third-party libraries, frameworks, runtimes, tools needed to run the system.",
+        "statedConstraint": "Free.",
+        "conformance": "unspecified",
+        "formatFit": "direct",
+        "formatPaths": [
+          "components[] of type library/framework/container/operating-system + dependencies[]",
+          "formulation[].components[]"
+        ]
+      }
+    },
+    {
+      "id": "G7-INF-002",
+      "title": "Infrastructure hardware is stated",
+      "severity": "info",
+      "severityJustification": "Info because the element is useful and its absence is recoverable: a reader can ask for it, or proceed without it, without misreading the document. The source assigns no conformance level to any element, so nothing here is a finding about obligation.",
+      "onEmptySelector": "fire",
+      "onEmptySelectorJustification": "The selector walks a collection and the assertion asks whether each member carries something. A document with zero members has not satisfied that, it has avoided being measured against it, and reporting nothing would let an absent collection read as a clean result.",
+      "appliesTo": [
+        "cyclonedx"
+      ],
+      "selector": {
+        "cyclonedx": "$"
+      },
+      "assert": {
+        "exists": "components[?(@.type=='device')].name|metadata.component.externalReferences[?(@.type=='bom')]"
+      },
+      "fix": "Identify the hardware the system runs on, or link to the bill of materials that does.",
+      "sourceDocument": "g7-ai-2026",
+      "sourceLocation": "Infrastructure cluster, element 44 of 50: Infrastructure hardware",
+      "element": {
+        "id": "infrastructure.infrastructure-hardware",
+        "index": 44,
+        "cluster": "infrastructure",
+        "captures": "Link to an existing HBOM covering the hardware the system runs on.",
+        "statedConstraint": "Link to an HBOM.",
+        "conformance": "unspecified",
+        "formatFit": "partial",
+        "formatPaths": [
+          "externalReferences[].type: 'bom' with a BOM-Link URN",
+          "components[].type: 'device'"
+        ]
+      }
+    },
+    {
+      "id": "G7-SEC-001",
+      "title": "Security controls is stated",
+      "severity": "info",
+      "severityJustification": "Info because the element is useful and its absence is recoverable: a reader can ask for it, or proceed without it, without misreading the document. The source assigns no conformance level to any element, so nothing here is a finding about obligation. The crosswalk records this as properties-only in CycloneDX: there is no purpose-built field, so a property bag or an external reference is the honest place for it and the rule accepts either.",
+      "onEmptySelector": "fire",
+      "onEmptySelectorJustification": "The selector walks a collection and the assertion asks whether each member carries something. A document with zero members has not satisfied that, it has avoided being measured against it, and reporting nothing would let an absent collection read as a clean result.",
+      "appliesTo": [
+        "cyclonedx"
+      ],
+      "selector": {
+        "cyclonedx": "$"
+      },
+      "assert": {
+        "exists": "declarations|metadata.properties[?(@.name=='stratifypro:security-controls')]|components[?(@.type=='machine-learning-model')].externalReferences[?(@.type=='threat-model')]"
+      },
+      "fix": "State what protects the system, or link to the threat model that does.",
+      "sourceDocument": "g7-ai-2026",
+      "sourceLocation": "Security Properties cluster, element 45 of 50: Security controls",
+      "element": {
+        "id": "security-properties.security-controls",
+        "index": 45,
+        "cluster": "security-properties",
+        "captures": "General controls (encryption, data minimisation, differential privacy, access control, API auth, anomaly detection) AND AI-specific controls (adversarial robustness training, prompt injection controls, I/O filters, training-data curation).",
+        "statedConstraint": "Free, may link to a framework.",
+        "conformance": "unspecified",
+        "formatFit": "properties-only",
+        "formatPaths": [
+          "properties[] under a private namespace",
+          "externalReferences[].type: threat-model / adversary-model / risk-assessment",
+          "declarations[] (CDXA) against definitions.standards[]"
+        ]
+      }
+    },
+    {
+      "id": "G7-SEC-002",
+      "title": "Security compliance is stated",
+      "severity": "info",
+      "severityJustification": "Info because the element is useful and its absence is recoverable: a reader can ask for it, or proceed without it, without misreading the document. The source assigns no conformance level to any element, so nothing here is a finding about obligation.",
+      "onEmptySelector": "fire",
+      "onEmptySelectorJustification": "The selector walks a collection and the assertion asks whether each member carries something. A document with zero members has not satisfied that, it has avoided being measured against it, and reporting nothing would let an absent collection read as a clean result.",
+      "appliesTo": [
+        "cyclonedx"
+      ],
+      "selector": {
+        "cyclonedx": "$"
+      },
+      "assert": {
+        "exists": "declarations.attestations[*]|definitions.standards[*].name"
+      },
+      "fix": "Name the standard the system has been assessed against, and who assessed it.",
+      "sourceDocument": "g7-ai-2026",
+      "sourceLocation": "Security Properties cluster, element 46 of 50: Security compliance",
+      "element": {
+        "id": "security-properties.security-compliance",
+        "index": 46,
+        "cluster": "security-properties",
+        "captures": "Certification schemes, standards or frameworks the model or system complies with.",
+        "statedConstraint": "Free.",
+        "conformance": "unspecified",
+        "formatFit": "partial",
+        "formatPaths": [
+          "declarations[] (CDXA)",
+          "externalReferences[].type: certification-report"
+        ]
+      }
+    },
+    {
+      "id": "G7-SEC-003",
+      "title": "Cybersecurity policy information is stated",
+      "severity": "info",
+      "severityJustification": "Info because the element is useful and its absence is recoverable: a reader can ask for it, or proceed without it, without misreading the document. The source assigns no conformance level to any element, so nothing here is a finding about obligation.",
+      "onEmptySelector": "fire",
+      "onEmptySelectorJustification": "The selector walks a collection and the assertion asks whether each member carries something. A document with zero members has not satisfied that, it has avoided being measured against it, and reporting nothing would let an absent collection read as a clean result.",
+      "appliesTo": [
+        "cyclonedx"
+      ],
+      "selector": {
+        "cyclonedx": "$"
+      },
+      "assert": {
+        "exists": "externalReferences[?(@.type=='security-contact')]|metadata.properties[?(@.name=='stratifypro:cybersecurity-policy')]"
+      },
+      "fix": "Link to the vulnerability disclosure policy, so somebody who finds a problem knows where to send it.",
+      "sourceDocument": "g7-ai-2026",
+      "sourceLocation": "Security Properties cluster, element 47 of 50: Cybersecurity policy information",
+      "element": {
+        "id": "security-properties.cybersecurity-policy-information",
+        "index": 47,
+        "cluster": "security-properties",
+        "captures": "Link to the producer's published security.txt.",
+        "statedConstraint": "URL to a security.txt file.",
+        "conformance": "unspecified",
+        "formatFit": "partial",
+        "formatPaths": [
+          "externalReferences[] with an appropriate type"
+        ]
+      }
+    },
+    {
+      "id": "G7-SEC-004",
+      "title": "Vulnerability referencing is stated",
+      "severity": "warning",
+      "severityJustification": "Warning rather than info because a consumer of this SBOM cannot work around the absence: there is no other field to read it from and no inference that recovers it. Never error, because the source document states that its elements are not mandatory.",
+      "onEmptySelector": "fire",
+      "onEmptySelectorJustification": "The selector walks a collection and the assertion asks whether each member carries something. A document with zero members has not satisfied that, it has avoided being measured against it, and reporting nothing would let an absent collection read as a clean result.",
+      "appliesTo": [
+        "cyclonedx"
+      ],
+      "selector": {
+        "cyclonedx": "$"
+      },
+      "assert": {
+        "exists": "vulnerabilities[*].id|externalReferences[?(@.type=='vulnerability-assertion')]"
+      },
+      "fix": "Say where the vulnerability statements for this system live, or carry them here. An AI SBOM with no route to vulnerability data cannot be used for the thing SBOMs are mainly used for.",
+      "sourceDocument": "g7-ai-2026",
+      "sourceLocation": "Security Properties cluster, element 48 of 50: Vulnerability referencing",
+      "element": {
+        "id": "security-properties.vulnerability-referencing",
+        "index": 48,
+        "cluster": "security-properties",
+        "captures": "Link to databases or repositories showing exploitability of known vulnerabilities.",
+        "statedConstraint": "Static link/URL.",
+        "conformance": "unspecified",
+        "formatFit": "direct",
+        "formatPaths": [
+          "vulnerabilities[] (CVE, CWE, CVSS ratings, VEX analysis state)",
+          "externalReferences[].type: vulnerability-assertion"
+        ]
+      }
+    },
+    {
+      "id": "G7-KPI-001",
+      "title": "Security metrics is stated",
+      "severity": "info",
+      "severityJustification": "Info because the element is useful and its absence is recoverable: a reader can ask for it, or proceed without it, without misreading the document. The source assigns no conformance level to any element, so nothing here is a finding about obligation. The crosswalk records this as properties-only: CycloneDX carries performance metrics as free-text type and a string value, so nothing here is comparable across vendors and the rule asks only that a figure is stated.",
+      "onEmptySelector": "fire",
+      "onEmptySelectorJustification": "Fires on a document with no model component at all. That is the intended reading: this pack's subject is an SBOM for an AI system, and a document listing no model has not described one. Run a software pack against a software SBOM.",
+      "appliesTo": [
+        "cyclonedx"
+      ],
+      "selector": {
+        "cyclonedx": "$.components[?(@.type=='machine-learning-model')]"
+      },
+      "assert": {
+        "exists": "modelCard.quantitativeAnalysis.performanceMetrics[*].type"
+      },
+      "fix": "Record the measured performance of the model, including the failure rate that matters for its intended use.",
+      "sourceDocument": "g7-ai-2026",
+      "sourceLocation": "Key Performance Indicators cluster, element 49 of 50: Security metrics",
+      "element": {
+        "id": "key-performance-indicators.security-metrics",
+        "index": 49,
+        "cluster": "key-performance-indicators",
+        "captures": "Metrics for the security characteristics of the models or the system, such as robustness benchmarks.",
+        "statedConstraint": "Free.",
+        "conformance": "unspecified",
+        "formatFit": "properties-only",
+        "formatPaths": [
+          "modelCard.quantitativeAnalysis.performanceMetrics[] (type free text, value is a STRING, optional slice and confidence interval)"
+        ]
+      }
+    },
+    {
+      "id": "G7-KPI-002",
+      "title": "Operational performance KPIs is stated",
+      "severity": "info",
+      "severityJustification": "Info because the element is useful and its absence is recoverable: a reader can ask for it, or proceed without it, without misreading the document. The source assigns no conformance level to any element, so nothing here is a finding about obligation. Properties-only in CycloneDX, so this reads a property bag and says so rather than implying the format has a home for it.",
+      "onEmptySelector": "fire",
+      "onEmptySelectorJustification": "The selector walks a collection and the assertion asks whether each member carries something. A document with zero members has not satisfied that, it has avoided being measured against it, and reporting nothing would let an absent collection read as a clean result.",
+      "appliesTo": [
+        "cyclonedx"
+      ],
+      "selector": {
+        "cyclonedx": "$"
+      },
+      "assert": {
+        "exists": "metadata.properties[?(@.name=='stratifypro:operational-kpi')]|components[?(@.type=='machine-learning-model')].properties[*]"
+      },
+      "fix": "Record the operational figures an integrator needs: latency, throughput, resource envelope.",
+      "sourceDocument": "g7-ai-2026",
+      "sourceLocation": "Key Performance Indicators cluster, element 50 of 50: Operational performance KPIs",
+      "element": {
+        "id": "key-performance-indicators.operational-performance-kpis",
+        "index": 50,
+        "cluster": "key-performance-indicators",
+        "captures": "Uptime, incident resolution time, latency, request throughput, load balancing.",
+        "statedConstraint": "Free.",
+        "conformance": "unspecified",
+        "formatFit": "properties-only",
+        "formatPaths": [
+          "properties[] only"
+        ]
+      }
+    }
+  ]
+}

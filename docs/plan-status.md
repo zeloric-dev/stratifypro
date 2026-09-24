@@ -23,6 +23,7 @@ It exists because of a specific mistake, recorded below.
 | 2.11 | Texas SB 2610 security program, mapped to CIS IG1 | **drafted, unsigned, unreviewed** |
 | 2.9 | Written incident response plan | **partial**, never rehearsed |
 | 2.10 | NIST SSDF self-attestation | **drafted, unsigned** |
+| 3.1 | `g7-ai-2026` pack, all 50 elements | **done**, generated from the crosswalk |
 
 **2.5 was built after all.** The gate below has still not passed; the
 instruction to proceed was given three times and is recorded rather than
@@ -548,8 +549,8 @@ not a paraphrase.
 | 1.7 | `apps/cli` published to npm | **not done** |
 | 1.8 | `apps/web` free checker at `stratifypro.io` | software done, **not at that domain** |
 | 1.9 | A defective sample preloaded on arrival | done |
-| 1.10 | Five-event instrumentation | **not done, and contradicts 1.8** |
-| 1.11 | Sentry wired | **not done, and contradicts 1.8** |
+| 1.10 | Five-event instrumentation | **withdrawn**, 1.8 wins. See docs/measurement.md |
+| 1.11 | Sentry wired | **withdrawn** for the public page, same reason |
 | 1.12 | Run the engine over all corpus files, publish the results | done |
 | 1.13 | `packages/resolve`, deterministic tiers only | done |
 | 1.14 | `packages/vulnmatch`, PURL-native | done |
@@ -557,6 +558,77 @@ not a paraphrase.
 | 1.16 | `bench/identity` v0, dataset, runner, four baselines | done |
 
 ### The five that are not done, and why each one is not a typo
+
+**3.1 is done: the g7-ai-2026 pack, all 50 elements.** SPEC.md puts Phase 3
+behind Gate 3, which has not passed, for the same recorded reason Phase 2 was
+built ahead of Gate 2.
+
+It is GENERATED from `docs/crosswalk/data/ai-sbom-crosswalk.json` rather than
+written by hand, and `verify.sh` regenerates it on every run and fails on any
+drift. The crosswalk supplies the element id, its name, what it captures, its
+stated constraint and its format mappings; the selector, assertion, severity
+and fix are judgement and live in one table in `scripts/build-g7-pack.py`, so
+the translation from a crosswalk path to a JSONPath is readable in one place
+instead of inferred from 50 files. The generator also refuses a rule naming an
+element that does not exist and an element with no rule, because "all 50
+elements" is the acceptance and a count is the easiest thing here to be quietly
+wrong about.
+
+**Not one rule is an error, and cannot be.** The G7 document says of itself:
+"These minimum elements are not mandatory; do not create requirements,
+standards, or legislation." `normativeLanguage` is false and the loader refuses
+`error` on any rule citing it. 17 warnings, 33 info. This is the case SPEC.md
+predicted that rule would bite on, and it bit.
+
+**CycloneDX only, and the reason is mechanical rather than a judgement about
+SPDX.** The crosswalk maps 44 of the 50 elements into SPDX 3.0.1, and the
+engine reads SPDX 3 by normalising it into the shape the rules address.
+`reference-engine.py` evaluates a selector against the raw fixture and does not
+normalise, so an SPDX 3.0.1 fixture would match nothing and the fixture proof
+would be a formality. CycloneDX carries all 50 elements, so the element list is
+complete either way. Teaching the reference engine to normalise is the next
+change and the SPDX selectors land with it.
+
+**Every fixture is the same document with one thing removed.** The pass fixture
+is a complete AI SBOM satisfying all 50 rules; each fail fixture is that
+document with exactly the field the rule asks about deleted, named in the
+generator. The difference between passing and failing is one deletion, which is
+hard to write dishonestly. 128 fixture pairs now prove rather than assert.
+
+**Adding the pack broke five things, which is what those checks are for.** The
+golden artifact went from 42 files to 63 and from 24,421 recorded paths to
+24,747, and the pinned counts in `golden.test.ts` said so rather than comparing
+fewer files quietly. `check-claims.py` computed expected fixture files as
+`rules * 4`, which was right while every pack covered both formats and wrong
+the moment one did not; it now sums `2 * len(appliesTo)` per rule.
+`check-pack-lists.py` refused three hand-written lists in the web app that did
+not mention the new pack, so the free checker now offers it. `corpus-results.md`
+no longer matched the engine and was regenerated. And the rule-id pattern
+allowed letters only, which made a source with a digit in its name uncitable.
+
+**1.10 and 1.11 are withdrawn, not deferred, and 1.8 is why.** SPEC.md asks
+for five instrumentation events and for Sentry, and in the same phase requires
+the free checker to show "zero requests after page load" while `docs/copy.md`
+tells a visitor their file is never uploaded. Both cannot be true, and the
+contradiction sat in the plan unresolved rather than being decided.
+
+It is decided in favour of the promise. The reasoning is in
+`docs/measurement.md` and the short version is that the middle position,
+firing events only after a deliberate outward click, is the worst of the three
+rather than the compromise it looks like. `verify.sh`'s network guard decides
+"is there a network primitive here", which a grep can answer. It cannot decide
+"is this the one request we allow", and that guard has reported clean while
+wrong four times, once on a planted POST of the parsed SBOM. A conditional
+promise would be enforced by a judgement that has already failed repeatedly.
+
+**It does not mean nothing is measured, and the plan implied that it did.**
+Two of the five events need no code on the page at all: arrival is a request
+for the page, which the edge logs before "after page load" begins, and contact
+clicked is observable where it lands. The three that are genuinely lost are
+the three that fire while a customer's bill of materials is in the tab.
+`docs/measurement.md` states what that costs, including the two things it
+costs that are worth minding: no located drop-off, and no error reporting from
+the public page.
 
 **1.2 now meets its acceptance, and the route there is worth recording.** The
 acceptance is "CycloneDX 1.4-1.7 and SPDX 2.2-3.0.1". This paragraph used to
