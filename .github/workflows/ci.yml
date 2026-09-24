@@ -125,6 +125,19 @@ jobs:
       - name: The SPDX 3 converter loses nothing, and the test has been seen to fail
         run: python3 scripts/spdx3-mutation-test.py
 
+      # SPEC.md 2.5 accepts on one sentence: `cosign verify-blob` succeeds
+      # against the published public key. That cannot be met by signing with
+      # our code and verifying with our code, because both halves can share a
+      # mistake and still agree.
+      #
+      # So this drives the real CLI end to end and hands the result to
+      # something that knows nothing about this repository. openssl implements
+      # the same primitive cosign does and is present on the runner; cosign
+      # itself is a 189 MB binary and is used when installed. The script says
+      # which of the two ran, so a green line never implies more than happened.
+      - name: A sealed bundle verifies with tools that are not ours
+        run: python3 scripts/check-seal-interop.py
+
       # The dogfood. A checker whose own bill of materials has never been
       # checked is selling something it has not tried. This re-runs the engine
       # over the committed SBOM of this repository and fails if the published

@@ -237,6 +237,16 @@ else echo "    clean"; fi
 # exemption becomes a hole rather than a trade.
 run "the attestation is SPEC.md Step 11, verbatim"     python3 scripts/check-attestation.py
 
+# SPEC.md's security table, the row "No secrets in the repo".
+#
+# This was a policy with nothing enforcing it, which was survivable while
+# nothing here could produce a key. `stratifypro keygen` can, and the accident
+# is one keystroke wide: `keygen --out .` writes cosign.key into the working
+# tree and the next `git add -A` commits a signing key to a public repository.
+# .gitignore covers the names this tool writes; it does not cover a key
+# somebody renames, moves, or pastes into a fixture.
+run "no private key material is tracked"     python3 scripts/check-no-private-keys.py
+
 # SPEC.md's security table, the row "No client-supplied firm_id trusted", names
 # a grep test. packages/db/src/rls.test.ts proves the behaviour, but a
 # behavioural test can only fail on a policy something exercises: a policy
