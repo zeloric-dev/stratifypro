@@ -540,7 +540,7 @@ not a paraphrase.
 | # | Step | Status |
 |---|---|---|
 | 1.1 | Monorepo scaffold, CI green on an empty build | done |
-| 1.2 | `packages/engine` parse and detect both formats | done, **narrower than the acceptance** |
+| 1.2 | `packages/engine` parse and detect both formats | done, CycloneDX 1.2-1.7 and SPDX 2.2-3.0.1 |
 | 1.3 | Rule pack schema + loader with mandatory `severityJustification` | done |
 | 1.4 | `cisa-2026-v2.1` pack, 17 fields + 6 practices | done |
 | 1.5 | `fda-524b` pack, built against the teardown gaps | done |
