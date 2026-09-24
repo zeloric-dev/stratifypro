@@ -11,13 +11,14 @@
     "test": "node --test dist/**/*.test.js"
   },
   "dependencies": {
+    "@stratifypro/draft": "workspace:*",
     "@stratifypro/engine": "workspace:*",
-    "@stratifypro/report": "workspace:*",
-    "@stratifypro/mirror": "workspace:*",
-    "@stratifypro/vulnmatch": "workspace:*",
-    "@stratifypro/resolve": "workspace:*",
     "@stratifypro/ledger": "workspace:*",
-    "@stratifypro/draft": "workspace:*"
+    "@stratifypro/mirror": "workspace:*",
+    "@stratifypro/modelcard": "workspace:*",
+    "@stratifypro/report": "workspace:*",
+    "@stratifypro/resolve": "workspace:*",
+    "@stratifypro/vulnmatch": "workspace:*"
   },
   "bin": {
     "stratifypro": "./dist/index.js"

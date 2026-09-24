@@ -1,0 +1,31 @@
+{
+  "name": "@stratifypro/modelcard",
+  "version": "0.0.0",
+  "private": true,
+  "license": "Apache-2.0",
+  "type": "module",
+  "description": "A GGUF model in, a CycloneDX 1.7 model card out. Always a draft.",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    }
+  },
+  "files": [
+    "dist",
+    "src/fixtures"
+  ],
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "test": "node --test dist/**/*.test.js"
+  },
+  "devDependencies": {
+    "@types/node": "22.9.0"
+  },
+  "dependencies": {
+    "@stratifypro/engine": "workspace:*"
+  }
+}

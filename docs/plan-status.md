@@ -24,6 +24,8 @@ It exists because of a specific mistake, recorded below.
 | 2.9 | Written incident response plan | **partial**, never rehearsed |
 | 2.10 | NIST SSDF self-attestation | **drafted, unsigned** |
 | 3.1 | `g7-ai-2026` pack, all 50 elements | **done**, generated from the crosswalk |
+| 3.2 | CycloneDX 1.7 model card from a GGUF model | **done**, round-trips with zero errors |
+| 3.3 | The four gaps: rules, fixtures, schema-extension proposals | **done**, docs/schema-extensions.md |
 
 **2.5 was built after all.** The gate below has still not passed; the
 instruction to proceed was given three times and is recorded rather than
@@ -558,6 +560,69 @@ not a paraphrase.
 | 1.16 | `bench/identity` v0, dataset, runner, four baselines | done |
 
 ### The five that are not done, and why each one is not a typo
+
+**3.3 is done: the four gaps now have proposals, not just rules.** The rules
+and fixtures already existed; what was missing was the third part of the
+acceptance. `docs/schema-extensions.md` proposes a concrete schema change for
+each of support lifecycle, security controls, the hardware link and the KPI
+cluster.
+
+Two independent pieces of evidence pick those four and they agree.
+`docs/teardown.md` ran the competing validators and found seven of sixteen FDA
+rules asked by neither tool, support level and end-of-support among them. The
+AI crosswalk rated all 50 G7 elements against both formats and four came out
+`properties-only`, which its own scale defines as "expressible only through a
+free-form property bag or an external link. Not interoperable."
+
+**What properties-only costs is the point of the document.** StratifyPro writes
+`stratifypro:end-of-support` because it had to write something; another tool
+writes `acme:eol`. Both are conformant and neither is comparable, so a rule
+checking such a field can only ask whether somebody's convention is present,
+which is weaker than what the regulation asks. Every affected rule's severity
+justification already says so, and the document says it once in full.
+
+The weakest of the four is the KPI cluster, and it is the one where the gap
+does most damage: CycloneDX carries a performance metric as a free-text type
+and a **string** value, so "0.021", "2.1%" and "about 2 percent" are all
+conformant. For an AI component the performance figure is the safety argument,
+and it is the field least able to carry one.
+
+Nothing is filed upstream. That is an outward-facing act and the owner's to
+make, and a proposal filed without a worked example is noise; all four now have
+one. `scripts/check-schema-extensions.py` keeps the document honest by
+requiring every rule it cites to be shipped and fixtured, and four gaps to be
+four.
+
+**3.2 is done, and what it found is more interesting than that it works.**
+`stratifypro modelcard <file.gguf>` reads the metadata block GGUF carries at
+the front of a model and writes a CycloneDX 1.7 model card. Only the header is
+read, so a 20 GB model and its 700 KB header cost the same. SPEC.md's
+acceptance is that the card round-trips through the checker with zero errors,
+and it does: 16 rules run, 9 findings, no error.
+
+**The fixture is a real published model, and it answers two of nine G7
+elements.** `stories15M-q4_0.metadata.gguf` is the first 723,798 bytes of a
+model on Hugging Face, which is exactly its metadata block, and the byte-range
+request that produces it hashes to the committed file so the provenance is
+checkable rather than asserted. That file states no licence, no producer, no
+version and no description. **That is the finding, not an inconvenience with
+the fixture: the metadata a team needs for a regulatory submission is mostly
+not in the file they ship.** The generator reports every element it could not
+answer, by rule id, on every run.
+
+Three things about that file would not have appeared in a fixture written
+here, which is the argument against writing one. Its tokenizer array comes
+first and pushes `general.name` 466 KB into the file, so a reader that gave up
+early would report a model that does not name itself. Its key order is not the
+documented order. And it sets almost nothing, so a hand-built fixture would
+have carried the four keys the code wanted, in the order it expected, and the
+honest reporting of absence would never have run.
+
+Nothing is invented. No licence is guessed from a model name, no producer from
+the repository it was downloaded from. A hash appears only when the caller
+hashed the whole file, because a hash of the header would look like a model
+hash and identify nothing. And the card carries `stratifypro:draft`, the same
+marker a supplier spreadsheet gets, so `bundle` refuses to seal it.
 
 **3.1 is done: the g7-ai-2026 pack, all 50 elements.** SPEC.md puts Phase 3
 behind Gate 3, which has not passed, for the same recorded reason Phase 2 was

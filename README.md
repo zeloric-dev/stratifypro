@@ -152,6 +152,7 @@ of those.
 | `packages/ledger` | The evidence bundle |
 | `packages/draft` | A supplier document in, a CycloneDX draft out |
 | `packages/pdf` | Just enough of PDF to read a parts table, and to refuse a scan |
+| `packages/modelcard` | A GGUF model header in, a CycloneDX model card out. Always a draft |
 | `packages/zip` | Just enough of PKZIP to read an OSV export or a workbook |
 | `apps/cli` | The command line tool and its exit-code contract |
 | `apps/sync` | The only code here that touches the network |
