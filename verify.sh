@@ -103,6 +103,15 @@ echo "--- the file checker cannot upload anything"
 #      pattern; nothing else would have found it, because the check had never
 #      been watched failing.
 #
+# WHY THIS IS NOT NEGOTIATED DOWN. SPEC.md 1.10 asks for five analytics events
+# and 1.11 for Sentry, which cannot coexist with the sentence above. Both were
+# WITHDRAWN rather than deferred, and docs/measurement.md records the argument.
+# The part that matters here: a narrower promise, "only these two requests and
+# only after a click", would have to be enforced by this check deciding which
+# call is which. It decides "is there a network primitive", which is a question
+# a grep can answer. The four failures listed above were all it getting that
+# easier question wrong. Do not add an allowlist to this check.
+#
 # So: scan everything that can reach the bundle, and match the bare identifiers
 # rather than a call shape. An alias still has to name the function once, and
 # naming it through a property access now counts.

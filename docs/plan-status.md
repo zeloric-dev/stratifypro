@@ -548,8 +548,8 @@ not a paraphrase.
 | 1.7 | `apps/cli` published to npm | **not done** |
 | 1.8 | `apps/web` free checker at `stratifypro.io` | software done, **not at that domain** |
 | 1.9 | A defective sample preloaded on arrival | done |
-| 1.10 | Five-event instrumentation | **not done, and contradicts 1.8** |
-| 1.11 | Sentry wired | **not done, and contradicts 1.8** |
+| 1.10 | Five-event instrumentation | **withdrawn**, 1.8 wins. See docs/measurement.md |
+| 1.11 | Sentry wired | **withdrawn** for the public page, same reason |
 | 1.12 | Run the engine over all corpus files, publish the results | done |
 | 1.13 | `packages/resolve`, deterministic tiers only | done |
 | 1.14 | `packages/vulnmatch`, PURL-native | done |
@@ -557,6 +557,30 @@ not a paraphrase.
 | 1.16 | `bench/identity` v0, dataset, runner, four baselines | done |
 
 ### The five that are not done, and why each one is not a typo
+
+**1.10 and 1.11 are withdrawn, not deferred, and 1.8 is why.** SPEC.md asks
+for five instrumentation events and for Sentry, and in the same phase requires
+the free checker to show "zero requests after page load" while `docs/copy.md`
+tells a visitor their file is never uploaded. Both cannot be true, and the
+contradiction sat in the plan unresolved rather than being decided.
+
+It is decided in favour of the promise. The reasoning is in
+`docs/measurement.md` and the short version is that the middle position,
+firing events only after a deliberate outward click, is the worst of the three
+rather than the compromise it looks like. `verify.sh`'s network guard decides
+"is there a network primitive here", which a grep can answer. It cannot decide
+"is this the one request we allow", and that guard has reported clean while
+wrong four times, once on a planted POST of the parsed SBOM. A conditional
+promise would be enforced by a judgement that has already failed repeatedly.
+
+**It does not mean nothing is measured, and the plan implied that it did.**
+Two of the five events need no code on the page at all: arrival is a request
+for the page, which the edge logs before "after page load" begins, and contact
+clicked is observable where it lands. The three that are genuinely lost are
+the three that fire while a customer's bill of materials is in the tab.
+`docs/measurement.md` states what that costs, including the two things it
+costs that are worth minding: no located drop-off, and no error reporting from
+the public page.
 
 **1.2 now meets its acceptance, and the route there is worth recording.** The
 acceptance is "CycloneDX 1.4-1.7 and SPDX 2.2-3.0.1". This paragraph used to
