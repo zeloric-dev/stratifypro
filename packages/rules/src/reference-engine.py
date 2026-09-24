@@ -53,9 +53,15 @@ def has(node, expr):
     for alt in expr.split("|"):
         cur = node
         ok = True
-        for k in alt.replace("$.", "").split("."):
+        segments = alt.replace("$.", "").split(".")
+        for i, k in enumerate(segments):
             if k.endswith("]") or "[" in k:
-                sub = jp(cur if isinstance(cur, (dict, list)) else {}, "$." + alt.replace("$.", ""))
+                # The REMAINING path, not the whole one. Handing the full
+                # expression back after cur has already walked part of it made
+                # "metadata.authors[*].name" look for that path inside
+                # metadata. It evaluated false, so the rule fired, so a
+                # document carrying the element was reported as missing it.
+                sub = jp(cur if isinstance(cur, (dict, list)) else {}, "$." + ".".join(segments[i:]))
                 if any(truthy(x) for x in sub): return True
                 ok = False; break
             if isinstance(cur, dict) and k in cur: cur = cur[k]

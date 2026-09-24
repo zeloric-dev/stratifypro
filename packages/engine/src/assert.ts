@@ -37,10 +37,21 @@ function has(node: Json, expr: string): boolean {
   for (const alt of expr.split('|')) {
     let cur: Json = node;
     let ok = true;
-    for (const k of alt.replace('$.', '').split('.')) {
+    const segments = alt.replace('$.', '').split('.');
+    for (let i = 0; i < segments.length; i += 1) {
+      const k = segments[i] as string;
       if (k.endsWith(']') || k.includes('[')) {
+        // THE REMAINING PATH, NOT THE WHOLE ONE. This handed the full
+        // expression back to the JSONPath walker after `cur` had already
+        // walked part of it, so `metadata.authors[*].name` looked for
+        // `metadata.authors[*].name` INSIDE metadata and found nothing.
+        //
+        // The failure was silent and one-directional: the assertion evaluated
+        // false, so the rule fired, so every document was reported as missing
+        // an element it had. No shipped rule used such a path, which is why
+        // nothing caught it; the G7 pack is full of them.
         const base = isRecord(cur) || Array.isArray(cur) ? cur : {};
-        const sub = jsonPath(base, '$.' + alt.replace('$.', ''));
+        const sub = jsonPath(base, '$.' + segments.slice(i).join('.'));
         if (sub.some(truthy)) return true;
         ok = false;
         break;
