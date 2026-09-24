@@ -45,7 +45,16 @@ export interface Spdx3Normalised {
   /** Keys on software_Package elements that were not read. */
   unmappedPackageKeys: string[];
   /** How many elements of each kind were converted. */
-  counts: { packages: number; relationships: number; agents: number; annotations: number };
+  counts: {
+    packages: number;
+    relationships: number;
+    agents: number;
+    annotations: number;
+    /** Packages carrying the AI profile. Zero on an ordinary software SBOM. */
+    aiPackages: number;
+    /** Packages carrying the Dataset profile. */
+    datasets: number;
+  };
 }
 
 function isRecord(v: Json): v is Record<string, Json> {
@@ -129,6 +138,72 @@ function versionOf(doc: Record<string, Json>, els: Array<Record<string, Json>>):
   return m ? (m[1] as string) : 'unknown';
 }
 
+/**
+ * The AI profile's properties, from the SPDX 3 model repository rather than
+ * from memory: model/AI/Classes/AIPackage.md.
+ *
+ * An AI SBOM is the whole point of the G7 minimum elements, and before these
+ * were here an SPDX 3.0.1 AI SBOM normalised to ZERO packages: `AIPackage` is
+ * not `software_Package`, so the type switch dropped it and the document read
+ * as one that listed no components. That is the precise false statement the
+ * original refusal of SPDX 3.0 existed to prevent, reintroduced by supporting
+ * 3.0 without its profiles.
+ */
+const AI_KEYS = [
+  'autonomyType', 'domain', 'energyConsumption', 'hyperparameter',
+  'informationAboutApplication', 'informationAboutTraining', 'limitation',
+  'metric', 'metricDecisionThreshold', 'modelDataPreprocessing',
+  'modelExplainability', 'safetyRiskAssessment', 'standardCompliance',
+  'typeOfModel', 'useSensitivePersonalInformation',
+] as const;
+
+/** The Dataset profile's properties. model/Dataset/Classes/DatasetPackage.md. */
+const DATASET_KEYS = [
+  'anonymizationMethodUsed', 'confidentialityLevel', 'dataCollectionProcess',
+  'dataPreprocessing', 'datasetAvailability', 'datasetNoise', 'datasetSize',
+  'datasetType', 'datasetUpdateMechanism', 'hasSensitivePersonalInformation',
+  'intendedUse', 'knownBias', 'sensor',
+] as const;
+
+/**
+ * Core Artifact properties that 2.3 has nowhere to put.
+ *
+ * `supportLevel` and `validUntilTime` are the two an end-of-support question
+ * is actually asked against, so dropping them would make a document that
+ * states its support window read as one that does not.
+ */
+const ARTIFACT_KEYS = ['builtTime', 'releaseTime', 'validUntilTime', 'supportLevel', 'standardName'] as const;
+
+/**
+ * Read a profile property under either spelling.
+ *
+ * A serialiser may write `ai_domain` or plain `domain`, and which one appears
+ * is not the supplier's choice. Accepting only the prefixed form silently
+ * empties every AI field of a document written the other way.
+ */
+function profileValue(
+  el: Record<string, Json>,
+  prefix: string,
+  key: string,
+): Json | undefined {
+  const a = el[`${prefix}_${key}`];
+  if (a !== undefined) return a;
+  return el[key];
+}
+
+function profileBlock(
+  el: Record<string, Json>,
+  prefix: string,
+  keys: readonly string[],
+): Record<string, Json> | undefined {
+  const out: Record<string, Json> = {};
+  for (const k of keys) {
+    const v = profileValue(el, prefix, k);
+    if (v !== undefined && v !== null) out[k] = v;
+  }
+  return Object.keys(out).length > 0 ? out : undefined;
+}
+
 /** Keys on a package that this converter reads. Everything else is reported. */
 const PACKAGE_KEYS_USED = new Set([
   'type', '@type', 'spdxId', '@id', 'creationInfo', 'name', 'summary', 'description',
@@ -139,6 +214,11 @@ const PACKAGE_KEYS_USED = new Set([
   'externalIdentifier', 'externalRef', 'software_additionalPurpose', 'software_primaryPurpose',
   'software_downloadLocation', 'software_homePage', 'software_copyrightText',
   'comment', 'extension',
+  // The profile properties, under both spellings, so a document that carries
+  // them is not reported as carrying unmapped fields.
+  ...AI_KEYS, ...AI_KEYS.map((k) => `ai_${k}`),
+  ...DATASET_KEYS, ...DATASET_KEYS.map((k) => `dataset_${k}`),
+  ...ARTIFACT_KEYS,
 ]);
 
 /**
@@ -175,7 +255,12 @@ export function normaliseSpdx3(doc: Json): Spdx3Normalised {
   for (const e of els) {
     switch (typeOf(e)) {
       case 'creationinfo': creationInfos.push(e); break;
-      case 'package': case 'file': case 'snippet': packages.push(e); break;
+      // An AIPackage IS a Package and a DatasetPackage IS a Package, in the
+      // model's own subclassing. Routing them anywhere but here is what made
+      // an AI SBOM read as empty.
+      case 'package': case 'file': case 'snippet':
+      case 'aipackage': case 'datasetpackage':
+        packages.push(e); break;
       case 'relationship': case 'lifecyclescopedrelationship': relationships.push(e); break;
       case 'annotation': annotations.push(e); break;
       case 'agent': case 'person': case 'organization': case 'softwareagent': case 'tool':
@@ -351,6 +436,22 @@ export function normaliseSpdx3(doc: Json): Spdx3Normalised {
     if (id && concluded.has(id)) out['licenseConcluded'] = concluded.get(id) as string;
     if (id && annotationsFor.has(id)) out['annotations'] = annotationsFor.get(id) as Json[];
 
+    // What kind of thing this is. StratifyPro's own field, named so nobody
+    // mistakes it for an SPDX one: 2.3's primaryPackagePurpose has no MODEL or
+    // DATASET value, and inventing one would put a word in SPDX's mouth.
+    const kind = typeOf(p);
+    out['packageKind'] =
+      kind === 'aipackage' ? 'ai-model' : kind === 'datasetpackage' ? 'dataset' : kind === 'file' ? 'file' : 'software';
+
+    const ai = profileBlock(p, 'ai', AI_KEYS);
+    if (ai) out['ai'] = ai;
+    const dataset = profileBlock(p, 'dataset', DATASET_KEYS);
+    if (dataset) out['dataset'] = dataset;
+    for (const k of ARTIFACT_KEYS) {
+      const v = p[k];
+      if (v !== undefined && v !== null) out[k] = v;
+    }
+
     const download = str(p['software_downloadLocation']);
     if (download) out['downloadLocation'] = download;
     const copyright = str(p['software_copyrightText']);
@@ -439,6 +540,8 @@ export function normaliseSpdx3(doc: Json): Spdx3Normalised {
       relationships: structural.length,
       agents: agents.length,
       annotations: annotations.length,
+      aiPackages: packages.filter((x) => typeOf(x) === 'aipackage').length,
+      datasets: packages.filter((x) => typeOf(x) === 'datasetpackage').length,
     },
   };
 }

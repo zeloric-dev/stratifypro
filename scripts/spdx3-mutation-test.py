@@ -74,6 +74,21 @@ MUTATIONS = [
         "    return k !== 'hasdeclaredlicense' && k !== 'hasconcludedlicense';",
         "    return true;",
     ),
+    (
+        "AI packages stop being packages, so an AI SBOM reads as empty",
+        "      case 'aipackage': case 'datasetpackage':\n        packages.push(e); break;",
+        "      case 'aipackage': case 'datasetpackage':\n        break;",
+    ),
+    (
+        "profile properties are read only under their prefixed spelling",
+        "  if (a !== undefined) return a;\n  return el[key];",
+        "  if (a !== undefined) return a;\n  return undefined;",
+    ),
+    (
+        "the support window is dropped, so a stated one reads as absent",
+        "const ARTIFACT_KEYS = ['builtTime', 'releaseTime', 'validUntilTime', 'supportLevel', 'standardName'] as const;",
+        "const ARTIFACT_KEYS = ['builtTime'] as const;",
+    ),
 ]
 
 

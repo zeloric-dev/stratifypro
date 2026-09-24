@@ -260,12 +260,21 @@ test('element types and package keys this converter ignores are reported', () =>
     '@context': 'https://spdx.org/rdf/3.0.1/spdx-context.jsonld',
     '@graph': [
       { type: 'CreationInfo', '@id': '_:c', specVersion: '3.0.1' },
-      { type: 'software_Package', spdxId: `${NS}#p`, name: 'x', builtTime: '2026-01-01T00:00:00Z' },
+      {
+        type: 'software_Package',
+        spdxId: `${NS}#p`,
+        name: 'x',
+        // A real Software profile property this converter does not read. It
+        // used to be builtTime, until the AI profile work started reading that
+        // one; a test whose subject quietly becomes supported is a test that
+        // stops testing anything.
+        software_contentIdentifier: 'gitoid:blob:sha1:abc',
+      },
       { type: 'build_Build', spdxId: `${NS}#b`, name: 'a build element' },
     ],
   };
   const n = normaliseSpdx3(doc);
-  assert.deepEqual(n.unmappedPackageKeys, ['builtTime']);
+  assert.deepEqual(n.unmappedPackageKeys, ['software_contentIdentifier']);
   assert.deepEqual(n.unmappedTypes, ['build']);
 });
 
@@ -281,4 +290,121 @@ test('a 3.0 document with no packages is not read as a clean file', () => {
     r.findings.some((f) => f.ruleId === 'FDA-STAT-002'),
     'a document listing no components did not fail the rule that requires at least one',
   );
+});
+
+// ---- the AI and Dataset profiles ---------------------------------------
+
+/**
+ * An AI SBOM in SPDX 3.0.1. The shape the G7 minimum elements are written for.
+ *
+ * `ai_` and `dataset_` prefixes on some properties and bare names on others,
+ * deliberately: which spelling a serialiser emits is not the supplier's
+ * choice, and a reader that accepts only one silently empties the other.
+ */
+const AI_SBOM: Json = {
+  '@context': 'https://spdx.org/rdf/3.0.1/spdx-context.jsonld',
+  '@graph': [
+    { type: 'CreationInfo', '@id': '_:c', specVersion: '3.0.1', created: '2026-01-01T00:00:00Z' },
+    {
+      type: 'ai_AIPackage',
+      spdxId: `${NS}#model`,
+      name: 'haldane-triage-net',
+      software_packageVersion: '2.1.0',
+      ai_domain: ['medical imaging'],
+      ai_typeOfModel: ['convolutional neural network'],
+      ai_energyConsumption: '480 kWh',
+      ai_limitation: 'Not validated for paediatric patients.',
+      ai_useSensitivePersonalInformation: 'yes',
+      builtTime: '2026-01-04T00:00:00Z',
+      supportLevel: 'SUPPORT',
+      validUntilTime: '2028-01-04T00:00:00Z',
+    },
+    {
+      type: 'dataset_DatasetPackage',
+      spdxId: `${NS}#data`,
+      name: 'chest-xray-corpus',
+      datasetSize: 120000,
+      dataset_datasetType: ['image'],
+      dataset_knownBias: 'Adult patients only; two hospital sites.',
+      dataset_hasSensitivePersonalInformation: 'yes',
+    },
+    { type: 'software_Package', spdxId: `${NS}#np`, name: 'numpy', software_packageVersion: '2.0.1' },
+  ],
+};
+
+test('AN AI SBOM IS NOT AN EMPTY ONE, which it read as before the profiles', () => {
+  // The defect this guards is not subtle and it was live: AIPackage is not
+  // software_Package, so the type switch dropped it and a whole AI SBOM
+  // normalised to zero packages. The report then told its author their
+  // document listed no components, which is the exact false statement the
+  // original refusal of SPDX 3.0 existed to prevent.
+  const n = normaliseSpdx3(AI_SBOM);
+  assert.equal(n.counts.packages, 3);
+  assert.equal(n.counts.aiPackages, 1);
+  assert.equal(n.counts.datasets, 1);
+  assert.deepEqual(n.unmappedTypes, [], 'a profile class was reported as unmapped');
+
+  const r = check(AI_SBOM, pack('fda-524b.json'), { engineVersion: 't', fileSha256: 'x' });
+  assert.ok(
+    !r.findings.some((f) => f.ruleId === 'FDA-STAT-002'),
+    'an AI SBOM listing three packages was reported as listing none',
+  );
+});
+
+test('profile properties are read under either spelling', () => {
+  const pkgs = normaliseSpdx3(AI_SBOM).view.packages as Array<Record<string, Json>>;
+  const model = pkgs.find((x) => x.name === 'haldane-triage-net');
+  const data = pkgs.find((x) => x.name === 'chest-xray-corpus');
+
+  // ai_domain is prefixed in the fixture; datasetSize is not.
+  assert.deepEqual((model?.ai as Record<string, Json>)?.domain, ['medical imaging']);
+  assert.equal((data?.dataset as Record<string, Json>)?.datasetSize, 120000);
+  assert.deepEqual((data?.dataset as Record<string, Json>)?.datasetType, ['image']);
+});
+
+test('what a package IS survives the conversion', () => {
+  // 2.3's primaryPackagePurpose has no MODEL and no DATASET value, so this is
+  // StratifyPro's own field and is named so nobody reads it as an SPDX one.
+  const pkgs = normaliseSpdx3(AI_SBOM).view.packages as Array<Record<string, Json>>;
+  assert.deepEqual(
+    pkgs.map((x) => [x.name, x.packageKind]),
+    [
+      ['haldane-triage-net', 'ai-model'],
+      ['chest-xray-corpus', 'dataset'],
+      ['numpy', 'software'],
+    ],
+  );
+});
+
+test('the support window survives, because it is what end-of-support is asked against', () => {
+  // supportLevel and validUntilTime live on Artifact and have no 2.3 field. A
+  // document that states its support window would otherwise read as one that
+  // does not.
+  const pkgs = normaliseSpdx3(AI_SBOM).view.packages as Array<Record<string, Json>>;
+  const model = pkgs.find((x) => x.name === 'haldane-triage-net');
+  assert.equal(model?.supportLevel, 'SUPPORT');
+  assert.equal(model?.validUntilTime, '2028-01-04T00:00:00Z');
+  assert.equal(model?.builtTime, '2026-01-04T00:00:00Z');
+});
+
+test('an ordinary software SBOM gains no AI fields', () => {
+  // The other direction. A profile reader that decorated every package would
+  // make a plain SBOM look like an AI one.
+  const n = normaliseSpdx3(AS_3_0_1);
+  assert.equal(n.counts.aiPackages, 0);
+  assert.equal(n.counts.datasets, 0);
+  for (const p of n.view.packages as Array<Record<string, Json>>) {
+    assert.equal(p.ai, undefined);
+    assert.equal(p.dataset, undefined);
+    assert.equal(p.packageKind, 'software');
+  }
+});
+
+test('an AI package still answers the ordinary questions', () => {
+  // It is a Package in the model's own subclassing, so the rules that ask
+  // about a name, a version and an identifier must still reach it.
+  const pkgs = normaliseSpdx3(AI_SBOM).view.packages as Array<Record<string, Json>>;
+  const model = pkgs.find((x) => x.name === 'haldane-triage-net');
+  assert.equal(model?.versionInfo, '2.1.0');
+  assert.equal(model?.SPDXID, `${NS}#model`);
 });
