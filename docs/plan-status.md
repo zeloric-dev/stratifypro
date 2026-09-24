@@ -593,6 +593,29 @@ writes `originatedBy` as an array; the first draft of the converter read only
 a scalar and silently dropped the originator from every package in the file.
 Nothing but running it against a real document would have found it.
 
+**And it earned itself a second time, on a bigger omission.** SPDX 3.0 splits
+its model into profiles, and the AI and Dataset profiles define `AIPackage`
+and `DatasetPackage` as subclasses of `Package`. The first converter knew
+neither, so it dropped both: an AI SBOM in SPDX 3.0.1 normalised to **zero
+packages**, and the report told its author their document listed no
+components. That is the precise false statement the original refusal of SPDX
+3.0 existed to prevent, reintroduced by supporting 3.0 without its profiles.
+Nothing in the software corpus could have surfaced it, because nothing there
+is an AI SBOM.
+
+The property names come from the SPDX 3 model repository rather than from
+memory, and both serialisation spellings are read: a serialiser may write
+`ai_domain` or plain `domain`, which is not the supplier's choice. `AIPackage`
+and `DatasetPackage` now land in `packages` where the model puts them, carry
+their profile fields under `ai` and `dataset`, and are labelled with a
+`packageKind` that is StratifyPro's own field rather than a value invented for
+SPDX 2.3's `primaryPackagePurpose`, which has no MODEL and no DATASET.
+
+`supportLevel` and `validUntilTime` come across too. They live on Core's
+`Artifact` and have no 2.3 equivalent, and they are the two fields an
+end-of-support question is actually asked against, so dropping them would make
+a document that states its support window read as one that does not.
+
 **1.5's second acceptance is met, and this paragraph said otherwise for
 several changes after it stopped being true.** "Every rule in the pack maps to
 a row in `docs/teardown.md`." That document now exists, `scripts/teardown.py`
