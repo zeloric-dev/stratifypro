@@ -18,6 +18,13 @@ run "the validator is not blind (mutation test)" \
 # It also refuses a rule naming a crosswalk element that does not exist, and a
 # crosswalk element with no rule. "All 50 elements" is the acceptance, and a
 # count is the easiest thing in this repository to be quietly wrong about.
+# SPEC.md 3.3 accepts on "each has rules, fixtures and a documented schema-
+# extension proposal". The document is the easy part and the part that rots: a
+# proposal citing FDA-SUP-002 stays readable long after somebody renames the
+# rule, and a reader has no way to tell. Every rule it cites must be shipped
+# and fixtured, and four gaps are claimed so four must be found.
+run "the schema-extension proposals cite rules that exist"     python3 scripts/check-schema-extensions.py
+
 run "the G7 pack still matches the crosswalk it is generated from"     python3 scripts/build-g7-pack.py --check
 run "every fail fixture fires, no rule fires on its pass fixture" \
     python3 packages/rules/src/reference-engine.py
