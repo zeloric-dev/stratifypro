@@ -26,12 +26,14 @@ import {
 import type { CheckResult, Coverage } from '@stratifypro/engine';
 import cisaPack from '@stratifypro/rules/packs/cisa-2026-v2.1.json';
 import fdaPack from '@stratifypro/rules/packs/fda-524b.json';
+import g7Pack from '@stratifypro/rules/packs/g7-ai-2026.json';
 
-export type PackId = 'fda-524b' | 'cisa-2026-v2.1';
+export type PackId = 'fda-524b' | 'cisa-2026-v2.1' | 'g7-ai-2026';
 
 const PACKS: Record<PackId, unknown> = {
   'fda-524b': fdaPack,
   'cisa-2026-v2.1': cisaPack,
+  'g7-ai-2026': g7Pack,
 };
 
 export interface CheckRequest {

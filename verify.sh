@@ -6,9 +6,19 @@ fail=0
 run() { echo "--- $1"; shift; "$@" || { echo "    FAILED"; fail=1; }; }
 
 run "rule packs validate against the schema" \
-    python3 packages/rules/src/validate.py packages/rules/packs/cisa-2026-v2.1.json packages/rules/packs/fda-524b.json
+    python3 packages/rules/src/validate.py packages/rules/packs/cisa-2026-v2.1.json packages/rules/packs/fda-524b.json packages/rules/packs/g7-ai-2026.json
 run "the validator is not blind (mutation test)" \
     python3 packages/rules/src/mutation-test.py
+# SPEC.md 3.1: the g7-ai-2026 pack is GENERATED from
+# docs/crosswalk/data/ai-sbom-crosswalk.json, so the pack and its 100 fixtures
+# are build output that happens to be committed. This regenerates both and
+# fails if either has drifted, which is what stops somebody editing a rule by
+# hand and having the next regeneration discard it.
+#
+# It also refuses a rule naming a crosswalk element that does not exist, and a
+# crosswalk element with no rule. "All 50 elements" is the acceptance, and a
+# count is the easiest thing in this repository to be quietly wrong about.
+run "the G7 pack still matches the crosswalk it is generated from"     python3 scripts/build-g7-pack.py --check
 run "every fail fixture fires, no rule fires on its pass fixture" \
     python3 packages/rules/src/reference-engine.py
 # The fixture check above proves each rule CAN fire. It does not prove WHICH

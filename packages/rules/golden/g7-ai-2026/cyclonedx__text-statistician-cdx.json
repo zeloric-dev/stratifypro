@@ -1,0 +1,136 @@
+{
+  "corpusFile": "cyclonedx__text-statistician-cdx.json",
+  "format": "cyclonedx",
+  "rulePackId": "g7-ai-2026",
+  "rulePackVersion": "1.0.0",
+  "findingsByRule": {
+    "G7-DS-001": [
+      "$.components[?(@.type=='data')]"
+    ],
+    "G7-DS-002": [
+      "$.components[?(@.type=='data')]"
+    ],
+    "G7-DS-003": [
+      "$.components[?(@.type=='data')]"
+    ],
+    "G7-DS-004": [
+      "$.components[?(@.type=='data')]"
+    ],
+    "G7-DS-005": [
+      "$.components[?(@.type=='data')]"
+    ],
+    "G7-DS-006": [
+      "$.components[?(@.type=='data')]"
+    ],
+    "G7-DS-007": [
+      "$.components[?(@.type=='data')]"
+    ],
+    "G7-DS-008": [
+      "$.components[?(@.type=='data')]"
+    ],
+    "G7-DS-009": [],
+    "G7-DS-010": [
+      "$.components[?(@.type=='data')]"
+    ],
+    "G7-INF-001": [],
+    "G7-INF-002": [
+      "$"
+    ],
+    "G7-KPI-001": [
+      "$.components[?(@.type=='machine-learning-model')]"
+    ],
+    "G7-KPI-002": [
+      "$"
+    ],
+    "G7-MD-001": [
+      "$"
+    ],
+    "G7-MD-002": [],
+    "G7-MD-003": [],
+    "G7-MD-004": [],
+    "G7-MD-005": [
+      "$"
+    ],
+    "G7-MD-006": [
+      "$"
+    ],
+    "G7-MD-007": [
+      "$"
+    ],
+    "G7-MD-008": [
+      "$"
+    ],
+    "G7-MD-009": [],
+    "G7-MD-010": [],
+    "G7-MOD-001": [
+      "$.components[?(@.type=='machine-learning-model')]"
+    ],
+    "G7-MOD-002": [
+      "$.components[?(@.type=='machine-learning-model')]"
+    ],
+    "G7-MOD-003": [
+      "$.components[?(@.type=='machine-learning-model')]"
+    ],
+    "G7-MOD-004": [
+      "$.components[?(@.type=='machine-learning-model')]"
+    ],
+    "G7-MOD-005": [
+      "$.components[?(@.type=='machine-learning-model')]"
+    ],
+    "G7-MOD-006": [
+      "$.components[?(@.type=='machine-learning-model')]"
+    ],
+    "G7-MOD-007": [
+      "$.components[?(@.type=='machine-learning-model')]"
+    ],
+    "G7-MOD-008": [
+      "$.components[?(@.type=='machine-learning-model')]"
+    ],
+    "G7-MOD-009": [
+      "$.components[?(@.type=='machine-learning-model')]"
+    ],
+    "G7-MOD-010": [
+      "$.components[?(@.type=='machine-learning-model')]"
+    ],
+    "G7-MOD-011": [
+      "$.components[?(@.type=='machine-learning-model')]"
+    ],
+    "G7-MOD-012": [
+      "$.components[?(@.type=='machine-learning-model')]"
+    ],
+    "G7-MOD-013": [
+      "$.components[?(@.type=='machine-learning-model')]"
+    ],
+    "G7-SEC-001": [
+      "$"
+    ],
+    "G7-SEC-002": [
+      "$"
+    ],
+    "G7-SEC-003": [
+      "$"
+    ],
+    "G7-SEC-004": [
+      "$"
+    ],
+    "G7-SYS-001": [],
+    "G7-SYS-002": [],
+    "G7-SYS-003": [
+      "$"
+    ],
+    "G7-SYS-004": [],
+    "G7-SYS-005": [],
+    "G7-SYS-006": [
+      "$"
+    ],
+    "G7-SYS-007": [
+      "$"
+    ],
+    "G7-SYS-008": [
+      "$.components[?(@.type=='machine-learning-model')]"
+    ],
+    "G7-SYS-009": [
+      "$.components[?(@.type=='machine-learning-model')]"
+    ]
+  }
+}

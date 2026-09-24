@@ -15,10 +15,12 @@
 import { loadRulePack, type Rule, type RulePack } from '@stratifypro/engine';
 import cisa from '@stratifypro/rules/packs/cisa-2026-v2.1.json';
 import fda from '@stratifypro/rules/packs/fda-524b.json';
+import g7 from '@stratifypro/rules/packs/g7-ai-2026.json';
 
 export const PACKS: RulePack[] = [
   loadRulePack(fda as never),
   loadRulePack(cisa as never),
+  loadRulePack(g7 as never),
 ];
 
 export interface Located {

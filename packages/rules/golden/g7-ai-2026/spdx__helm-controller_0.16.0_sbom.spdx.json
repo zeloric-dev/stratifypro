@@ -1,0 +1,7 @@
+{
+  "corpusFile": "spdx__helm-controller_0.16.0_sbom.spdx.json",
+  "format": "spdx",
+  "rulePackId": "g7-ai-2026",
+  "rulePackVersion": "1.0.0",
+  "findingsByRule": {}
+}

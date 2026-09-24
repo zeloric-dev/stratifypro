@@ -10,6 +10,7 @@ import { Findings } from './Findings';
 const PACKS: { id: PackId; label: string }[] = [
   { id: 'fda-524b', label: 'FDA section 524B' },
   { id: 'cisa-2026-v2.1', label: 'CISA 2026 minimum elements' },
+  { id: 'g7-ai-2026', label: 'G7 AI SBOM minimum elements' },
 ];
 
 /** Doc 3 flow B: after two seconds, stop showing a bare spinner. */

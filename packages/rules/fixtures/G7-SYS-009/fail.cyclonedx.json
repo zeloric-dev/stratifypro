@@ -1,0 +1,374 @@
+{
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.7",
+  "version": 1,
+  "serialNumber": "urn:uuid:6f4d1f7a-2c33-4a19-9f0e-8b2a1d5c77e1",
+  "metadata": {
+    "timestamp": "2026-05-12T10:00:00Z",
+    "lifecycles": [
+      {
+        "phase": "build"
+      }
+    ],
+    "authors": [
+      {
+        "name": "Haldane Instruments Regulatory Affairs"
+      }
+    ],
+    "manufacturer": {
+      "name": "Haldane Instruments Ltd"
+    },
+    "tools": {
+      "components": [
+        {
+          "type": "application",
+          "name": "stratifypro-cli",
+          "version": "1.0.0"
+        }
+      ]
+    },
+    "component": {
+      "type": "application",
+      "bom-ref": "system-1",
+      "name": "HX-4100 triage assistant",
+      "version": "2.1.0",
+      "manufacturer": {
+        "name": "Haldane Instruments Ltd"
+      },
+      "supplier": {
+        "name": "Haldane Instruments Ltd"
+      },
+      "externalReferences": [
+        {
+          "type": "bom",
+          "url": "urn:cdx:hardware-bom/1#HX-4100-board"
+        }
+      ],
+      "properties": [
+        {
+          "name": "stratifypro:system-timestamp",
+          "value": "2026-05-11T18:00:00Z"
+        }
+      ]
+    },
+    "properties": [
+      {
+        "name": "stratifypro:operational-kpi",
+        "value": "median inference latency 240ms at p50, 410ms at p95"
+      },
+      {
+        "name": "stratifypro:cybersecurity-policy",
+        "value": "https://example.invalid/security/vulnerability-disclosure"
+      },
+      {
+        "name": "stratifypro:security-controls",
+        "value": "input validation, model output bounds check, audit logging"
+      }
+    ]
+  },
+  "components": [
+    {
+      "type": "machine-learning-model",
+      "bom-ref": "model-1",
+      "name": "haldane-triage-net",
+      "version": "2.1.0",
+      "description": "Chest radiograph triage classifier used to order a worklist.",
+      "purl": "pkg:generic/haldane-triage-net@2.1.0",
+      "cpe": "cpe:2.3:a:haldane:triage_net:2.1.0:*:*:*:*:*:*:*",
+      "publisher": "Haldane Instruments Ltd",
+      "manufacturer": {
+        "name": "Haldane Instruments Ltd"
+      },
+      "supplier": {
+        "name": "Haldane Instruments Ltd"
+      },
+      "authors": [
+        {
+          "name": "Haldane Clinical AI group"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "Apache-2.0"
+          }
+        }
+      ],
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+        }
+      ],
+      "releaseNotes": {
+        "timestamp": "2026-05-04T09:00:00Z"
+      },
+      "externalReferences": [
+        {
+          "type": "model-card",
+          "url": "https://example.invalid/models/triage-net"
+        },
+        {
+          "type": "threat-model",
+          "url": "https://example.invalid/threat-model"
+        },
+        {
+          "type": "certification-report",
+          "url": "https://example.invalid/cert"
+        },
+        {
+          "type": "vulnerability-assertion",
+          "url": "https://example.invalid/vex"
+        }
+      ],
+      "properties": [
+        {
+          "name": "cdx:ai-ml:model:parameter:count",
+          "value": "11400000"
+        },
+        {
+          "name": "cdx:ai-ml:model:parameter:tune_method",
+          "value": "sft"
+        }
+      ],
+      "modelCard": {
+        "modelParameters": {
+          "approach": {
+            "type": "supervised"
+          },
+          "task": "image-classification",
+          "architectureFamily": "convolutional",
+          "modelArchitecture": "ResNet-50",
+          "datasets": [
+            {
+              "ref": "dataset-1"
+            }
+          ],
+          "inputs": [
+            {
+              "format": "image/dicom"
+            }
+          ],
+          "outputs": [
+            {
+              "format": "application/json"
+            }
+          ]
+        },
+        "quantitativeAnalysis": {
+          "performanceMetrics": [
+            {
+              "type": "false negative rate",
+              "value": "0.021",
+              "slice": "all studies"
+            }
+          ]
+        },
+        "considerations": {
+          "technicalLimitations": [
+            "Not validated on paediatric patients or portable films."
+          ]
+        }
+      }
+    },
+    {
+      "type": "data",
+      "bom-ref": "dataset-1",
+      "name": "chest-xray-corpus",
+      "version": "2026.03",
+      "purl": "pkg:generic/chest-xray-corpus@2026.03",
+      "licenses": [
+        {
+          "license": {
+            "id": "CC-BY-4.0"
+          }
+        }
+      ],
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"
+        }
+      ],
+      "data": [
+        {
+          "bom-ref": "dataset-1-contents",
+          "type": "dataset",
+          "name": "chest-xray-corpus",
+          "description": "120,000 de-identified adult chest radiographs, two sites.",
+          "contents": {
+            "url": "https://example.invalid/data/chest-xray-corpus"
+          },
+          "classification": "restricted",
+          "sensitiveData": [
+            "de-identified patient imaging"
+          ],
+          "governance": {
+            "owners": [
+              {
+                "organization": {
+                  "name": "Haldane Instruments Ltd"
+                }
+              }
+            ],
+            "custodians": [
+              {
+                "organization": {
+                  "name": "Haldane Data Platform"
+                }
+              }
+            ],
+            "stewards": [
+              {
+                "organization": {
+                  "name": "Haldane Clinical AI group"
+                }
+              }
+            ]
+          },
+          "properties": [
+            {
+              "name": "stratifypro:dataset-statistics",
+              "value": "class balance 0.31 positive; age 18-94, median 57"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "lib-1",
+      "name": "onnxruntime",
+      "version": "1.17.1",
+      "purl": "pkg:pypi/onnxruntime@1.17.1"
+    },
+    {
+      "type": "device",
+      "bom-ref": "device-1",
+      "name": "HX-4100 inference board",
+      "version": "rev-C"
+    }
+  ],
+  "services": [
+    {
+      "bom-ref": "svc-1",
+      "name": "study-intake",
+      "endpoints": [
+        "https://example.invalid/api/studies"
+      ],
+      "data": [
+        {
+          "flow": "inbound",
+          "classification": "restricted",
+          "name": "DICOM study upload"
+        },
+        {
+          "flow": "outbound",
+          "classification": "restricted",
+          "name": "worklist ordering"
+        }
+      ]
+    }
+  ],
+  "dependencies": [
+    {
+      "ref": "system-1",
+      "dependsOn": [
+        "model-1",
+        "lib-1",
+        "device-1"
+      ]
+    },
+    {
+      "ref": "model-1",
+      "dependsOn": [
+        "dataset-1",
+        "lib-1"
+      ]
+    },
+    {
+      "ref": "dataset-1",
+      "dependsOn": []
+    }
+  ],
+  "vulnerabilities": [
+    {
+      "bom-ref": "vuln-1",
+      "id": "CVE-2026-00000",
+      "affects": [
+        {
+          "ref": "lib-1"
+        }
+      ],
+      "analysis": {
+        "state": "not_affected",
+        "justification": "code_not_reachable"
+      }
+    }
+  ],
+  "externalReferences": [
+    {
+      "type": "security-contact",
+      "url": "https://example.invalid/security"
+    },
+    {
+      "type": "vulnerability-assertion",
+      "url": "https://example.invalid/vex"
+    }
+  ],
+  "declarations": {
+    "signature": {
+      "algorithm": "ES256",
+      "value": "placeholder"
+    },
+    "assessors": [
+      {
+        "bom-ref": "assessor-1",
+        "organization": {
+          "name": "Haldane QA"
+        }
+      }
+    ],
+    "attestations": [
+      {
+        "summary": "Assessed against the standard named in definitions.",
+        "assessor": "assessor-1"
+      }
+    ]
+  },
+  "definitions": {
+    "standards": [
+      {
+        "bom-ref": "std-1",
+        "name": "G7 SBOM for AI minimum elements",
+        "version": "2026"
+      }
+    ]
+  },
+  "formulation": [
+    {
+      "bom-ref": "training-run-1",
+      "components": [
+        {
+          "type": "library",
+          "name": "pytorch",
+          "version": "2.4.0"
+        }
+      ],
+      "workflows": [
+        {
+          "bom-ref": "wf-1",
+          "uid": "train-2026-03",
+          "name": "supervised fine-tune",
+          "taskTypes": [
+            "build"
+          ]
+        }
+      ]
+    }
+  ],
+  "signature": {
+    "algorithm": "ES256",
+    "value": "placeholder"
+  }
+}

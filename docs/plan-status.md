@@ -23,6 +23,7 @@ It exists because of a specific mistake, recorded below.
 | 2.11 | Texas SB 2610 security program, mapped to CIS IG1 | **drafted, unsigned, unreviewed** |
 | 2.9 | Written incident response plan | **partial**, never rehearsed |
 | 2.10 | NIST SSDF self-attestation | **drafted, unsigned** |
+| 3.1 | `g7-ai-2026` pack, all 50 elements | **done**, generated from the crosswalk |
 
 **2.5 was built after all.** The gate below has still not passed; the
 instruction to proceed was given three times and is recorded rather than
@@ -557,6 +558,53 @@ not a paraphrase.
 | 1.16 | `bench/identity` v0, dataset, runner, four baselines | done |
 
 ### The five that are not done, and why each one is not a typo
+
+**3.1 is done: the g7-ai-2026 pack, all 50 elements.** SPEC.md puts Phase 3
+behind Gate 3, which has not passed, for the same recorded reason Phase 2 was
+built ahead of Gate 2.
+
+It is GENERATED from `docs/crosswalk/data/ai-sbom-crosswalk.json` rather than
+written by hand, and `verify.sh` regenerates it on every run and fails on any
+drift. The crosswalk supplies the element id, its name, what it captures, its
+stated constraint and its format mappings; the selector, assertion, severity
+and fix are judgement and live in one table in `scripts/build-g7-pack.py`, so
+the translation from a crosswalk path to a JSONPath is readable in one place
+instead of inferred from 50 files. The generator also refuses a rule naming an
+element that does not exist and an element with no rule, because "all 50
+elements" is the acceptance and a count is the easiest thing here to be quietly
+wrong about.
+
+**Not one rule is an error, and cannot be.** The G7 document says of itself:
+"These minimum elements are not mandatory; do not create requirements,
+standards, or legislation." `normativeLanguage` is false and the loader refuses
+`error` on any rule citing it. 17 warnings, 33 info. This is the case SPEC.md
+predicted that rule would bite on, and it bit.
+
+**CycloneDX only, and the reason is mechanical rather than a judgement about
+SPDX.** The crosswalk maps 44 of the 50 elements into SPDX 3.0.1, and the
+engine reads SPDX 3 by normalising it into the shape the rules address.
+`reference-engine.py` evaluates a selector against the raw fixture and does not
+normalise, so an SPDX 3.0.1 fixture would match nothing and the fixture proof
+would be a formality. CycloneDX carries all 50 elements, so the element list is
+complete either way. Teaching the reference engine to normalise is the next
+change and the SPDX selectors land with it.
+
+**Every fixture is the same document with one thing removed.** The pass fixture
+is a complete AI SBOM satisfying all 50 rules; each fail fixture is that
+document with exactly the field the rule asks about deleted, named in the
+generator. The difference between passing and failing is one deletion, which is
+hard to write dishonestly. 128 fixture pairs now prove rather than assert.
+
+**Adding the pack broke five things, which is what those checks are for.** The
+golden artifact went from 42 files to 63 and from 24,421 recorded paths to
+24,747, and the pinned counts in `golden.test.ts` said so rather than comparing
+fewer files quietly. `check-claims.py` computed expected fixture files as
+`rules * 4`, which was right while every pack covered both formats and wrong
+the moment one did not; it now sums `2 * len(appliesTo)` per rule.
+`check-pack-lists.py` refused three hand-written lists in the web app that did
+not mention the new pack, so the free checker now offers it. `corpus-results.md`
+no longer matched the engine and was regenerated. And the rule-id pattern
+allowed letters only, which made a source with a digit in its name uncitable.
 
 **1.10 and 1.11 are withdrawn, not deferred, and 1.8 is why.** SPEC.md asks
 for five instrumentation events and for Sentry, and in the same phase requires

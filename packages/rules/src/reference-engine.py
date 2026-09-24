@@ -185,7 +185,8 @@ if __name__ == "__main__":
     args = [a for a in sys.argv[1:] if not a.startswith("--")]
     flags = {a for a in sys.argv[1:] if a.startswith("--")}
     packs = [json.load(open(p, encoding="utf-8")) for p in args] or [
-        json.load(open(f"packages/rules/packs/{n}.json", encoding="utf-8")) for n in ("cisa-2026-v2.1", "fda-524b")]
+        json.load(open(f"packages/rules/packs/{n}.json", encoding="utf-8"))
+        for n in ("cisa-2026-v2.1", "fda-524b", "g7-ai-2026")]
 
     if "--golden" in flags or "--check-golden" in flags:
         import shutil, tempfile
