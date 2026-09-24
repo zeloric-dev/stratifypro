@@ -38,6 +38,7 @@ import {
   NoTextLayer,
   type PdfDraftResult,
 } from '@stratifypro/draft';
+import { hashModelFile, modelCardFromGguf, NotGguf } from '@stratifypro/modelcard';
 import { CliError, Errors, EXIT, type ExitCode } from './errors.js';
 import { renderText, SEVERITY_RANK } from './render.js';
 
@@ -699,6 +700,8 @@ function cmdHelp(): ExitCode {
       '    resolve <name> [--dictionary <file>] [--min-observations <n>]',
       '                 what a component name is, or why it cannot be said',
       '    explain <ruleId> [--pack <id>]',
+      '    modelcard <file.gguf> [--out <file>] [--header-only]',
+      '                 a CycloneDX 1.7 model card read from a GGUF file header',
       '    packs',
       '',
       `    default pack: ${DEFAULT_PACK}`,
@@ -708,6 +711,78 @@ function cmdHelp(): ExitCode {
       '',
     ].join('\n'),
   );
+  return EXIT.CLEAN;
+}
+
+/**
+ * `modelcard <file.gguf>` - SPEC.md 3.2.
+ *
+ * Reads the metadata block a GGUF file carries at its front and writes a
+ * CycloneDX 1.7 model card from it. The weights are never read: a 20 GB model
+ * and its 700 KB header take the same time here.
+ *
+ * WHAT IT COULD NOT ANSWER IS PRINTED EVERY RUN. GGUF's `general.*` keys are
+ * conventional rather than mandatory and most published models set very few of
+ * them, so a card that listed only what it found would read as a complete
+ * description of a model that has barely described itself.
+ */
+function cmdModelCard(args: Args): ExitCode {
+  const file = args.positional[0];
+  if (!file) {
+    process.stderr.write('usage: modelcard <file.gguf> [--out <file>] [--timestamp <iso8601>]\n');
+    return EXIT.PACK;
+  }
+
+  let raw: Buffer;
+  try {
+    raw = readFileSync(file);
+  } catch (e) {
+    throw Errors.fileUnreadable(file, e instanceof Error ? e.message : String(e));
+  }
+
+  const timestamp = args.flags.get('timestamp') ?? new Date().toISOString();
+  let card;
+  try {
+    // The hash covers the bytes that were read. When the whole model was read
+    // that is the model's hash; when only a header was, it is not, and the
+    // --header-only flag is how a caller says which.
+    const headerOnly = args.flags.get('header-only') === 'true';
+    card = modelCardFromGguf(raw, {
+      fileName: file,
+      timestamp,
+      ...(headerOnly ? {} : { fileSha256: hashModelFile(raw) }),
+    });
+  } catch (e) {
+    if (e instanceof NotGguf) {
+      process.stderr.write(`\n  ${file}\n  ${e.message}\n\n`);
+      return EXIT.PARSE;
+    }
+    throw e;
+  }
+
+  const json = `${JSON.stringify(card.document, null, 2)}\n`;
+  const out = args.flags.get('out');
+  if (out) writeFileSync(out, json, 'utf8');
+  else process.stdout.write(json);
+
+  const notes: string[] = ['', `  model card drafted from ${file}`];
+  if (card.unanswered.length > 0) {
+    notes.push(`  ${card.unanswered.length} G7 element(s) this file does not state:`);
+    for (const u of card.unanswered) notes.push(`    ${u}`);
+  }
+  if (card.unmappedKeys.length > 0) {
+    notes.push(`  general.* keys present and not read: ${card.unmappedKeys.join(', ')}`);
+  }
+  if (card.unreadable.length > 0) {
+    notes.push(`  metadata this reader could not decode: ${card.unreadable.join(', ')}`);
+  }
+  notes.push('');
+  notes.push('  THIS IS A DRAFT. GGUF metadata keys are conventional rather than mandatory,');
+  notes.push('  so a blank above means the file did not say, not that the answer is nothing.');
+  notes.push('  The document carries a property saying so and `bundle` refuses it. Check it');
+  notes.push('  against the model you actually shipped before it goes anywhere.');
+  notes.push('');
+  process.stderr.write(notes.join('\n'));
   return EXIT.CLEAN;
 }
 
@@ -728,6 +803,8 @@ function main(): ExitCode {
       return cmdBundle(args);
     case 'draft':
       return cmdDraft(args);
+    case 'modelcard':
+      return cmdModelCard(args);
     case 'help':
     case '--help':
     case '-h':

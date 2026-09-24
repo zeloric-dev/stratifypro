@@ -24,6 +24,7 @@ It exists because of a specific mistake, recorded below.
 | 2.9 | Written incident response plan | **partial**, never rehearsed |
 | 2.10 | NIST SSDF self-attestation | **drafted, unsigned** |
 | 3.1 | `g7-ai-2026` pack, all 50 elements | **done**, generated from the crosswalk |
+| 3.2 | CycloneDX 1.7 model card from a GGUF model | **done**, round-trips with zero errors |
 
 **2.5 was built after all.** The gate below has still not passed; the
 instruction to proceed was given three times and is recorded rather than
@@ -558,6 +559,37 @@ not a paraphrase.
 | 1.16 | `bench/identity` v0, dataset, runner, four baselines | done |
 
 ### The five that are not done, and why each one is not a typo
+
+**3.2 is done, and what it found is more interesting than that it works.**
+`stratifypro modelcard <file.gguf>` reads the metadata block GGUF carries at
+the front of a model and writes a CycloneDX 1.7 model card. Only the header is
+read, so a 20 GB model and its 700 KB header cost the same. SPEC.md's
+acceptance is that the card round-trips through the checker with zero errors,
+and it does: 16 rules run, 9 findings, no error.
+
+**The fixture is a real published model, and it answers two of nine G7
+elements.** `stories15M-q4_0.metadata.gguf` is the first 723,798 bytes of a
+model on Hugging Face, which is exactly its metadata block, and the byte-range
+request that produces it hashes to the committed file so the provenance is
+checkable rather than asserted. That file states no licence, no producer, no
+version and no description. **That is the finding, not an inconvenience with
+the fixture: the metadata a team needs for a regulatory submission is mostly
+not in the file they ship.** The generator reports every element it could not
+answer, by rule id, on every run.
+
+Three things about that file would not have appeared in a fixture written
+here, which is the argument against writing one. Its tokenizer array comes
+first and pushes `general.name` 466 KB into the file, so a reader that gave up
+early would report a model that does not name itself. Its key order is not the
+documented order. And it sets almost nothing, so a hand-built fixture would
+have carried the four keys the code wanted, in the order it expected, and the
+honest reporting of absence would never have run.
+
+Nothing is invented. No licence is guessed from a model name, no producer from
+the repository it was downloaded from. A hash appears only when the caller
+hashed the whole file, because a hash of the header would look like a model
+hash and identify nothing. And the card carries `stratifypro:draft`, the same
+marker a supplier spreadsheet gets, so `bundle` refuses to seal it.
 
 **3.1 is done: the g7-ai-2026 pack, all 50 elements.** SPEC.md puts Phase 3
 behind Gate 3, which has not passed, for the same recorded reason Phase 2 was
